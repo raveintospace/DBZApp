@@ -13,6 +13,10 @@
 		343DC2F42C89AA4500BCCF39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F32C89AA4500BCCF39 /* Preview Assets.xcassets */; };
 		343DC3052C89AFE600BCCF39 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3042C89AFE600BCCF39 /* Character.swift */; };
 		343DC3082C89B52B00BCCF39 /* localDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = 343DC3072C89B52B00BCCF39 /* localDatabase.json */; };
+		343DC30A2C89BE7900BCCF39 /* CharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3092C89BE7800BCCF39 /* CharacterDataSource.swift */; };
+		343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */; };
+		343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */; };
+		343DC3112C89C43900BCCF39 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3102C89C43900BCCF39 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		343DC2F32C89AA4500BCCF39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		343DC3042C89AFE600BCCF39 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		343DC3072C89B52B00BCCF39 /* localDatabase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localDatabase.json; sourceTree = "<group>"; };
+		343DC3092C89BE7800BCCF39 /* CharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataSource.swift; sourceTree = "<group>"; };
+		343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacterDataSource.swift; sourceTree = "<group>"; };
+		343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCharacterDataSource.swift; sourceTree = "<group>"; };
+		343DC3102C89C43900BCCF39 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 				343DC2FC2C89AAF800BCCF39 /* Data */,
 				343DC2FB2C89AAEB00BCCF39 /* Domain */,
 				343DC3062C89B51600BCCF39 /* Resources */,
+				343DC30F2C89C41F00BCCF39 /* Shared */,
 				343DC2EE2C89AA4400BCCF39 /* ContentView.swift */,
 				343DC2F02C89AA4500BCCF39 /* Assets.xcassets */,
 				343DC2F22C89AA4500BCCF39 /* Preview Content */,
@@ -119,6 +128,9 @@
 		343DC2FF2C89AB1000BCCF39 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				343DC3092C89BE7800BCCF39 /* CharacterDataSource.swift */,
+				343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */,
+				343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -159,6 +171,14 @@
 				343DC3072C89B52B00BCCF39 /* localDatabase.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		343DC30F2C89C41F00BCCF39 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				343DC3102C89C43900BCCF39 /* DataService.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343DC30A2C89BE7900BCCF39 /* CharacterDataSource.swift in Sources */,
+				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
 				343DC2EF2C89AA4400BCCF39 /* ContentView.swift in Sources */,
+				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
+				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
 				343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
