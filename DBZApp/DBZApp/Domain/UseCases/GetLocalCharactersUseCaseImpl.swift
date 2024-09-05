@@ -10,12 +10,12 @@ import Foundation
 struct GetLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol {
     var repository: CharacterRepository
 
-    func execute() async -> Result<[Character], UseCaseError> {
+    func execute() async -> [Character] {
         do {
-            let characters = try await repository.getLocalCharacters()
-            return .success(characters)
+            return try await repository.getLocalCharacters()
         } catch {
-            return .failure(.undefinedError)
+            debugPrint("Error in GetLocalCharactersUseCase")
+            return []
         }
     }
 }

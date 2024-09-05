@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FetchCharactersFromAPIUseCaseProtocol {
-    func execute() async -> Result<[Character], UseCaseError>
+    func execute() async -> [Character]
 }

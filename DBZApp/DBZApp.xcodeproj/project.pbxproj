@@ -24,6 +24,7 @@
 		343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC31A2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCase.swift */; };
 		343DC31D2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC31C2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift */; };
 		343DC31F2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC31E2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift */; };
+		343DC3212C89CDC100BCCF39 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3202C89CDC100BCCF39 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		343DC31A2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersFromAPIUseCase.swift; sourceTree = "<group>"; };
 		343DC31C2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocalCharactersUseCaseImpl.swift; sourceTree = "<group>"; };
 		343DC31E2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersFromAPIUseCaseImpl.swift; sourceTree = "<group>"; };
+		343DC3202C89CDC100BCCF39 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 		343DC3032C89AB3000BCCF39 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				343DC3202C89CDC100BCCF39 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
 				343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */,
+				343DC3212C89CDC100BCCF39 /* HomeViewModel.swift in Sources */,
 				343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
