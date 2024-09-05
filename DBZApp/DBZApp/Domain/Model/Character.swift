@@ -41,6 +41,20 @@ struct Character: Codable, Identifiable {
             affiliation: "Z Fighter"
         )
     }
+    
+    static var mockTwo: Character {
+        Character(
+            id: 333,
+            name: "Freezer",
+            ki: "530.000",
+            maxKi: "52.71 Septillion",
+            race: "Frieza Race",
+            gender: "Male",
+            description: "Freezer is the space tyrant and the main antagonist of the Freezer saga.",
+            image: "https://dragonball-api.com/characters/Freezer.webp",
+            affiliation: "Army of Frieza"
+        )
+    }
 }
 
 enum Gender: String {

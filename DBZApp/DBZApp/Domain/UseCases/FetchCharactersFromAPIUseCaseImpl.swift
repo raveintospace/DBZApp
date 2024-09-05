@@ -10,7 +10,7 @@ import Foundation
 struct FetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol {
     var repository: CharacterRepository
 
-    func execute() async -> [Character] {
+    func execute() async throws -> [Character] {
         do {
             return try await repository.fetchCharactersFromAPI()
         } catch {

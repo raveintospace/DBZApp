@@ -30,7 +30,7 @@ final class HomeViewModel: ObservableObject {
         isLoading = true
         
         do {
-            self.characters = await getLocalCharactersUseCase.execute()
+            self.characters = try await getLocalCharactersUseCase.execute()
             self.error = nil
         } catch {
             self.error = .undefinedError
@@ -42,7 +42,7 @@ final class HomeViewModel: ObservableObject {
         isLoading = true
         
         do {
-            self.characters = await fetchCharactersFromAPIUseCase.execute()
+            self.characters = try await fetchCharactersFromAPIUseCase.execute()
             self.error = nil
         } catch {
             self.error = .undefinedError

@@ -13,6 +13,7 @@ struct NetworkCharacterDataSource: CharacterDataSource {
     private let dataService = DataService()
     
     func getCharacters() async throws -> [Character] {
-        return try await dataService.fetch(type: [Character].self, url: apiURL)
+        let characters = try await dataService.fetch(type: CharacterArray.self, url: apiURL)
+        return characters.characters
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol GetLocalCharactersUseCaseProtocol {
-    func execute() async -> [Character]
+    func execute() async throws -> [Character]
 }

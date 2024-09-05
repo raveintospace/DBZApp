@@ -14,7 +14,8 @@ struct LocalCharacterDataSource: CharacterDataSource {
             throw URLError(.badURL)
         }
         
-        return try await loadJSON(url: url, type: [Character].self)
+        let characters = try await loadJSON(url: url, type: CharacterArray.self)
+        return characters.characters
     }
     
     func loadJSON<JSON: Codable>(url: URL, type: JSON.Type) async throws -> JSON {
@@ -32,5 +33,5 @@ struct LocalCharacterDataSource: CharacterDataSource {
     }
 }
 
-// Data(contentsOf:) isn't async
+// Data(contentsOf:) isn't async, we have to convert it to take concurrency
 // Task so Data((contentsOf:) doesn't block main thread
