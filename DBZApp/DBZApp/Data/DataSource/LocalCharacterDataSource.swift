@@ -17,8 +17,6 @@ struct LocalCharacterDataSource: CharacterDataSource {
         return try await loadJSON(url: url, type: [Character].self)
     }
     
-    // Data(contentsOf:) isn't async
-    // Task so Data((contentsOf:) doesn't block main thread
     func loadJSON<JSON: Codable>(url: URL, type: JSON.Type) async throws -> JSON {
         return try await withCheckedThrowingContinuation { continuation in
             Task {
@@ -33,3 +31,6 @@ struct LocalCharacterDataSource: CharacterDataSource {
         }
     }
 }
+
+// Data(contentsOf:) isn't async
+// Task so Data((contentsOf:) doesn't block main thread

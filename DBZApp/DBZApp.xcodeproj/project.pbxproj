@@ -17,6 +17,8 @@
 		343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */; };
 		343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */; };
 		343DC3112C89C43900BCCF39 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3102C89C43900BCCF39 /* DataService.swift */; };
+		343DC3132C89C87400BCCF39 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3122C89C87400BCCF39 /* CharacterRepository.swift */; };
+		343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3142C89C95300BCCF39 /* CharacterRepositoryImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacterDataSource.swift; sourceTree = "<group>"; };
 		343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCharacterDataSource.swift; sourceTree = "<group>"; };
 		343DC3102C89C43900BCCF39 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		343DC3122C89C87400BCCF39 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
+		343DC3142C89C95300BCCF39 /* CharacterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +132,8 @@
 		343DC2FF2C89AB1000BCCF39 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				343DC3092C89BE7800BCCF39 /* CharacterDataSource.swift */,
-				343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */,
-				343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */,
+				343DC3122C89C87400BCCF39 /* CharacterRepository.swift */,
+				343DC3142C89C95300BCCF39 /* CharacterRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -138,6 +141,9 @@
 		343DC3002C89AB1A00BCCF39 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				343DC3092C89BE7800BCCF39 /* CharacterDataSource.swift */,
+				343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */,
+				343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -253,11 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				343DC30A2C89BE7900BCCF39 /* CharacterDataSource.swift in Sources */,
+				343DC3132C89C87400BCCF39 /* CharacterRepository.swift in Sources */,
 				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
 				343DC2EF2C89AA4400BCCF39 /* ContentView.swift in Sources */,
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
+				343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */,
 				343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
