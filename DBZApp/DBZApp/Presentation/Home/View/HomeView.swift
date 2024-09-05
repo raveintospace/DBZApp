@@ -27,18 +27,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(
-        getLocalCharactersUseCase: GetLocalCharactersUseCase(
-            repository: CharacterRepositoryImpl(
-                localDataSource: LocalCharacterDataSource(),
-                networkDataSource: NetworkCharacterDataSource()
-            )
-        ),
-        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCase(
-            repository: CharacterRepositoryImpl(
-                localDataSource: LocalCharacterDataSource(),
-                networkDataSource: NetworkCharacterDataSource()
-            )
-        )
-    ))
+    HomeView(viewModel: DeveloperPreview.instance.homeViewModel)
 }

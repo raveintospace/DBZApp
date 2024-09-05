@@ -27,6 +27,7 @@
 		343DC3232C89F97300BCCF39 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3222C89F97300BCCF39 /* HomeView.swift */; };
 		343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3252C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift */; };
 		343DC3282C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */; };
+		343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		343DC3222C89F97300BCCF39 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		343DC3252C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetLocalCharactersUseCase.swift; sourceTree = "<group>"; };
 		343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchCharactersFromAPIUseCase.swift; sourceTree = "<group>"; };
+		343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */,
+				343DC3292C8A086500BCCF39 /* Extensions */,
 				343DC2FA2C89AADF00BCCF39 /* Presentation */,
 				343DC2FC2C89AAF800BCCF39 /* Data */,
 				343DC2FB2C89AAEB00BCCF39 /* Domain */,
@@ -206,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				343DC3102C89C43900BCCF39 /* DataService.swift */,
+				343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -217,6 +221,13 @@
 				343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		343DC3292C8A086500BCCF39 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +308,7 @@
 				343DC3132C89C87400BCCF39 /* CharacterRepository.swift in Sources */,
 				343DC3192C89CC7A00BCCF39 /* GetLocalCharactersUseCase.swift in Sources */,
 				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
+				343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
 				343DC3172C89CC3C00BCCF39 /* UseCaseError.swift in Sources */,
 				343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */,
