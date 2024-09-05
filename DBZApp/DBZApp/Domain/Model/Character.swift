@@ -1,0 +1,62 @@
+//
+//  Character.swift
+//  DBZApp
+//  https://dragonball-api.com/api/characters?limit=1000000
+//  Created by Uri on 5/9/24.
+//
+
+import Foundation
+
+struct CharacterArray: Codable {
+    let characters: [Character]
+    let meta: Meta
+    let links: Links
+    
+    enum CodingKeys: String, CodingKey {
+        case characters = "items"
+        case meta
+        case links
+    }
+}
+
+// MARK: - Item
+struct Character: Codable, Identifiable {
+    let id: Int
+    let name, ki, maxKi, race: String
+    let gender: String
+    let description: String
+    let image: String
+    let affiliation: String
+    
+    static var mock: Character {
+        Character(
+            id: 444,
+            name: "Goku",
+            ki: "60.000.000",
+            maxKi: "90 Septillion",
+            race: "Saiyan",
+            gender: "Male",
+            description: "The protagonist of the series, known for his great power and friendly personality. Originally sent to Earth as a flying infant with the mission to conquer it. However, falling down a cliff gave him a brutal blow that almost killed him, but altered his memory and nullified all the violent instincts of his species, which made him grow up with a pure and kind heart, but retaining all the powers of his race. However, in the new Dragon Ball continuity it is established that he was sent by his parents to Earth with the goal of surviving at all costs the destruction of his planet by Freeza. Later, Kakarot, now known as Son Goku, would become the prince consort of Mount Fry-pan and leader of the Z Warriors, as well as the greatest defender of Earth and Universe 7, managing to keep them safe from destruction on countless occasions, despite not considering himself a hero or savior.",
+            image: "https://dragonball-api.com/characters/goku_normal.webp",
+            affiliation: "Z Fighter"
+        )
+    }
+}
+
+enum Gender: String {
+    case female
+    case male
+}
+
+// MARK: - Links
+struct Links: Codable {
+    let first: String
+    let previous, next: String?
+    let last: String
+}
+
+// MARK: - Meta
+struct Meta: Codable {
+    let totalItems, itemCount, itemsPerPage, totalPages: Int
+    let currentPage: Int
+}
