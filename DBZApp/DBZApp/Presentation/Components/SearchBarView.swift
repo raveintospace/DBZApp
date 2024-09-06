@@ -12,7 +12,10 @@ struct SearchBarView: View {
     // Binding instead of State so searchText can bind to any string in our app
     // Where we put a SearchBarView, we will bind a string to it
     @Binding var searchText: String
+    
     var placeholderText: String = "Search on database"
+    
+    var characterLimit: Int = 28
     
     var body: some View {
         HStack {
@@ -26,6 +29,11 @@ struct SearchBarView: View {
                 .foregroundStyle(.accent)
                 .autocorrectionDisabled()
                 .submitLabel(.done)
+                .onChange(of: searchText) { _, newValue in
+                    if newValue.count > characterLimit {
+                        searchText = String(newValue.prefix(characterLimit))
+                    }
+                }
                 .overlay(
                     Image(systemName: "xmark.circle.fill")
                         .padding()
