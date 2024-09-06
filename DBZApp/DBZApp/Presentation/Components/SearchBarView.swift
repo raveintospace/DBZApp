@@ -12,6 +12,7 @@ struct SearchBarView: View {
     // Binding instead of State so searchText can bind to any string in our app
     // Where we put a SearchBarView, we will bind a string to it
     @Binding var searchText: String
+    var placeholderText: String = "Search on database"
     
     var body: some View {
         HStack {
@@ -20,7 +21,7 @@ struct SearchBarView: View {
                     searchText.isEmpty ? .light : .accent
                 )
             
-            TextField("Search character", text: $searchText)
+            TextField(placeholderText, text: $searchText)
                 .font(.system(size: 16))
                 .foregroundStyle(.accent)
                 .autocorrectionDisabled()
@@ -30,12 +31,11 @@ struct SearchBarView: View {
                         .padding()
                         .offset(x: 10)  // easier for users to tap
                         .foregroundStyle(.accent)
-                        .opacity(searchText.isEmpty ? 0.0 : 1.0)
+                        .opacity(searchText.isEmpty ? 0 : 1)
                         .onTapGesture {
                             UIApplication.shared.hideKeyboard()
                             searchText = ""
                         }
-                    
                     ,alignment: .trailing
                 )
         }
