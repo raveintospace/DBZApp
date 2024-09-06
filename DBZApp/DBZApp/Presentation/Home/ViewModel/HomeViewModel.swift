@@ -15,6 +15,10 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var filteredCharacters: [Character] = []
     @Published var searchText: String = ""
     
+    var isSearching: Bool {
+        !searchText.isEmpty
+    }
+    
     @Published var isLoading: Bool = false
     @Published var error: UseCaseError?
     

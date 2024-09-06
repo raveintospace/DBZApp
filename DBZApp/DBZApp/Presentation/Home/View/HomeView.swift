@@ -17,7 +17,7 @@ struct HomeView: View {
     
     var body: some View {
         List(viewModel.characters) { character in
-            VStack {
+            VStack(alignment: .leading) {
                 Text(character.name)
                 Text(character.race)
                 Text(character.affiliation)
