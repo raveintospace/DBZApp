@@ -29,6 +29,7 @@
 		343DC3282C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */; };
 		343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */; };
 		345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A982C8B5375003BA242 /* SearchBarView.swift */; };
+		345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9A2C8B5507003BA242 /* UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchCharactersFromAPIUseCase.swift; sourceTree = "<group>"; };
 		343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
 		345D5A982C8B5375003BA242 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		345D5A9A2C8B5507003BA242 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 		343DC3292C8A086500BCCF39 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				345D5A9A2C8B5507003BA242 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				343DC3192C89CC7A00BCCF39 /* GetLocalCharactersUseCase.swift in Sources */,
 				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
 				343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */,
+				345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
 				343DC3172C89CC3C00BCCF39 /* UseCaseError.swift in Sources */,
 				343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */,

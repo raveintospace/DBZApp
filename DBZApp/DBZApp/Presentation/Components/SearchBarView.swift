@@ -31,10 +31,10 @@ struct SearchBarView: View {
                         .offset(x: 10)  // easier for users to tap
                         .foregroundStyle(.accent)
                         .opacity(searchText.isEmpty ? 0.0 : 1.0)
-//                        .onTapGesture {
-//                            UIApplication.shared.hideKeyboard()
-//                            searchText = ""
-//                        }
+                        .onTapGesture {
+                            UIApplication.shared.hideKeyboard()
+                            searchText = ""
+                        }
                     
                     ,alignment: .trailing
                 )
