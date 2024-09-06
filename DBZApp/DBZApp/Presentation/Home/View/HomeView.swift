@@ -12,21 +12,35 @@ struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
     
     init(viewModel: HomeViewModel) {
-            _viewModel = StateObject(wrappedValue: viewModel)
-        }
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
-        List(viewModel.characters) { character in
-            VStack(alignment: .leading) {
-                Text(character.name)
-                Text(character.race)
-                Text(character.affiliation)
+        ZStack {
+            ScrollView(.vertical) {
+                LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
+                    Section {
+                        ForEach(viewModel.characters) { character in
+                            VStack(alignment: .leading) {
+                                Text(character.name)
+                                Text(character.race)
+                                Text(character.affiliation)
+                            }
+                            .foregroundStyle(.accent)
+                        }
+                    } header: {
+                        SearchBarView(searchText: $viewModel.searchText)
+                            .background(.own)
+                    }
+                }
             }
-                .foregroundStyle(.accent)
+            .scrollIndicators(.hidden)
+            .clipped()
         }
         .task {
             await viewModel.loadLocalCharacters()
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
