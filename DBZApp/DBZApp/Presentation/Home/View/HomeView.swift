@@ -17,7 +17,11 @@ struct HomeView: View {
     
     var body: some View {
         List(viewModel.characters) { character in
-            Text(character.name)
+            VStack {
+                Text(character.name)
+                Text(character.race)
+                Text(character.affiliation)
+            }
                 .foregroundStyle(.accent)
         }
         .task {

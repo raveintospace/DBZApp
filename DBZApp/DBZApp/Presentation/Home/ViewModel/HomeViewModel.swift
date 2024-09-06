@@ -9,7 +9,7 @@ import Foundation
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var characters: [Character] = []
+    @Published private(set) var characters: [Character] = []
     @Published var isLoading: Bool = false
     @Published var error: UseCaseError?
     
