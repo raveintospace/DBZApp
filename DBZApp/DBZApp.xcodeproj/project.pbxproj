@@ -30,6 +30,7 @@
 		343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */; };
 		345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A982C8B5375003BA242 /* SearchBarView.swift */; };
 		345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9A2C8B5507003BA242 /* UIApplication.swift */; };
+		345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9C2C8B5F11003BA242 /* FilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
 		345D5A982C8B5375003BA242 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		345D5A9A2C8B5507003BA242 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				345D5A982C8B5375003BA242 /* SearchBarView.swift */,
+				345D5A9C2C8B5F11003BA242 /* FilterCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				343DC3132C89C87400BCCF39 /* CharacterRepository.swift in Sources */,
 				343DC3192C89CC7A00BCCF39 /* GetLocalCharactersUseCase.swift in Sources */,
 				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
+				345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */,
 				343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */,
 				345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,

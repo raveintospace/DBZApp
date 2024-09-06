@@ -20,7 +20,10 @@ struct HomeView: View {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                     Section {
-                        ForEach(viewModel.characters) { character in
+                        // Filters
+                        // Sort
+                        // cards
+                        ForEach(viewModel.isSearching ? viewModel.filteredCharacters : viewModel.characters) { character in
                             VStack(alignment: .leading) {
                                 Text(character.name)
                                 Text(character.race)
