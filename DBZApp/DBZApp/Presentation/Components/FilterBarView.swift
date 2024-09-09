@@ -15,18 +15,10 @@ struct FilterBarView: View {
     // The value is passed by the parent view
     var selectedFilter: Filter? = nil
     
-    // Keeps the state of each FilterCell
-    @State private var filterStates: [FilterState] = Array(repeating: .notPressed, count: Filter.dbzFilters.count)
-    
-    // Checks if any filter is pressed
-    private var selectedFilterIndex: Int? {
-        filterStates.firstIndex(where: { $0 == .pressedOnce || $0 == .pressedTwice })
-    }
-    
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                if selectedFilterIndex != nil {
+                if selectedFilter != nil {
                     Image(systemName: "xmark")
                         .padding(8)
                         .background(
@@ -36,19 +28,16 @@ struct FilterBarView: View {
                         .foregroundStyle(.dbzBlue)
                         .background(.black.opacity(0.001))
                         .onTapGesture {
-                            withAnimation {
-                                filterStates = Array(repeating: .notPressed, count: filters.count)
-                            }
                             onXMarkPressed?()
                         }
                         .transition(AnyTransition.move(edge: .leading).combined(with: .opacity))
                 }
                 
-                ForEach(Array(filters.enumerated()), id: \.element) { index, filter in
-                    if selectedFilterIndex == nil || selectedFilterIndex == index {
+                ForEach(filters, id: \.self) { filter in
+                    if selectedFilter == nil || selectedFilter == filter {
                         FilterCell(
                             title: filter.title,
-                            filterState: $filterStates[index]
+                            isSelected: selectedFilter == filter
                         )
                         .background(.black.opacity(0.001))
                         .onTapGesture {
@@ -62,7 +51,7 @@ struct FilterBarView: View {
             .padding(.horizontal, 8)
         }
         .scrollIndicators(.hidden)
-        .animation(.bouncy, value: selectedFilterIndex)
+        .animation(.bouncy, value: selectedFilter)
     }
 }
 
