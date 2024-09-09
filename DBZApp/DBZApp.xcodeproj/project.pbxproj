@@ -168,8 +168,7 @@
 		343DC2FF2C89AB1000BCCF39 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				343DC3122C89C87400BCCF39 /* CharacterRepository.swift */,
-				343DC3142C89C95300BCCF39 /* CharacterRepositoryImpl.swift */,
+				343F83822C8F41100053CBA4 /* Character */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -241,6 +240,15 @@
 				345D5A9A2C8B5507003BA242 /* UIApplication.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		343F83822C8F41100053CBA4 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				343DC3122C89C87400BCCF39 /* CharacterRepository.swift */,
+				343DC3142C89C95300BCCF39 /* CharacterRepositoryImpl.swift */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 		345D5A972C8B534E003BA242 /* Components */ = {
