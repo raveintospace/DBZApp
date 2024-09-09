@@ -11,6 +11,9 @@ struct HomeView: View {
     
     @StateObject private var viewModel: HomeViewModel
     
+    @State private var selectedFilter: Filter? = nil
+   // @State private var filterStates: [FilterState] = Array(repeating: .notPressed, count: Filter.dbzFilters.count)
+    
     init(viewModel: HomeViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -32,8 +35,7 @@ struct HomeView: View {
                             .foregroundStyle(.accent)
                         }
                     } header: {
-                        SearchBarView(searchText: $viewModel.searchText)
-                            .background(.own)
+                        fullHeader
                     }
                 }
             }
@@ -49,4 +51,33 @@ struct HomeView: View {
 
 #Preview {
     HomeView(viewModel: DeveloperPreview.instance.homeViewModel)
+}
+
+extension HomeView {
+    
+    private var fullHeader: some View {
+        VStack(spacing: 4) {
+            searchBar
+            filterBar
+        }
+        .background(.own)
+        .padding(8)
+    }
+    
+    private var searchBar: some View {
+        SearchBarView(searchText: $viewModel.searchText)
+    }
+    
+    private var filterBar: some View {
+        FilterBarView(
+            filters: Filter.dbzFilters,
+            onXMarkPressed: {
+                selectedFilter = nil
+            },
+            onFilterPressed: { newFilter in
+                selectedFilter = newFilter
+            },
+            selectedFilter: selectedFilter
+        )
+    }
 }

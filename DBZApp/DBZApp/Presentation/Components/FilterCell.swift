@@ -25,7 +25,7 @@ struct FilterCell: View {
             .background(
                 ZStack {
                     Capsule(style: .circular)
-                        .fill(filterState == .pressedOnce ? Color.dbzYellow.opacity(0.5) : Color.dbzOrange.opacity(0.5))
+                        .fill(filterState == .pressedOnce ? Color.dbzYellow : Color.dbzOrange)
                         .opacity(filterState == .notPressed ? 0 : 1)
                     
                     Capsule(style: .circular)

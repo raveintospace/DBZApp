@@ -42,7 +42,6 @@ struct FilterBarView: View {
                             onXMarkPressed?()
                         }
                         .transition(AnyTransition.move(edge: .leading).combined(with: .opacity))
-                        .padding(.leading, 16)
                 }
                 
                 ForEach(Array(filters.enumerated()), id: \.element) { index, filter in
