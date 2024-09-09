@@ -55,12 +55,12 @@ struct FilterBarView: View {
                         .onTapGesture {
                             onFilterPressed?(filter)
                         }
-                        .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 16 : 0)
-                        //   .transition(.asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .move(edge: .leading).combined(with: .opacity)))
+                        .padding(0)
                     }
                 }
             }
-            .padding(.vertical, 4) // avoids bottom & top of HStack looking cut
+            .padding(.vertical, 8) // avoids bottom & top of HStack looking cut
+            .padding(.horizontal, 8)
         }
         .scrollIndicators(.hidden)
         .animation(.bouncy, value: selectedFilterIndex)
