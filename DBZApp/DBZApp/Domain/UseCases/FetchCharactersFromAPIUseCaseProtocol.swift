@@ -1,5 +1,5 @@
 //
-//  GetLocalCharactersUseCase.swift
+//  FetchCharactersFromAPIUseCaseProtocol.swift
 //  DBZApp
 //
 //  Created by Uri on 5/9/24.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol GetLocalCharactersUseCaseProtocol {
+protocol FetchCharactersFromAPIUseCaseProtocol {
     func execute() async throws -> [Character]
 }

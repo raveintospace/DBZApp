@@ -9,5 +9,10 @@ import SwiftUI
 
 struct Filter: Hashable, Equatable {
     let title: String
-    let subfilters: [Filter]?
+    
+    static var dbzFilters: [Filter] = [
+        Filter(title: "Affiliation"),
+        Filter(title: "Gender"),
+        Filter(title: "Race")
+    ]
 }
