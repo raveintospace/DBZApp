@@ -28,6 +28,7 @@
 		343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3252C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift */; };
 		343DC3282C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */; };
 		343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */; };
+		343F837F2C8EFC9A0053CBA4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F837E2C8EFC9A0053CBA4 /* Filter.swift */; };
 		345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A982C8B5375003BA242 /* SearchBarView.swift */; };
 		345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9A2C8B5507003BA242 /* UIApplication.swift */; };
 		345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9C2C8B5F11003BA242 /* FilterCell.swift */; };
@@ -56,6 +57,7 @@
 		343DC3252C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetLocalCharactersUseCase.swift; sourceTree = "<group>"; };
 		343DC3272C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchCharactersFromAPIUseCase.swift; sourceTree = "<group>"; };
 		343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
+		343F837E2C8EFC9A0053CBA4 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		345D5A982C8B5375003BA242 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		345D5A9A2C8B5507003BA242 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				343DC3042C89AFE600BCCF39 /* Character.swift */,
+				343F837E2C8EFC9A0053CBA4 /* Filter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
 				343DC3172C89CC3C00BCCF39 /* UseCaseError.swift in Sources */,
 				343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */,
+				343F837F2C8EFC9A0053CBA4 /* Filter.swift in Sources */,
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCase.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
