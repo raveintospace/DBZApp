@@ -19,20 +19,19 @@ struct FilterBarView: View {
     var body: some View {
         HStack {
             ScrollView(.horizontal) {
-                HStack {
+                HStack(spacing: 8) {
+                    
                     if selectedFilter != nil {
                         Image(systemName: "xmark")
                             .padding(8)
                             .background(
                                 Circle()
-                                    .stroke(lineWidth: 1)
-                            )
+                                    .stroke(lineWidth: 1))
                             .foregroundStyle(.dbzBlue)
-                            .background(.black.opacity(0.001))
                             .onTapGesture {
                                 onXMarkPressed?()
                             }
-                            .transition(AnyTransition.move(edge: .leading).combined(with: .opacity))
+                            .transition(.move(edge: .leading).combined(with: .opacity))
                     }
                     
                     ForEach(filters, id: \.self) { filter in
@@ -41,32 +40,22 @@ struct FilterBarView: View {
                                 title: filter.title,
                                 isSelected: selectedFilter == filter
                             )
-                            .background(.black.opacity(0.001))
                             .onTapGesture {
                                 onFilterPressed?(filter)
                             }
-                            .padding(0)
-                            .transition(AnyTransition.move(edge: .leading).combined(with: .opacity))
+                            .transition(.move(edge: .leading).combined(with: .opacity))
                         }
-                            .padding(.vertical, 8) // avoids bottom & top of HStack looking cut
-                            .padding(.horizontal, 8)
-                            .background(.red)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .scrollIndicators(.hidden)
-                    .animation(.bouncy, value: selectedFilter)
+                    .padding(.vertical, 8)
                     
                     Image(systemName: "slider.horizontal.3")
                         .padding(8)
                         .foregroundStyle(.dbzBlue)
-                        .background(.black.opacity(0.001))
                         .onTapGesture {
                             onOptionButtonPressed?()
                         }
                 }
-                .scrollIndicators(.hidden)
-                .animation(.bouncy, value: selectedFilter)
-                .scrollIndicators(.hidden)
+                .padding(.horizontal, 8)
                 .animation(.bouncy, value: selectedFilter)
             }
         }
@@ -77,8 +66,7 @@ struct FilterBarView: View {
     FilterBarViewPreview()
 }
 
-// preview to check if filter logic works
-// the two properties will be in our parent view
+// Preview to check if filter logic works
 fileprivate struct FilterBarViewPreview: View {
     
     @State private var filters = Filter.dbzFilters
@@ -97,3 +85,4 @@ fileprivate struct FilterBarViewPreview: View {
         )
     }
 }
+

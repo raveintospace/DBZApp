@@ -37,13 +37,3 @@ struct FilterCell: View {
         FilterCell(title: "Race", isSelected: false)
     }
 }
-
-/*
- Affiliation / Gender / Race
- 
- 1 Quan premem un cop se selecciona el boto i apareix l'X (igual que netflix)
- 2 Amb el boto seleccionat, si premem un segon cop se selecciona l'opcio i canvia el titol del boto
- 3 Si premem X, es deselecciona el boto i el filtre
- 4. Color 1 yellow / Color 2 orange
- 
- */
