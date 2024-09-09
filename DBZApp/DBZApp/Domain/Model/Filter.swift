@@ -5,7 +5,7 @@
 //  Created by Uri on 9/9/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct Filter: Hashable, Equatable {
     let title: String
