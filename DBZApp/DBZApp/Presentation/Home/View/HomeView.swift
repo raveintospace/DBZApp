@@ -12,7 +12,6 @@ struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
     
     @State private var selectedFilter: Filter? = nil
-   // @State private var filterStates: [FilterState] = Array(repeating: .notPressed, count: Filter.dbzFilters.count)
     
     init(viewModel: HomeViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -23,7 +22,6 @@ struct HomeView: View {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                     Section {
-                        // Filters
                         // Sort
                         // cards
                         ForEach(viewModel.isSearching ? viewModel.filteredCharacters : viewModel.characters) { character in

@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-enum FilterState {
-    case notPressed
-    case pressedOnce
-    case pressedTwice
-}
-
 struct FilterCell: View {
     
     var title: String = "Filters"
-    @Binding var filterState: FilterState
+    var isSelected: Bool = false
     
     var body: some View {
         Text(title)
@@ -25,32 +19,22 @@ struct FilterCell: View {
             .background(
                 ZStack {
                     Capsule(style: .circular)
-                        .fill(filterState == .pressedOnce ? Color.dbzYellow : Color.dbzOrange)
-                        .opacity(filterState == .notPressed ? 0 : 1)
+                        .fill(.dbzYellow)
+                        .opacity(isSelected ? 1 : 0)
                     
                     Capsule(style: .circular)
                         .stroke(lineWidth: 1)
                 }
             )
             .foregroundStyle(.dbzBlue)
-            .onTapGesture {
-                switch filterState {
-                case .notPressed:
-                    filterState = .pressedOnce
-                case .pressedOnce:
-                    filterState = .pressedTwice
-                case .pressedTwice:
-                    filterState = .notPressed
-                }
-            }
     }
 }
 
 #Preview {
     VStack {
-        FilterCell(title: "Affiliation", filterState: .constant(.notPressed))
-        FilterCell(title: "Gender", filterState: .constant(.pressedOnce))
-        FilterCell(title: "Race", filterState: .constant(.pressedTwice))
+        FilterCell(title: "Affiliation", isSelected: false)
+        FilterCell(title: "Gender", isSelected: true)
+        FilterCell(title: "Race", isSelected: false)
     }
 }
 
