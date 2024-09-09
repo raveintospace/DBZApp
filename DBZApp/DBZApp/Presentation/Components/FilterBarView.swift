@@ -33,7 +33,7 @@ struct FilterBarView: View {
                             Circle()
                                 .stroke(lineWidth: 1)
                         )
-                        .foregroundStyle(.light)
+                        .foregroundStyle(.dbzBlue)
                         .background(.black.opacity(0.001))
                         .onTapGesture {
                             withAnimation {

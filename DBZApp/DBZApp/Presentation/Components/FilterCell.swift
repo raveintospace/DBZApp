@@ -32,7 +32,7 @@ struct FilterCell: View {
                         .stroke(lineWidth: 1)
                 }
             )
-            .foregroundStyle(.light)
+            .foregroundStyle(.dbzBlue)
             .onTapGesture {
                 switch filterState {
                 case .notPressed:

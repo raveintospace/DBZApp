@@ -21,12 +21,12 @@ struct SearchBarView: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(
-                    searchText.isEmpty ? .light : .accent
+                    searchText.isEmpty ? .light : .dbzBlue
                 )
             
             TextField(placeholderText, text: $searchText)
                 .font(.system(size: 16))
-                .foregroundStyle(.accent)
+                .foregroundStyle(.dbzBlue)
                 .autocorrectionDisabled()
                 .submitLabel(.done)
                 .onChange(of: searchText) { _, newValue in
@@ -38,7 +38,7 @@ struct SearchBarView: View {
                     Image(systemName: "xmark.circle.fill")
                         .padding()
                         .offset(x: 10)  // easier for users to tap
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(.dbzBlue)
                         .opacity(searchText.isEmpty ? 0 : 1)
                         .onTapGesture {
                             UIApplication.shared.hideKeyboard()
@@ -51,7 +51,7 @@ struct SearchBarView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 25)
-                .fill(Color.background)
+                .fill(Color.background.opacity(0.3))
         )
     }
 }
