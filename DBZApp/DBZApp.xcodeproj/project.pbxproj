@@ -30,6 +30,8 @@
 		343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */; };
 		343F837F2C8EFC9A0053CBA4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F837E2C8EFC9A0053CBA4 /* Filter.swift */; };
 		343F83812C8EFD0B0053CBA4 /* FilterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F83802C8EFD0B0053CBA4 /* FilterBarView.swift */; };
+		343F83852C8F415E0053CBA4 /* FilterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F83842C8F415E0053CBA4 /* FilterRepository.swift */; };
+		343F83872C8F417C0053CBA4 /* FilterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F83862C8F417C0053CBA4 /* FilterRepositoryImpl.swift */; };
 		345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A982C8B5375003BA242 /* SearchBarView.swift */; };
 		345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9A2C8B5507003BA242 /* UIApplication.swift */; };
 		345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9C2C8B5F11003BA242 /* FilterCell.swift */; };
@@ -60,6 +62,8 @@
 		343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
 		343F837E2C8EFC9A0053CBA4 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		343F83802C8EFD0B0053CBA4 /* FilterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBarView.swift; sourceTree = "<group>"; };
+		343F83842C8F415E0053CBA4 /* FilterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepository.swift; sourceTree = "<group>"; };
+		343F83862C8F417C0053CBA4 /* FilterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryImpl.swift; sourceTree = "<group>"; };
 		345D5A982C8B5375003BA242 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		345D5A9A2C8B5507003BA242 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				343F83822C8F41100053CBA4 /* Character */,
+				343F83832C8F414C0053CBA4 /* Filter */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -249,6 +254,15 @@
 				343DC3142C89C95300BCCF39 /* CharacterRepositoryImpl.swift */,
 			);
 			path = Character;
+			sourceTree = "<group>";
+		};
+		343F83832C8F414C0053CBA4 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				343F83842C8F415E0053CBA4 /* FilterRepository.swift */,
+				343F83862C8F417C0053CBA4 /* FilterRepositoryImpl.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		345D5A972C8B534E003BA242 /* Components */ = {
@@ -349,12 +363,14 @@
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCase.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
+				343F83872C8F417C0053CBA4 /* FilterRepositoryImpl.swift in Sources */,
 				343F83812C8EFD0B0053CBA4 /* FilterBarView.swift in Sources */,
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
 				343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */,
 				343DC3232C89F97300BCCF39 /* HomeView.swift in Sources */,
 				343DC3212C89CDC100BCCF39 /* HomeViewModel.swift in Sources */,
 				343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */,
+				343F83852C8F415E0053CBA4 /* FilterRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
