@@ -25,10 +25,12 @@ struct HomeView: View {
                         // Sort
                         // cards
                         ForEach(viewModel.isSearching ? viewModel.filteredCharacters : viewModel.characters) { character in
-                            VStack(alignment: .leading) {
+                            VStack(alignment: .center) {
                                 Text(character.name)
                                 Text(character.race)
                                 Text(character.affiliation)
+                                Text(character.gender)
+                                Divider()
                             }
                             .foregroundStyle(.accent)
                         }
@@ -67,7 +69,7 @@ extension HomeView {
     }
     
     private var filterBar: some View {
-        FilterBarView(
+        FiltersBarView(
             filters: Filter.dbzFilters,
             onXMarkPressed: {
                 selectedFilter = nil

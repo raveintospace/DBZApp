@@ -57,11 +57,6 @@ struct Character: Codable, Identifiable {
     }
 }
 
-enum Gender: String {
-    case female
-    case male
-}
-
 // MARK: - Links
 struct Links: Codable {
     let first: String

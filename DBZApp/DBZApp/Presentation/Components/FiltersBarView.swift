@@ -1,13 +1,13 @@
 //
-//  FilterBarView.swift
+//  FiltersBarView.swift
 //  DBZApp
 //
-//  Created by Uri on 9/9/24.
+//  Created by Uri on 10/9/24.
 //
 
 import SwiftUI
 
-struct FilterBarView: View {
+struct FiltersBarView: View {
     var filters: [Filter] = Filter.dbzFilters
     var onXMarkPressed: (() -> Void)? = nil
     var onFilterPressed: ((Filter) -> Void)? = nil
@@ -45,6 +45,7 @@ struct FilterBarView: View {
                                 onFilterPressed?(filter)
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
+                            .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 4 : 0)
                         }
                     }
                 }
@@ -64,17 +65,17 @@ struct FilterBarView: View {
 }
 
 #Preview {
-    FilterBarViewPreview()
+    FiltersBarViewPreview()
 }
 
 // Preview to check if filter logic works
-fileprivate struct FilterBarViewPreview: View {
+fileprivate struct FiltersBarViewPreview: View {
     
     @State private var filters = Filter.dbzFilters
     @State private var selectedFilter: Filter? = nil
     
     var body: some View {
-        FilterBarView(
+        FiltersBarView(
             filters: filters,
             onXMarkPressed: {
                 selectedFilter = nil
@@ -86,4 +87,3 @@ fileprivate struct FilterBarViewPreview: View {
         )
     }
 }
-
