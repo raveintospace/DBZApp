@@ -45,7 +45,7 @@ struct FiltersBarView: View {
                             .onTapGesture {
                                 onFilterPressed?(filter)
                             }
-                            .transition(.move(edge: .leading).combined(with: .opacity))
+                            .transition(.move(edge: .trailing).combined(with: .opacity)) // check
                             .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 4 : 0)
                         }
                     }
