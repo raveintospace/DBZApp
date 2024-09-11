@@ -32,7 +32,7 @@ struct FiltersBarView: View {
                                 onXMarkPressed?()
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
-                            .padding(.leading, 16)
+                            .padding(.leading, 4)
                     }
                     
                     ForEach(filters, id: \.self) { filter in
@@ -49,15 +49,17 @@ struct FiltersBarView: View {
                         }
                     }
                 }
-                .padding(.vertical, 8)
+                .padding(8)
             }
             .scrollIndicators(.hidden)
             .animation(.bouncy, value: selectedFilter)
             
             Image(systemName: "slider.horizontal.3")
+                .padding(8)
+                .background(
+                    Circle()
+                        .stroke(lineWidth: 1))
                 .foregroundStyle(.dbzBlue)
-                .padding(.trailing, 8)
-                .padding(.leading, 2)
                 .onTapGesture {
                     onOptionButtonPressed?()
                 }
