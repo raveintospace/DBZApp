@@ -70,7 +70,7 @@ extension HomeView {
     
     private var filterBar: some View {
         FiltersBarView(
-            filters: Filter.affiliation,
+            filters: Filter.affiliation,    // viewmodel.currentfilter
             onXMarkPressed: {
                 selectedFilter = nil
             },

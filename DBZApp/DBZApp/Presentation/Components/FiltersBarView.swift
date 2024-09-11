@@ -52,7 +52,7 @@ struct FiltersBarView: View {
                 .padding(.vertical, 8)
             }
             .scrollIndicators(.hidden)
-            .animation(.smooth, value: selectedFilter)
+            .animation(.bouncy, value: selectedFilter)
             
             Image(systemName: "slider.horizontal.3")
                 .foregroundStyle(.dbzBlue)
@@ -72,7 +72,7 @@ struct FiltersBarView: View {
 // Preview to check if filter logic works
 fileprivate struct FiltersBarViewPreview: View {
     
-    @State private var filters = Filter.affiliation
+    @State private var filters = Filter.race
     @State private var selectedFilter: Filter? = nil
     
     var body: some View {
