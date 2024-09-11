@@ -10,6 +10,7 @@ import SwiftUI
 struct Filter: Hashable, Equatable {
     let title: String
     
+    // only for mock purposes
     static var affiliation: [Filter] = [
         Filter(title: "Army of Frieza"),
         Filter(title: "Assistant of Beerus"),

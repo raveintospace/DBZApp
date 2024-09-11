@@ -34,6 +34,9 @@
 		345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9A2C8B5507003BA242 /* UIApplication.swift */; };
 		345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9C2C8B5F11003BA242 /* FilterCell.swift */; };
 		34C9FB352C919FAF00FA0139 /* FilterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */; };
+		34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */; };
+		34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */; };
+		34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +68,9 @@
 		345D5A9A2C8B5507003BA242 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryProtocol.swift; sourceTree = "<group>"; };
+		34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryImpl.swift; sourceTree = "<group>"; };
+		34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseProtocol.swift; sourceTree = "<group>"; };
+		34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,10 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
-				343DC3182C89CC7A00BCCF39 /* GetLocalCharactersUseCaseProtocol.swift */,
-				343DC31C2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift */,
-				343DC31A2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift */,
-				343DC31E2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift */,
+				34C9FB382C91A17F00FA0139 /* Character */,
+				34C9FB392C91A18A00FA0139 /* Filter */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -268,6 +272,27 @@
 			isa = PBXGroup;
 			children = (
 				34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */,
+				34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		34C9FB382C91A17F00FA0139 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				343DC3182C89CC7A00BCCF39 /* GetLocalCharactersUseCaseProtocol.swift */,
+				343DC31C2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift */,
+				343DC31A2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift */,
+				343DC31E2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		34C9FB392C91A18A00FA0139 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */,
+				34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -346,6 +371,7 @@
 				3452BEDA2C90BA3F00E32517 /* FiltersBarView.swift in Sources */,
 				343DC30A2C89BE7900BCCF39 /* CharacterDataSourceProtocol.swift in Sources */,
 				343DC3282C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift in Sources */,
+				34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */,
 				343DC31F2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift in Sources */,
 				343DC31D2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift in Sources */,
 				343DC3132C89C87400BCCF39 /* CharacterRepositoryProtocol.swift in Sources */,
@@ -360,6 +386,8 @@
 				343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */,
 				343F837F2C8EFC9A0053CBA4 /* Filter.swift in Sources */,
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift in Sources */,
+				34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */,
+				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
