@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterRepositoryImpl: CharacterRepository {
+struct CharacterRepositoryImpl: CharacterRepositoryProtocol {
     private let localDataSource: LocalCharacterDataSource
     private let networkDataSource: NetworkCharacterDataSource
     

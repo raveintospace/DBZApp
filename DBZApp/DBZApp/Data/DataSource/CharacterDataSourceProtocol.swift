@@ -8,7 +8,7 @@
 import Foundation
 
 // Contract that defines how we want to get the message from a source (local, network...)
-protocol CharacterDataSource {
+protocol CharacterDataSourceProtocol {
     func getCharacters() async throws -> [Character]
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 // Interface between the domain and the data layer
-protocol CharacterRepository {
+protocol CharacterRepositoryProtocol {
     func getLocalCharacters() async throws -> [Character]
     func fetchCharactersFromAPI() async throws -> [Character]
 }
