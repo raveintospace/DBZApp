@@ -55,8 +55,9 @@ struct FiltersBarView: View {
             .animation(.bouncy, value: selectedFilter)
             
             Image(systemName: "slider.horizontal.3")
-                .padding(8)
                 .foregroundStyle(.dbzBlue)
+                .padding(.trailing, 8)
+                .padding(.leading, 2)
                 .onTapGesture {
                     onOptionButtonPressed?()
                 }
