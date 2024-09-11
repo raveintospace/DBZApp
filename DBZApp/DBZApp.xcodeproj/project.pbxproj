@@ -37,6 +37,7 @@
 		34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */; };
 		34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */; };
 		34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */; };
+		34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryImpl.swift; sourceTree = "<group>"; };
 		34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseProtocol.swift; sourceTree = "<group>"; };
 		34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseImpl.swift; sourceTree = "<group>"; };
+		34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */,
 				343DC3292C8A086500BCCF39 /* Extensions */,
+				34C9FB3E2C91A8A100FA0139 /* Enums */,
 				343DC2FA2C89AADF00BCCF39 /* Presentation */,
 				343DC2FC2C89AAF800BCCF39 /* Data */,
 				343DC2FB2C89AAEB00BCCF39 /* Domain */,
@@ -164,7 +167,6 @@
 		343DC2FE2C89AB0800BCCF39 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
 				34C9FB382C91A17F00FA0139 /* Character */,
 				34C9FB392C91A18A00FA0139 /* Filter */,
 			);
@@ -297,6 +299,15 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		34C9FB3E2C91A8A100FA0139 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
+				34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,6 +399,7 @@
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift in Sources */,
 				34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */,
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
+				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,

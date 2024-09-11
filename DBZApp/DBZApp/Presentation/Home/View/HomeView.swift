@@ -70,12 +70,15 @@ extension HomeView {
     
     private var filterBar: some View {
         FiltersBarView(
-            filters: Filter.affiliation,    // viewmodel.currentfilter
+            filters: viewModel.affiliationFilters,
             onXMarkPressed: {
                 selectedFilter = nil
             },
             onFilterPressed: { newFilter in
                 selectedFilter = newFilter
+            },
+            onOptionButtonPressed: {
+                
             },
             selectedFilter: selectedFilter
         )
