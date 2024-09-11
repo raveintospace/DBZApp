@@ -70,7 +70,7 @@ extension HomeView {
     
     private var filterBar: some View {
         FiltersBarView(
-            filters: Filter.dbzFilters,
+            filters: Filter.affiliation,
             onXMarkPressed: {
                 selectedFilter = nil
             },

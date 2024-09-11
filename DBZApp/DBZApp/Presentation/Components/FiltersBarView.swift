@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FiltersBarView: View {
-    var filters: [Filter] = Filter.dbzFilters
+    var filters: [Filter] = Filter.affiliation
     var onXMarkPressed: (() -> Void)? = nil
     var onFilterPressed: ((Filter) -> Void)? = nil
     var onOptionButtonPressed: (() -> Void)? = nil
@@ -52,7 +52,7 @@ struct FiltersBarView: View {
                 .padding(.vertical, 8)
             }
             .scrollIndicators(.hidden)
-            .animation(.bouncy, value: selectedFilter)
+            .animation(.smooth, value: selectedFilter)
             
             Image(systemName: "slider.horizontal.3")
                 .foregroundStyle(.dbzBlue)
@@ -72,7 +72,7 @@ struct FiltersBarView: View {
 // Preview to check if filter logic works
 fileprivate struct FiltersBarViewPreview: View {
     
-    @State private var filters = Filter.dbzFilters
+    @State private var filters = Filter.affiliation
     @State private var selectedFilter: Filter? = nil
     
     var body: some View {
