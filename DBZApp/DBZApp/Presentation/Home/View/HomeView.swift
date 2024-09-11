@@ -11,8 +11,6 @@ struct HomeView: View {
     
     @StateObject private var viewModel: HomeViewModel
     
-    @State private var selectedFilter: Filter? = nil
-    
     init(viewModel: HomeViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -24,7 +22,7 @@ struct HomeView: View {
                     Section {
                         // Sort
                         // cards
-                        ForEach(viewModel.isSearching ? viewModel.filteredCharacters : viewModel.characters) { character in
+                        ForEach(viewModel.displayedCharacters) { character in
                             VStack(alignment: .center) {
                                 Text(character.name)
                                 Text(character.affiliation)
@@ -45,9 +43,8 @@ struct HomeView: View {
         .task {
             await viewModel.loadLocalCharacters()
         }
-        .onChange(of: selectedFilter, { _, newFilter in
+        .onChange(of: viewModel.selectedFilter, { _, newFilter in
             viewModel.selectedFilter = newFilter
-            debugPrint("HomeView printing \(String(describing: viewModel.selectedFilter))")
         })
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -76,18 +73,15 @@ extension HomeView {
         FiltersBarView(
             filters: viewModel.affiliationFilters,
             onXMarkPressed: {
-                selectedFilter = nil
                 viewModel.selectedFilter = nil
-                debugPrint("ssssss")
             },
             onFilterPressed: { newFilter in
-                selectedFilter = newFilter
                 viewModel.selectedFilter = newFilter
             },
             onOptionButtonPressed: {
                 // router.sheet filter selectionscreen
             },
-            selectedFilter: selectedFilter
+            selectedFilter: viewModel.selectedFilter
         )
     }
 }

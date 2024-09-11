@@ -30,7 +30,6 @@ struct FiltersBarView: View {
                             .foregroundStyle(.dbzBlue)
                             .onTapGesture {
                                 onXMarkPressed?()
-                                print("xbutton")
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
                             .padding(.leading, 4)
@@ -45,7 +44,6 @@ struct FiltersBarView: View {
                             )
                             .onTapGesture {
                                 onFilterPressed?(filter)
-                                print("Filter tapped: \(filter.title)")
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
                             .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 4 : 0)
@@ -65,7 +63,6 @@ struct FiltersBarView: View {
                 .foregroundStyle(.dbzBlue)
                 .onTapGesture {
                     onOptionButtonPressed?()
-                    print("option")
                 }
         }
     }
@@ -99,7 +96,6 @@ fileprivate struct FiltersBarViewPreview: View {
                 selectedFilter = nil
             },
             onFilterPressed: { newFilter in
-                //debugPrint(newFilter.title)
                 selectedFilter = newFilter
             },
             onOptionButtonPressed: {

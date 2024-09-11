@@ -15,6 +15,14 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var characters: [Character] = []
     @Published private(set) var filteredCharacters: [Character] = []
     
+    var displayedCharacters: [Character] {
+        if isSearching || !filteredCharacters.isEmpty {
+            return filteredCharacters
+        } else {
+            return characters
+        }
+    }
+    
     // MARK: - Search & filtering characters
     @Published var searchText: String = ""
     var isSearching: Bool {
@@ -122,6 +130,7 @@ final class HomeViewModel: ObservableObject {
     private func filterCharacters(searchText: String, selectedFilter: Filter?) {
         var filtered = characters
         
+        // Search filtering
         if !searchText.isEmpty {
             let search = searchText.lowercased()
             filtered = filtered.filter { character in
@@ -134,28 +143,25 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
+        // Filter application
         if let filter = selectedFilter {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
         
+        // Set filtered characters
+        print("Filtered characters count: \(filtered.count)")
         filteredCharacters = filtered
     }
     
     // MARK: - Filter logic for Filters
     private func applyFilter(filter: Filter, characters: [Character]) -> [Character] {
-        let filterTitle = filter.title.lowercased()
+        let filterTitle = filter.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
 
         return characters.filter { character in
-            let affiliationMatch = character.affiliation.lowercased() == filterTitle
-            let genderMatch = character.gender.lowercased() == filterTitle
-            let raceMatch = character.race.lowercased() == filterTitle
-            
-            // Print statements for debugging
-            print("Filtering by: \(filterTitle)")
-            print("Character affiliation: \(character.affiliation.lowercased()), match: \(affiliationMatch)")
-            print("Character gender: \(character.gender.lowercased()), match: \(genderMatch)")
-            print("Character race: \(character.race.lowercased()), match: \(raceMatch)")
-            
+            let affiliationMatch = character.affiliation.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
+            let genderMatch = character.gender.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
+            let raceMatch = character.race.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
+
             switch filter.title.lowercased() {
             case "army of frieza", "assistant of beerus", "assistant of vermoud", "freelancer", "namekian warrior", "other", "pride troopers", "red ribbon army", "villain", "z fighter":
                 return affiliationMatch
