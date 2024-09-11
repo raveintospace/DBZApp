@@ -25,6 +25,7 @@ final class HomeViewModel: ObservableObject {
     @Published var affiliationFilters: [Filter] = []
     @Published var genderFilters: [Filter] = []
     @Published var raceFilters: [Filter] = []
+    @Published var selectedFilter: Filter? = nil
     
     // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
@@ -109,27 +110,48 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Filter logic for searchbar
     private func addSubscribers() {
         $searchText
+            .combineLatest($selectedFilter)
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
-            .sink { [weak self] searchText in
+            .sink { [weak self] (searchText, selectedFilter) in
                 guard let self = self else { return }
-                self.filterCharacters(searchText: searchText)
+                self.filterCharacters(searchText: searchText, selectedFilter: selectedFilter)
             }
             .store(in: &cancellables)
     }
     
-    private func filterCharacters(searchText: String) {
-        guard !searchText.isEmpty else {
-            filteredCharacters = []
-            return
+    private func filterCharacters(searchText: String, selectedFilter: Filter?) {
+        var filtered = characters
+        
+        if !searchText.isEmpty {
+            let search = searchText.lowercased()
+            filtered = filtered.filter { character in
+                let nameContainsSearch = character.name.lowercased().contains(search)
+                let descriptionContainsSearch = character.description.lowercased().contains(search)
+                let affiliationContainsSearch = character.affiliation.lowercased().contains(search)
+                let genderContainsSearch = character.gender.lowercased().contains(search)
+                let raceContainsSearch = character.race.lowercased().contains(search)
+                return nameContainsSearch || descriptionContainsSearch || affiliationContainsSearch || genderContainsSearch || raceContainsSearch
+            }
         }
         
-        let search = searchText.lowercased()
-        filteredCharacters = characters.filter({ character in
-            let nameContainsSearch = character.name.lowercased().contains(search)
-            let descriptionContainsSearch = character.description.lowercased().contains(search)
-            let raceContainsSearch = character.race.lowercased().contains(search)
-            let affiliationContainsSearch = character.affiliation.lowercased().contains(search)
-            return nameContainsSearch || descriptionContainsSearch || raceContainsSearch || affiliationContainsSearch
-        })
+        if let filter = selectedFilter {
+            filtered = applyFilter(filter: filter, characters: filtered)
+        }
+        
+        filteredCharacters = filtered
+    }
+    
+    // MARK: - Filter logic for Filters
+    private func applyFilter(filter: Filter, characters: [Character]) -> [Character] {
+        switch filter.title {
+        case "Army of Frieza", "Assistant of Beerus", "Assistant of Vermoud", "Freelancer", "Namekian Warrior", "Other", "Pride Troopers", "Red Ribbon Army", "Villain", "Z Fighter":
+            return characters.filter { $0.affiliation == filter.title }
+        case "Female", "Male", "Other", "Unknown":
+            return characters.filter { $0.gender == filter.title }
+        case "Android", "Angel", "Benign Nucleic", "Evil", "Frieza Race", "God", "Human", "Jiren Race", "Majin", "Namekian", "Nucleic", "Saiyan", "Unknown":
+            return characters.filter { $0.race == filter.title }
+        default:
+            return characters
+        }
     }
 }
