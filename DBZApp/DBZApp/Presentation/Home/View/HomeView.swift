@@ -27,9 +27,9 @@ struct HomeView: View {
                         ForEach(viewModel.isSearching ? viewModel.filteredCharacters : viewModel.characters) { character in
                             VStack(alignment: .center) {
                                 Text(character.name)
-                                Text(character.race)
                                 Text(character.affiliation)
                                 Text(character.gender)
+                                Text(character.race)
                                 Divider()
                             }
                             .foregroundStyle(.accent)
@@ -45,6 +45,9 @@ struct HomeView: View {
         .task {
             await viewModel.loadLocalCharacters()
         }
+        .onChange(of: selectedFilter, { _, newFilter in
+            viewModel.selectedFilter = newFilter
+        })
         .toolbar(.hidden, for: .navigationBar)
     }
 }
@@ -73,9 +76,11 @@ extension HomeView {
             filters: viewModel.affiliationFilters,
             onXMarkPressed: {
                 selectedFilter = nil
+                viewModel.selectedFilter = nil
             },
             onFilterPressed: { newFilter in
                 selectedFilter = newFilter
+                viewModel.selectedFilter = newFilter
             },
             onOptionButtonPressed: {
                 // router.sheet filter selectionscreen

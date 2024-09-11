@@ -33,6 +33,7 @@ struct FiltersBarView: View {
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
                             .padding(.leading, 4)
+                            .padding(.trailing, 16) // avoids hitting another cell
                     }
                     
                     ForEach(filters, id: \.self) { filter in
