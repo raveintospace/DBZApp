@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FiltersBarView: View {
-    var filters: [Filter] = Filter.affiliation
+    var filters: [Filter] = []
     var onXMarkPressed: (() -> Void)? = nil
     var onFilterPressed: ((Filter) -> Void)? = nil
     var onOptionButtonPressed: (() -> Void)? = nil
@@ -30,6 +30,7 @@ struct FiltersBarView: View {
                             .foregroundStyle(.dbzBlue)
                             .onTapGesture {
                                 onXMarkPressed?()
+                                print("xbutton")
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
                             .padding(.leading, 4)
@@ -39,11 +40,12 @@ struct FiltersBarView: View {
                     ForEach(filters, id: \.self) { filter in
                         if selectedFilter == nil || selectedFilter == filter {
                             FilterCell(
-                                title: filter.title,
+                                title: filter.title.capitalized,
                                 isSelected: selectedFilter == filter
                             )
                             .onTapGesture {
                                 onFilterPressed?(filter)
+                                print("Filter tapped: \(filter.title)")
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
                             .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 4 : 0)
@@ -63,6 +65,7 @@ struct FiltersBarView: View {
                 .foregroundStyle(.dbzBlue)
                 .onTapGesture {
                     onOptionButtonPressed?()
+                    print("option")
                 }
         }
     }
@@ -75,7 +78,18 @@ struct FiltersBarView: View {
 // Preview to check if filter logic works
 fileprivate struct FiltersBarViewPreview: View {
     
-    @State private var filters = Filter.race
+    @State private var filters = [
+        Filter(title: "Army of Frieza"),
+        Filter(title: "Assistant of Beerus"),
+        Filter(title: "Assistant of Vermoud"),
+        Filter(title: "Freelancer"),
+        Filter(title: "Namekian Warrior"),
+        Filter(title: "Other"),
+        Filter(title: "Pride Troopers"),
+        Filter(title: "Red Ribbon Army"),
+        Filter(title: "Villain"),
+        Filter(title: "Z Fighter")
+    ]
     @State private var selectedFilter: Filter? = nil
     
     var body: some View {
@@ -85,7 +99,11 @@ fileprivate struct FiltersBarViewPreview: View {
                 selectedFilter = nil
             },
             onFilterPressed: { newFilter in
+                //debugPrint(newFilter.title)
                 selectedFilter = newFilter
+            },
+            onOptionButtonPressed: {
+                
             },
             selectedFilter: selectedFilter
         )

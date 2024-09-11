@@ -47,6 +47,7 @@ struct HomeView: View {
         }
         .onChange(of: selectedFilter, { _, newFilter in
             viewModel.selectedFilter = newFilter
+            debugPrint("HomeView printing \(String(describing: viewModel.selectedFilter))")
         })
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -77,6 +78,7 @@ extension HomeView {
             onXMarkPressed: {
                 selectedFilter = nil
                 viewModel.selectedFilter = nil
+                debugPrint("ssssss")
             },
             onFilterPressed: { newFilter in
                 selectedFilter = newFilter

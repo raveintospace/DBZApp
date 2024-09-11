@@ -143,15 +143,29 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Filter logic for Filters
     private func applyFilter(filter: Filter, characters: [Character]) -> [Character] {
-        switch filter.title {
-        case "Army of Frieza", "Assistant of Beerus", "Assistant of Vermoud", "Freelancer", "Namekian Warrior", "Other", "Pride Troopers", "Red Ribbon Army", "Villain", "Z Fighter":
-            return characters.filter { $0.affiliation == filter.title }
-        case "Female", "Male", "Other", "Unknown":
-            return characters.filter { $0.gender == filter.title }
-        case "Android", "Angel", "Benign Nucleic", "Evil", "Frieza Race", "God", "Human", "Jiren Race", "Majin", "Namekian", "Nucleic", "Saiyan", "Unknown":
-            return characters.filter { $0.race == filter.title }
-        default:
-            return characters
+        let filterTitle = filter.title.lowercased()
+
+        return characters.filter { character in
+            let affiliationMatch = character.affiliation.lowercased() == filterTitle
+            let genderMatch = character.gender.lowercased() == filterTitle
+            let raceMatch = character.race.lowercased() == filterTitle
+            
+            // Print statements for debugging
+            print("Filtering by: \(filterTitle)")
+            print("Character affiliation: \(character.affiliation.lowercased()), match: \(affiliationMatch)")
+            print("Character gender: \(character.gender.lowercased()), match: \(genderMatch)")
+            print("Character race: \(character.race.lowercased()), match: \(raceMatch)")
+            
+            switch filter.title.lowercased() {
+            case "army of frieza", "assistant of beerus", "assistant of vermoud", "freelancer", "namekian warrior", "other", "pride troopers", "red ribbon army", "villain", "z fighter":
+                return affiliationMatch
+            case "female", "male", "other", "unknown":
+                return genderMatch
+            case "android", "angel", "benign nucleic", "evil", "frieza race", "god", "human", "jiren race", "majin", "namekian", "nucleic", "saiyan", "unknown":
+                return raceMatch
+            default:
+                return false
+            }
         }
     }
 }
