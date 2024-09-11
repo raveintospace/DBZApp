@@ -8,32 +8,49 @@
 import Foundation
 import Combine
 
+@MainActor
 final class HomeViewModel: ObservableObject {
     
+    // MARK: - Character data
     @Published private(set) var characters: [Character] = []
-    
     @Published private(set) var filteredCharacters: [Character] = []
-    @Published var searchText: String = ""
     
+    // MARK: - Search & filtering characters
+    @Published var searchText: String = ""
     var isSearching: Bool {
         !searchText.isEmpty
     }
     
+    // MARK: - Filters for characters
+    @Published var affiliationFilters: [Filter] = []
+    @Published var genderFilters: [Filter] = []
+    @Published var raceFilters: [Filter] = []
+    
+    // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
     @Published var error: UseCaseError?
     
+    // MARK: - Use Cases
     private let getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol
     private let fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol
+    private let getFiltersUseCase: GetFiltersUseCaseProtocol
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol,
-        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol
+        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol,
+        getFiltersUseCase: GetFiltersUseCaseProtocol
     ) {
         self.getLocalCharactersUseCase = getLocalCharactersUseCase
         self.fetchCharactersFromAPIUseCase = fetchCharactersFromAPIUseCase
+        self.getFiltersUseCase = getFiltersUseCase
+        
         addSubscribers()
+        
+        Task {
+            await loadAffiliationFilters()
+        }
     }
     
     // MARK: - Loading data logic
@@ -62,6 +79,31 @@ final class HomeViewModel: ObservableObject {
         }
         
         isLoading = false
+    }
+    
+    // MARK: - Loading filters
+    func loadAffiliationFilters() async {
+        do {
+            self.affiliationFilters = try await getFiltersUseCase.executeAffiliationFilters()
+        } catch {
+            debugPrint("Failed to load affiliation filters: \(error)")
+        }
+    }
+    
+    func loadGenderFilters() async {
+        do {
+            self.genderFilters = try await getFiltersUseCase.executeGenderFilters()
+        } catch {
+            debugPrint("Failed to load gender filters: \(error)")
+        }
+    }
+    
+    func loadRaceFilters() async {
+        do {
+            self.raceFilters = try await getFiltersUseCase.executeRaceFilters()
+        } catch {
+            debugPrint("Failed to load race filters: \(error)")
+        }
     }
     
     // MARK: - Filter logic for searchbar

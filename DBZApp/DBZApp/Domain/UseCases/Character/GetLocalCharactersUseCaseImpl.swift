@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol {
+struct GetLocalCharactersUseCaseImpl: GetLocalCharactersUseCaseProtocol {
     var repository: CharacterRepositoryProtocol
 
     func execute() async throws -> [Character] {

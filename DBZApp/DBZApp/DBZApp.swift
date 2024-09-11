@@ -12,7 +12,23 @@ struct DBZApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: HomeViewModel(getLocalCharactersUseCase: GetLocalCharactersUseCase(repository: CharacterRepositoryImpl(localDataSource: LocalCharacterDataSource(), networkDataSource: NetworkCharacterDataSource())), fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCase(repository: CharacterRepositoryImpl(localDataSource: LocalCharacterDataSource(), networkDataSource: NetworkCharacterDataSource()))))
+            HomeView(
+                viewModel: HomeViewModel(
+                    getLocalCharactersUseCase: GetLocalCharactersUseCaseImpl(
+                        repository: CharacterRepositoryImpl(
+                            localDataSource: LocalCharacterDataSource(),
+                            networkDataSource: NetworkCharacterDataSource()
+                        )
+                    ),
+                    fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseImpl(
+                        repository: CharacterRepositoryImpl(
+                            localDataSource: LocalCharacterDataSource(),
+                            networkDataSource: NetworkCharacterDataSource()
+                        )
+                    ),
+                    getFiltersUseCase: GetFiltersUseCaseImpl(repository: FilterRepositoryImpl())
+                )
+            )
         }
     }
 }

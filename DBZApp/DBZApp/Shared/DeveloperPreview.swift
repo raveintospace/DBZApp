@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class DeveloperPreview {
     
     static let instance = DeveloperPreview()
@@ -21,17 +22,20 @@ final class DeveloperPreview {
     )
     
     let homeViewModel = HomeViewModel(
-        getLocalCharactersUseCase: GetLocalCharactersUseCase(
+        getLocalCharactersUseCase: GetLocalCharactersUseCaseImpl(
             repository: CharacterRepositoryImpl(
                 localDataSource: LocalCharacterDataSource(),
                 networkDataSource: NetworkCharacterDataSource()
             )
         ),
-        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCase(
+        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseImpl(
             repository: CharacterRepositoryImpl(
                 localDataSource: LocalCharacterDataSource(),
                 networkDataSource: NetworkCharacterDataSource()
             )
+        ), 
+        getFiltersUseCase: GetFiltersUseCaseImpl(
+            repository: FilterRepositoryImpl()
         )
     )
 }

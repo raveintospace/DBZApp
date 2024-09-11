@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol {
+struct FetchCharactersFromAPIUseCaseImpl: FetchCharactersFromAPIUseCaseProtocol {
     var repository: CharacterRepositoryProtocol
 
     func execute() async throws -> [Character] {
