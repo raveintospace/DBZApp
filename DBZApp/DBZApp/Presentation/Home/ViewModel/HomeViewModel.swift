@@ -16,8 +16,8 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var filteredCharacters: [Character] = []
     
     var displayedCharacters: [Character] {
-        if isSearching || !filteredCharacters.isEmpty {
-            return filteredCharacters
+        if isSearching || selectedFilter != nil {
+            return filteredCharacters.isEmpty ? [] : filteredCharacters
         } else {
             return characters
         }
