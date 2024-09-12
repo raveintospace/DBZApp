@@ -78,6 +78,8 @@ final class HomeViewModel: ObservableObject {
     }
     
     func fetchCharactersFromAPI() async {
+        guard characters.isEmpty else { return }
+        
         isLoading = true
         
         do {
@@ -92,6 +94,8 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Loading filters
     func loadAffiliationFilters() async {
+        guard affiliationFilters.isEmpty else { return }
+        
         do {
             self.affiliationFilters = try await getFiltersUseCase.executeAffiliationFilters()
         } catch {
@@ -100,6 +104,8 @@ final class HomeViewModel: ObservableObject {
     }
     
     func loadGenderFilters() async {
+        guard genderFilters.isEmpty else { return }
+        
         do {
             self.genderFilters = try await getFiltersUseCase.executeGenderFilters()
         } catch {
@@ -108,6 +114,8 @@ final class HomeViewModel: ObservableObject {
     }
     
     func loadRaceFilters() async {
+        guard raceFilters.isEmpty else { return }
+        
         do {
             self.raceFilters = try await getFiltersUseCase.executeRaceFilters()
         } catch {
@@ -143,7 +151,7 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        // Filter application
+        // Apply filters
         if let filter = selectedFilter {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
