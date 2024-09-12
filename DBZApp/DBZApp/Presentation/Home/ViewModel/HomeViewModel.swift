@@ -34,6 +34,8 @@ final class HomeViewModel: ObservableObject {
     @Published var genderFilters: [Filter] = []
     @Published var raceFilters: [Filter] = []
     @Published var selectedFilter: Filter? = nil
+    @Published var selectedFilterOption: FilterOption = .affiliation
+    @Published var activeFilters: [Filter] = []
     
     // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
@@ -120,6 +122,17 @@ final class HomeViewModel: ObservableObject {
             self.raceFilters = try await getFiltersUseCase.executeRaceFilters()
         } catch {
             debugPrint("Failed to load race filters: \(error)")
+        }
+    }
+    
+    func updateActiveFilters() {
+        switch selectedFilterOption {
+        case .affiliation:
+            activeFilters = affiliationFilters
+        case .gender:
+            activeFilters = genderFilters
+        case .race:
+            activeFilters = raceFilters
         }
     }
     

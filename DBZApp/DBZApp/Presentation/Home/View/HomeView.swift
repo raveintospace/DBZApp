@@ -43,8 +43,8 @@ struct HomeView: View {
         .task {
             await viewModel.loadLocalCharacters()
         }
-        .onChange(of: viewModel.selectedFilter, { _, newFilter in
-            viewModel.selectedFilter = newFilter
+        .onChange(of: viewModel.selectedFilterOption, { _, newFilter in
+            viewModel.selectedFilterOption = newFilter
         })
         .toolbar(.hidden, for: .navigationBar)
     }

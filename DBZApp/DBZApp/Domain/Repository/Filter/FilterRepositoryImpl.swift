@@ -49,4 +49,12 @@ struct FilterRepositoryImpl: FilterRepositoryProtocol {
             Filter(title: "unknown")
         ]
     }
+    
+    func getFilterTitles() async throws -> [String] {
+        return [
+            "Affiliation",
+            "Gender",
+            "Race"
+        ]
+    }
 }

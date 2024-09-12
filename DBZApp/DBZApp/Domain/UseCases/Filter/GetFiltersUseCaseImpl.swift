@@ -25,4 +25,8 @@ struct GetFiltersUseCaseImpl: GetFiltersUseCaseProtocol {
     func executeRaceFilters() async throws -> [Filter] {
         return try await repository.getRaceFilters()
     }
+    
+    func executeFilterTitles() async throws -> [String] {
+        return try await repository.getFilterTitles()
+    }
 }

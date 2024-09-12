@@ -11,4 +11,5 @@ protocol GetFiltersUseCaseProtocol {
     func executeAffiliationFilters() async throws -> [Filter]
     func executeGenderFilters() async throws -> [Filter]
     func executeRaceFilters() async throws -> [Filter]
+    func executeFilterTitles() async throws -> [String]
 }
