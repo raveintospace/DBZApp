@@ -35,7 +35,7 @@ final class HomeViewModel: ObservableObject {
     @Published var raceFilters: [Filter] = []
     @Published var selectedFilter: Filter? = nil
     @Published var selectedFilterOption: FilterOption = .affiliation
-    @Published var activeFilters: [Filter] = []
+    @Published var activeSubfilters: [Filter] = []
     
     // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
@@ -125,14 +125,14 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    func updateActiveFilters() {
+    func updateActiveSubfilters() {
         switch selectedFilterOption {
         case .affiliation:
-            activeFilters = affiliationFilters
+            activeSubfilters = affiliationFilters
         case .gender:
-            activeFilters = genderFilters
+            activeSubfilters = genderFilters
         case .race:
-            activeFilters = raceFilters
+            activeSubfilters = raceFilters
         }
     }
     
@@ -150,7 +150,7 @@ final class HomeViewModel: ObservableObject {
         $selectedFilterOption
             .sink { [weak self] filterOption in
                 guard let self = self else { return }
-                self.updateActiveFilters()
+                self.updateActiveSubfilters()
             }
             .store(in: &cancellables)
     }

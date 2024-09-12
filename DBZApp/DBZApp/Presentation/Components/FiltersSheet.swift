@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FiltersSheet: View {
     
+    @ObservedObject var viewModel: HomeViewModel
+    
     var filterOptions: [FilterOption] = FilterOption.allCases
     @Binding var selection: FilterOption
     @State private var trigger = false
@@ -54,7 +56,7 @@ struct FiltersSheet: View {
                         .onTapGesture {
                             selection = filterOption
                             trigger = true
-                            // activate method in viewmodel to load filter in homeview
+                            // viewModel.selectedFilterOption = filterOption
                         }
                 }
             }
@@ -63,5 +65,5 @@ struct FiltersSheet: View {
 }
 
 #Preview {
-    FiltersSheet(selection: .constant(.affiliation))
+    FiltersSheet(viewModel: DeveloperPreview.instance.homeViewModel, selection: .constant(.affiliation))
 }
