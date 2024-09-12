@@ -11,5 +11,4 @@ protocol FilterRepositoryProtocol {
     func getAffiliationFilters() async throws -> [Filter]
     func getGenderFilters() async throws -> [Filter]
     func getRaceFilters() async throws -> [Filter]
-    func getFilterTitles() async throws -> [String]
 }
