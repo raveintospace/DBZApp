@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FiltersSheet: View {
     
-    var filtersText: [String] = ["Affiliation", "Gender", "Race"]
-    @Binding var selection: String
+    var filterOptions: [FilterOption] = FilterOption.allCases
+    @Binding var selection: FilterOption
     @State private var trigger = false
     
     var body: some View {
@@ -34,8 +34,8 @@ struct FiltersSheet: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             
             VStack(alignment: .center, spacing: 30) {
-                ForEach(filtersText, id: \.self) { filterText in
-                    Text(filterText)
+                ForEach(filterOptions, id: \.self) { filterOption in
+                    filterOption.displayName()
                         .font(.system(size: 50))
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
@@ -43,7 +43,7 @@ struct FiltersSheet: View {
                             ZStack {
                                 Capsule(style: .circular)
                                     .fill(.dbzYellow)
-                                    .opacity(selection == filterText ? 1 : 0)
+                                    .opacity(selection == filterOption ? 1 : 0)
                                 
                                 Capsule(style: .circular)
                                     .stroke(lineWidth: 2)
@@ -52,7 +52,7 @@ struct FiltersSheet: View {
                         .sensoryFeedback(.impact, trigger: trigger)
                         .foregroundStyle(.dbzBlue)
                         .onTapGesture {
-                            selection = filterText
+                            selection = filterOption
                             trigger = true
                             // activate method in viewmodel to load filter in homeview
                         }
@@ -63,14 +63,5 @@ struct FiltersSheet: View {
 }
 
 #Preview {
-    FiltersSheetPreview()
-}
-
-fileprivate struct FiltersSheetPreview: View {
-    var filtersText: [String] = ["Affiliation", "Gender", "Race"]
-    @State private var selection = ""
-    
-    var body: some View {
-        FiltersSheet(filtersText: filtersText, selection: $selection)
-    }
+    FiltersSheet(selection: .constant(.affiliation))
 }

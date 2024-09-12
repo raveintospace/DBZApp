@@ -94,7 +94,7 @@ final class HomeViewModel: ObservableObject {
         isLoading = false
     }
     
-    // MARK: - Loading filters
+    // MARK: - Loading filters logic
     func loadAffiliationFilters() async {
         guard affiliationFilters.isEmpty else { return }
         
@@ -136,7 +136,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Filter logic for searchbar
+    // MARK: - Combine subscriptions
     private func addSubscribers() {
         $searchText
             .combineLatest($selectedFilter)
@@ -144,6 +144,13 @@ final class HomeViewModel: ObservableObject {
             .sink { [weak self] (searchText, selectedFilter) in
                 guard let self = self else { return }
                 self.filterCharacters(searchText: searchText, selectedFilter: selectedFilter)
+            }
+            .store(in: &cancellables)
+        
+        $selectedFilterOption
+            .sink { [weak self] filterOption in
+                guard let self = self else { return }
+                self.updateActiveFilters()
             }
             .store(in: &cancellables)
     }
@@ -177,12 +184,12 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Filter logic for Filters
     private func applyFilter(filter: Filter, characters: [Character]) -> [Character] {
         let filterTitle = filter.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-
+        
         return characters.filter { character in
             let affiliationMatch = character.affiliation.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
             let genderMatch = character.gender.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
             let raceMatch = character.race.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
-
+            
             switch filter.title.lowercased() {
             case "army of frieza", "assistant of beerus", "assistant of vermoud", "freelancer", "namekian warrior", "other", "pride troopers", "red ribbon army", "villain", "z fighter":
                 return affiliationMatch
