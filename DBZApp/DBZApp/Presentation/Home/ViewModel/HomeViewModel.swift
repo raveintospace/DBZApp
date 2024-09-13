@@ -137,7 +137,6 @@ final class HomeViewModel: ObservableObject {
             await loadRaceFilters()
             activeSubfilters = raceFilters
         }
-        debugPrint("Active subfilters updated: \(activeSubfilters)")
     }
     
     // MARK: - Combine subscriptions

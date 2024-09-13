@@ -61,7 +61,6 @@ struct FiltersSheet: View {
                             selection = filterOption
                             trigger = true
                             viewModel.selectedFilterOption = filterOption
-                            debugPrint(viewModel.selectedFilterOption)
                         }
                 }
             }
@@ -75,3 +74,5 @@ struct FiltersSheet: View {
         FiltersSheet(viewModel: DeveloperPreview.instance.homeViewModel, selection: .constant(.affiliation))
     }
 }
+
+// add a copy for user to select a filter
