@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct HomeView: View {
+    
+    @Environment(\.router) var router
     
     @StateObject private var viewModel: HomeViewModel
     
@@ -51,7 +54,9 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(viewModel: DeveloperPreview.instance.homeViewModel)
+    RouterView { _ in
+        HomeView(viewModel: DeveloperPreview.instance.homeViewModel)
+    }
 }
 
 extension HomeView {
@@ -79,7 +84,9 @@ extension HomeView {
                 viewModel.selectedFilter = newFilter
             },
             onOptionButtonPressed: {
-                // router.sheet filter selectionscreen
+                router.showScreen(.sheet) { _ in
+                    FiltersSheet(viewModel: viewModel, selection: $viewModel.selectedFilterOption)
+                }
             },
             selectedFilter: viewModel.selectedFilter
         )

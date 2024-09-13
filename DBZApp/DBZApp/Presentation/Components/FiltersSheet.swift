@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct FiltersSheet: View {
+    
+    @Environment(\.router) var router
     
     @ObservedObject var viewModel: HomeViewModel
     
@@ -29,7 +32,7 @@ struct FiltersSheet: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .onTapGesture {
-                        // dismiss screen
+                        router.dismissScreen()
                     }
             }
             .padding(20)
@@ -56,7 +59,8 @@ struct FiltersSheet: View {
                         .onTapGesture {
                             selection = filterOption
                             trigger = true
-                            // viewModel.selectedFilterOption = filterOption
+                            viewModel.selectedFilterOption = filterOption
+                            debugPrint(viewModel.selectedFilterOption)
                         }
                 }
             }
@@ -65,5 +69,7 @@ struct FiltersSheet: View {
 }
 
 #Preview {
-    FiltersSheet(viewModel: DeveloperPreview.instance.homeViewModel, selection: .constant(.affiliation))
+    RouterView { _ in
+        FiltersSheet(viewModel: DeveloperPreview.instance.homeViewModel, selection: .constant(.affiliation))
+    }
 }
