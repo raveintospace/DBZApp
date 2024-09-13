@@ -76,7 +76,7 @@ extension HomeView {
     
     private var filterBar: some View {
         FiltersBarView(
-            filters: viewModel.affiliationFilters,
+            filters: viewModel.activeSubfilters,
             onXMarkPressed: {
                 viewModel.selectedFilter = nil
             },
@@ -84,11 +84,15 @@ extension HomeView {
                 viewModel.selectedFilter = newFilter
             },
             onOptionButtonPressed: {
+                viewModel.selectedFilter = nil
                 router.showScreen(.sheet) { _ in
                     FiltersSheet(viewModel: viewModel, selection: $viewModel.selectedFilterOption)
                 }
             },
             selectedFilter: viewModel.selectedFilter
         )
+        .onAppear {
+            viewModel.updateActiveSubfilters()
+        }
     }
 }

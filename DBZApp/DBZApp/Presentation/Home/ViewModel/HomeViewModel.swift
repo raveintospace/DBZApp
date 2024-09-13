@@ -128,12 +128,22 @@ final class HomeViewModel: ObservableObject {
     func updateActiveSubfilters() {
         switch selectedFilterOption {
         case .affiliation:
-            activeSubfilters = affiliationFilters
+            Task {
+                await loadAffiliationFilters()
+                activeSubfilters = affiliationFilters
+            }
         case .gender:
-            activeSubfilters = genderFilters
+            Task {
+                await loadGenderFilters()
+                activeSubfilters = genderFilters
+            }
         case .race:
-            activeSubfilters = raceFilters
+            Task {
+                await loadRaceFilters()
+                activeSubfilters = raceFilters
+            }
         }
+        debugPrint("Active subfilters updated: \(activeSubfilters)")
     }
     
     // MARK: - Combine subscriptions
@@ -186,19 +196,13 @@ final class HomeViewModel: ObservableObject {
         let filterTitle = filter.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
         return characters.filter { character in
-            let affiliationMatch = character.affiliation.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
-            let genderMatch = character.gender.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
-            let raceMatch = character.race.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
-            
-            switch filter.title.lowercased() {
-            case "army of frieza", "assistant of beerus", "assistant of vermoud", "freelancer", "namekian warrior", "other", "pride troopers", "red ribbon army", "villain", "z fighter":
-                return affiliationMatch
-            case "female", "male", "other", "unknown":
-                return genderMatch
-            case "android", "angel", "benign nucleic", "evil", "frieza race", "god", "human", "jiren race", "majin", "namekian", "nucleic", "saiyan", "unknown":
-                return raceMatch
-            default:
-                return false
+            switch selectedFilterOption {
+            case .affiliation:
+                return character.affiliation.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
+            case .gender:
+                return character.gender.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
+            case .race:
+                return character.race.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
             }
         }
     }
