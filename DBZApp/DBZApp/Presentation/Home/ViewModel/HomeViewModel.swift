@@ -182,7 +182,6 @@ final class HomeViewModel: ObservableObject {
         }
         
         // Set filtered characters
-        print("Filtered characters count: \(filtered.count)")
         filteredCharacters = filtered
     }
     

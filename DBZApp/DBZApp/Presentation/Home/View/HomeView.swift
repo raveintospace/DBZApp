@@ -25,6 +25,7 @@ struct HomeView: View {
                     Section {
                         // Sort
                         // cards
+                        // if search o filters no results show view else show foreach
                         ForEach(viewModel.displayedCharacters) { character in
                             VStack(alignment: .center) {
                                 Text(character.name)

@@ -40,6 +40,12 @@ struct FiltersSheet: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             
             VStack(alignment: .center, spacing: 30) {
+                Text("Select how to filter the Dragon Ball characters")
+                    .font(.system(size: 20))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 40)
+                    
+                
                 ForEach(filterOptions, id: \.self) { filterOption in
                     filterOption.displayName()
                         .font(.system(size: 50))
@@ -56,7 +62,6 @@ struct FiltersSheet: View {
                             }
                         )
                         .sensoryFeedback(.impact, trigger: trigger)
-                        .foregroundStyle(.dbzBlue)
                         .onTapGesture {
                             selection = filterOption
                             trigger = true
@@ -64,6 +69,7 @@ struct FiltersSheet: View {
                         }
                 }
             }
+            .foregroundStyle(.dbzBlue)
         }
         .interactiveDismissDisabled()
     }
