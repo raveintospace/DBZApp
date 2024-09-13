@@ -506,7 +506,7 @@
     },
     {
       "id": 63,
-      "name": "Kaio del norte (Kaito)",
+      "name": "Northern Kaio",
       "ki": "6.000",
       "maxKi": "6.000",
       "race": "Benign nucleic",
@@ -578,7 +578,7 @@
     },
     {
       "id": 69,
-      "name": "Kaio del Sur",
+      "name": "Southern Kaio",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Benign nucleic",
@@ -590,7 +590,7 @@
     },
     {
       "id": 70,
-      "name": "Kaio del este",
+      "name": "Eastern Kaio",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Benign nucleic",
@@ -602,7 +602,7 @@
     },
     {
       "id": 71,
-      "name": "Kaio del Oeste",
+      "name": "Western Kaio",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Benign nucleic",
@@ -614,7 +614,7 @@
     },
     {
       "id": 72,
-      "name": "Gran Kaio",
+      "name": "Great Kaio",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Benign nucleic",
@@ -626,7 +626,7 @@
     },
     {
       "id": 73,
-      "name": "Kaio-shin del Este",
+      "name": "Eastern Kaio-shin",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Nucleic",
@@ -638,7 +638,7 @@
     },
     {
       "id": 74,
-      "name": "Kaio-shin del Norte",
+      "name": "Northern Kaio-shin",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Nucleic",
@@ -650,7 +650,7 @@
     },
     {
       "id": 75,
-      "name": "Kaio-shin del Sur",
+      "name": "Southern Kaio-shin",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Nucleic",
@@ -662,7 +662,7 @@
     },
     {
       "id": 76,
-      "name": "Kaio-shin del Oeste",
+      "name": "Western Kaio-shin",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Benign nucleic",
@@ -674,7 +674,7 @@
     },
     {
       "id": 77,
-      "name": "Gran Kaio-shin",
+      "name": "Great Kaio-shin",
       "ki": "unknown",
       "maxKi": "unknown",
       "race": "Benign nucleic",
