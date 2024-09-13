@@ -91,8 +91,5 @@ extension HomeView {
             },
             selectedFilter: viewModel.selectedFilter
         )
-        .onAppear {
-            viewModel.updateActiveSubfilters()
-        }
     }
 }

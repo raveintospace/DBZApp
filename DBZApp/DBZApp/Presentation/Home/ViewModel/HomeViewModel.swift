@@ -125,23 +125,17 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    func updateActiveSubfilters() {
+    func updateActiveSubfilters() async {
         switch selectedFilterOption {
         case .affiliation:
-            Task {
-                await loadAffiliationFilters()
-                activeSubfilters = affiliationFilters
-            }
+            await loadAffiliationFilters()
+            activeSubfilters = affiliationFilters
         case .gender:
-            Task {
-                await loadGenderFilters()
-                activeSubfilters = genderFilters
-            }
+            await loadGenderFilters()
+            activeSubfilters = genderFilters
         case .race:
-            Task {
-                await loadRaceFilters()
-                activeSubfilters = raceFilters
-            }
+            await loadRaceFilters()
+            activeSubfilters = raceFilters
         }
         debugPrint("Active subfilters updated: \(activeSubfilters)")
     }
@@ -160,7 +154,9 @@ final class HomeViewModel: ObservableObject {
         $selectedFilterOption
             .sink { [weak self] filterOption in
                 guard let self = self else { return }
-                self.updateActiveSubfilters()
+                Task {
+                    await self.updateActiveSubfilters()
+                }
             }
             .store(in: &cancellables)
     }
