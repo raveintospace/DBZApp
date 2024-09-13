@@ -11,6 +11,7 @@ import SwiftfulRouting
 struct FiltersSheet: View {
     
     @Environment(\.router) var router
+    @Environment(\.dismiss) var dismiss
     
     @ObservedObject var viewModel: HomeViewModel
     
@@ -65,6 +66,7 @@ struct FiltersSheet: View {
                 }
             }
         }
+        .interactiveDismissDisabled()
     }
 }
 
