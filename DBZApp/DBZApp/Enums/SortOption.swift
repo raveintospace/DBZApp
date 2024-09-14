@@ -8,23 +8,23 @@
 import SwiftUI
 
 enum SortOption: String, CaseIterable {
-    case name
-    case nameReversed
-    case kiPoints
-    case kiPointsReversed
     case id
     case idReversed
+    case kiPoints
+    case kiPointsReversed
+    case name
+    case nameReversed
     
     func displayName() -> some View {
         switch self {
-        case .name:
+        case .id:
             return HStack(spacing: 4) {
-                Text("Name")
+                Text("ID")
                 Image(systemName: "chevron.down")
             }
-        case .nameReversed:
+        case .idReversed:
             return HStack(spacing: 4) {
-                Text("Name")
+                Text("ID")
                 Image(systemName: "chevron.up")
             }
         case .kiPoints:
@@ -37,14 +37,14 @@ enum SortOption: String, CaseIterable {
                 Text("Ki Points")
                 Image(systemName: "chevron.up")
             }
-        case .id:
+        case .name:
             return HStack(spacing: 4) {
-                Text("ID")
+                Text("Name")
                 Image(systemName: "chevron.down")
             }
-        case .idReversed:
+        case .nameReversed:
             return HStack(spacing: 4) {
-                Text("ID")
+                Text("Name")
                 Image(systemName: "chevron.up")
             }
         }
