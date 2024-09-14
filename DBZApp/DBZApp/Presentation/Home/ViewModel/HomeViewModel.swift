@@ -50,6 +50,9 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedFilterOption: FilterOption = .affiliation
     @Published var activeSubfilters: [Filter] = []
     
+    // MARK: - Sort Option
+    @Published var sortOption: SortOption = .id
+    
     // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
     @Published var error: UseCaseError?

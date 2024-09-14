@@ -1,0 +1,45 @@
+//
+//  SortMenu.swift
+//  DBZApp
+//
+//  Created by Uri on 14/9/24.
+//
+
+import SwiftUI
+
+struct SortMenu: View {
+    
+    //@EnvironmentObject private var viewModel: HomeViewModel
+    @ObservedObject var viewModel: HomeViewModel
+    
+    var body: some View {
+        HStack {
+            Menu {
+                ForEach(SortOption.allCases, id: \.self) { sortOption in
+                    Button(action: {
+                        viewModel.sortOption = sortOption
+                    }) {
+                        sortOption.displayName()
+                    }
+                }
+            } label: {
+                menuTitleView(sortOption: viewModel.sortOption)
+            }
+            .tint(.dbzBlue)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.red)
+    }
+}
+
+#Preview {
+    SortMenu(viewModel: DeveloperPreview.instance.homeViewModel)
+        .padding()
+}
+
+extension SortMenu {
+    private func menuTitleView(sortOption: SortOption) -> some View {
+        sortOption.displayName()
+    }
+}
+
