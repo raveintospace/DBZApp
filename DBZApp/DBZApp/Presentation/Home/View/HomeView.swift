@@ -26,7 +26,7 @@ struct HomeView: View {
                         // Sort
                         // cards
                         if viewModel.showNoResultsView {
-                            noResultsView
+                            NoResultsView()
                         } else {
                             ForEach(viewModel.displayedCharacters) { character in
                                 VStack(alignment: .center) {
@@ -95,21 +95,5 @@ extension HomeView {
             },
             selectedFilter: viewModel.selectedFilter
         )
-    }
-    
-    private var noResultsView: some View {
-        VStack(spacing: 30) {
-            Image(systemName: "person.slash")
-                .font(.system(size: 40))
-                .foregroundStyle(.light.opacity(0.3))
-            Text("No characters")
-                .font(.system(size: 40))
-                .bold()
-            Text("There are no characters that match your search. Try with other filters or keywords.")
-                .font(.callout)
-        }
-        .foregroundColor(.accent)
-        .multilineTextAlignment(.center)
-        .padding(50)
     }
 }
