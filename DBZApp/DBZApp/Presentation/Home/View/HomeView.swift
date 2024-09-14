@@ -30,10 +30,11 @@ struct HomeView: View {
                         } else {
                             ForEach(viewModel.displayedCharacters) { character in
                                 VStack(alignment: .center) {
-                                    Text(character.name)
-                                    Text(character.affiliation)
-                                    Text(character.gender)
-                                    Text(character.race)
+                                    Text("Name: \(character.name)")
+                                    Text("Affiliation: \(character.affiliation)")
+                                    Text("Gender: \(character.gender)")
+                                    Text("Race: \(character.race)")
+                                    Text("Ki points: \(character.ki)")
                                     Divider()
                                 }
                                 .foregroundStyle(.accent)
