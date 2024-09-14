@@ -16,11 +16,15 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var filteredCharacters: [Character] = []
     
     var displayedCharacters: [Character] {
+        let charactersToSort: [Character]
+        
         if isSearching || selectedFilter != nil {
-            return filteredCharacters.isEmpty ? [] : filteredCharacters
+            charactersToSort = filteredCharacters
         } else {
-            return characters
+            charactersToSort = characters
         }
+        
+        return sortCharacters(characters: charactersToSort)
     }
     
     // MARK: - Search & filtering characters
@@ -179,6 +183,7 @@ final class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // MARK: - Filter logic with searchText & Filters + Sort
     private func filterCharacters(searchText: String, selectedFilter: Filter?) {
         var filtered = characters
         
@@ -200,7 +205,10 @@ final class HomeViewModel: ObservableObject {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
         
-        // Set filtered characters
+        // Sort filtered results
+        filtered = sortCharacters(characters: filtered)
+        
+        // Assign filtered calculation to array filteredCharacters
         filteredCharacters = filtered
     }
     
@@ -216,6 +224,32 @@ final class HomeViewModel: ObservableObject {
                 return character.gender.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
             case .race:
                 return character.race.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == filterTitle
+            }
+        }
+    }
+    
+    // MARK: - Sort logic
+    private func sortCharacters(characters: [Character]) -> [Character] {
+        switch sortOption {
+        case .id:
+            return characters.sorted { $0.id < $1.id }
+        case .idReversed:
+            return characters.sorted { $0.id > $1.id }
+        case .name:
+            return characters.sorted { $0.name.localizedCompare($1.name) == .orderedAscending }
+        case .nameReversed:
+            return characters.sorted { $0.name.localizedCompare($1.name) == .orderedDescending }
+        case .kiPoints:
+            return characters.sorted {
+                let first = sortCharactersUseCase.convertKiPointsToNumber($0.ki) ?? Decimal(-1)
+                let second = sortCharactersUseCase.convertKiPointsToNumber($1.ki) ?? Decimal(-1)
+                return first < second
+            }
+        case .kiPointsReversed:
+            return characters.sorted {
+                let first = sortCharactersUseCase.convertKiPointsToNumber($0.ki) ?? Decimal(-1)
+                let second = sortCharactersUseCase.convertKiPointsToNumber($1.ki) ?? Decimal(-1)
+                return first > second
             }
         }
     }
