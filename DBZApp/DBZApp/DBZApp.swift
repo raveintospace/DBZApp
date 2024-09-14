@@ -11,28 +11,29 @@ import SwiftfulRouting
 @main
 struct DBZApp: App {
     
+    @StateObject private var vm = HomeViewModel(
+        getLocalCharactersUseCase: GetLocalCharactersUseCaseImpl(
+            repository: CharacterRepositoryImpl(
+                localDataSource: LocalCharacterDataSource(),
+                networkDataSource: NetworkCharacterDataSource()
+            )
+        ),
+        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseImpl(
+            repository: CharacterRepositoryImpl(
+                localDataSource: LocalCharacterDataSource(),
+                networkDataSource: NetworkCharacterDataSource()
+            )
+        ),
+        getFiltersUseCase: GetFiltersUseCaseImpl(repository: FilterRepositoryImpl()),
+        sortCharactersUseCase: SortCharactersUseCaseImpl()
+    )
+    
     var body: some Scene {
         WindowGroup {
             RouterView { _ in
-                HomeView(
-                    viewModel: HomeViewModel(
-                        getLocalCharactersUseCase: GetLocalCharactersUseCaseImpl(
-                            repository: CharacterRepositoryImpl(
-                                localDataSource: LocalCharacterDataSource(),
-                                networkDataSource: NetworkCharacterDataSource()
-                            )
-                        ),
-                        fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseImpl(
-                            repository: CharacterRepositoryImpl(
-                                localDataSource: LocalCharacterDataSource(),
-                                networkDataSource: NetworkCharacterDataSource()
-                            )
-                        ),
-                        getFiltersUseCase: GetFiltersUseCaseImpl(repository: FilterRepositoryImpl()),
-                        sortCharactersUseCase: SortCharactersUseCaseImpl()
-                    )
-                )
+                HomeView(viewModel: vm)
             }
+            .environmentObject(vm) // -> Available for the whole app
         }
     }
 }
