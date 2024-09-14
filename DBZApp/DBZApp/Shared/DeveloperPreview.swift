@@ -36,6 +36,7 @@ final class DeveloperPreview {
         ), 
         getFiltersUseCase: GetFiltersUseCaseImpl(
             repository: FilterRepositoryImpl()
-        )
+        ),
+        sortCharactersUseCase: SortCharactersUseCaseImpl()
     )
 }

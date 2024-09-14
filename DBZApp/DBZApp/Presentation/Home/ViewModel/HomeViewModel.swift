@@ -58,17 +58,20 @@ final class HomeViewModel: ObservableObject {
     private let getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol
     private let fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol
     private let getFiltersUseCase: GetFiltersUseCaseProtocol
+    private let sortCharactersUseCase: SortCharactersUsecaseProtocol
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol,
         fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol,
-        getFiltersUseCase: GetFiltersUseCaseProtocol
+        getFiltersUseCase: GetFiltersUseCaseProtocol,
+        sortCharactersUseCase: SortCharactersUsecaseProtocol
     ) {
         self.getLocalCharactersUseCase = getLocalCharactersUseCase
         self.fetchCharactersFromAPIUseCase = fetchCharactersFromAPIUseCase
         self.getFiltersUseCase = getFiltersUseCase
+        self.sortCharactersUseCase = sortCharactersUseCase
         
         addSubscribers()
         

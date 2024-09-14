@@ -28,7 +28,8 @@ struct DBZApp: App {
                                 networkDataSource: NetworkCharacterDataSource()
                             )
                         ),
-                        getFiltersUseCase: GetFiltersUseCaseImpl(repository: FilterRepositoryImpl())
+                        getFiltersUseCase: GetFiltersUseCaseImpl(repository: FilterRepositoryImpl()),
+                        sortCharactersUseCase: SortCharactersUseCaseImpl()
                     )
                 )
             }
