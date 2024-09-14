@@ -25,7 +25,7 @@ struct HomeView: View {
                     Section {
                         // Sort
                         // cards
-                        if viewModel.filteredCharacters.isEmpty && viewModel.selectedFilter != nil {
+                        if viewModel.showNoResultsView {
                             noResultsView
                         } else {
                             ForEach(viewModel.displayedCharacters) { character in

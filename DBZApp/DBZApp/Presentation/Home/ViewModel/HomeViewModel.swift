@@ -29,6 +29,19 @@ final class HomeViewModel: ObservableObject {
         !searchText.isEmpty
     }
     
+    // MARK: - Computed properties to show noResultsView
+    var noResultsForFilter: Bool {
+            return filteredCharacters.isEmpty && selectedFilter != nil
+        }
+    
+    var noResultsForSearchText : Bool {
+        return filteredCharacters.isEmpty && !searchText.isEmpty
+    }
+    
+    var showNoResultsView: Bool {
+        return noResultsForFilter || noResultsForSearchText
+    }
+    
     // MARK: - Filters for characters
     @Published var affiliationFilters: [Filter] = []
     @Published var genderFilters: [Filter] = []
