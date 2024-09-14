@@ -27,7 +27,7 @@ struct SortMenu: View {
             }
             .tint(.dbzBlue)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .trailing)
     }
 }
 
