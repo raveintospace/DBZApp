@@ -37,6 +37,8 @@
 		348F0C3C2C94816400A7736A /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 348F0C3B2C94816400A7736A /* SwiftfulRouting */; };
 		34BF19A52C95D14C00A6B55A /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A42C95D14C00A6B55A /* NoResultsView.swift */; };
 		34BF19A72C95D81700A6B55A /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A62C95D81700A6B55A /* SortOption.swift */; };
+		34BF19AA2C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */; };
+		34BF19AC2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19AB2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift */; };
 		34C9FB352C919FAF00FA0139 /* FilterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */; };
 		34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */; };
 		34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */; };
@@ -75,6 +77,8 @@
 		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		34BF19A42C95D14C00A6B55A /* NoResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsView.swift; sourceTree = "<group>"; };
 		34BF19A62C95D81700A6B55A /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCharactersUsecaseProtocol.swift; sourceTree = "<group>"; };
+		34BF19AB2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCharactersUseCaseImpl.swift; sourceTree = "<group>"; };
 		34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryProtocol.swift; sourceTree = "<group>"; };
 		34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryImpl.swift; sourceTree = "<group>"; };
 		34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			children = (
 				34C9FB382C91A17F00FA0139 /* Character */,
 				34C9FB392C91A18A00FA0139 /* Filter */,
+				34BF19A82C95D92D00A6B55A /* Sort */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -278,6 +283,15 @@
 				34BF19A42C95D14C00A6B55A /* NoResultsView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		34BF19A82C95D92D00A6B55A /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */,
+				34BF19AB2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift */,
+			);
+			path = Sort;
 			sourceTree = "<group>";
 		};
 		34C9FB332C919F2700FA0139 /* Filter */ = {
@@ -405,6 +419,7 @@
 				343DC3132C89C87400BCCF39 /* CharacterRepositoryProtocol.swift in Sources */,
 				343DC3192C89CC7A00BCCF39 /* GetLocalCharactersUseCaseProtocol.swift in Sources */,
 				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
+				34BF19AA2C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift in Sources */,
 				345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */,
 				34C9FB352C919FAF00FA0139 /* FilterRepositoryProtocol.swift in Sources */,
 				342373E92C93493800046832 /* FiltersSheet.swift in Sources */,
@@ -421,6 +436,7 @@
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
 				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,
+				34BF19AC2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift in Sources */,
 				343DC30C2C89BFC100BCCF39 /* LocalCharacterDataSource.swift in Sources */,
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
 				343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */,
