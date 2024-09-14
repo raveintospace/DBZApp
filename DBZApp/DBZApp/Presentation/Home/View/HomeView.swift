@@ -50,9 +50,6 @@ struct HomeView: View {
         .task {
             await viewModel.loadLocalCharacters()
         }
-        .onChange(of: viewModel.selectedFilterOption, { _, newFilter in
-            viewModel.selectedFilterOption = newFilter
-        })
         .toolbar(.hidden, for: .navigationBar)
     }
 }
@@ -69,6 +66,7 @@ extension HomeView {
         VStack(spacing: 4) {
             searchBar
             filterBar
+            sortMenuBar
         }
         .background(.own)
         .padding(8)
@@ -95,5 +93,9 @@ extension HomeView {
             },
             selectedFilter: viewModel.selectedFilter
         )
+    }
+    
+    private var sortMenuBar: some View {
+        SortMenu(viewModel: viewModel)
     }
 }
