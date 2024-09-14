@@ -25,16 +25,19 @@ struct HomeView: View {
                     Section {
                         // Sort
                         // cards
-                        // if search o filters no results show view else show foreach
-                        ForEach(viewModel.displayedCharacters) { character in
-                            VStack(alignment: .center) {
-                                Text(character.name)
-                                Text(character.affiliation)
-                                Text(character.gender)
-                                Text(character.race)
-                                Divider()
+                        if viewModel.filteredCharacters.isEmpty && viewModel.selectedFilter != nil {
+                            noResultsView
+                        } else {
+                            ForEach(viewModel.displayedCharacters) { character in
+                                VStack(alignment: .center) {
+                                    Text(character.name)
+                                    Text(character.affiliation)
+                                    Text(character.gender)
+                                    Text(character.race)
+                                    Divider()
+                                }
+                                .foregroundStyle(.accent)
                             }
-                            .foregroundStyle(.accent)
                         }
                     } header: {
                         fullHeader
@@ -92,5 +95,21 @@ extension HomeView {
             },
             selectedFilter: viewModel.selectedFilter
         )
+    }
+    
+    private var noResultsView: some View {
+        VStack(spacing: 30) {
+            Image(systemName: "person.slash")
+                .font(.system(size: 40))
+                .foregroundStyle(.light.opacity(0.3))
+            Text("No characters")
+                .font(.system(size: 40))
+                .bold()
+            Text("There are no characters that match your search. Try with other filters or keywords.")
+                .font(.callout)
+        }
+        .foregroundColor(.accent)
+        .multilineTextAlignment(.center)
+        .padding(50)
     }
 }
