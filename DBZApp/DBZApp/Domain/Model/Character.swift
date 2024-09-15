@@ -66,6 +66,10 @@ struct Character: Codable, Identifiable {
         }
         return ki.capitalized   // capitalize Unknown
     }
+    
+    var kiToCompare: String {
+        return ki.replacingOccurrences(of: ",", with: "")
+    }
 }
 
 // MARK: - Links

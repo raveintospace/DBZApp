@@ -241,14 +241,14 @@ final class HomeViewModel: ObservableObject {
             return characters.sorted { $0.name.localizedCompare($1.name) == .orderedDescending }
         case .kiPoints:
             return characters.sorted {
-                let first = sortCharactersUseCase.convertKiPointsToNumber($0.ki) ?? Decimal(-1)
-                let second = sortCharactersUseCase.convertKiPointsToNumber($1.ki) ?? Decimal(-1)
+                let first = sortCharactersUseCase.convertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
+                let second = sortCharactersUseCase.convertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
                 return first > second
             }
         case .kiPointsReversed:
             return characters.sorted {
-                let first = sortCharactersUseCase.convertKiPointsToNumber($0.ki) ?? Decimal(-1)
-                let second = sortCharactersUseCase.convertKiPointsToNumber($1.ki) ?? Decimal(-1)
+                let first = sortCharactersUseCase.convertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
+                let second = sortCharactersUseCase.convertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
                 return first < second
             }
         }

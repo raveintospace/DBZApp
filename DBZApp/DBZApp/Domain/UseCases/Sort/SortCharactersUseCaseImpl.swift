@@ -10,13 +10,12 @@ import Foundation
 struct SortCharactersUseCaseImpl: SortCharactersUsecaseProtocol {
     func convertKiPointsToNumber(_ kiPoints: String) -> Decimal? {
         
-        // Remove whitespaces, points, commas and convert to lowercase
-        let normalizedKi = kiPoints
+        // Remove whitespaces and convert to lowercase
+        var normalizedKi = kiPoints
             .trimmingCharacters(in: .whitespaces)
-            .replacingOccurrences(of: ",", with: "")
             .lowercased()
         
-        // Dictionary for json naming
+        // Dictionary for json units
         let suffixes: [String: Decimal] = [
             "thousand": Decimal(string: "1e+3") ?? 1_000,
             "million": Decimal(string: "1e+6") ?? 1_000_000,
@@ -37,12 +36,18 @@ struct SortCharactersUseCaseImpl: SortCharactersUsecaseProtocol {
         // Convert values with suffix
         for (suffix, multiplier) in suffixes {
             if normalizedKi.contains(suffix) {
+                
+                // Get the numeric part, keeping decimal points
                 let numberPart = normalizedKi.replacingOccurrences(of: suffix, with: "").trimmingCharacters(in: .whitespaces)
-                if let number = Decimal(string: numberPart) {
+                
+                // Convert numeric part to Decimal, including decimals
+                if let number = Decimal(string: numberPart.replacingOccurrences(of: ",", with: "")) {
                     return number * multiplier
                 }
             }
         }
+        
+        normalizedKi = normalizedKi.replacingOccurrences(of: ".", with: "")
         
         // Convert String to Decimal for non-suffix values
         return Decimal(string: normalizedKi)
