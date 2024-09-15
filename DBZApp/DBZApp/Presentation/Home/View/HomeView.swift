@@ -20,6 +20,11 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
+            Image("kamaWallpaper")
+                .resizable()
+                .ignoresSafeArea()
+                .opacity(0.15)
+            
             ScrollView(.vertical) {
                 LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                     Section {

@@ -21,6 +21,11 @@ struct FiltersSheet: View {
     
     var body: some View {
         ZStack {
+            Image("namekWallpaper")
+                .resizable()
+                .ignoresSafeArea()
+                .opacity(0.2)
+            
             HStack {
                 Circle()
                     .fill(.dbzOrange)
