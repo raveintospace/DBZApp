@@ -243,13 +243,13 @@ final class HomeViewModel: ObservableObject {
             return characters.sorted {
                 let first = sortCharactersUseCase.convertKiPointsToNumber($0.ki) ?? Decimal(-1)
                 let second = sortCharactersUseCase.convertKiPointsToNumber($1.ki) ?? Decimal(-1)
-                return first < second
+                return first > second
             }
         case .kiPointsReversed:
             return characters.sorted {
                 let first = sortCharactersUseCase.convertKiPointsToNumber($0.ki) ?? Decimal(-1)
                 let second = sortCharactersUseCase.convertKiPointsToNumber($1.ki) ?? Decimal(-1)
-                return first > second
+                return first < second
             }
         }
     }

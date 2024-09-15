@@ -13,7 +13,6 @@ struct SortCharactersUseCaseImpl: SortCharactersUsecaseProtocol {
         // Remove whitespaces, points, commas and convert to lowercase
         let normalizedKi = kiPoints
             .trimmingCharacters(in: .whitespaces)
-            .replacingOccurrences(of: ".", with: "")
             .replacingOccurrences(of: ",", with: "")
             .lowercased()
         
