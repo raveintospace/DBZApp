@@ -35,7 +35,9 @@ struct KingfisherImageLoader: View {
 #Preview {
     KingfisherImageLoader(
         url: "https://dragonball-api.com/characters/goku_normal.webp",
-        contentMode: .fill
+        contentMode: .fit
     )
+    .background(.green)
     .frame(width: 200, height: 200)
+    .background(.blue)
 }
