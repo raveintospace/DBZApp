@@ -57,6 +57,8 @@ struct Character: Codable, Identifiable {
     }
     
     var kiToDisplay: String {
+        let normalizedKi = ki.replacingOccurrences(of: ",", with: ".")
+        
         let components = ki.split(separator: " ")
         
         if components.count == 2 {
@@ -64,7 +66,8 @@ struct Character: Codable, Identifiable {
             let unit = components[1].capitalized
             return "\(value) \(unit)"
         }
-        return ki.capitalized   // capitalize Unknown
+        
+        return normalizedKi.capitalized   // capitalize Unknown
     }
     
     var kiToCompare: String {
