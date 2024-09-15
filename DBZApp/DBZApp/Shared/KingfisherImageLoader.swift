@@ -16,7 +16,8 @@ struct KingfisherImageLoader: View {
     var body: some View {
         KFImage(URL(string: url))
             .placeholder {
-                ProgressView()
+                Image("zStarBall")
+                    .resizable()
             }
             .resizable()
             .onProgress({ receivedSize, totalSize in
