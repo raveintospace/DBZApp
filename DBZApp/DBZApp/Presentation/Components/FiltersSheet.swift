@@ -24,7 +24,7 @@ struct FiltersSheet: View {
             Image("namekWallpaper")
                 .resizable()
                 .ignoresSafeArea()
-                .opacity(0.2)
+                .opacity(0.12)
             
             HStack {
                 Circle()
@@ -46,6 +46,7 @@ struct FiltersSheet: View {
             
             VStack(alignment: .center, spacing: 30) {
                 Text("Select how to filter the Dragon Ball characters")
+                    .bold()
                     .font(.system(size: 20))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)

@@ -20,21 +20,17 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Image("kamaWallpaper")
-                .resizable()
-                .ignoresSafeArea()
-                .opacity(0.15)
+            homeWallpaper
             
             ScrollView(.vertical) {
-                LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
-                    Section {
+                LazyVStack(spacing: 0) {
                         // Sort
                         // cards
                         if viewModel.showNoResultsView {
                             NoResultsView()
                         } else {
                             ForEach(viewModel.displayedCharacters) { character in
-                                VStack(alignment: .center) {
+                                LazyVStack(alignment: .center) {
                                     Text("Name: \(character.name)")
                                     Text("Affiliation: \(character.affiliation)")
                                     Text("Gender: \(character.gender)")
@@ -45,13 +41,14 @@ struct HomeView: View {
                                 .foregroundStyle(.accent)
                             }
                         }
-                    } header: {
-                        fullHeader
-                    }
                 }
             }
+            .padding(.top, 150) // remove when title header
             .scrollIndicators(.hidden)
-            .clipped()
+       //     .clipped()  // remove if content of vstack has to touch screen's baseline
+            
+            fullHeader
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .task {
             await viewModel.loadLocalCharacters()
@@ -68,13 +65,19 @@ struct HomeView: View {
 
 extension HomeView {
     
+    private var homeWallpaper: some View {
+        Image("kamaWallpaper")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.15)
+    }
+    
     private var fullHeader: some View {
         VStack(spacing: 4) {
             searchBar
             filterBar
             sortMenuBar
         }
-        .background(.own)
         .padding(8)
     }
     
