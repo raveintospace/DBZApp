@@ -55,6 +55,17 @@ struct Character: Codable, Identifiable {
             affiliation: "Army of Frieza"
         )
     }
+    
+    var kiToDisplay: String {
+        let components = ki.split(separator: " ")
+        
+        if components.count == 2 {
+            let value = components[0]
+            let unit = components[1].capitalized
+            return "\(value) \(unit)"
+        }
+        return ki.capitalized   // capitalize Unknown
+    }
 }
 
 // MARK: - Links

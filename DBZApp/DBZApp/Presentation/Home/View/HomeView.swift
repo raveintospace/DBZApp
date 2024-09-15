@@ -34,7 +34,7 @@ struct HomeView: View {
                                     Text("Affiliation: \(character.affiliation)")
                                     Text("Gender: \(character.gender)")
                                     Text("Race: \(character.race)")
-                                    Text("Ki points: \(character.ki)")
+                                    Text("Ki points: \(character.kiToDisplay)")
                                     Divider()
                                 }
                                 .foregroundStyle(.accent)
