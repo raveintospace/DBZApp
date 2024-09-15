@@ -10,3 +10,5 @@ import Foundation
 protocol SortCharactersUsecaseProtocol {
     func convertKiPointsToNumber(_ kiPoints: String) -> Decimal?
 }
+
+// comment to test commit
