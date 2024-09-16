@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocalCharacterDataSource: CharacterDataSourceProtocol {
+actor LocalCharacterDataSource: CharacterDataSourceProtocol {
     
     func getCharacters() async throws -> [Character] {
         guard let url = Bundle.main.url(forResource: "localDatabase", withExtension: "json") else {

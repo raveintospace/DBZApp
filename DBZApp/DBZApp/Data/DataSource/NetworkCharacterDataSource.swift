@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NetworkCharacterDataSource: CharacterDataSourceProtocol {
+actor NetworkCharacterDataSource: CharacterDataSourceProtocol {
     
     private let apiURL = URL(string: "https://dragonball-api.com/api/characters?limit=1000000")
     private let dataService = DataService()
