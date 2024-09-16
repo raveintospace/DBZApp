@@ -10,7 +10,7 @@ import SwiftUI
 struct TitleHeader: View {
     var body: some View {
         HStack(spacing: 0) {
-            ImageCircleButton(imageName: "house")
+            ImageBlueCircleButton(imageName: "house")
                 .onTapGesture {
                     
                 }
@@ -22,7 +22,7 @@ struct TitleHeader: View {
                 .background(.blue)
                 .frame(maxWidth: .infinity, alignment: .center)
             
-            ImageCircleButton(imageName: "star")
+            ImageBlueCircleButton(imageName: "star")
                 .onTapGesture {
                     
                 }

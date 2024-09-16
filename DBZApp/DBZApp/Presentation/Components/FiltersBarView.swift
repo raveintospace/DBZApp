@@ -22,7 +22,7 @@ struct FiltersBarView: View {
                 HStack(spacing: 8) {
                     
                     if selectedFilter != nil {
-                        ImageCircleButton(imageName: "xmark")
+                        ImageBlueCircleButton(imageName: "xmark")
                             .onTapGesture {
                                 onXMarkPressed?()
                             }
@@ -50,7 +50,7 @@ struct FiltersBarView: View {
             .scrollIndicators(.hidden)
             .animation(.bouncy, value: selectedFilter)
             
-            ImageCircleButton(imageName: "slider.vertical.3")
+            ImageBlueCircleButton(imageName: "slider.vertical.3")
                 .onTapGesture {
                     onOptionButtonPressed?()
                 }

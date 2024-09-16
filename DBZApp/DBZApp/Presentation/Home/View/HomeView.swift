@@ -26,7 +26,6 @@ struct HomeView: View {
                 fullHeader
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 0) {
-                        // Sort
                         // cards
                         if viewModel.showNoResultsView {
                             NoResultsView()
@@ -72,7 +71,7 @@ extension HomeView {
     }
     
     private var fullHeader: some View {
-        VStack(spacing: 4) {
+        VStack {
             TitleHeader()
             searchBar
             filterBar
