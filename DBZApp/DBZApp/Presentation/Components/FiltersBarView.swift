@@ -55,12 +55,7 @@ struct FiltersBarView: View {
             .scrollIndicators(.hidden)
             .animation(.bouncy, value: selectedFilter)
             
-            Image(systemName: "slider.horizontal.3")
-                .padding(8)
-                .background(
-                    Circle()
-                        .stroke(lineWidth: 1))
-                .foregroundStyle(.dbzBlue)
+            ImageCircleButton(imageName: "slider.horizontal.3")
                 .onTapGesture {
                     onOptionButtonPressed?()
                 }
