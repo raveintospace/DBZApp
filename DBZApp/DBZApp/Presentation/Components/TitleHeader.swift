@@ -10,19 +10,19 @@ import SwiftUI
 struct TitleHeader: View {
     var body: some View {
         HStack(spacing: 0) {
-            ImageCircleButton(imageName: "house.fill")
+            ImageCircleButton(imageName: "house")
                 .onTapGesture {
                     
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("bumble")
+            Text("DBZApp")
                 .font(.title)
                 .foregroundStyle(.red)
                 .background(.blue)
                 .frame(maxWidth: .infinity, alignment: .center)
             
-            ImageCircleButton(imageName: "heart")
+            ImageCircleButton(imageName: "star")
                 .onTapGesture {
                     
                 }

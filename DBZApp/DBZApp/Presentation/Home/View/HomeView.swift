@@ -22,8 +22,10 @@ struct HomeView: View {
         ZStack {
             homeWallpaper
             
-            ScrollView(.vertical) {
-                LazyVStack(spacing: 0) {
+            VStack(spacing: 0) {
+                fullHeader
+                ScrollView(.vertical) {
+                    LazyVStack(spacing: 0) {
                         // Sort
                         // cards
                         if viewModel.showNoResultsView {
@@ -41,14 +43,11 @@ struct HomeView: View {
                                 .foregroundStyle(.accent)
                             }
                         }
+                    }
                 }
+                .scrollIndicators(.hidden)
+                .clipped()
             }
-            .padding(.top, 150) // remove when title header
-            .scrollIndicators(.hidden)
-       //     .clipped()  // remove if content of vstack has to touch screen's baseline
-            
-            fullHeader
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .task {
             await viewModel.loadLocalCharacters()
@@ -74,12 +73,14 @@ extension HomeView {
     
     private var fullHeader: some View {
         VStack(spacing: 4) {
+            TitleHeader()
             searchBar
             filterBar
             sortMenuBar
         }
-        .padding(8)
+        .padding()
     }
+
     
     private var searchBar: some View {
         SearchBarView(searchText: $viewModel.searchText)
