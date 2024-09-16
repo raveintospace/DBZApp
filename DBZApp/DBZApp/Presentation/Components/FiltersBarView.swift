@@ -22,12 +22,7 @@ struct FiltersBarView: View {
                 HStack(spacing: 8) {
                     
                     if selectedFilter != nil {
-                        Image(systemName: "xmark")
-                            .padding(8)
-                            .background(
-                                Circle()
-                                    .stroke(lineWidth: 1))
-                            .foregroundStyle(.dbzBlue)
+                        ImageCircleButton(imageName: "xmark")
                             .onTapGesture {
                                 onXMarkPressed?()
                             }
