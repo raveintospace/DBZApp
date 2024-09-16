@@ -13,6 +13,7 @@ struct ImageCircleButton: View {
     
     var body: some View {
         Image(systemName: imageName)
+            .font(.title2)
             .padding(8)
             .background(
                 Circle()
@@ -22,5 +23,8 @@ struct ImageCircleButton: View {
 }
 
 #Preview {
-    ImageCircleButton(imageName: "heart.fill")
+    HStack {
+        ImageCircleButton(imageName: "heart.fill")
+        ImageCircleButton(imageName: "slider.vertical.3")
+    }
 }

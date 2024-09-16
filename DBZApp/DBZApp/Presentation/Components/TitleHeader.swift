@@ -28,8 +28,6 @@ struct TitleHeader: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .font(.title2)
-        .fontWeight(.medium)
     }
 }
 

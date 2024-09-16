@@ -17,7 +17,7 @@ struct FiltersBarView: View {
     var selectedFilter: Filter? = nil
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     
@@ -55,7 +55,7 @@ struct FiltersBarView: View {
             .scrollIndicators(.hidden)
             .animation(.bouncy, value: selectedFilter)
             
-            ImageCircleButton(imageName: "slider.horizontal.3")
+            ImageCircleButton(imageName: "slider.vertical.3")
                 .onTapGesture {
                     onOptionButtonPressed?()
                 }
@@ -70,18 +70,7 @@ struct FiltersBarView: View {
 // Preview to check if filter logic works
 fileprivate struct FiltersBarViewPreview: View {
     
-    @State private var filters = [
-        Filter(title: "Army of Frieza"),
-        Filter(title: "Assistant of Beerus"),
-        Filter(title: "Assistant of Vermoud"),
-        Filter(title: "Freelancer"),
-        Filter(title: "Namekian Warrior"),
-        Filter(title: "Other"),
-        Filter(title: "Pride Troopers"),
-        Filter(title: "Red Ribbon Army"),
-        Filter(title: "Villain"),
-        Filter(title: "Z Fighter")
-    ]
+    @State private var filters = Filter.race
     @State private var selectedFilter: Filter? = nil
     
     var body: some View {

@@ -103,6 +103,7 @@ extension HomeView {
             },
             selectedFilter: viewModel.selectedFilter
         )
+        .padding(.leading, -10)
     }
     
     private var sortMenuBar: some View {
