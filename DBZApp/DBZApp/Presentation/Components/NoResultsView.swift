@@ -12,11 +12,11 @@ struct NoResultsView: View {
         VStack(spacing: 30) {
             Image(systemName: "person.slash")
                 .font(.system(size: 50))
-                .foregroundStyle(.orange.opacity(0.5))
+                .foregroundStyle(.dbzOrange)
                 .background(
                     Circle()
                         .stroke(lineWidth: 3)
-                        .foregroundStyle(.orange.opacity(0.5))
+                        .foregroundStyle(.dbzOrange)
                         .frame(width: 100, height: 100))
                 .padding(.bottom, 10)
             

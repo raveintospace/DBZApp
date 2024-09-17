@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		342373E92C93493800046832 /* FiltersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342373E82C93493800046832 /* FiltersSheet.swift */; };
+		3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3428790A2C99E256002AF7A5 /* SwiftfulUI */; };
 		343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */; };
 		343DC2F12C89AA4500BCCF39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F02C89AA4500BCCF39 /* Assets.xcassets */; };
 		343DC2F42C89AA4500BCCF39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F32C89AA4500BCCF39 /* Preview Assets.xcassets */; };
@@ -102,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */,
 				34DCBDD12C96F758005DEDAA /* Kingfisher in Frameworks */,
 				348F0C3C2C94816400A7736A /* SwiftfulRouting in Frameworks */,
 			);
@@ -369,6 +371,7 @@
 			packageProductDependencies = (
 				348F0C3B2C94816400A7736A /* SwiftfulRouting */,
 				34DCBDD02C96F758005DEDAA /* Kingfisher */,
+				3428790A2C99E256002AF7A5 /* SwiftfulUI */,
 			);
 			productName = DBZApp;
 			productReference = 343DC2E92C89AA4400BCCF39 /* DBZApp.app */;
@@ -401,6 +404,7 @@
 			packageReferences = (
 				348F0C3A2C94816400A7736A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
 				34DCBDCF2C96F758005DEDAA /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				342879092C99E256002AF7A5 /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
 			);
 			productRefGroup = 343DC2EA2C89AA4400BCCF39 /* Products */;
 			projectDirPath = "";
@@ -674,6 +678,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		342879092C99E256002AF7A5 /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		348F0C3A2C94816400A7736A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
@@ -693,6 +705,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3428790A2C99E256002AF7A5 /* SwiftfulUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 342879092C99E256002AF7A5 /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			productName = SwiftfulUI;
+		};
 		348F0C3B2C94816400A7736A /* SwiftfulRouting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 348F0C3A2C94816400A7736A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;

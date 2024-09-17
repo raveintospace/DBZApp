@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct SearchBarView: View {
     
@@ -40,7 +41,7 @@ struct SearchBarView: View {
                         .offset(x: 10)  // easier for users to tap
                         .foregroundStyle(.dbzBlue)
                         .opacity(searchText.isEmpty ? 0 : 1)
-                        .onTapGesture {
+                        .asButton(.opacity) {
                             UIApplication.shared.hideKeyboard()
                             searchText = ""
                         }

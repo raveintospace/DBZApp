@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 import SwiftfulRouting
 
 struct FiltersSheet: View {
@@ -37,7 +38,7 @@ struct FiltersSheet: View {
                     .foregroundStyle(.dbzBlue)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .onTapGesture {
+                    .asButton(.press) {
                         router.dismissScreen()
                     }
             }
@@ -68,7 +69,7 @@ struct FiltersSheet: View {
                             }
                         )
                         .sensoryFeedback(.impact, trigger: trigger)
-                        .onTapGesture {
+                        .asButton(.press) {
                             selection = filterOption
                             trigger = true
                             viewModel.selectedFilterOption = filterOption

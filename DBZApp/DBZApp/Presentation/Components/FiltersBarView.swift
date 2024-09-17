@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct FiltersBarView: View {
     var filters: [Filter] = []
@@ -23,7 +24,7 @@ struct FiltersBarView: View {
                     
                     if selectedFilter != nil {
                         ImageBlueCircleButton(imageName: "xmark")
-                            .onTapGesture {
+                            .asButton(.press) {
                                 onXMarkPressed?()
                             }
                             .transition(.move(edge: .leading).combined(with: .opacity))
@@ -37,7 +38,7 @@ struct FiltersBarView: View {
                                 title: filter.title.capitalized,
                                 isSelected: selectedFilter == filter
                             )
-                            .onTapGesture {
+                            .asButton(.press) {
                                 onFilterPressed?(filter)
                             }
                             .transition(.move(edge: .trailing).combined(with: .opacity)) // check
@@ -51,7 +52,7 @@ struct FiltersBarView: View {
             .animation(.bouncy, value: selectedFilter)
             
             ImageBlueCircleButton(imageName: "slider.vertical.3")
-                .onTapGesture {
+                .asButton(.press) {
                     onOptionButtonPressed?()
                 }
         }
