@@ -26,16 +26,7 @@ struct ImageBlueCircleButton: View {
     HStack {
         ImageBlueCircleButton(imageName: "heart.fill")
         ImageBlueCircleButton(imageName: "slider.vertical.3")
-        
-        Circle()
-            .fill(.dbzOrange)
-            .overlay(
-                Image(systemName: "xmark")
-                    .offset(y: 1)
-            )
-            .frame(width: 40, height: 40)
-            .foregroundStyle(.dbzBlue)
-            .font(.title2)
-            .fontWeight(.bold)
+        ImageOrangeCircleButton(imageName: "heart.fill")
+        ImageOrangeCircleButton(imageName: "slider.vertical.3")
     }
 }

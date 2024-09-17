@@ -28,16 +28,7 @@ struct FiltersSheet: View {
                 .opacity(0.12)
             
             HStack {
-                Circle()
-                    .fill(.dbzOrange)
-                    .overlay(
-                        Image(systemName: "xmark")
-                            .offset(y: 1)
-                    )
-                    .frame(width: 50, height: 50)
-                    .foregroundStyle(.dbzBlue)
-                    .font(.title2)
-                    .fontWeight(.bold)
+                ImageOrangeCircleButton(imageName: "xmark")
                     .asButton(.press) {
                         router.dismissScreen()
                     }
