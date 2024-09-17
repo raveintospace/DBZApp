@@ -26,5 +26,10 @@ struct ImageOrangeCircleButton: View {
 }
 
 #Preview {
-    ImageOrangeCircleButton(imageName: "heart")
+    HStack {
+        ImageBlueCircleButton(imageName: "heart.fill")
+        ImageBlueCircleButton(imageName: "slider.vertical.3")
+        ImageOrangeCircleButton(imageName: "heart.fill")
+        ImageOrangeCircleButton(imageName: "slider.vertical.3")
+    }
 }

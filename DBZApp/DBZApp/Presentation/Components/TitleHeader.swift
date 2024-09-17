@@ -24,10 +24,9 @@ struct TitleHeader: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("DBZApp")
-                .font(.title)
-                .foregroundStyle(.red)
-                .background(.blue)
+            Image("headerLogo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity, alignment: .center)
             
             ImageBlueCircleButton(imageName: "star")
