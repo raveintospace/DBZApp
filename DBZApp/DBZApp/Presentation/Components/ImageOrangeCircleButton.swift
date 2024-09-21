@@ -10,17 +10,18 @@ import SwiftUI
 struct ImageOrangeCircleButton: View {
     
     var imageName: String = ""
+    var frameSize: CGFloat = 50
+    var fontSize: CGFloat = 25
     
     var body: some View {
         Circle()
             .fill(.dbzOrange)
             .overlay(
                 Image(systemName: imageName)
-                    .offset(y: 1)
             )
-            .frame(width: 50, height: 50)
+            .frame(width: frameSize, height: frameSize)
             .foregroundStyle(.dbzBlue)
-            .font(.title2)
+            .font(.system(size: fontSize))
             .fontWeight(.bold)
     }
 }
@@ -31,5 +32,6 @@ struct ImageOrangeCircleButton: View {
         ImageBlueCircleButton(imageName: "slider.vertical.3")
         ImageOrangeCircleButton(imageName: "heart.fill")
         ImageOrangeCircleButton(imageName: "slider.vertical.3")
+        ImageOrangeCircleButton(imageName: "star.fill", frameSize: 26, fontSize: 13)
     }
 }

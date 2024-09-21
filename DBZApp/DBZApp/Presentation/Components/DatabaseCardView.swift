@@ -23,18 +23,7 @@ struct DatabaseCardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            ZStack(alignment: .bottom) {
-                ImageLoaderView(url: imageName)
-                    .padding(.top, 8)
-                ImageOrangeCircleButton(imageName: isFavorite ? "star.fill" : "star")
-                    .padding(.trailing, 8)
-                    .padding(.bottom, 8)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .asButton(.press) {
-                        onFavButtonPressed?()
-                    }
-                    
-            }            
+            characterImage
             characterInfo
         }
         .foregroundStyle(.accent)
@@ -71,22 +60,42 @@ struct DatabaseCardView: View {
 
 extension DatabaseCardView {
     
+    private var characterImage: some View {
+        ZStack(alignment: .bottom) {
+            ImageLoaderView(url: imageName)
+                .padding(.top, 8)
+            ImageOrangeCircleButton(
+                imageName: isFavorite ? "star.fill" : "star",
+                frameSize: 26,
+                fontSize: 13
+            )
+                .padding(.trailing, 8)
+                .padding(.bottom, 8)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .asButton(.press) {
+                    onFavButtonPressed?()
+                }
+        }
+    }
+    
     private var characterInfo: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 0) {
                 Text(name)
-                    .font(.system(size: 30))
+                    .font(.headline)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(gender)
-                    .font(.title)
+                    .font(.title3)
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             Text("\(ki) ki points")
-                .font(.title3)
+                .font(.caption)
                 .fontWeight(.semibold)
             Text("Affiliation: \(affiliation)")
+                .font(.caption)
             Text("Race: \(race)")
+                .font(.caption)
         }
         .padding(.top, 0)
         .padding(.horizontal)
