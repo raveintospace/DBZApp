@@ -64,6 +64,10 @@ struct FiltersSheet: View {
                             selection = filterOption
                             trigger = true
                             viewModel.selectedFilterOption = filterOption
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                trigger = false
+                            }
                         }
                 }
             }
@@ -78,5 +82,3 @@ struct FiltersSheet: View {
         FiltersSheet(viewModel: DeveloperPreview.instance.homeViewModel, selection: .constant(.affiliation))
     }
 }
-
-// add a copy for user to select a filter

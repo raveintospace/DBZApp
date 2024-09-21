@@ -21,6 +21,10 @@ struct TitleHeader: View {
                 .asButton(.press) {
                     trigger = true
                     onHomePressed?()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        trigger = false
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -34,6 +38,10 @@ struct TitleHeader: View {
                 .asButton(.press) {
                     trigger = true
                     onFavPressed?()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        trigger = false
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
