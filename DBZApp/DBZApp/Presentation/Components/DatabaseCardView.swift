@@ -25,6 +25,7 @@ struct DatabaseCardView: View {
         VStack(alignment: .leading) {
             ZStack(alignment: .bottom) {
                 ImageLoaderView(url: imageName)
+                    .padding(.top, 8)
                 ImageOrangeCircleButton(imageName: isFavorite ? "star.fill" : "star")
                     .padding(.trailing, 8)
                     .padding(.bottom, 8)
@@ -33,9 +34,7 @@ struct DatabaseCardView: View {
                         onFavButtonPressed?()
                     }
                     
-            }
-            .background(.red)
-            
+            }            
             characterInfo
         }
         .foregroundStyle(.accent)
@@ -49,7 +48,25 @@ struct DatabaseCardView: View {
 }
 
 #Preview {
-    DatabaseCardView()
+    NonLazyVGrid(columns: 2, alignment: .center, items: [Character.mock, Character.mockTwo]) { character in
+        if let character {
+            DatabaseCardView(
+                imageName: character.image,
+                name: character.name,
+                ki: character.kiToDisplay,
+                affiliation: character.affiliation,
+                race: character.race,
+                gender: character.genderToDisplay,
+                isFavorite: false,
+                onCardPressed: {
+                    // go to detail view
+                },
+                onFavButtonPressed: {
+                    // viewmodel favorite
+                }
+            )
+        }
+    }
 }
 
 extension DatabaseCardView {

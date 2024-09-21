@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 import SwiftfulRouting
 
 struct HomeView: View {
@@ -30,17 +31,7 @@ struct HomeView: View {
                         if viewModel.showNoResultsView {
                             NoResultsView()
                         } else {
-                            ForEach(viewModel.displayedCharacters) { character in
-                                LazyVStack(alignment: .center) {
-                                    Text("Name: \(character.name)")
-                                    Text("Affiliation: \(character.affiliation)")
-                                    Text("Gender: \(character.gender)")
-                                    Text("Race: \(character.race)")
-                                    Text("Ki points: \(character.kiToDisplay)")
-                                    Divider()
-                                }
-                                .foregroundStyle(.accent)
-                            }
+                            databaseCardsSection
                         }
                     }
                 }
@@ -107,5 +98,41 @@ extension HomeView {
     
     private var sortMenuBar: some View {
         SortMenu(viewModel: viewModel)
+    }
+    
+    private var databaseCardsSection: some View {
+        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
+            if let character {
+                DatabaseCardView(
+                    imageName: character.image,
+                    name: character.name,
+                    ki: character.kiToDisplay,
+                    affiliation: character.affiliation,
+                    race: character.race,
+                    gender: character.genderToDisplay,
+                    isFavorite: false,
+                    onCardPressed: {
+                        // go to detail view
+                    },
+                    onFavButtonPressed: {
+                        // viewmodel favorite
+                    }
+                )
+            }
+        }
+    }
+    
+    private var dummyVstack: some View {
+        ForEach(viewModel.displayedCharacters) { character in
+            LazyVStack(alignment: .center) {
+                Text("Name: \(character.name)")
+                Text("Affiliation: \(character.affiliation)")
+                Text("Gender: \(character.gender)")
+                Text("Race: \(character.race)")
+                Text("Ki points: \(character.kiToDisplay)")
+                Divider()
+            }
+            .foregroundStyle(.accent)
+        }
     }
 }
