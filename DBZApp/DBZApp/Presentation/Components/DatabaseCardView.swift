@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct DatabaseCardView: View {
     
@@ -21,10 +22,52 @@ struct DatabaseCardView: View {
     var onFavButtonPressed: (() -> Void)? = nil
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            ZStack(alignment: .bottom) {
+                ImageLoaderView(url: imageName)
+                ImageOrangeCircleButton(imageName: isFavorite ? "star.fill" : "star")
+                    .padding(.trailing, 8)
+                    .padding(.bottom, 8)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .background(.red)
+            
+            characterInfo
+        }
+        .foregroundStyle(.accent)
+        .background(.dbzBlue.opacity(0.1))
+        .clipShape(.rect(cornerRadius: 10))
+        .aspectRatio(0.8, contentMode: .fit)
+        .asButton(.tap) {
+            onCardPressed?()
+        }
     }
 }
 
 #Preview {
     DatabaseCardView()
+}
+
+extension DatabaseCardView {
+    
+    private var characterInfo: some View {
+        VStack(alignment: .leading) {
+            HStack(spacing: 0) {
+                Text(name)
+                    .font(.system(size: 30))
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(gender)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            Text("\(ki) ki points")
+                .font(.title3)
+                .fontWeight(.semibold)
+            Text("Affiliation: \(affiliation)")
+            Text("Race: \(race)")
+        }
+        .padding(.top, 0)
+        .padding(.horizontal)
+        .padding(.bottom)
+    }
 }
