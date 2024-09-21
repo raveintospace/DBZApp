@@ -52,6 +52,7 @@
 		34DCBDD12C96F758005DEDAA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 34DCBDD02C96F758005DEDAA /* Kingfisher */; };
 		34DCBDD32C96F7D4005DEDAA /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */; };
 		34DCBDD52C96F82E005DEDAA /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */; };
+		34ECF97E2C9F076F00ADFDF8 /* DatabaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ECF97D2C9F076F00ADFDF8 /* DatabaseCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 		34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherImageLoader.swift; sourceTree = "<group>"; };
 		34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
+		34ECF97D2C9F076F00ADFDF8 /* DatabaseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,14 +296,15 @@
 		345D5A972C8B534E003BA242 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				345D5A982C8B5375003BA242 /* SearchBarView.swift */,
+				34ECF97D2C9F076F00ADFDF8 /* DatabaseCardView.swift */,
 				345D5A9C2C8B5F11003BA242 /* FilterCell.swift */,
 				3452BED92C90BA3F00E32517 /* FiltersBarView.swift */,
 				342373E82C93493800046832 /* FiltersSheet.swift */,
-				34BF19A42C95D14C00A6B55A /* NoResultsView.swift */,
-				34BF19AD2C95E04A00A6B55A /* SortMenu.swift */,
 				34C5E2CF2C98920800A1AC41 /* ImageBlueCircleButton.swift */,
 				3428790C2C99E5A5002AF7A5 /* ImageOrangeCircleButton.swift */,
+				34BF19A42C95D14C00A6B55A /* NoResultsView.swift */,
+				345D5A982C8B5375003BA242 /* SearchBarView.swift */,
+				34BF19AD2C95E04A00A6B55A /* SortMenu.swift */,
 				34C5E2D12C98945600A1AC41 /* TitleHeader.swift */,
 			);
 			path = Components;
@@ -463,6 +466,7 @@
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift in Sources */,
 				34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */,
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
+				34ECF97E2C9F076F00ADFDF8 /* DatabaseCardView.swift in Sources */,
 				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,
 				34BF19AC2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift in Sources */,
