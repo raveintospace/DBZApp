@@ -51,7 +51,13 @@ final class HomeViewModel: ObservableObject {
     @Published var genderFilters: [Filter] = []
     @Published var raceFilters: [Filter] = []
     @Published var selectedFilter: Filter? = nil
-    @Published var selectedFilterOption: FilterOption = .affiliation
+    @Published var selectedFilterOption: FilterOption = .affiliation {
+        didSet {
+            if oldValue != selectedFilterOption {
+                selectedFilter = nil
+            }
+        }
+    }
     @Published var activeSubfilters: [Filter] = []
     
     // MARK: - Sort Option
