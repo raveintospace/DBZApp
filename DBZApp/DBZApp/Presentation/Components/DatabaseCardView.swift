@@ -15,7 +15,7 @@ struct DatabaseCardView: View {
     var ki: String = Character.mock.kiToDisplay
     var affiliation: String = Character.mock.affiliation
     var race: String = Character.mock.race
-    var gender: String = Character.mock.gender
+    var gender: String = Character.mock.genderToDisplay
     
     var isFavorite: Bool = false
     var onCardPressed: (() -> Void)? = nil
@@ -29,6 +29,10 @@ struct DatabaseCardView: View {
                     .padding(.trailing, 8)
                     .padding(.bottom, 8)
                     .frame(maxWidth: .infinity, alignment: .trailing)
+                    .asButton(.press) {
+                        onFavButtonPressed?()
+                    }
+                    
             }
             .background(.red)
             
@@ -58,6 +62,7 @@ extension DatabaseCardView {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(gender)
+                    .font(.title)
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             Text("\(ki) ki points")

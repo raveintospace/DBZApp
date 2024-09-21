@@ -28,6 +28,7 @@ struct Character: Codable, Identifiable {
     let image: String
     let affiliation: String
     
+    // MARK: - Mocks
     static var mock: Character {
         Character(
             id: 444,
@@ -56,6 +57,22 @@ struct Character: Codable, Identifiable {
         )
     }
     
+    // MARK: - Computed properties
+    var genderToDisplay: String {
+        switch gender.lowercased() {
+        case "male":
+            return "♂︎"
+        case "female":
+            return "♀️"
+        case "other":
+            return "⚤"
+        case "unknown":
+            return "⁉️"
+        default:
+            return "📛"
+        }
+    }
+    
     var kiToDisplay: String {
         let normalizedKi = ki.replacingOccurrences(of: ",", with: ".")
         
@@ -73,6 +90,8 @@ struct Character: Codable, Identifiable {
     var kiToCompare: String {
         return ki.replacingOccurrences(of: ",", with: "")
     }
+    
+    
 }
 
 // MARK: - Links
