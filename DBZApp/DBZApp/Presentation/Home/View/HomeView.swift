@@ -29,7 +29,6 @@ struct HomeView: View {
                 fullHeader
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 0) {
-                        // cards
                         if viewModel.showNoResultsView {
                             NoResultsView()
                         } else {
