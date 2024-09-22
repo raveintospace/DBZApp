@@ -71,6 +71,7 @@ extension DatabaseCardView {
             )
                 .padding(.trailing, 8)
                 .padding(.bottom, 8)
+                .background(.dbzBlue.opacity(0.001))
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .asButton(.press) {
                     onFavButtonPressed?()
