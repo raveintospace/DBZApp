@@ -8,7 +8,11 @@
 import Foundation
 
 struct FetchCharactersFromAPIUseCaseImpl: FetchCharactersFromAPIUseCaseProtocol {
-    var repository: CharacterRepositoryProtocol
+    private let repository: CharacterRepositoryProtocol
+    
+    init(repository: CharacterRepositoryProtocol) {
+        self.repository = repository
+    }
 
     func execute() async throws -> [Character] {
         do {
