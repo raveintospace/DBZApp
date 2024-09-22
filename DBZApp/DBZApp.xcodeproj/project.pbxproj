@@ -38,6 +38,8 @@
 		345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9C2C8B5F11003BA242 /* FilterCell.swift */; };
 		348C76772CA050CC00235D7F /* FavoritesContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 348C76752CA050CC00235D7F /* FavoritesContainer.xcdatamodeld */; };
 		348C76792CA0525100235D7F /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C76782CA0525100235D7F /* FavoritesDataSource.swift */; };
+		348C767C2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C767B2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift */; };
+		348C767E2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C767D2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift */; };
 		348F0C3C2C94816400A7736A /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 348F0C3B2C94816400A7736A /* SwiftfulRouting */; };
 		34BF19A52C95D14C00A6B55A /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A42C95D14C00A6B55A /* NoResultsView.swift */; };
 		34BF19A72C95D81700A6B55A /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A62C95D81700A6B55A /* SortOption.swift */; };
@@ -89,6 +91,8 @@
 		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		348C76762CA050CC00235D7F /* FavoritesContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesContainer.xcdatamodel; sourceTree = "<group>"; };
 		348C76782CA0525100235D7F /* FavoritesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
+		348C767B2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepositoryProtocol.swift; sourceTree = "<group>"; };
+		348C767D2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepositoryImpl.swift; sourceTree = "<group>"; };
 		34BF19A42C95D14C00A6B55A /* NoResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsView.swift; sourceTree = "<group>"; };
 		34BF19A62C95D81700A6B55A /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCharactersUsecaseProtocol.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				343F83822C8F41100053CBA4 /* Character */,
+				348C767A2CA05E8800235D7F /* Favorite */,
 				34C9FB332C919F2700FA0139 /* Filter */,
 			);
 			path = Repository;
@@ -314,6 +319,15 @@
 				34C5E2D12C98945600A1AC41 /* TitleHeader.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		348C767A2CA05E8800235D7F /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				348C767B2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift */,
+				348C767D2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		34BF19A82C95D92D00A6B55A /* Sort */ = {
@@ -466,6 +480,7 @@
 				345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */,
 				34C5E2D02C98920800A1AC41 /* ImageBlueCircleButton.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
+				348C767E2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift in Sources */,
 				343DC3172C89CC3C00BCCF39 /* UseCaseError.swift in Sources */,
 				348C76792CA0525100235D7F /* FavoritesDataSource.swift in Sources */,
 				34BF19A72C95D81700A6B55A /* SortOption.swift in Sources */,
@@ -483,6 +498,7 @@
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
 				343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */,
 				343DC3232C89F97300BCCF39 /* HomeView.swift in Sources */,
+				348C767C2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift in Sources */,
 				343DC3212C89CDC100BCCF39 /* HomeViewModel.swift in Sources */,
 				34C5E2D22C98945600A1AC41 /* TitleHeader.swift in Sources */,
 				34DCBDD32C96F7D4005DEDAA /* KingfisherImageLoader.swift in Sources */,

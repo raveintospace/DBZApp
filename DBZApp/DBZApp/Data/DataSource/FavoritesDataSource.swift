@@ -26,7 +26,7 @@ final class FavoritesDataSource {
         }
     }
     
-    func updateFavorites(character: Character) {
+    func updateFavorite(character: Character) {
         if let entity = savedEntities.first(where: { $0.characterId == Int64(character.id) }) {
             delete(entity: entity)
         } else {
