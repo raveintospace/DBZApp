@@ -14,6 +14,7 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Character data
     @Published private(set) var characters: [Character] = []
     @Published private(set) var filteredCharacters: [Character] = []
+    @Published private(set) var favoriteCharacters: [Character] = []
     
     var displayedCharacters: [Character] {
         let charactersToSort: [Character]
@@ -72,6 +73,7 @@ final class HomeViewModel: ObservableObject {
     private let fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol
     private let getFiltersUseCase: GetFiltersUseCaseProtocol
     private let sortCharactersUseCase: SortCharactersUsecaseProtocol
+    private let favoritesUseCase: FavoritesUseCaseProtocol
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -79,12 +81,14 @@ final class HomeViewModel: ObservableObject {
         getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol,
         fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol,
         getFiltersUseCase: GetFiltersUseCaseProtocol,
-        sortCharactersUseCase: SortCharactersUsecaseProtocol
+        sortCharactersUseCase: SortCharactersUsecaseProtocol,
+        favoritesUseCase: FavoritesUseCaseProtocol
     ) {
         self.getLocalCharactersUseCase = getLocalCharactersUseCase
         self.fetchCharactersFromAPIUseCase = fetchCharactersFromAPIUseCase
         self.getFiltersUseCase = getFiltersUseCase
         self.sortCharactersUseCase = sortCharactersUseCase
+        self.favoritesUseCase = favoritesUseCase
         
         addSubscribers()
         
@@ -187,6 +191,15 @@ final class HomeViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+        
+        $characters
+            .combineLatest(favoritesUseCase.favoritesPublisher)
+            .map(mapAllCharactersToFavorites)
+            .sink { [weak self] (mappedFavorites) in
+                guard let self = self else { return }
+                self.favoriteCharacters = mappedFavorites
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Filter logic with searchText & Filters + Sort
@@ -258,5 +271,16 @@ final class HomeViewModel: ObservableObject {
                 return first < second
             }
         }
+    }
+    
+    // MARK: - Favorites logic
+    private func mapAllCharactersToFavorites(allCharacters: [Character], favoriteEntities: [FavoriteEntity]) -> [Character] {
+        allCharacters
+            .compactMap { (character) -> Character? in
+                guard favoriteEntities.first(where: { $0.characterId == Int64(character.id) }) != nil else {
+                    return nil
+                }
+                return character
+            }
     }
 }
