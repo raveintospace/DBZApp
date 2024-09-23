@@ -33,10 +33,16 @@ final class DeveloperPreview {
                 localDataSource: LocalCharacterDataSource(),
                 networkDataSource: NetworkCharacterDataSource()
             )
-        ), 
+        ),
+        
         getFiltersUseCase: GetFiltersUseCaseImpl(
             repository: FilterRepositoryImpl()
         ),
-        sortCharactersUseCase: SortCharactersUseCaseImpl()
+        sortCharactersUseCase: SortCharactersUseCaseImpl(),
+        favoritesUseCase: FavoritesUseCaseImpl(
+            repository: FavoritesRepositoryImpl(
+                dataSource: FavoritesDataSource()
+            )
+        )
     )
 }

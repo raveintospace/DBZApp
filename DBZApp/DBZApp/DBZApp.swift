@@ -25,7 +25,12 @@ struct DBZApp: App {
             )
         ),
         getFiltersUseCase: GetFiltersUseCaseImpl(repository: FilterRepositoryImpl()),
-        sortCharactersUseCase: SortCharactersUseCaseImpl()
+        sortCharactersUseCase: SortCharactersUseCaseImpl(),
+        favoritesUseCase: FavoritesUseCaseImpl(
+            repository: FavoritesRepositoryImpl(
+                dataSource: FavoritesDataSource()
+            )
+        )
     )
     
     var body: some Scene {

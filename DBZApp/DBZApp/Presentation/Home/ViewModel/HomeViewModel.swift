@@ -283,4 +283,16 @@ final class HomeViewModel: ObservableObject {
                 return character
             }
     }
+    
+    func updateFavorites(character: Character) {
+        favoritesUseCase.updateFavorite(character: character)
+    }
+    
+    func isNewFav(character: Character) -> Bool {
+        if favoriteCharacters.contains(where: { $0.id == character.id }) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
