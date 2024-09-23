@@ -116,7 +116,8 @@ extension HomeView {
                         // go to detail view
                     },
                     onFavButtonPressed: {
-                        // viewmodel favorite
+                        viewModel.updateFavorites(character: character)
+                        debugPrint(viewModel.favoriteCharacters.count)
                     }
                 )
             }
