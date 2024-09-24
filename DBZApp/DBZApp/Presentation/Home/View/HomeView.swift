@@ -33,7 +33,7 @@ struct HomeView: View {
                             noCharactersView
                         } else {
                             if !viewModel.showFavorites {
-                                databaseAllCardsSection
+                                displayedCardsSection
                                     .transition(.move(edge: .leading))
                             }
                             if viewModel.showFavorites {
@@ -41,7 +41,7 @@ struct HomeView: View {
                                     noFavoritesView
                                         .transition(.move(edge: .trailing))
                                 } else {
-                                    databaseFavoriteCardsSection
+                                    displayedCardsSection
                                         .transition(.move(edge: .trailing))
                                 }
                             }
@@ -130,30 +130,6 @@ extension HomeView {
         )
     }
     
-    // cards expand if unpair
-    private var databaseAllCardsSection: some View {
-        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
-            if let character {
-                DatabaseCardView(
-                    imageName: character.image,
-                    name: character.name,
-                    ki: character.kiToDisplay,
-                    affiliation: character.affiliation,
-                    race: character.race,
-                    gender: character.genderToDisplay,
-                    isFavorite: false,
-                    onCardPressed: {
-                        // go to detail view
-                    },
-                    onFavButtonPressed: {
-                        viewModel.updateFavorites(character: character)
-                        debugPrint(viewModel.favoriteCharacters.count)
-                    }
-                )
-            }
-        }
-    }
-    
     private var noFavoritesView: some View {
         NoResultsView(
             imageName: "star.slash",
@@ -162,8 +138,9 @@ extension HomeView {
         )
     }
     
-    private var databaseFavoriteCardsSection: some View {
-        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.favoriteCharacters) { character in
+    // cards expand if unpair
+    private var displayedCardsSection: some View {
+        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
             if let character {
                 DatabaseCardView(
                     imageName: character.image,

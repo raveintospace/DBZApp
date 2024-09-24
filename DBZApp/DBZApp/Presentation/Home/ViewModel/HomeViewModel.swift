@@ -12,7 +12,7 @@ import Combine
 final class HomeViewModel: ObservableObject {
     
     // MARK: - Character data
-    @Published private(set) var characters: [Character] = []
+    @Published private(set) var allCharacters: [Character] = []
     @Published private(set) var filteredCharacters: [Character] = []
     @Published private(set) var favoriteCharacters: [Character] = []
     
@@ -26,7 +26,7 @@ final class HomeViewModel: ObservableObject {
         if isSearching || selectedFilter != nil {
             charactersToSort = filteredCharacters
         } else {
-            charactersToSort = characters
+            charactersToSort = showFavorites ? favoriteCharacters : allCharacters
         }
         
         return sortCharacters(characters: charactersToSort)
@@ -103,12 +103,12 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Loading data logic
     func loadLocalCharacters() async {
-        guard characters.isEmpty else { return }
+        guard allCharacters.isEmpty else { return }
         
         isLoading = true
         
         do {
-            self.characters = try await getLocalCharactersUseCase.execute()
+            self.allCharacters = try await getLocalCharactersUseCase.execute()
             self.error = nil
         } catch {
             self.error = .undefinedError
@@ -117,12 +117,12 @@ final class HomeViewModel: ObservableObject {
     }
     
     func fetchCharactersFromAPI() async {
-        guard characters.isEmpty else { return }
+        guard allCharacters.isEmpty else { return }
         
         isLoading = true
         
         do {
-            self.characters = try await fetchCharactersFromAPIUseCase.execute()
+            self.allCharacters = try await fetchCharactersFromAPIUseCase.execute()
             self.error = nil
         } catch {
             self.error = .undefinedError
@@ -196,7 +196,7 @@ final class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        $characters
+        $allCharacters
             .combineLatest(favoritesUseCase.favoritesPublisher)
             .map(mapAllCharactersToFavorites)
             .sink { [weak self] (mappedFavorites) in
@@ -208,7 +208,7 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Filter logic with searchText & Filters + Sort
     private func filterCharacters(searchText: String, selectedFilter: Filter?) {
-        var filtered = characters
+        var filtered = showFavorites ? favoriteCharacters : allCharacters
         
         // Search filtering
         if !searchText.isEmpty {
