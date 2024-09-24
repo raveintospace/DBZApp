@@ -16,6 +16,10 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var filteredCharacters: [Character] = []
     @Published private(set) var favoriteCharacters: [Character] = []
     
+    
+    // MARK: - Logic to display characters in View
+    @Published var showFavorites: Bool = false
+    
     var displayedCharacters: [Character] {
         let charactersToSort: [Character]
         

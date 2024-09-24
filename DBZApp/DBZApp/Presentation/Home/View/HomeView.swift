@@ -15,8 +15,6 @@ struct HomeView: View {
     
     @StateObject private var viewModel: HomeViewModel
     
-    @State private var showFavoritesGrid: Bool = false
-    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     init(viewModel: HomeViewModel) {
@@ -34,11 +32,11 @@ struct HomeView: View {
                         if viewModel.showNoResultsView {
                             noCharactersView
                         } else {
-                            if !showFavoritesGrid {
+                            if !viewModel.showFavorites {
                                 databaseAllCardsSection
                                     .transition(.move(edge: .leading))
                             }
-                            if showFavoritesGrid {
+                            if viewModel.showFavorites {
                                 if viewModel.favoriteCharacters.isEmpty {
                                     noFavoritesView
                                         .transition(.move(edge: .trailing))
@@ -92,7 +90,7 @@ extension HomeView {
             
         }, onFavPressed: {
             withAnimation {
-                showFavoritesGrid.toggle()
+                viewModel.showFavorites.toggle()
             }
         })
     }
