@@ -11,6 +11,7 @@ import SwiftfulUI
 struct TitleHeader: View {
     
     @State private var trigger = false
+    @State private var isStarFilled: Bool = false
     var onHomePressed: (() -> Void)? = nil
     var onFavPressed: (() -> Void)? = nil
     
@@ -33,10 +34,11 @@ struct TitleHeader: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity, alignment: .center)
             
-            ImageBlueCircleButton(imageName: "star")
+            ImageBlueCircleButton(imageName: isStarFilled ? "star.fill" : "star")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
+                    isStarFilled.toggle()
                     onFavPressed?()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

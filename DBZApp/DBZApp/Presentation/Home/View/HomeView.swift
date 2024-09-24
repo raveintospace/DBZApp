@@ -15,6 +15,8 @@ struct HomeView: View {
     
     @StateObject private var viewModel: HomeViewModel
     
+    @State private var showFavoritesGrid: Bool = false
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     init(viewModel: HomeViewModel) {
@@ -64,14 +66,24 @@ extension HomeView {
     
     private var fullHeader: some View {
         VStack {
-            TitleHeader()
+            databaseTitleHeader
             searchBar
             filterBar
             sortMenuBar
         }
         .padding()
     }
-
+    
+    private var databaseTitleHeader: some View {
+        TitleHeader(
+            onHomePressed: {
+            
+        }, onFavPressed: {
+            withAnimation {
+                showFavoritesGrid.toggle()
+            }
+        })
+    }
     
     private var searchBar: some View {
         SearchBarView(searchText: $viewModel.searchText)
