@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct NoResultsView: View {
+    
+    var imageName: String = "circle.slash"
+    var mainText: String = "No Results"
+    var subText: String = "Invite the user to do something"
+    
     var body: some View {
         VStack(spacing: 30) {
-            Image(systemName: "person.slash")
+            Image(systemName: imageName)
                 .font(.system(size: 50))
                 .foregroundStyle(.dbzOrange)
                 .background(
@@ -20,11 +25,11 @@ struct NoResultsView: View {
                         .frame(width: 100, height: 100))
                 .padding(.bottom, 10)
             
-            Text("No characters")
+            Text(mainText)
                 .font(.system(size: 40))
                 .bold()
             
-            Text("There are no characters that match your search. Try with other filters or keywords.")
+            Text(subText)
                 .font(.callout)
         }
         .foregroundColor(.accent)
@@ -34,5 +39,9 @@ struct NoResultsView: View {
 }
 
 #Preview {
-    NoResultsView()
+    NoResultsView(
+        imageName: "person.slash",
+        mainText: "No characters",
+        subText: "There are no characters that match your search. Try with other filters or keywords."
+    )
 }

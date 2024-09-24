@@ -32,7 +32,7 @@ struct HomeView: View {
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 0) {
                         if viewModel.showNoResultsView {
-                            NoResultsView()
+                            noCharactersView
                         } else {
                             if !showFavoritesGrid {
                                 databaseAllCardsSection
@@ -40,7 +40,7 @@ struct HomeView: View {
                             }
                             if showFavoritesGrid {
                                 if viewModel.favoriteCharacters.isEmpty {
-                                    Text("No favorites")
+                                    noFavoritesView
                                         .transition(.move(edge: .trailing))
                                 } else {
                                     databaseFavoriteCardsSection
@@ -124,6 +124,14 @@ extension HomeView {
         SortMenu(viewModel: viewModel)
     }
     
+    private var noCharactersView: some View {
+        NoResultsView(
+            imageName: "person.slash",
+            mainText: "No characters",
+            subText: "There are no characters that match your search. Try with other filters or keywords."
+        )
+    }
+    
     // cards expand if unpair
     private var databaseAllCardsSection: some View {
         NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
@@ -146,6 +154,14 @@ extension HomeView {
                 )
             }
         }
+    }
+    
+    private var noFavoritesView: some View {
+        NoResultsView(
+            imageName: "star.slash",
+            mainText: "No favorites",
+            subText: "There are no characters tagged as favorite. Press the ⭐️ button on the character's card to save it to your favorites."
+        )
     }
     
     private var databaseFavoriteCardsSection: some View {
