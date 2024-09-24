@@ -34,7 +34,19 @@ struct HomeView: View {
                         if viewModel.showNoResultsView {
                             NoResultsView()
                         } else {
-                            databaseCardsSection
+                            if !showFavoritesGrid {
+                                databaseAllCardsSection
+                                    .transition(.move(edge: .leading))
+                            }
+                            if showFavoritesGrid {
+                                if viewModel.favoriteCharacters.isEmpty {
+                                    Text("No favorites")
+                                        .transition(.move(edge: .trailing))
+                                } else {
+                                    databaseFavoriteCardsSection
+                                        .transition(.move(edge: .trailing))
+                                }
+                            }
                         }
                     }
                 }
@@ -113,7 +125,7 @@ extension HomeView {
     }
     
     // cards expand if unpair
-    private var databaseCardsSection: some View {
+    private var databaseAllCardsSection: some View {
         NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
             if let character {
                 DatabaseCardView(
@@ -136,10 +148,9 @@ extension HomeView {
         }
     }
     
-    // cards have same size
-    private var databaseCardsGrid: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(viewModel.displayedCharacters) { character in
+    private var databaseFavoriteCardsSection: some View {
+        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.favoriteCharacters) { character in
+            if let character {
                 DatabaseCardView(
                     imageName: character.image,
                     name: character.name,
@@ -152,10 +163,36 @@ extension HomeView {
                         // go to detail view
                     },
                     onFavButtonPressed: {
-                        // viewmodel favorite
+                        viewModel.updateFavorites(character: character)
+                        debugPrint(viewModel.favoriteCharacters.count)
                     }
                 )
             }
         }
     }
 }
+
+
+// MARK: - Deprecated
+//// cards have same size
+//private var databaseCardsGrid: some View {
+//    LazyVGrid(columns: columns) {
+//        ForEach(viewModel.displayedCharacters) { character in
+//            DatabaseCardView(
+//                imageName: character.image,
+//                name: character.name,
+//                ki: character.kiToDisplay,
+//                affiliation: character.affiliation,
+//                race: character.race,
+//                gender: character.genderToDisplay,
+//                isFavorite: false,
+//                onCardPressed: {
+//                    // go to detail view
+//                },
+//                onFavButtonPressed: {
+//                    // viewmodel favorite
+//                }
+//            )
+//        }
+//    }
+//}

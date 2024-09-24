@@ -38,7 +38,10 @@ struct TitleHeader: View {
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
-                    isStarFilled.toggle()
+                    withAnimation {
+                        isStarFilled.toggle()
+                    }
+                    
                     onFavPressed?()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
