@@ -160,7 +160,7 @@ extension HomeView {
         NoResultsView(
             imageName: "star.slash",
             mainText: "No favorites",
-            subText: "There are no characters tagged as favorite. Press the ⭐️ button on the character's card to save it to your favorites."
+            subText: "No characters have been marked as favorites yet. Tap the ⭐️ button on any character's card to add it to your favorites."
         )
     }
     
