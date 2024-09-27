@@ -27,29 +27,34 @@ struct HomeView: View {
             
             VStack(spacing: 0) {
                 fullHeader
-                ScrollView(.vertical) {
-                    LazyVStack(spacing: 0) {
-                        if viewModel.showNoResultsView {
-                            noCharactersView
-                        } else {
-                            if !viewModel.showFavorites {
-                                displayedCardsSection
-                                    .transition(.move(edge: .leading))
-                            }
-                            if viewModel.showFavorites {
-                                if viewModel.favoriteCharacters.isEmpty {
-                                    noFavoritesView
-                                        .transition(.move(edge: .trailing))
-                                } else {
+                ScrollViewReader { proxy in
+                    ScrollView(.vertical) {
+                        LazyVStack(spacing: 0) {
+                            if viewModel.showNoResultsView {
+                                noCharactersView
+                            } else {
+                                if !viewModel.showFavorites {
                                     displayedCardsSection
-                                        .transition(.move(edge: .trailing))
+                                        .transition(.move(edge: .leading))
+                                }
+                                if viewModel.showFavorites {
+                                    if viewModel.favoriteCharacters.isEmpty {
+                                        noFavoritesView
+                                            .transition(.move(edge: .trailing))
+                                    } else {
+                                        displayedCardsSection
+                                            .transition(.move(edge: .trailing))
+                                    }
                                 }
                             }
                         }
                     }
+                    .scrollIndicators(.hidden)
+                    .clipped()
+                    .onChange(of: viewModel.showFavorites) { _, _ in
+                        proxy.scrollTo(0, anchor: .top)
+                    }
                 }
-                .scrollIndicators(.hidden)
-                .clipped()
             }
         }
         .task {
@@ -87,12 +92,12 @@ extension HomeView {
     private var databaseTitleHeader: some View {
         TitleHeader(
             onHomePressed: {
-            
-        }, onFavPressed: {
-            withAnimation {
-                viewModel.showFavorites.toggle()
-            }
-        })
+                
+            }, onFavPressed: {
+                withAnimation {
+                    viewModel.showFavorites.toggle()
+                }
+            })
     }
     
     private var searchBar: some View {
@@ -158,6 +163,7 @@ extension HomeView {
                         debugPrint(viewModel.favoriteCharacters.count)
                     }
                 )
+                .id(character.id)
             }
         }
     }
