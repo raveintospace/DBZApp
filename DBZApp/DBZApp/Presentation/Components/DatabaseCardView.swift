@@ -69,6 +69,7 @@ extension DatabaseCardView {
                 frameSize: 26,
                 fontSize: 13
             )
+            .opacity(isFavorite ? 1 : 0.5)
                 .padding(.trailing, 16)
                 .padding(.bottom, 8)
                 .background(.dbzBlue.opacity(0.001))
