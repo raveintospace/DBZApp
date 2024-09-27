@@ -13,37 +13,21 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Character data
     @Published private(set) var allCharacters: [Character] = []
-    @Published private(set) var filteredCharacters: [Character] = []
     @Published private(set) var favoriteCharacters: [Character] = []
     
     
     // MARK: - Logic to display characters in View
     @Published var showFavorites: Bool = false
     
-//    var displayedCharacters: [Character] {
-//        let charactersToSort: [Character]
-//        
-//        if isSearching || selectedFilter != nil {
-//            charactersToSort = filteredCharacters
-//        } else {
-//            charactersToSort = showFavorites ? favoriteCharacters : allCharacters
-//        }
-//        
-//        return sortCharacters(characters: charactersToSort)
-//    }
-    
     var displayedCharacters: [Character] {
         let charactersToFilter: [Character]
         
         if showFavorites {
-            // Usamos la lista de favoritos si showFavorites es true
             charactersToFilter = favoriteCharacters
         } else {
-            // Usamos la lista completa si showFavorites es false
             charactersToFilter = allCharacters
         }
 
-        // Aplicar filtros y búsqueda
         return sortCharacters(characters: filterCharacters(searchText: searchText, selectedFilter: selectedFilter, characters: charactersToFilter))
     }
     
@@ -55,11 +39,11 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Computed properties to show noResultsView
     var noResultsForFilter: Bool {
-            return filteredCharacters.isEmpty && selectedFilter != nil
+            return displayedCharacters.isEmpty && selectedFilter != nil
         }
     
     var noResultsForSearchText : Bool {
-        return filteredCharacters.isEmpty && !searchText.isEmpty
+        return displayedCharacters.isEmpty && !searchText.isEmpty
     }
     
     var showNoResultsView: Bool {
@@ -198,7 +182,6 @@ final class HomeViewModel: ObservableObject {
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { [weak self] (searchText, selectedFilter) in
                 guard self != nil else { return }
-        //        self.filterCharacters(searchText: searchText, selectedFilter: selectedFilter)
             }
             .store(in: &cancellables)
         
@@ -217,17 +200,11 @@ final class HomeViewModel: ObservableObject {
             .sink { [weak self] (mappedFavorites) in
                 guard let self = self else { return }
                 self.favoriteCharacters = mappedFavorites
-                
-                self.filteredCharacters = self.filterCharacters(
-                    searchText: self.searchText,
-                    selectedFilter: self.selectedFilter,
-                    characters: mappedFavorites
-                )
             }
             .store(in: &cancellables)
     }
     
-    // MARK: - Filter logic with searchText & Filters + Sort
+    // MARK: - Filter logic with searchText & Filters
     private func filterCharacters(searchText: String, selectedFilter: Filter?, characters: [Character]) -> [Character] {
         var filtered = characters
         
@@ -250,12 +227,6 @@ final class HomeViewModel: ObservableObject {
         }
         
         return filtered
-        
-//        // Sort filtered results
-//        filtered = sortCharacters(characters: filtered)
-//        
-//        // Assign filtered calculation to array filteredCharacters
-//        filteredCharacters = filtered
     }
     
     // MARK: - Filter logic for Filters
