@@ -20,16 +20,31 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Logic to display characters in View
     @Published var showFavorites: Bool = false
     
+//    var displayedCharacters: [Character] {
+//        let charactersToSort: [Character]
+//        
+//        if isSearching || selectedFilter != nil {
+//            charactersToSort = filteredCharacters
+//        } else {
+//            charactersToSort = showFavorites ? favoriteCharacters : allCharacters
+//        }
+//        
+//        return sortCharacters(characters: charactersToSort)
+//    }
+    
     var displayedCharacters: [Character] {
-        let charactersToSort: [Character]
+        let charactersToFilter: [Character]
         
-        if isSearching || selectedFilter != nil {
-            charactersToSort = filteredCharacters
+        if showFavorites {
+            // Usamos la lista de favoritos si showFavorites es true
+            charactersToFilter = favoriteCharacters
         } else {
-            charactersToSort = showFavorites ? favoriteCharacters : allCharacters
+            // Usamos la lista completa si showFavorites es false
+            charactersToFilter = allCharacters
         }
-        
-        return sortCharacters(characters: charactersToSort)
+
+        // Aplicar filtros y búsqueda
+        return sortCharacters(characters: filterCharacters(searchText: searchText, selectedFilter: selectedFilter, characters: charactersToFilter))
     }
     
     // MARK: - Search & filtering characters
@@ -182,8 +197,8 @@ final class HomeViewModel: ObservableObject {
             .combineLatest($selectedFilter)
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { [weak self] (searchText, selectedFilter) in
-                guard let self = self else { return }
-                self.filterCharacters(searchText: searchText, selectedFilter: selectedFilter)
+                guard self != nil else { return }
+        //        self.filterCharacters(searchText: searchText, selectedFilter: selectedFilter)
             }
             .store(in: &cancellables)
         
@@ -202,13 +217,19 @@ final class HomeViewModel: ObservableObject {
             .sink { [weak self] (mappedFavorites) in
                 guard let self = self else { return }
                 self.favoriteCharacters = mappedFavorites
+                
+                self.filteredCharacters = self.filterCharacters(
+                    searchText: self.searchText,
+                    selectedFilter: self.selectedFilter,
+                    characters: mappedFavorites
+                )
             }
             .store(in: &cancellables)
     }
     
     // MARK: - Filter logic with searchText & Filters + Sort
-    private func filterCharacters(searchText: String, selectedFilter: Filter?) {
-        var filtered = showFavorites ? favoriteCharacters : allCharacters
+    private func filterCharacters(searchText: String, selectedFilter: Filter?, characters: [Character]) -> [Character] {
+        var filtered = characters
         
         // Search filtering
         if !searchText.isEmpty {
@@ -228,11 +249,13 @@ final class HomeViewModel: ObservableObject {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
         
-        // Sort filtered results
-        filtered = sortCharacters(characters: filtered)
+        return filtered
         
-        // Assign filtered calculation to array filteredCharacters
-        filteredCharacters = filtered
+//        // Sort filtered results
+//        filtered = sortCharacters(characters: filtered)
+//        
+//        // Assign filtered calculation to array filteredCharacters
+//        filteredCharacters = filtered
     }
     
     // MARK: - Filter logic for Filters
