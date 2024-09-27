@@ -163,7 +163,6 @@ extension HomeView {
                         debugPrint(viewModel.favoriteCharacters.count)
                     }
                 )
-                .id(character.id)
             }
         }
     }

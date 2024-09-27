@@ -93,10 +93,16 @@ extension DatabaseCardView {
             }
             Text("\(ki) ki points")
                 .font(.caption)
-                .fontWeight(.semibold)
-            Text("Affiliation: \(affiliation)")
+                .fontWeight(.bold)
+            Text("Affiliation: ")
                 .font(.caption)
-            Text("Race: \(race)")
+                .fontWeight(.semibold) +
+            Text(affiliation)
+                .font(.caption)
+            Text("Race: ")
+                .font(.caption)
+                .fontWeight(.semibold) +
+            Text(race)
                 .font(.caption)
         }
         .padding(.top, 0)
