@@ -167,28 +167,3 @@ extension HomeView {
         }
     }
 }
-
-
-// MARK: - Deprecated
-//// cards have same size
-//private var databaseCardsGrid: some View {
-//    LazyVGrid(columns: columns) {
-//        ForEach(viewModel.displayedCharacters) { character in
-//            DatabaseCardView(
-//                imageName: character.image,
-//                name: character.name,
-//                ki: character.kiToDisplay,
-//                affiliation: character.affiliation,
-//                race: character.race,
-//                gender: character.genderToDisplay,
-//                isFavorite: false,
-//                onCardPressed: {
-//                    // go to detail view
-//                },
-//                onFavButtonPressed: {
-//                    // viewmodel favorite
-//                }
-//            )
-//        }
-//    }
-//}
