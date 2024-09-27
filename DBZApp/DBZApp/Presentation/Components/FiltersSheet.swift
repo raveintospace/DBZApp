@@ -18,6 +18,7 @@ struct FiltersSheet: View {
     
     var filterOptions: [FilterOption] = FilterOption.allCases
     @Binding var selection: FilterOption
+   
     @State private var trigger = false
     var triggerDelay: Double = 0.3
     

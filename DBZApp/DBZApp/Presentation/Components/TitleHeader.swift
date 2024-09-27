@@ -10,10 +10,11 @@ import SwiftfulUI
 
 struct TitleHeader: View {
     
-    @State private var trigger = false
     @State private var isStarFilled: Bool = false
     var onHomePressed: (() -> Void)? = nil
     var onFavPressed: (() -> Void)? = nil
+    
+    @State private var trigger = false
     var triggerDelay: Double = 0.3
     
     var body: some View {
