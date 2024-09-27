@@ -208,7 +208,7 @@ final class HomeViewModel: ObservableObject {
     private func filterCharacters(searchText: String, selectedFilter: Filter?, characters: [Character]) -> [Character] {
         var filtered = characters
         
-        // Search filtering
+        // Searchtext filtering
         if !searchText.isEmpty {
             let search = searchText.lowercased()
             filtered = filtered.filter { character in
@@ -221,7 +221,7 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        // Apply filters
+        // Apply Filters (Affiliation, gender, race)
         if let filter = selectedFilter {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
@@ -286,7 +286,7 @@ final class HomeViewModel: ObservableObject {
         favoritesUseCase.updateFavorite(character: character)
     }
     
-    func isNewFav(character: Character) -> Bool {
+    func isFavorited(character: Character) -> Bool {
         if favoriteCharacters.contains(where: { $0.id == character.id }) {
             return true
         } else {

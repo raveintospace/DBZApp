@@ -51,7 +51,7 @@ struct DatabaseCardView: View {
                     // go to detail view
                 },
                 onFavButtonPressed: {
-                    // viewmodel favorite
+                    // viewmodel update favorite
                 }
             )
         }
@@ -88,7 +88,7 @@ extension DatabaseCardView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(gender)
                     .font(.title3)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                 //   .frame(maxWidth: .infinity, alignment: .trailing)
             }
             Text("\(ki) ki points")
                 .font(.caption)

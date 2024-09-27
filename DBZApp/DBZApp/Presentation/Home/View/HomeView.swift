@@ -154,7 +154,7 @@ extension HomeView {
                     affiliation: character.affiliation,
                     race: character.race,
                     gender: character.genderToDisplay,
-                    isFavorite: false,
+                    isFavorite: viewModel.isFavorited(character: character),
                     onCardPressed: {
                         // go to detail view
                     },
