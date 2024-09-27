@@ -69,7 +69,7 @@ extension DatabaseCardView {
                 frameSize: 26,
                 fontSize: 13
             )
-                .padding(.trailing, 8)
+                .padding(.trailing, 16)
                 .padding(.bottom, 8)
                 .background(.dbzBlue.opacity(0.001))
                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -88,7 +88,7 @@ extension DatabaseCardView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(gender)
                     .font(.title3)
-                 //   .frame(maxWidth: .infinity, alignment: .trailing)
+                    .frame(width: 20)
             }
             Text("\(ki) ki points")
                 .font(.caption)
