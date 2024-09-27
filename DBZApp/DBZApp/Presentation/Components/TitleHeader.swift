@@ -14,6 +14,7 @@ struct TitleHeader: View {
     @State private var isStarFilled: Bool = false
     var onHomePressed: (() -> Void)? = nil
     var onFavPressed: (() -> Void)? = nil
+    var triggerDelay: Double = 0.3
     
     var body: some View {
         HStack(spacing: 0) {
@@ -23,7 +24,7 @@ struct TitleHeader: View {
                     trigger = true
                     onHomePressed?()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
                         trigger = false
                     }
                 }
@@ -44,7 +45,7 @@ struct TitleHeader: View {
                     
                     onFavPressed?()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
                         trigger = false
                     }
                 }

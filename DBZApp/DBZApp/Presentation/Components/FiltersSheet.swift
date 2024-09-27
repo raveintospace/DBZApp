@@ -19,6 +19,7 @@ struct FiltersSheet: View {
     var filterOptions: [FilterOption] = FilterOption.allCases
     @Binding var selection: FilterOption
     @State private var trigger = false
+    var triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
@@ -65,7 +66,7 @@ struct FiltersSheet: View {
                             trigger = true
                             viewModel.selectedFilterOption = filterOption
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
                                 trigger = false
                             }
                         }
