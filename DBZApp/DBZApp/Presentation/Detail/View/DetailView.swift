@@ -50,7 +50,7 @@ extension DetailView {
     
     private var headerButtons: some View {
         DetailHeaderButtons(
-            isFavorite: homeViewModel.isFavorited(character: character),
+     //       isFavorite: homeViewModel.isFavorited(character: character),
             onBackButtonPressed: {
                 router.dismissScreen()
             },

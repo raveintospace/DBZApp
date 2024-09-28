@@ -10,9 +10,9 @@ import SwiftfulUI
 
 struct TitleHeader: View {
     
-    @State private var isStarFilled: Bool = false
-    var onHomePressed: (() -> Void)? = nil
-    var onFavPressed: (() -> Void)? = nil
+    var isStarFilled: Bool = false
+    var onHomeButtonPressed: (() -> Void)? = nil
+    var onFavButtonPressed: (() -> Void)? = nil
     
     @State private var trigger = false
     var triggerDelay: Double = 0.3
@@ -23,7 +23,7 @@ struct TitleHeader: View {
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
-                    onHomePressed?()
+                    onHomeButtonPressed?()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
                         trigger = false
@@ -41,10 +41,8 @@ struct TitleHeader: View {
                 .asButton(.press) {
                     trigger = true
                     withAnimation {
-                        isStarFilled.toggle()
+                        onFavButtonPressed?()
                     }
-                    
-                    onFavPressed?()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
                         trigger = false

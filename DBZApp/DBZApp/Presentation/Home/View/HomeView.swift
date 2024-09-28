@@ -91,9 +91,10 @@ extension HomeView {
     
     private var databaseTitleHeader: some View {
         TitleHeader(
-            onHomePressed: {
-                
-            }, onFavPressed: {
+            isStarFilled: viewModel.showFavorites,
+            onHomeButtonPressed: {
+                // go to main view
+            }, onFavButtonPressed: {
                 withAnimation {
                     viewModel.showFavorites.toggle()
                 }
@@ -159,7 +160,9 @@ extension HomeView {
                         goToDetailView(character: character)
                     },
                     onFavButtonPressed: {
-                        viewModel.updateFavorites(character: character)
+                        withAnimation {
+                            viewModel.updateFavorites(character: character)
+                        }
                     }
                 )
             }
