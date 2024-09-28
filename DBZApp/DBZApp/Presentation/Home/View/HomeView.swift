@@ -162,7 +162,6 @@ extension HomeView {
                     },
                     onFavButtonPressed: {
                         viewModel.updateFavorites(character: character)
-                        debugPrint(viewModel.favoriteCharacters.count)
                     }
                 )
             }

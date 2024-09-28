@@ -11,7 +11,6 @@ import SwiftfulUI
 struct DetailHeaderImageCell: View {
     
     var height: CGFloat = 300
-    var title: String = Character.mock.name
     var imageName: String = Character.mockTwo.image
     
     var body: some View {

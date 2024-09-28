@@ -18,7 +18,7 @@ struct DetailHeaderButtons: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircleButton(imageName: "arrowshape.backward")
+            ImageBlueCircleButton(imageName: "arrowshape.down")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
@@ -50,5 +50,9 @@ struct DetailHeaderButtons: View {
 }
 
 #Preview {
-    DetailHeaderButtons()
+    ZStack {
+        Color.red
+        DetailHeaderButtons()
+    }
+    
 }
