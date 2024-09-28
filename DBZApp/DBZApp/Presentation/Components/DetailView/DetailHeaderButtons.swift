@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DetailHeaderButtons: View {
     
-    @State private var isStarFilled: Bool = false
+    var isFavorite: Bool = false
     var onBackButtonPressed: (() -> Void)? = nil
-    var onFavPressed: (() -> Void)? = nil
+    var onFavButtonPressed: (() -> Void)? = nil
     
     @State private var trigger = false
     var triggerDelay: Double = 0.3
@@ -31,19 +31,16 @@ struct DetailHeaderButtons: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             ImageOrangeCircleButton(
-                imageName: isStarFilled ? "star.fill" : "star",
+                imageName: isFavorite ? "star.fill" : "star",
                 frameSize: 40,
                 fontSize: 20
             )
-                .opacity(isStarFilled ? 1 : 0.5)
+                .opacity(isFavorite ? 1 : 0.5)
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
-                    withAnimation {
-                        isStarFilled.toggle()
-                    }
                     
-                    onFavPressed?()
+                    onFavButtonPressed?()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
                         trigger = false

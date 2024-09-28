@@ -13,7 +13,7 @@ struct DetailView: View {
     @Environment(\.router) var router
     @EnvironmentObject private var homeViewModel: HomeViewModel
     
-    var character: Character = Character.mock
+    var character: Character = .mock
     
     var body: some View {
         ZStack {
@@ -33,7 +33,10 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView()
+    RouterView { _ in
+        DetailView()
+            .environmentObject(DeveloperPreview.instance.homeViewModel)
+    }
 }
 
 extension DetailView {
@@ -47,11 +50,12 @@ extension DetailView {
     
     private var headerButtons: some View {
         DetailHeaderButtons(
+            isFavorite: homeViewModel.isFavorited(character: character),
             onBackButtonPressed: {
                 router.dismissScreen()
             },
-            onFavPressed: {
-                // update fav in viewmodel
+            onFavButtonPressed: {
+   //             homeViewModel.updateFavorites(character: character)
             }
         )
         .padding()

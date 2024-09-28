@@ -156,15 +156,19 @@ extension HomeView {
                     gender: character.genderToDisplay,
                     isFavorite: viewModel.isFavorited(character: character),
                     onCardPressed: {
-                        router.showScreen(.push) { _ in
-                            DetailView()
-                        }
+                        goToDetailView(character: character)
                     },
                     onFavButtonPressed: {
                         viewModel.updateFavorites(character: character)
                     }
                 )
             }
+        }
+    }
+    
+    private func goToDetailView(character: Character) {
+        router.showScreen(.push) { _ in
+            DetailView(character: character)
         }
     }
 }
