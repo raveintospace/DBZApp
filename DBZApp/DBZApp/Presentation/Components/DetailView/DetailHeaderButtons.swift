@@ -18,7 +18,7 @@ struct DetailHeaderButtons: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircleButton(imageName: "arrowshape.down")
+            ImageBlueCircleButton(imageName: "arrowshape.backward")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
@@ -30,7 +30,12 @@ struct DetailHeaderButtons: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            ImageBlueCircleButton(imageName: isStarFilled ? "star.fill" : "star")
+            ImageOrangeCircleButton(
+                imageName: isStarFilled ? "star.fill" : "star",
+                frameSize: 40,
+                fontSize: 20
+            )
+                .opacity(isStarFilled ? 1 : 0.5)
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
@@ -51,8 +56,11 @@ struct DetailHeaderButtons: View {
 
 #Preview {
     ZStack {
-        Color.red
+        Image("kingkaiWallpaper")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.15)
+
         DetailHeaderButtons()
     }
-    
 }

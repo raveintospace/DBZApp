@@ -19,12 +19,14 @@ struct DetailView: View {
         ZStack {
             detailWallpaper
             
-            VStack(spacing: 0) {
-                headerButtons
-                ScrollView(.vertical) {
+            ScrollView(.vertical) {
+                LazyVStack(spacing: 0) {
                     DetailHeaderImageCell(height: 250, imageName: character.image)
                 }
             }
+            
+            headerButtons
+                .frame(maxHeight: .infinity, alignment: .top)
         }
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -45,7 +47,12 @@ extension DetailView {
     
     private var headerButtons: some View {
         DetailHeaderButtons(
-            onBackButtonPressed: router.dismissScreen
+            onBackButtonPressed: {
+                router.dismissScreen()
+            },
+            onFavPressed: {
+                // update fav in viewmodel
+            }
         )
         .padding()
     }
