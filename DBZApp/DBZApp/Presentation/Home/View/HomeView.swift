@@ -156,7 +156,9 @@ extension HomeView {
                     gender: character.genderToDisplay,
                     isFavorite: viewModel.isFavorited(character: character),
                     onCardPressed: {
-                        // go to detail view
+                        router.showScreen(.fullScreenCover) { _ in
+                            DetailView()
+                        }
                     },
                     onFavButtonPressed: {
                         viewModel.updateFavorites(character: character)
