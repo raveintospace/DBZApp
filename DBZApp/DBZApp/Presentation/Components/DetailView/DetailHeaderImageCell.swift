@@ -1,0 +1,33 @@
+//
+//  DetailHeaderCell.swift
+//  DBZApp
+//
+//  Created by Uri on 28/9/24.
+//
+
+import SwiftUI
+import SwiftfulUI
+
+struct DetailHeaderImageCell: View {
+    
+    var height: CGFloat = 300
+    var title: String = Character.mock.name
+    var imageName: String = Character.mockTwo.image
+    
+    var body: some View {
+        Rectangle()
+            .opacity(0)
+            .overlay(
+                ImageLoaderView(url: imageName)
+                    .padding(.top, 60)
+            )
+            .asStretchyHeader(startingHeight: height)
+    }
+}
+
+#Preview {
+    ScrollView {
+        DetailHeaderImageCell()
+    }
+    .ignoresSafeArea()
+}
