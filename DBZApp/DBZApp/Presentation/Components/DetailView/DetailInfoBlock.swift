@@ -17,7 +17,7 @@ struct DetailInfoBlock: View {
     var race: String = Character.mock.race
     var description: String = Character.mock.description
     
-    
+    @State private var showFullDescription: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -31,7 +31,12 @@ struct DetailInfoBlock: View {
                     .font(.title)
                     .frame(width: 20)
             }
+            //.padding(.bottom, 8)
 
+            Divider()
+                .overlay(.dbzYellow)
+                .padding(.horizontal, -25)
+            
             Text("Ki points: ")
                 .fontWeight(.semibold) +
             Text(kiPoints)
@@ -47,11 +52,23 @@ struct DetailInfoBlock: View {
             Text("Race: ")
                 .fontWeight(.semibold) +
             Text(race)
+            
+            Divider()
+                .overlay(.dbzYellow)
+                .padding(.horizontal, -25)
            
-            Text("Description: ")
-                .fontWeight(.semibold) +
-            Text(description)
+            Text("Description")
+                .font(.title2)
+                .bold()
+                .padding(.top, 8)
+             //   .background(.blue)
+            descriptionSection
+            
+            Divider()
+                .overlay(.dbzYellow)
+                .padding(.horizontal, -25)
         }
+        .foregroundStyle(.accent)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
@@ -59,4 +76,26 @@ struct DetailInfoBlock: View {
 #Preview {
     DetailInfoBlock()
         .padding()
+}
+
+extension DetailInfoBlock {
+    
+    private var descriptionSection: some View {
+        VStack(alignment: .leading) {
+            Text(description)
+                .lineLimit(showFullDescription ? nil : 5)
+            
+            Button(action: {
+          //      withAnimation(.smooth) {
+                    showFullDescription.toggle()
+             //   }
+            }, label: {
+                Text(showFullDescription ? "Show less" : "Read more...")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .padding(.vertical, 4)
+            })
+            .tint(.dbzBlue)
+        }
+    }
 }
