@@ -12,7 +12,7 @@ struct DetailInfoCell: View {
     var name: String = Character.mock.name
     var gender: String = Character.mock.genderToDisplay
     var kiPoints: String = Character.mock.kiToDisplay
-    var maxKi: String = Character.mock.maxKi
+    var maxKi: String = Character.mock.maxKiToDisplay
     var affiliation: String = Character.mock.affiliation
     var race: String = Character.mock.race
     var description: String = Character.mock.description
@@ -23,6 +23,7 @@ struct DetailInfoCell: View {
                 Text(name)
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .lineLimit(3)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(gender)
                     .font(.title)

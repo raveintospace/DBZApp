@@ -91,6 +91,20 @@ struct Character: Codable, Identifiable {
         return ki.replacingOccurrences(of: ",", with: "")
     }
     
+    var maxKiToDisplay: String {
+        let normalizedMaxKi = maxKi.replacingOccurrences(of: ",", with: ".")
+        
+        let components = maxKi.split(separator: " ")
+        
+        if components.count == 2 {
+            let value = components[0]
+            let unit = components[1].capitalized
+            return "\(value) \(unit)"
+        }
+        
+        return normalizedMaxKi.capitalized   // capitalize Unknown
+    }
+    
     
 }
 
