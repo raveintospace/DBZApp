@@ -20,23 +20,42 @@ struct DetailInfoBlock: View {
     @State private var showFullDescription: Bool = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 0) {
-                Text(name)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .lineLimit(3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text(gender)
-                    .font(.title)
-                    .frame(width: 20)
-            }
-            //.padding(.bottom, 8)
+        VStack(alignment: .leading, spacing: 12) {
+            nameGenderSection
+            yellowDivider
+            propertiesSection
+            yellowDivider
+            descriptionTitle
+            descriptionSection
+            yellowDivider
+        }
+        .foregroundStyle(.accent)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
 
-            Divider()
-                .overlay(.dbzYellow)
-                .padding(.horizontal, -25)
-            
+#Preview {
+    DetailInfoBlock()
+        .padding()
+}
+
+extension DetailInfoBlock {
+    
+    private var nameGenderSection: some View {
+        HStack(alignment: .bottom, spacing: 0) {
+            Text(name.uppercased())
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .lineLimit(3)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(gender)
+                .font(.title)
+                .frame(width: 20)
+        }
+    }
+    
+    private var propertiesSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Ki points: ")
                 .fontWeight(.semibold) +
             Text(kiPoints)
@@ -52,33 +71,14 @@ struct DetailInfoBlock: View {
             Text("Race: ")
                 .fontWeight(.semibold) +
             Text(race)
-            
-            Divider()
-                .overlay(.dbzYellow)
-                .padding(.horizontal, -25)
-           
-            Text("Description")
-                .font(.title2)
-                .bold()
-                .padding(.top, 8)
-             //   .background(.blue)
-            descriptionSection
-            
-            Divider()
-                .overlay(.dbzYellow)
-                .padding(.horizontal, -25)
         }
-        .foregroundStyle(.accent)
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
-}
-
-#Preview {
-    DetailInfoBlock()
-        .padding()
-}
-
-extension DetailInfoBlock {
+    
+    private var descriptionTitle: some View {
+        Text("Description")
+            .font(.title2)
+            .bold()
+    }
     
     private var descriptionSection: some View {
         VStack(alignment: .leading) {
@@ -86,16 +86,20 @@ extension DetailInfoBlock {
                 .lineLimit(showFullDescription ? nil : 5)
             
             Button(action: {
-          //      withAnimation(.smooth) {
-                    showFullDescription.toggle()
-             //   }
+                showFullDescription.toggle()
             }, label: {
                 Text(showFullDescription ? "Show less" : "Read more...")
                     .font(.caption)
                     .fontWeight(.bold)
+                    .foregroundStyle(.dbzBlue)
                     .padding(.vertical, 4)
             })
-            .tint(.dbzBlue)
         }
+    }
+    
+    private var yellowDivider: some View {
+        Divider()
+            .overlay(.dbzYellow)
+            .padding(.horizontal, -25)
     }
 }
