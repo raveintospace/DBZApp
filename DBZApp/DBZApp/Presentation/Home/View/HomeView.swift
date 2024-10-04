@@ -50,7 +50,6 @@ struct HomeView: View {
                         }
                     }
                     .scrollIndicators(.hidden)
-                    .clipped()
                     .onChange(of: viewModel.showFavorites) { _, _ in
                         proxy.scrollTo(0, anchor: .top)
                     }

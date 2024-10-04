@@ -25,6 +25,7 @@ struct DetailView: View {
                     detailCharacterInfo
                 }
             }
+            .scrollIndicators(.hidden)
             
             headerButtons
                 .frame(maxHeight: .infinity, alignment: .top)

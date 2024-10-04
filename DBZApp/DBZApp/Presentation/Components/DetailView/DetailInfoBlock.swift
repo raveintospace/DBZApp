@@ -18,6 +18,7 @@ struct DetailInfoBlock: View {
     var description: String = Character.mock.description
     
     @State private var showFullDescription: Bool = false
+    @State private var isTextOverflow: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -27,6 +28,11 @@ struct DetailInfoBlock: View {
             yellowDivider
             descriptionTitle
             descriptionSection
+            
+            if isTextOverflow {
+                readMoreButton
+            }
+            
             yellowDivider
         }
         .foregroundStyle(.accent)
@@ -42,7 +48,7 @@ struct DetailInfoBlock: View {
 extension DetailInfoBlock {
     
     private var nameGenderSection: some View {
-        HStack(alignment: .bottom, spacing: 0) {
+        HStack(spacing: 0) {
             Text(name.uppercased())
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -50,7 +56,7 @@ extension DetailInfoBlock {
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text(gender)
                 .font(.title)
-                .frame(width: 20)
+                .frame(width: 30)
         }
     }
     
@@ -81,21 +87,31 @@ extension DetailInfoBlock {
     }
     
     private var descriptionSection: some View {
-        VStack(alignment: .leading) {
-            Text(description)
-                .lineLimit(showFullDescription ? nil : 5)
-            
+        Text(description)
+            .lineLimit(showFullDescription ? nil : 5)
+            .background(
+                GeometryReader { geometry in
+                    Color.clear
+                        .onAppear {
+                            let textSize = geometry.size
+                            let maxHeight: CGFloat = 100
+                            isTextOverflow = textSize.height > maxHeight
+                        }
+                }
+            )
+    }
+    
+    private var readMoreButton: some View {
             Button(action: {
                 showFullDescription.toggle()
-            }, label: {
+            }) {
                 Text(showFullDescription ? "Show less" : "Read more...")
                     .font(.caption)
                     .fontWeight(.bold)
                     .foregroundStyle(.dbzBlue)
                     .padding(.vertical, 4)
-            })
+            }
         }
-    }
     
     private var yellowDivider: some View {
         Divider()
@@ -103,3 +119,8 @@ extension DetailInfoBlock {
             .padding(.horizontal, -25)
     }
 }
+
+/*
+ GeometryReader reads textSize with the linelimit applied
+ If we didn't set a linelimit, GeometryReader would always read the whole text and wouldn't detect the overflow
+ */
