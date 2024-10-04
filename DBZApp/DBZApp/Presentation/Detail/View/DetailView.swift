@@ -22,6 +22,7 @@ struct DetailView: View {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 0) {
                     DetailHeaderImageCell(height: 250, imageName: character.image)
+                    detailCharacterInfo
                 }
             }
             
@@ -57,6 +58,19 @@ extension DetailView {
             onFavButtonPressed: {
    //             homeViewModel.updateFavorites(character: character)
             }
+        )
+        .padding()
+    }
+    
+    private var detailCharacterInfo: some View {
+        DetailInfoBlock(
+            name: character.name,
+            gender: character.genderToDisplay,
+            kiPoints: character.kiToDisplay,
+            maxKi: character.maxKiToDisplay,
+            affiliation: character.affiliation,
+            race: character.race,
+            description: character.description
         )
         .padding()
     }
