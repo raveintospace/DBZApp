@@ -73,18 +73,21 @@ struct Character: Codable, Identifiable {
         }
     }
     
-    var kiToDisplay: String {
-        let normalizedKi = ki.replacingOccurrences(of: ",", with: ".")
-        
-        let components = ki.split(separator: " ")
+    private func formatKiValue(_ value: String) -> String {
+        let normalizedValue = value.replacingOccurrences(of: ",", with: ".")
+        let components = normalizedValue.split(separator: " ")
         
         if components.count == 2 {
-            let value = components[0]
+            let number = components[0]
             let unit = components[1].capitalized
-            return "\(value) \(unit)"
+            return "\(number) \(unit)"
         }
         
-        return normalizedKi.capitalized   // capitalize Unknown
+        return normalizedValue.capitalized
+    }
+    
+    var kiToDisplay: String {
+        return formatKiValue(ki)
     }
     
     var kiToCompare: String {
@@ -92,20 +95,8 @@ struct Character: Codable, Identifiable {
     }
     
     var maxKiToDisplay: String {
-        let normalizedMaxKi = maxKi.replacingOccurrences(of: ",", with: ".")
-        
-        let components = maxKi.split(separator: " ")
-        
-        if components.count == 2 {
-            let value = components[0]
-            let unit = components[1].capitalized
-            return "\(value) \(unit)"
-        }
-        
-        return normalizedMaxKi.capitalized   // capitalize Unknown
+        return formatKiValue(maxKi)
     }
-    
-    
 }
 
 // MARK: - Links
