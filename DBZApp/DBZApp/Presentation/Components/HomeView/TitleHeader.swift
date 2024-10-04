@@ -19,7 +19,7 @@ struct TitleHeader: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircleButton(imageName: "house")
+            ImageBlueCircleButton(imageName: "house.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true

@@ -18,7 +18,7 @@ struct DetailHeaderButtons: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircleButton(imageName: "arrowshape.backward")
+            ImageBlueCircleButton(imageName: "arrowshape.backward.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
