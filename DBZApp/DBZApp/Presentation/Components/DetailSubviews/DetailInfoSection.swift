@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailInfoBlock: View {
+struct DetailInfoSection: View {
     
     var name: String = Character.mock.name
     var gender: String = Character.mock.genderToDisplay
@@ -32,11 +32,11 @@ struct DetailInfoBlock: View {
 }
 
 #Preview {
-    DetailInfoBlock()
+    DetailInfoSection()
         .padding()
 }
 
-extension DetailInfoBlock {
+extension DetailInfoSection {
     
     private var nameGenderSection: some View {
         HStack(spacing: 0) {

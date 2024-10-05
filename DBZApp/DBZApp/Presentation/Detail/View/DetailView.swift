@@ -78,7 +78,7 @@ extension DetailView {
     }
     
     private var detailCharacterInfo: some View {
-        DetailInfoBlock(
+        DetailInfoSection(
             name: character.name,
             gender: character.genderToDisplay,
             kiPoints: character.kiToDisplay,
