@@ -64,19 +64,20 @@ extension DatabaseCardView {
         ZStack(alignment: .bottom) {
             ImageLoaderView(url: imageName)
                 .padding(.top, 8)
-            ImageOrangeCircleButton(
+            ImageOrangeCircle(
                 imageName: isFavorite ? "star.fill" : "star",
                 frameSize: 26,
                 fontSize: 13
             )
             .opacity(isFavorite ? 1 : 0.5)
-                .padding(.trailing, 16)
-                .padding(.bottom, 8)
-                .background(.dbzBlue.opacity(0.001))
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .asButton(.press) {
-                    onFavButtonPressed?()
-                }
+            .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
+            .padding(.trailing, 16)
+            .padding(.bottom, 8)
+            .background(.dbzBlue.opacity(0.001))
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .asButton(.press) {
+                onFavButtonPressed?()
+            }
         }
     }
     

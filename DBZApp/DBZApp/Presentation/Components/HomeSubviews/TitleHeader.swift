@@ -19,7 +19,7 @@ struct TitleHeader: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircleButton(imageName: "house.fill")
+            ImageBlueCircle(imageName: "house.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
@@ -36,8 +36,9 @@ struct TitleHeader: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity, alignment: .center)
             
-            ImageBlueCircleButton(imageName: isStarFilled ? "star.fill" : "star")
+            ImageBlueCircle(imageName: isStarFilled ? "star.fill" : "star")
                 .sensoryFeedback(.impact, trigger: trigger)
+                .rotationEffect(Angle(degrees: isStarFilled ? -72 : 0))
                 .asButton(.press) {
                     trigger = true
                     withAnimation {

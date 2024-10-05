@@ -30,7 +30,7 @@ struct FiltersSheet: View {
                 .opacity(0.12)
             
             HStack {
-                ImageOrangeCircleButton(imageName: "xmark")
+                ImageOrangeCircle(imageName: "xmark")
                     .asButton(.press) {
                         router.dismissScreen()
                     }

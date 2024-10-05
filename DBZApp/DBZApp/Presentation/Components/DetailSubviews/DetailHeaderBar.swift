@@ -20,7 +20,7 @@ struct DetailHeaderBar: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircleButton(imageName: "arrowshape.backward.fill")
+            ImageBlueCircle(imageName: "arrowshape.backward.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true
@@ -39,12 +39,13 @@ struct DetailHeaderBar: View {
                 .frame(maxWidth: .infinity)
                 .opacity(showHeaderTitle ? 1 : 0)
             
-            ImageOrangeCircleButton(
+            ImageOrangeCircle(
                 imageName: isFavorite ? "star.fill" : "star",
                 frameSize: 40,
                 fontSize: 20
             )
                 .opacity(isFavorite ? 1 : 0.5)
+                .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
                 .sensoryFeedback(.impact, trigger: trigger)
                 .asButton(.press) {
                     trigger = true

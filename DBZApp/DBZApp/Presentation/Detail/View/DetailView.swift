@@ -67,6 +67,7 @@ extension DetailView {
                 router.dismissScreen()
             },
             onFavButtonPressed: {
+                // with animation
    //             homeViewModel.updateFavorites(character: character)
             }
         )
