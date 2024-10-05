@@ -17,22 +17,13 @@ struct DetailInfoBlock: View {
     var race: String = Character.mock.race
     var description: String = Character.mock.description
     
-    @State private var showFullDescription: Bool = false
-    @State private var isTextOverflow: Bool = false
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             nameGenderSection
             yellowDivider
             propertiesSection
             yellowDivider
-            descriptionTitle
             descriptionSection
-            
-            if isTextOverflow {
-                readMoreButton
-            }
-            
             yellowDivider
         }
         .foregroundStyle(.accent)
@@ -80,36 +71,17 @@ extension DetailInfoBlock {
         }
     }
     
-    private var descriptionTitle: some View {
-        Text("Description")
-            .font(.title2)
-            .bold()
-    }
-    
     private var descriptionSection: some View {
-        Text(description)
-            .lineLimit(showFullDescription ? nil : 5)
-            .background(
-                GeometryReader { geometry in
-                    Color.clear
-                        .onAppear {
-                            let textSize = geometry.size
-                            let maxHeight: CGFloat = 100
-                            isTextOverflow = textSize.height > maxHeight
-                        }
-                }
-            )
-    }
-    
-    private var readMoreButton: some View {
-        Button(action: {
-            showFullDescription.toggle()
-        }) {
-            Text(showFullDescription ? "Show less" : "Read more...")
-                .font(.caption)
-                .fontWeight(.bold)
-                .foregroundStyle(.dbzBlue)
-                .padding(.vertical, 4)
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Description")
+                .font(.title2)
+                .bold()
+            
+            ExpandableText(text: description)
+                .lineLimit(5)
+                .expandButton(TextSet(text: "Read more", font: .caption, fontWeight: .bold, color: .dbzBlue))
+                .collapseButton(TextSet(text: "Show less", font: .caption, fontWeight: .bold, color: .dbzBlue))
+                .expandAnimation(.easeInOut)
         }
     }
     
@@ -119,8 +91,3 @@ extension DetailInfoBlock {
             .padding(.horizontal, -25)
     }
 }
-
-/*
- GeometryReader reads textSize with the linelimit applied
- If we didn't set a linelimit, GeometryReader would always read the whole text and wouldn't detect the overflow
- */
