@@ -24,7 +24,7 @@ struct DetailView: View {
             
             ScrollView(.vertical) {
                 LazyVStack(spacing: 0) {
-                    DetailHeaderImageCell(height: 250, imageName: character.image)
+                    DetailImageTopCell(height: 250, imageName: character.image)
                         .readingFrame { frame in
                             showHeader = frame.maxY < 100
                         }
@@ -34,7 +34,7 @@ struct DetailView: View {
             }
             .scrollIndicators(.hidden)
             
-            headerButtons
+            header
                 .frame(maxHeight: .infinity, alignment: .top)
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -57,8 +57,8 @@ extension DetailView {
             .opacity(0.15)
     }
     
-    private var headerButtons: some View {
-        DetailHeaderButtons(
+    private var header: some View {
+        DetailHeaderBar(
             headerTitle: character.name,
             showHeaderTitle: showHeader,
             

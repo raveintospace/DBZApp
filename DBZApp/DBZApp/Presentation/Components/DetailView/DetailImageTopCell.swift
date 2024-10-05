@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct DetailHeaderImageCell: View {
+struct DetailImageTopCell: View {
     
     var height: CGFloat = 300
     var imageName: String = Character.mockTwo.image
@@ -26,7 +26,7 @@ struct DetailHeaderImageCell: View {
 
 #Preview {
     ScrollView {
-        DetailHeaderImageCell()
+        DetailImageTopCell()
     }
     .ignoresSafeArea()
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailHeaderButtons: View {
+struct DetailHeaderBar: View {
     
     var headerTitle: String = ""
     var showHeaderTitle: Bool = false
@@ -67,6 +67,6 @@ struct DetailHeaderButtons: View {
             .ignoresSafeArea()
             .opacity(0.15)
 
-        DetailHeaderButtons(headerTitle: "fdsafadsafdsafdaffadfa", showHeaderTitle: true)
+        DetailHeaderBar(headerTitle: "fdsafadsafdsafdaffadfa", showHeaderTitle: true)
     }
 }
