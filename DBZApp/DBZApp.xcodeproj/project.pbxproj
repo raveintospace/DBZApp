@@ -323,8 +323,8 @@
 			children = (
 				34C5E2CF2C98920800A1AC41 /* ImageBlueCircleButton.swift */,
 				3428790C2C99E5A5002AF7A5 /* ImageOrangeCircleButton.swift */,
-				34EBEE362CA80CB3006FBCC6 /* HomeSubViews */,
-				34EBEE372CA80CBC006FBCC6 /* DetailSubViews */,
+				34EBEE362CA80CB3006FBCC6 /* HomeSubviews */,
+				34EBEE372CA80CBC006FBCC6 /* DetailSubviews */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -419,7 +419,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		34EBEE362CA80CB3006FBCC6 /* HomeSubViews */ = {
+		34EBEE362CA80CB3006FBCC6 /* HomeSubviews */ = {
 			isa = PBXGroup;
 			children = (
 				34ECF97D2C9F076F00ADFDF8 /* DatabaseCardView.swift */,
@@ -431,17 +431,17 @@
 				34BF19AD2C95E04A00A6B55A /* SortMenu.swift */,
 				34C5E2D12C98945600A1AC41 /* TitleHeader.swift */,
 			);
-			path = HomeSubViews;
+			path = HomeSubviews;
 			sourceTree = "<group>";
 		};
-		34EBEE372CA80CBC006FBCC6 /* DetailSubViews */ = {
+		34EBEE372CA80CBC006FBCC6 /* DetailSubviews */ = {
 			isa = PBXGroup;
 			children = (
 				34EBEE382CA8150B006FBCC6 /* DetailHeaderBar.swift */,
 				34EBEE342CA80C5B006FBCC6 /* DetailImageTopCell.swift */,
 				34A704F22CB030DD00CCE7B5 /* DetailInfoBlock.swift */,
 			);
-			path = DetailSubViews;
+			path = DetailSubviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
