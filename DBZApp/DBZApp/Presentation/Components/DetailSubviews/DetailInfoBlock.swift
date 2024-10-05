@@ -102,16 +102,16 @@ extension DetailInfoBlock {
     }
     
     private var readMoreButton: some View {
-            Button(action: {
-                showFullDescription.toggle()
-            }) {
-                Text(showFullDescription ? "Show less" : "Read more...")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.dbzBlue)
-                    .padding(.vertical, 4)
-            }
+        Button(action: {
+            showFullDescription.toggle()
+        }) {
+            Text(showFullDescription ? "Show less" : "Read more...")
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundStyle(.dbzBlue)
+                .padding(.vertical, 4)
         }
+    }
     
     private var yellowDivider: some View {
         Divider()
