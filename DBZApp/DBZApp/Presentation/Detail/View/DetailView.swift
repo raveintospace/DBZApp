@@ -15,6 +15,9 @@ struct DetailView: View {
     
     var character: Character = .mock
     
+    @State private var showHeader: Bool = true
+    @State private var offset: CGFloat = 0
+    
     var body: some View {
         ZStack {
             detailWallpaper
@@ -22,6 +25,10 @@ struct DetailView: View {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 0) {
                     DetailHeaderImageCell(height: 250, imageName: character.image)
+                        .readingFrame { frame in
+                            showHeader = frame.maxY < 100
+                        }
+                    
                     detailCharacterInfo
                 }
             }
@@ -52,6 +59,9 @@ extension DetailView {
     
     private var headerButtons: some View {
         DetailHeaderButtons(
+            headerTitle: character.name,
+            showHeaderTitle: showHeader,
+            
      //       isFavorite: homeViewModel.isFavorited(character: character),
             onBackButtonPressed: {
                 router.dismissScreen()
@@ -61,6 +71,10 @@ extension DetailView {
             }
         )
         .padding()
+        .padding(.top, -10)
+        .background(showHeader ? Color.own.opacity(0.95) : Color.background.opacity(0.001))
+        .foregroundStyle(.accent)
+        .animation(.smooth(duration: 0.2), value: showHeader)
     }
     
     private var detailCharacterInfo: some View {

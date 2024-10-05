@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetailHeaderButtons: View {
     
+    var headerTitle: String = ""
+    var showHeaderTitle: Bool = false
     var isFavorite: Bool = false
     var onBackButtonPressed: (() -> Void)? = nil
     var onFavButtonPressed: (() -> Void)? = nil
@@ -28,7 +30,14 @@ struct DetailHeaderButtons: View {
                         trigger = false
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(width: 50, alignment: .leading)
+            
+            Text(headerTitle.uppercased())
+                .lineLimit(1)
+                .font(.largeTitle)
+                .bold()
+                .frame(maxWidth: .infinity)
+                .opacity(showHeaderTitle ? 1 : 0)
             
             ImageOrangeCircleButton(
                 imageName: isFavorite ? "star.fill" : "star",
@@ -46,7 +55,7 @@ struct DetailHeaderButtons: View {
                         trigger = false
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .trailing)
+                .frame(width: 50, alignment: .trailing)
         }
     }
 }
@@ -58,6 +67,6 @@ struct DetailHeaderButtons: View {
             .ignoresSafeArea()
             .opacity(0.15)
 
-        DetailHeaderButtons()
+        DetailHeaderButtons(headerTitle: "fdsafadsafdsafdaffadfa", showHeaderTitle: true)
     }
 }
