@@ -62,13 +62,13 @@ extension DetailView {
             headerTitle: character.name,
             showHeaderTitle: showHeader,
             
-     //       isFavorite: homeViewModel.isFavorited(character: character),
+            isFavorite: homeViewModel.isFavorited(character: character),
             onBackButtonPressed: {
                 router.dismissScreen()
             },
             onFavButtonPressed: {
                 // with animation
-   //             homeViewModel.updateFavorites(character: character)
+                homeViewModel.updateFavorites(character: character)
             }
         )
         .padding()

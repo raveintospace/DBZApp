@@ -13,13 +13,9 @@ struct HomeView: View {
     
     @Environment(\.router) var router
     
-    @StateObject private var viewModel: HomeViewModel
+    @EnvironmentObject var viewModel: HomeViewModel
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    
-    init(viewModel: HomeViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
     
     var body: some View {
         ZStack {
@@ -65,8 +61,9 @@ struct HomeView: View {
 
 #Preview {
     RouterView { _ in
-        HomeView(viewModel: DeveloperPreview.instance.homeViewModel)
+        HomeView()
     }
+    .environmentObject(DeveloperPreview.instance.homeViewModel)
 }
 
 extension HomeView {
