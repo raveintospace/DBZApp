@@ -1,7 +1,7 @@
 //
 //  DetailedCharacter.swift
 //  DBZApp
-//
+//  https://dragonball-api.com/api/characters/1
 //  Created by Uri on 6/10/24.
 //
 
