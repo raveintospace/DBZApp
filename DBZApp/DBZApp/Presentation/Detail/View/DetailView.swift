@@ -68,7 +68,7 @@ struct DetailView: View {
             }
             .scrollIndicators(.hidden)
             .task {
-                debugPrint(viewModel.character.id)
+                debugPrint("character id: \(viewModel.character.id)")
                 await viewModel.fetchCharacterDetails(id: viewModel.character.id)
                 if let detailedCharacter = viewModel.detailedCharacter {
                     debugPrint(detailedCharacter.originPlanet.name)

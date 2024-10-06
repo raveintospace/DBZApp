@@ -41,7 +41,7 @@ struct Character: Codable, Identifiable {
     
     static var mockTwo: Character {
         Character(
-            id: 333,
+            id: 5,
             name: "Freezer",
             ki: "530.000",
             maxKi: "52.71 Septillion",
