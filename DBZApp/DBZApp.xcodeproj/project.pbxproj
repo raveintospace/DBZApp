@@ -11,6 +11,10 @@
 		3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3428790A2C99E256002AF7A5 /* SwiftfulUI */; };
 		3428790D2C99E5A5002AF7A5 /* ImageOrangeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */; };
 		342D19822CB29C34006603DE /* DetailedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19812CB29C34006603DE /* DetailedCharacter.swift */; };
+		342D19842CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19832CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift */; };
+		342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */; };
+		342D19892CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */; };
+		342D198B2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */; };
 		343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */; };
 		343DC2F12C89AA4500BCCF39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F02C89AA4500BCCF39 /* Assets.xcassets */; };
 		343DC2F42C89AA4500BCCF39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F32C89AA4500BCCF39 /* Preview Assets.xcassets */; };
@@ -73,6 +77,10 @@
 		342373E82C93493800046832 /* FiltersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersSheet.swift; sourceTree = "<group>"; };
 		3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrangeCircle.swift; sourceTree = "<group>"; };
 		342D19812CB29C34006603DE /* DetailedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCharacter.swift; sourceTree = "<group>"; };
+		342D19832CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterDataSourceProtocol.swift; sourceTree = "<group>"; };
+		342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDetailCharacterDataSource.swift; sourceTree = "<group>"; };
+		342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterRepositoryProtocol.swift; sourceTree = "<group>"; };
+		342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterRepositoryImpl.swift; sourceTree = "<group>"; };
 		343DC2E92C89AA4400BCCF39 /* DBZApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBZApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBZApp.swift; sourceTree = "<group>"; };
 		343DC2F02C89AA4500BCCF39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +152,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		342D19872CB2A2CE006603DE /* DetailCharacter */ = {
+			isa = PBXGroup;
+			children = (
+				342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */,
+				342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */,
+			);
+			path = DetailCharacter;
+			sourceTree = "<group>";
+		};
 		343DC2E02C89AA4400BCCF39 = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				343F83822C8F41100053CBA4 /* Character */,
+				342D19872CB2A2CE006603DE /* DetailCharacter */,
 				348C767A2CA05E8800235D7F /* Favorite */,
 				34C9FB332C919F2700FA0139 /* Filter */,
 			);
@@ -250,9 +268,11 @@
 			isa = PBXGroup;
 			children = (
 				343DC3092C89BE7800BCCF39 /* CharacterDataSourceProtocol.swift */,
+				342D19832CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift */,
 				348C76782CA0525100235D7F /* FavoritesDataSource.swift */,
 				343DC30B2C89BFC100BCCF39 /* LocalCharacterDataSource.swift */,
 				343DC30D2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift */,
+				342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -543,7 +563,9 @@
 				3452BEDA2C90BA3F00E32517 /* FiltersBarView.swift in Sources */,
 				343DC30A2C89BE7900BCCF39 /* CharacterDataSourceProtocol.swift in Sources */,
 				343DC3282C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift in Sources */,
+				342D198B2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift in Sources */,
 				34EBEE392CA8150B006FBCC6 /* DetailHeaderBar.swift in Sources */,
+				342D19892CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift in Sources */,
 				34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */,
 				343DC31F2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift in Sources */,
 				343DC31D2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift in Sources */,
@@ -569,11 +591,13 @@
 				343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */,
 				343F837F2C8EFC9A0053CBA4 /* Filter.swift in Sources */,
 				34C4BDDA2CB1979700C5060C /* InteractiveCard.swift in Sources */,
+				342D19842CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift in Sources */,
 				34EBEE332CA809DB006FBCC6 /* DetailView.swift in Sources */,
 				34EBEE352CA80C5B006FBCC6 /* DetailImageTopCell.swift in Sources */,
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift in Sources */,
 				34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */,
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
+				342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */,
 				34ECF97E2C9F076F00ADFDF8 /* DatabaseCardView.swift in Sources */,
 				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,

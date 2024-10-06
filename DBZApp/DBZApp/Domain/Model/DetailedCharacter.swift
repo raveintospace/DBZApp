@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailedCharacter {
+struct DetailedCharacter: Codable {
     let originPlanet: OriginPlanet
     let transformations: [Transformation]
     
@@ -39,7 +39,7 @@ struct DetailedCharacter {
 }
 
 // MARK: - Origin Planet
-struct OriginPlanet {
+struct OriginPlanet: Codable, Identifiable {
     let id: Int
     let name: String
     let isDestroyed: Bool
@@ -48,7 +48,7 @@ struct OriginPlanet {
 }
 
 // MARK: - Transformation
-struct Transformation {
+struct Transformation: Codable, Identifiable {
     let id: Int
     let name: String
     let image: String
