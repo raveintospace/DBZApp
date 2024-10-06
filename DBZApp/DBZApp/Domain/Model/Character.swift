@@ -9,13 +9,9 @@ import Foundation
 
 struct CharacterArray: Codable {
     let characters: [Character]
-    let meta: Meta
-    let links: Links
     
     enum CodingKeys: String, CodingKey {
         case characters = "items"
-        case meta
-        case links
     }
 }
 
@@ -97,17 +93,4 @@ struct Character: Codable, Identifiable {
     var maxKiToDisplay: String {
         return formatKiValue(maxKi)
     }
-}
-
-// MARK: - Links
-struct Links: Codable {
-    let first: String
-    let previous, next: String?
-    let last: String
-}
-
-// MARK: - Meta
-struct Meta: Codable {
-    let totalItems, itemCount, itemsPerPage, totalPages: Int
-    let currentPage: Int
 }
