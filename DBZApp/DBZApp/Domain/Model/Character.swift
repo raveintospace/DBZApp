@@ -27,7 +27,7 @@ struct Character: Codable, Identifiable {
     // MARK: - Mocks
     static var mock: Character {
         Character(
-            id: 444,
+            id: 1,
             name: "Goku",
             ki: "60.000.000",
             maxKi: "90 Septillion",

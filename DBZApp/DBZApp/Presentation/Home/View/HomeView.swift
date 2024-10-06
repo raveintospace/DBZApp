@@ -15,6 +15,8 @@ struct HomeView: View {
     
     @EnvironmentObject var viewModel: HomeViewModel
     
+    @State private var selectedCharacter: Character? = nil
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
@@ -166,8 +168,9 @@ extension HomeView {
     }
     
     private func goToDetailView(character: Character) {
+        selectedCharacter = character
         router.showScreen(.push) { _ in
-            DetailView(character: character)
+            DetailLoadingView(character: $selectedCharacter)
         }
     }
 }

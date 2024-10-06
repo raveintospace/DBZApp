@@ -9,13 +9,16 @@ import Foundation
 
 @MainActor
 final class DetailViewModel: ObservableObject {
+    
+    @Published var character: Character
     @Published var detailedCharacter: DetailedCharacter?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
     private let fetchDetailCharacterUseCase: FetchDetailCharacterUseCaseProtocol
     
-    init(fetchDetailCharacterUseCase: FetchDetailCharacterUseCaseProtocol) {
+    init(character: Character, fetchDetailCharacterUseCase: FetchDetailCharacterUseCaseProtocol) {
+        self.character = character
         self.fetchDetailCharacterUseCase = fetchDetailCharacterUseCase
     }
     
@@ -24,8 +27,8 @@ final class DetailViewModel: ObservableObject {
         errorMessage = nil
         
         do {
-            let character = try await fetchDetailCharacterUseCase.execute(id: id)
-            detailedCharacter = character
+            let detailedCharacterFromApi = try await fetchDetailCharacterUseCase.execute(id: id)
+            detailedCharacter = detailedCharacterFromApi
         } catch {
             errorMessage = "Failed to load character details."
             debugPrint("Error loading character details: \(error)")
