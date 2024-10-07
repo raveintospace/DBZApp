@@ -51,6 +51,11 @@ struct HomeView: View {
                     .onChange(of: viewModel.showFavorites) { _, _ in
                         proxy.scrollTo(0, anchor: .top)
                     }
+                    .onChange(of: viewModel.sortOption) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
+                    }
                 }
             }
         }
