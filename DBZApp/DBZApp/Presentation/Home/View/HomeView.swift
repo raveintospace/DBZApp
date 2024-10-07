@@ -88,7 +88,7 @@ extension HomeView {
             databaseTitleHeader
             searchBar
             filterBar
-            sortMenuBar
+            scrollAndSortBar
         }
         .padding()
     }
@@ -128,16 +128,14 @@ extension HomeView {
         .padding(.leading, -10)
     }
     
-    private var sortMenuBar: some View {
-        ScrollViewReader { proxy in
-            SortMenu(
-                viewModel: viewModel,
-                showScrollToTopButton: showScrollToTopButton,
-                onScrollToTopButtonPressed: {
-                    debugPrint("Go to top")
-                }
-            )
-        }
+    private var scrollAndSortBar: some View {
+        ScrollAndSortBarView(
+            viewModel: viewModel,
+            showScrollToTopButton: showScrollToTopButton,
+            onScrollToTopButtonPressed: {
+                debugPrint("Go to top")
+            }
+        )
     }
     
     private var noCharactersView: some View {

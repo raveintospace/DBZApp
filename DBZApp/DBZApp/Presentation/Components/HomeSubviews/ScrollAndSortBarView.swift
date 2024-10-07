@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SortMenu: View {
+struct ScrollAndSortBarView: View {
     
     //@EnvironmentObject private var viewModel: HomeViewModel
     @ObservedObject var viewModel: HomeViewModel
@@ -45,11 +45,11 @@ struct SortMenu: View {
 }
 
 #Preview {
-    SortMenu(viewModel: DeveloperPreview.instance.homeViewModel)
+    ScrollAndSortBarView(viewModel: DeveloperPreview.instance.homeViewModel)
         .padding()
 }
 
-extension SortMenu {
+extension ScrollAndSortBarView {
     private func menuTitleView(sortOption: SortOption) -> some View {
         sortOption.displayName()
     }
