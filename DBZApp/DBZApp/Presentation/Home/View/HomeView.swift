@@ -16,6 +16,7 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     
     @State private var selectedCharacter: Character? = nil
+    @State private var showScrollToTopButton: Bool = false
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -128,7 +129,15 @@ extension HomeView {
     }
     
     private var sortMenuBar: some View {
-        SortMenu(viewModel: viewModel)
+        ScrollViewReader { proxy in
+            SortMenu(
+                viewModel: viewModel,
+                showScrollToTopButton: showScrollToTopButton,
+                onScrollToTopButtonPressed: {
+                    debugPrint("Go to top")
+                }
+            )
+        }
     }
     
     private var noCharactersView: some View {

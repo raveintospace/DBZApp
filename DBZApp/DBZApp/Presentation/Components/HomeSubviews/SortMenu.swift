@@ -11,9 +11,22 @@ struct SortMenu: View {
     
     //@EnvironmentObject private var viewModel: HomeViewModel
     @ObservedObject var viewModel: HomeViewModel
+    var showScrollToTopButton: Bool = false
+    var onScrollToTopButtonPressed: (() -> Void)? = nil
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
+            Button(action: {
+                withAnimation {
+                    onScrollToTopButtonPressed?()
+                }
+            }) {
+                Image(systemName: "arrow.up.to.line")
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .transition(.opacity)
+            .animation(.easeInOut, value: showScrollToTopButton)
+            
             Menu {
                 ForEach(SortOption.allCases, id: \.self) { sortOption in
                     Button(action: {
@@ -25,9 +38,9 @@ struct SortMenu: View {
             } label: {
                 menuTitleView(sortOption: viewModel.sortOption)
             }
-            .tint(.dbzBlue)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(maxWidth: .infinity, alignment: .trailing)
+        .tint(.dbzBlue)
     }
 }
 
