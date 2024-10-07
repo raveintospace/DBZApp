@@ -45,6 +45,23 @@ struct OriginPlanet: Codable, Identifiable {
     let isDestroyed: Bool
     let description: String
     let image: String
+    
+    var translatedName: String {
+        let translations: [String: String] = [
+            "Tierra": "Earth",
+            "Freezer No. 79": "Frieza #79",
+            "Kaiō del Norte": "North Kai",
+            "Otro Mundo": "Other World",
+            "Planeta de Bills": "Beerus' Planet",
+            "Planeta del Gran Kaio": "Grand Kai's Planet",
+            "Nucleo del Mundo": "World Core",
+            "Planeta sagrado": "Sacred Planet",
+            "Nuevo Planeta Tsufrui": "New Tsufrui Planet",
+            "Templo móvil del Rey de Todo": "Zeno's Moving Temple",
+            "Universo 11": "Universe 11"
+        ]
+        return translations[name] ?? name
+    }
 }
 
 // MARK: - Transformation
