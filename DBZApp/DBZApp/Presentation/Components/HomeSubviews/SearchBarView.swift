@@ -30,6 +30,7 @@ struct SearchBarView: View {
                 .foregroundStyle(.dbzBlue)
                 .autocorrectionDisabled()
                 .submitLabel(.done)
+            
                 .onChange(of: searchText) { _, newValue in
                     if newValue.count > characterLimit {
                         searchText = String(newValue.prefix(characterLimit))
