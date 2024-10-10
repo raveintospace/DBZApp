@@ -17,6 +17,8 @@ struct HomeView: View {
     
     @State private var selectedCharacter: Character? = nil
     
+    @State private var setScrollToZero: Bool = false
+    
     var body: some View {
         ZStack {
             homeWallpaper
@@ -49,16 +51,27 @@ struct HomeView: View {
                     .onChange(of: viewModel.showFavorites) { _, _ in
                         proxy.scrollTo(0, anchor: .top)
                     }
-//                    .onChange(of: viewModel.searchText) { _, _ in
-//                        withAnimation(.smooth) {
-//                            proxy.scrollTo(0, anchor: .top)
-//                        }
-//                    }
-                    .onReceive(viewModel.scrollTriggerState) {
+                    .onChange(of: viewModel.sortOption) { _, _ in
                         withAnimation(.smooth) {
                             proxy.scrollTo(0, anchor: .top)
                         }
                     }
+                    .onChange(of: viewModel.selectedFilter) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
+                    }
+
+//                    .onChange(of: setScrollToZero) { _, _ in
+//                        withAnimation(.smooth) {
+//                            proxy.scrollTo(0, anchor: .top)
+//                        }
+//                    }
+//                    .onReceive(viewModel.scrollTriggerState) {
+//                        withAnimation(.smooth) {
+//                            proxy.scrollTo(0, anchor: .top)
+//                        }
+//                    }
                 }
             }
         }
@@ -108,7 +121,12 @@ extension HomeView {
     }
     
     private var searchBar: some View {
-        SearchBarView(searchText: $viewModel.searchText)
+        SearchBarView(
+            searchText: $viewModel.searchText,
+            onSubmit: {
+                setScrollToZero.toggle()
+            }
+        )
     }
     
     private var filterBar: some View {

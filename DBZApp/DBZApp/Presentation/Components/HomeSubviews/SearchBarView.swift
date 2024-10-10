@@ -15,8 +15,8 @@ struct SearchBarView: View {
     @Binding var searchText: String
     
     var placeholderText: String = "Search on database"
-    
     var characterLimit: Int = 28
+    var onSubmit: (() -> Void)? = nil
     
     var body: some View {
         HStack {
@@ -30,7 +30,9 @@ struct SearchBarView: View {
                 .foregroundStyle(.dbzBlue)
                 .autocorrectionDisabled()
                 .submitLabel(.done)
-            
+                .onSubmit {
+                    onSubmit?()
+                }
                 .onChange(of: searchText) { _, newValue in
                     if newValue.count > characterLimit {
                         searchText = String(newValue.prefix(characterLimit))
