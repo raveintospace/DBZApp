@@ -16,7 +16,6 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     
     @State private var selectedCharacter: Character? = nil
-    @State private var showScrollToTopButton: Bool = false
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -57,6 +56,11 @@ struct HomeView: View {
                             proxy.scrollTo(0, anchor: .top)
                         }
                     }
+                    .onChange(of: viewModel.selectedFilter) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
+                    }
                 }
             }
         }
@@ -88,7 +92,7 @@ extension HomeView {
             databaseTitleHeader
             searchBar
             filterBar
-            scrollAndSortBar
+            sortBar
         }
         .padding()
     }
@@ -128,14 +132,8 @@ extension HomeView {
         .padding(.leading, -10)
     }
     
-    private var scrollAndSortBar: some View {
-        ScrollAndSortBarView(
-            viewModel: viewModel,
-            showScrollToTopButton: showScrollToTopButton,
-            onScrollToTopButtonPressed: {
-                debugPrint("Go to top")
-            }
-        )
+    private var sortBar: some View {
+        SortMenu(viewModel: viewModel)
     }
     
     private var noCharactersView: some View {

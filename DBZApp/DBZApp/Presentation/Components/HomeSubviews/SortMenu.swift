@@ -7,26 +7,13 @@
 
 import SwiftUI
 
-struct ScrollAndSortBarView: View {
+struct SortMenu: View {
     
     //@EnvironmentObject private var viewModel: HomeViewModel
     @ObservedObject var viewModel: HomeViewModel
-    var showScrollToTopButton: Bool = false
-    var onScrollToTopButtonPressed: (() -> Void)? = nil
     
     var body: some View {
-        HStack(spacing: 0) {
-            Button(action: {
-                withAnimation {
-                    onScrollToTopButtonPressed?()
-                }
-            }) {
-                Image(systemName: "arrow.up.to.line")
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .transition(.opacity)
-            .animation(.easeInOut, value: showScrollToTopButton)
-            
+        HStack {
             Menu {
                 ForEach(SortOption.allCases, id: \.self) { sortOption in
                     Button(action: {
@@ -38,18 +25,18 @@ struct ScrollAndSortBarView: View {
             } label: {
                 menuTitleView(sortOption: viewModel.sortOption)
             }
+            .tint(.dbzBlue)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .tint(.dbzBlue)
     }
 }
 
 #Preview {
-    ScrollAndSortBarView(viewModel: DeveloperPreview.instance.homeViewModel)
+    SortMenu(viewModel: DeveloperPreview.instance.homeViewModel)
         .padding()
 }
 
-extension ScrollAndSortBarView {
+extension SortMenu {
     private func menuTitleView(sortOption: SortOption) -> some View {
         sortOption.displayName()
     }
