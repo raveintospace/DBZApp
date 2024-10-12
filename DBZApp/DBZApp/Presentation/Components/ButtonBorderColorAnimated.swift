@@ -14,8 +14,15 @@ struct ButtonBorderColorAnimated: View {
     
     var buttonText: String = "Swift UIButton"
     var onButtonPressed: (() -> Void)? = nil
-    
-    private let myGradient: Gradient = Gradient(colors: [.dbzYellow, .dbzOrange, .dbzBlue])
+    var myGradient: Gradient = Gradient(colors: [.dbzYellow, .dbzOrange, .dbzBlue])
+    var duration: Double = 1.5
+    var width: CGFloat = 200
+    var gradientHeight: CGFloat = 43
+    var buttonHeight: CGFloat = 40
+    var cornerRadius: CGFloat = 20
+    var radius: CGFloat = 4
+    var buttonFontSize: CGFloat = 20
+    var buttonFontWeight: Font.Weight = .bold
     
     @State private var trigger = false
     private let triggerDelay: Double = 0.3
@@ -25,18 +32,18 @@ struct ButtonBorderColorAnimated: View {
             LinearGradient(gradient: myGradient,
                            startPoint: isAnimating ? .topTrailing : .bottomLeading,
                            endPoint: isAnimating ? .bottomTrailing : .center)
-            .animation(.easeInOut(duration: 1.5)
+            .animation(.easeInOut(duration: duration)
                 .repeatForever(autoreverses: true), value: isAnimating)
-            .frame(width: 200, height: 43)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .blur(radius: 4)
+            .frame(width: width, height: gradientHeight)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .blur(radius: radius)
             
             Button(buttonText) { }
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: buttonFontSize, weight: buttonFontWeight))
                 .foregroundStyle(.accent)
-                .frame(width: 200, height: 40)
+                .frame(width: width, height: buttonHeight)
                 .background(.own)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         }
         .onAppear {
             isAnimating.toggle()
