@@ -78,7 +78,7 @@ struct InteractiveCard: View {
 }
 
 #Preview {
-    HStack(spacing: 16) {
+    VStack(spacing: 16) {
         InteractiveCard(cardText: "Planets", cardIcon: "🪐")
         InteractiveCard(cardText: "Transformations", cardIcon: "🦹🏼‍♂️")
         
