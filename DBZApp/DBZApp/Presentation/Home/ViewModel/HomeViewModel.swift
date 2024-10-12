@@ -258,14 +258,14 @@ final class HomeViewModel: ObservableObject {
             return characters.sorted { $0.name.localizedCompare($1.name) == .orderedDescending }
         case .kiPoints:
             return characters.sorted {
-                let first = sortCharactersUseCase.convertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
-                let second = sortCharactersUseCase.convertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
+                let first = sortCharactersUseCase.executeConvertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
+                let second = sortCharactersUseCase.executeConvertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
                 return first > second
             }
         case .kiPointsReversed:
             return characters.sorted {
-                let first = sortCharactersUseCase.convertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
-                let second = sortCharactersUseCase.convertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
+                let first = sortCharactersUseCase.executeConvertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
+                let second = sortCharactersUseCase.executeConvertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
                 return first < second
             }
         }
@@ -283,7 +283,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func updateFavorites(character: Character) {
-        favoritesUseCase.updateFavorite(character: character)
+        favoritesUseCase.executeUpdateFavorite(character: character)
     }
     
     func isFavorited(character: Character) -> Bool {

@@ -9,5 +9,5 @@ import Foundation
 
 protocol FavoritesUseCaseProtocol {
     var favoritesPublisher: Published<[FavoriteEntity]>.Publisher { get }
-    func updateFavorite(character: Character)
+    func executeUpdateFavorite(character: Character)
 }

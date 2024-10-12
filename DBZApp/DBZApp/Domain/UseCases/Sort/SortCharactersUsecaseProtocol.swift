@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SortCharactersUsecaseProtocol {
-    func convertKiPointsToNumber(_ kiPoints: String) -> Decimal?
+    func executeConvertKiPointsToNumber(_ kiPoints: String) -> Decimal?
 }
