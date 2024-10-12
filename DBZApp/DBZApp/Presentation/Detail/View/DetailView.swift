@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulRouting
+import ConfettiSwiftUI
 
 struct DetailLoadingView: View {
     
@@ -42,6 +43,8 @@ struct DetailView: View {
       
     @State private var showHeader: Bool = true
     @State private var offset: CGFloat = 0
+    
+    @State private var confettiCounter: Int = 0
     
     var body: some View {
         ZStack {
@@ -103,13 +106,15 @@ extension DetailView {
         DetailHeaderBar(
             headerTitle: viewModel.character.name,
             showHeaderTitle: showHeader,
-            
             isFavorite: homeViewModel.isFavorited(character: viewModel.character),
             onBackButtonPressed: {
                 router.dismissScreen()
             },
             onFavButtonPressed: {
                 homeViewModel.updateFavorites(character: viewModel.character)
+                if homeViewModel.isFavorited(character: viewModel.character) {
+                    confettiCounter += 1
+                }
             }
         )
         .padding()
@@ -117,6 +122,13 @@ extension DetailView {
         .background(showHeader ? Color.own.opacity(0.95) : Color.background.opacity(0.001))
         .foregroundStyle(.accent)
         .animation(.smooth(duration: 0.2), value: showHeader)
+        .confettiCannon(
+            counter: $confettiCounter,
+            num: 7,
+            confettis: [.text("⭐️")],
+            confettiSize: 50,
+            radius: 3
+        )
     }
     
     private var detailCharacterInfo: some View {
