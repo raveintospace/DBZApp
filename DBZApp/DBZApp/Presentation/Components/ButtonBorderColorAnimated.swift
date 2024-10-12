@@ -18,17 +18,17 @@ struct ButtonBorderColorAnimated: View {
     private let myGradient: Gradient = Gradient(colors: [.dbzYellow, .dbzOrange, .dbzBlue])
     
     @State private var trigger = false
-    var triggerDelay: Double = 0.3
+    private let triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
             LinearGradient(gradient: myGradient,
                            startPoint: isAnimating ? .topTrailing : .bottomLeading,
                            endPoint: isAnimating ? .bottomTrailing : .center)
-            .animation(.easeInOut(duration: 1)
+            .animation(.easeInOut(duration: 1.5)
                 .repeatForever(autoreverses: true), value: isAnimating)
             .frame(width: 200, height: 43)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
             .blur(radius: 4)
             
             Button(buttonText) { }
@@ -41,6 +41,7 @@ struct ButtonBorderColorAnimated: View {
         .onAppear {
             isAnimating.toggle()
         }
+        .sensoryFeedback(.impact, trigger: trigger)
         .asButton(.press) {
             trigger = true
             onButtonPressed?()

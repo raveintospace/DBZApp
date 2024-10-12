@@ -16,7 +16,7 @@ struct DetailHeaderBar: View {
     var onFavButtonPressed: (() -> Void)? = nil
     
     @State private var trigger = false
-    var triggerDelay: Double = 0.3
+    private let triggerDelay: Double = 0.3
     
     var body: some View {
         HStack(spacing: 0) {

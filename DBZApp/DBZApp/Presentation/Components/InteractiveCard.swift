@@ -19,7 +19,7 @@ struct InteractiveCard: View {
     @State private var rotation: Double = 0
     
     @State private var trigger = false
-    var triggerDelay: Double = 0.3
+    private let triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
@@ -52,6 +52,7 @@ struct InteractiveCard: View {
                 withAnimation(.spring) { dragOffset = .zero }
             })
         .animation(isDragging ? .none : .spring(), value: dragOffset)
+        .sensoryFeedback(.impact, trigger: trigger)
         
         .asButton(.press) {
             trigger = true

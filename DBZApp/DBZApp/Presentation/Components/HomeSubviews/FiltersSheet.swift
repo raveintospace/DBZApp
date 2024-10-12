@@ -20,7 +20,7 @@ struct FiltersSheet: View {
     @Binding var selection: FilterOption
    
     @State private var trigger = false
-    var triggerDelay: Double = 0.3
+    private let triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
