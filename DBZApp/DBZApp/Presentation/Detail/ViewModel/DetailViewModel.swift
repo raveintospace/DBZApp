@@ -13,7 +13,7 @@ final class DetailViewModel: ObservableObject {
     @Published var character: Character
     @Published var detailedCharacter: DetailedCharacter?
     @Published var isLoading: Bool = false
-    @Published var errorMessage: UseCaseError?
+    @Published var error: UseCaseError?
     
     private let fetchDetailCharacterUseCase: FetchDetailCharacterUseCaseProtocol
     
@@ -24,13 +24,13 @@ final class DetailViewModel: ObservableObject {
     
     func fetchCharacterDetails(id: Int) async {
         isLoading = true
-        errorMessage = nil
+        error = nil
         
         do {
             let detailedCharacterFromApi = try await fetchDetailCharacterUseCase.execute(id: id)
             detailedCharacter = detailedCharacterFromApi
         } catch {
-            errorMessage = .undefinedError
+            self.error = .undefinedError
             debugPrint("Error loading character details")
         }
         

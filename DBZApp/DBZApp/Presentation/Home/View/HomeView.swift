@@ -28,20 +28,29 @@ struct HomeView: View {
                 ScrollViewReader { proxy in
                     ScrollView(.vertical) {
                         VStack(spacing: 0) {
-                            if viewModel.showNoResultsView {
-                                noCharactersView
+                            if viewModel.isLoading {
+                                ProgressColorBarsView()
+                                    .padding(.top, 60)
+                            } else if let error = viewModel.error {
+                                Text(error.errorDescription)
+                                    .foregroundColor(.red)
+                                    .padding()
                             } else {
-                                if !viewModel.showFavorites {
-                                    displayedCardsSection
-                                        .transition(.move(edge: .leading))
-                                }
-                                if viewModel.showFavorites {
-                                    if viewModel.favoriteCharacters.isEmpty {
-                                        noFavoritesView
-                                            .transition(.move(edge: .trailing))
-                                    } else {
+                                if viewModel.showNoResultsView {
+                                    noCharactersView
+                                } else {
+                                    if !viewModel.showFavorites {
                                         displayedCardsSection
-                                            .transition(.move(edge: .trailing))
+                                            .transition(.move(edge: .leading))
+                                    }
+                                    if viewModel.showFavorites {
+                                        if viewModel.favoriteCharacters.isEmpty {
+                                            noFavoritesView
+                                                .transition(.move(edge: .trailing))
+                                        } else {
+                                            displayedCardsSection
+                                                .transition(.move(edge: .trailing))
+                                        }
                                     }
                                 }
                             }

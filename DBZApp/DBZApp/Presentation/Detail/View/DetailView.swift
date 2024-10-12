@@ -60,8 +60,8 @@ struct DetailView: View {
                     if viewModel.isLoading {
                         ProgressColorBarsView()
                             .padding(.top, 60)
-                    } else if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
+                    } else if let error = viewModel.error {
+                        Text(error.errorDescription)
                             .foregroundColor(.red)
                             .padding()
                     } else {
