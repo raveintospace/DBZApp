@@ -61,17 +61,11 @@ struct HomeView: View {
                             proxy.scrollTo(0, anchor: .top)
                         }
                     }
-
-//                    .onChange(of: setScrollToZero) { _, _ in
-//                        withAnimation(.smooth) {
-//                            proxy.scrollTo(0, anchor: .top)
-//                        }
-//                    }
-//                    .onReceive(viewModel.scrollTriggerState) {
-//                        withAnimation(.smooth) {
-//                            proxy.scrollTo(0, anchor: .top)
-//                        }
-//                    }
+                    .onChange(of: setScrollToZero) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
+                    }
                 }
             }
         }

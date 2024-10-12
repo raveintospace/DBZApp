@@ -70,17 +70,7 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
     @Published var error: UseCaseError?
-    
-    // MARK: - Publisher to reset scroll to 0 in HomeView
-    var scrollTriggerState: AnyPublisher<Void, Never> {
-        Publishers.CombineLatest(
-            $sortOption,
-            $selectedFilter
-        )
-        .map { _, _ in () }
-        .eraseToAnyPublisher()
-    }
-    
+        
     // MARK: - Use Cases
     private let getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol
     private let fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol
