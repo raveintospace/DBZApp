@@ -25,6 +25,7 @@ final class DetailViewModel: ObservableObject {
     func fetchCharacterDetails(id: Int) async {
         isLoading = true
         error = nil
+        let startTime = Date()
         
         do {
             let detailedCharacterFromApi = try await fetchDetailCharacterUseCase.execute(id: id)
@@ -32,6 +33,13 @@ final class DetailViewModel: ObservableObject {
         } catch {
             self.error = .undefinedError
             debugPrint("Error loading character details")
+        }
+        
+        let elapsedTime = Date().timeIntervalSince(startTime)
+        
+        // Pause removing ProgressColorBarsView if data is loaded fast, to have a smooth transition to expected view
+        if elapsedTime < 0.5 {
+            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
         }
         
         isLoading = false
