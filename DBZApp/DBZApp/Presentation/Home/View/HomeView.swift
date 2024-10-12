@@ -27,7 +27,7 @@ struct HomeView: View {
                 fullHeader
                 ScrollViewReader { proxy in
                     ScrollView(.vertical) {
-                        LazyVStack(spacing: 0) {
+                        VStack(spacing: 0) {
                             if viewModel.showNoResultsView {
                                 noCharactersView
                             } else {
