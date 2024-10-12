@@ -170,7 +170,7 @@ extension HomeView {
     
     // cards expand if unpair
     private var displayedCardsSection: some View {
-        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
+        NonLazyVGrid(columns: 2, alignment: .center, spacing: 4, items: viewModel.displayedCharacters) { character in
             if let character {
                 DatabaseCardView(
                     imageName: character.image,
@@ -189,6 +189,7 @@ extension HomeView {
                         }
                     }
                 )
+                .padding(.horizontal, 4)
             }
         }
     }
