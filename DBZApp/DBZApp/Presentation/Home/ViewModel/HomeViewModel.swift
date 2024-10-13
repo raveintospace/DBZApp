@@ -138,10 +138,10 @@ final class HomeViewModel: ObservableObject {
     }
     
     // MARK: - Transition from progress view to expected final view
-    private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 0.5) async {
+    private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 1) async {
         let elapsedTime = Date().timeIntervalSince(startTime)
         
-        // Ensure a 0.5 seconds pause
+        // Ensure a 1 second pause
         if elapsedTime < minDuration {
             let remainingTime = minDuration - elapsedTime
             try? await Task.sleep(nanoseconds: UInt64(remainingTime * 1_000_000_000))

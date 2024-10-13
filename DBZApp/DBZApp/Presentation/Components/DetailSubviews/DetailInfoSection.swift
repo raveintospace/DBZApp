@@ -81,7 +81,6 @@ extension DetailInfoSection {
                 .lineLimit(5)
                 .expandButton(TextSet(text: "Read more", font: .caption, fontWeight: .bold, color: .dbzBlue))
                 .collapseButton(TextSet(text: "Show less", font: .caption, fontWeight: .bold, color: .dbzBlue))
-                .expandAnimation(.easeInOut)
         }
     }
     
