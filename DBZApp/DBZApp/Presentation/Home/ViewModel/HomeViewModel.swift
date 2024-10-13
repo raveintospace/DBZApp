@@ -137,6 +137,17 @@ final class HomeViewModel: ObservableObject {
         isLoading = false
     }
     
+    // MARK: - Transition from progress view to expected final view
+    private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 0.5) async {
+        let elapsedTime = Date().timeIntervalSince(startTime)
+        
+        // Ensure a 0.5 seconds pause
+        if elapsedTime < minDuration {
+            let remainingTime = minDuration - elapsedTime
+            try? await Task.sleep(nanoseconds: UInt64(remainingTime * 1_000_000_000))
+        }
+    }
+    
     // MARK: - Loading filters logic
     func loadAffiliationFilters() async {
         guard affiliationFilters.isEmpty else { return }
@@ -228,7 +239,7 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        // Apply Filters (Affiliation, gender, race)
+        // Apply Filters (Affiliation, Gender, Race)
         if let filter = selectedFilter {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
@@ -298,17 +309,6 @@ final class HomeViewModel: ObservableObject {
             return true
         } else {
             return false
-        }
-    }
-    
-    // MARK: - Transition from progress view to expected final view
-    private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 0.5) async {
-        let elapsedTime = Date().timeIntervalSince(startTime)
-        
-        // Ensure a 0.5 seconds pause
-        if elapsedTime < minDuration {
-            let remainingTime = minDuration - elapsedTime
-            try? await Task.sleep(nanoseconds: UInt64(remainingTime * 1_000_000_000))
         }
     }
 }
