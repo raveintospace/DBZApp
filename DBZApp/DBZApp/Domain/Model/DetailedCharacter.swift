@@ -62,7 +62,7 @@ struct OriginPlanet: Codable, Identifiable {
             24: "Zeno's Moving Temple",
             25: "Universe 11"
         ]
-        return translations[id] ?? "Planet name not available"
+        return translations[id] ?? name
     }
     
     var translatedPlanetDescription: String {

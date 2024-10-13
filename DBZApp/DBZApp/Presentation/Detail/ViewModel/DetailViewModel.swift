@@ -49,4 +49,7 @@ final class DetailViewModel: ObservableObject {
             try? await Task.sleep(nanoseconds: UInt64(remainingTime * 1_000_000_000))
         }
     }
+    
+    // MARK: - Logic to show Planet & Transformation buttons
+    
 }
