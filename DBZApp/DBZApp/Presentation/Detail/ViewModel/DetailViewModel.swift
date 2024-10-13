@@ -24,12 +24,11 @@ final class DetailViewModel: ObservableObject {
     
     func fetchCharacterDetails(id: Int) async {
         isLoading = true
-        error = nil
         let startTime = Date()
         
         do {
-            let detailedCharacterFromApi = try await fetchDetailCharacterUseCase.execute(id: id)
-            detailedCharacter = detailedCharacterFromApi
+            self.detailedCharacter = try await fetchDetailCharacterUseCase.execute(id: id)
+            self.error = nil
         } catch {
             self.error = .undefinedError
             debugPrint("Error loading character details")

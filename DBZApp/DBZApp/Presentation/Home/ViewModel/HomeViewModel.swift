@@ -105,6 +105,7 @@ final class HomeViewModel: ObservableObject {
         guard allCharacters.isEmpty else { return }
         
         isLoading = true
+        let startTime = Date()
         
         do {
             self.allCharacters = try await getLocalCharactersUseCase.execute()
@@ -112,6 +113,14 @@ final class HomeViewModel: ObservableObject {
         } catch {
             self.error = .undefinedError
         }
+        
+        let elapsedTime = Date().timeIntervalSince(startTime)
+        
+        // Pause removing ProgressColorBarsView if data is loaded fast, to have a smooth transition to expected view
+        if elapsedTime < 0.5 {
+            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+        }
+        
         isLoading = false
     }
     
