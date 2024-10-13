@@ -15,13 +15,13 @@ struct DetailBottomButtons: View {
     
     var body: some View {
         VStack(spacing: 12) {
-            TextBorderColorAnimated(
+            ButtonBorderColorAnimated(
                 text: "Planet",
-                onTextPressed: onPlanetButtonPressed
+                onButtonPressed: onPlanetButtonPressed
             )
-            TextBorderColorAnimated(
+            ButtonBorderColorAnimated(
                 text: "Transformations",
-                onTextPressed: onTransformationButtonPressed
+                onButtonPressed: onTransformationButtonPressed
             )
                 .opacity(showTransformationsButton ? 1 : 0)
         }

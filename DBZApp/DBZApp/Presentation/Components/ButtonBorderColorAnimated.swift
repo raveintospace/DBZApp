@@ -8,27 +8,27 @@
 import SwiftUI
 import SwiftfulUI
 
-struct TextBorderColorAnimated: View {
+struct ButtonBorderColorAnimated: View {
     
     @State private var isAnimating: Bool = false
     
     var text: String = "Text Border Color Animated"
-    var onTextPressed: (() -> Void)? = nil
-    var myGradient: Gradient = Gradient(colors: [.dbzYellow, .dbzOrange, .dbzBlue])
+    var onButtonPressed: (() -> Void)? = nil
+    var buttonGradient: Gradient = Gradient(colors: [.dbzYellow, .dbzOrange, .dbzBlue])
     var duration: Double = 1.5
     var width: CGFloat = 200
     var gradientHeight: CGFloat = 43
     var buttonHeight: CGFloat = 40
     var cornerRadius: CGFloat = 20
     var radius: CGFloat = 1
-    var FontSize: CGFloat = 20
-    var FontWeight: Font.Weight = .bold
+    var fontSize: CGFloat = 20
+    var fontWeight: Font.Weight = .bold
     
     @State private var trigger = false
     
     var body: some View {
         Text(text)
-            .font(.system(size: FontSize, weight: FontWeight))
+            .font(.system(size: fontSize, weight: fontWeight))
             .foregroundStyle(.accent)
             .frame(width: width, height: buttonHeight)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
@@ -36,7 +36,7 @@ struct TextBorderColorAnimated: View {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(
                         LinearGradient(
-                            gradient: myGradient,
+                            gradient: buttonGradient,
                             startPoint: isAnimating ? .topTrailing : .bottomLeading,
                             endPoint: isAnimating ? .bottomTrailing : .center
                         ),
@@ -50,14 +50,14 @@ struct TextBorderColorAnimated: View {
             }
             .sensoryFeedback(.impact, trigger: trigger)
             .withTrigger(trigger: $trigger) {
-                onTextPressed?()
+                onButtonPressed?()
             }
     }
 }
 
 #Preview {
     VStack(spacing: 20) {
-        TextBorderColorAnimated(text: "Planet")
-        TextBorderColorAnimated(text: "Transformations")
+        ButtonBorderColorAnimated(text: "Planet")
+        ButtonBorderColorAnimated(text: "Transformations")
     }
 }
