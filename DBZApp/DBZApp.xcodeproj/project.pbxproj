@@ -73,6 +73,7 @@
 		34DCBDD12C96F758005DEDAA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 34DCBDD02C96F758005DEDAA /* Kingfisher */; };
 		34DCBDD32C96F7D4005DEDAA /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */; };
 		34DCBDD52C96F82E005DEDAA /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */; };
+		34DFF8F42CBBFA0B004E4769 /* SensoryTriggerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DFF8F32CBBFA0B004E4769 /* SensoryTriggerModifier.swift */; };
 		34EBEE332CA809DB006FBCC6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBEE322CA809DB006FBCC6 /* DetailView.swift */; };
 		34EBEE352CA80C5B006FBCC6 /* DetailImageTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBEE342CA80C5B006FBCC6 /* DetailImageTopCell.swift */; };
 		34EBEE392CA8150B006FBCC6 /* DetailHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBEE382CA8150B006FBCC6 /* DetailHeaderBar.swift */; };
@@ -143,6 +144,7 @@
 		34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 		34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherImageLoader.swift; sourceTree = "<group>"; };
 		34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
+		34DFF8F32CBBFA0B004E4769 /* SensoryTriggerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensoryTriggerModifier.swift; sourceTree = "<group>"; };
 		34EBEE322CA809DB006FBCC6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		34EBEE342CA80C5B006FBCC6 /* DetailImageTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageTopCell.swift; sourceTree = "<group>"; };
 		34EBEE382CA8150B006FBCC6 /* DetailHeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderBar.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */,
 				343DC3292C8A086500BCCF39 /* Extensions */,
 				34C9FB3E2C91A8A100FA0139 /* Enums */,
+				34DFF8F22CBBF9ED004E4769 /* ViewModifiers */,
 				343DC2FA2C89AADF00BCCF39 /* Presentation */,
 				343DC2FC2C89AAF800BCCF39 /* Data */,
 				343DC2FB2C89AAEB00BCCF39 /* Domain */,
@@ -450,6 +453,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		34DFF8F22CBBF9ED004E4769 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				34DFF8F32CBBFA0B004E4769 /* SensoryTriggerModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		34EBEE2F2CA809A7006FBCC6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +640,7 @@
 				34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */,
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
 				342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */,
+				34DFF8F42CBBFA0B004E4769 /* SensoryTriggerModifier.swift in Sources */,
 				34ECF97E2C9F076F00ADFDF8 /* DatabaseCardView.swift in Sources */,
 				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */,

@@ -22,13 +22,8 @@ struct DetailHeaderBar: View {
         HStack(spacing: 0) {
             ImageBlueCircle(imageName: "arrowshape.backward.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
-                .asButton(.press) {
-                    trigger = true
+                .withTrigger(trigger: $trigger, delay: 0.3) {
                     onBackButtonPressed?()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
-                        trigger = false
-                    }
                 }
                 .frame(width: 50, alignment: .leading)
             
@@ -47,14 +42,8 @@ struct DetailHeaderBar: View {
                 .opacity(isFavorite ? 1 : 0.5)
                 .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
                 .sensoryFeedback(.impact, trigger: trigger)
-                .asButton(.press) {
-                    trigger = true
-                    
+                .withTrigger(trigger: $trigger, delay: 0.3) {
                     onFavButtonPressed?()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
-                        trigger = false
-                    }
                 }
                 .frame(width: 50, alignment: .trailing)
         }
