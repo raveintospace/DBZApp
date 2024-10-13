@@ -41,7 +41,7 @@ struct ButtonBorderColorAnimated: View {
                 .font(.system(size: buttonFontSize, weight: buttonFontWeight))
                 .foregroundStyle(.accent)
                 .frame(width: width, height: buttonHeight)
-                .background(.own)
+             //   .background(.own.opacity(0.75))
                 .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         }
         .onAppear {

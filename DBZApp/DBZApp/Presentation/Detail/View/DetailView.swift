@@ -66,6 +66,7 @@ struct DetailView: View {
                             .padding()
                     } else {
                         detailCharacterInfo
+                        bottomButtons
                     }
                 }
             }
@@ -143,5 +144,9 @@ extension DetailView {
             description: viewModel.character.description
         )
         .padding()
+    }
+    
+    private var bottomButtons: some View {
+        DetailBottomButtons(showTransformationsButton: viewModel.hasTransformations())
     }
 }

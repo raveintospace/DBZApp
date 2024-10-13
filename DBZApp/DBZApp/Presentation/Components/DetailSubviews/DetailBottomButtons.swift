@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct DetailBottomButtons: View {
+    
+    var showTransformationsButton: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ButtonBorderColorAnimated(buttonText: "Planet")
+            ButtonBorderColorAnimated(buttonText: "Transformations")
+                .opacity(showTransformationsButton ? 1 : 0)
+        }
     }
 }
 
 #Preview {
-    DetailBottomButtons()
+    DetailBottomButtons(showTransformationsButton: true)
 }
