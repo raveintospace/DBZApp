@@ -48,7 +48,7 @@ struct ButtonBorderColorAnimated: View {
                 .animation(.easeInOut(duration: duration).repeatForever(autoreverses: true), value: isAnimating)
         )
         .onAppear {
-            isAnimating.toggle()
+            isAnimating = true
         }
         .sensoryFeedback(.impact, trigger: trigger)
         .withTrigger(trigger: $trigger) {
