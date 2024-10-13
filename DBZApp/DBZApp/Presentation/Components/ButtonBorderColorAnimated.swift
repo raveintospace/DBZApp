@@ -20,30 +20,33 @@ struct ButtonBorderColorAnimated: View {
     var gradientHeight: CGFloat = 43
     var buttonHeight: CGFloat = 40
     var cornerRadius: CGFloat = 20
-    var radius: CGFloat = 4
+    var radius: CGFloat = 1
     var buttonFontSize: CGFloat = 20
     var buttonFontWeight: Font.Weight = .bold
     
     @State private var trigger = false
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: myGradient,
-                           startPoint: isAnimating ? .topTrailing : .bottomLeading,
-                           endPoint: isAnimating ? .bottomTrailing : .center)
-            .animation(.easeInOut(duration: duration)
-                .repeatForever(autoreverses: true), value: isAnimating)
-            .frame(width: width, height: gradientHeight)
-            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-            .blur(radius: radius)
-            
-            Button(buttonText) { }
-                .font(.system(size: buttonFontSize, weight: buttonFontWeight))
-                .foregroundStyle(.accent)
-                .frame(width: width, height: buttonHeight)
-             //   .background(.own.opacity(0.75))
-                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        Button(buttonText) {
+            trigger.toggle()
         }
+        .font(.system(size: buttonFontSize, weight: buttonFontWeight))
+        .foregroundStyle(.accent)
+        .frame(width: width, height: buttonHeight)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        .overlay(
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(
+                    LinearGradient(
+                        gradient: myGradient,
+                        startPoint: isAnimating ? .topTrailing : .bottomLeading,
+                        endPoint: isAnimating ? .bottomTrailing : .center
+                    ),
+                    lineWidth: 4
+                )
+                .blur(radius: radius)
+                .animation(.easeInOut(duration: duration).repeatForever(autoreverses: true), value: isAnimating)
+        )
         .onAppear {
             isAnimating.toggle()
         }
@@ -55,7 +58,7 @@ struct ButtonBorderColorAnimated: View {
 }
 
 #Preview {
-    VStack {
+    VStack(spacing: 20) {
         ButtonBorderColorAnimated(buttonText: "Planet")
         ButtonBorderColorAnimated(buttonText: "Transformations")
     }

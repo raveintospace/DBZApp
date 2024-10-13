@@ -12,7 +12,7 @@ struct DetailBottomButtons: View {
     var showTransformationsButton: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 12) {
             ButtonBorderColorAnimated(buttonText: "Planet")
             ButtonBorderColorAnimated(buttonText: "Transformations")
                 .opacity(showTransformationsButton ? 1 : 0)

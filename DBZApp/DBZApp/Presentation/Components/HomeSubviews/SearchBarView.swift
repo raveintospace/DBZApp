@@ -44,7 +44,7 @@ struct SearchBarView: View {
                         .offset(x: 10)  // easier for users to tap
                         .foregroundStyle(.dbzBlue)
                         .opacity(searchText.isEmpty ? 0 : 1)
-                        .background(.dbzBlue.opacity(0.001)) // easier for users to tap
+                        .background(.clear) // easier for users to tap
                         .asButton(.opacity) {
                             UIApplication.shared.hideKeyboard()
                             searchText = ""

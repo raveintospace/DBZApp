@@ -76,7 +76,7 @@ extension DatabaseCardView {
             .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
             .padding(.trailing, 16)
             .padding(.bottom, 8)
-            .background(.dbzBlue.opacity(0.001))
+            .background(.clear)
             .frame(maxWidth: .infinity, alignment: .trailing)
             .asButton(.press) {
                 onFavButtonPressed?()
