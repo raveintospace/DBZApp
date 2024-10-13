@@ -378,12 +378,12 @@
 		345D5A972C8B534E003BA242 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */,
 				34C4BDD22CB1890200C5060C /* ExpandableText.swift */,
 				34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */,
 				3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */,
 				34C4BDD92CB1979700C5060C /* InteractiveCard.swift */,
 				3407D9BA2CBAC53A000720B5 /* ProgressColorBarsView.swift */,
-				3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */,
 				34EBEE362CA80CB3006FBCC6 /* HomeSubviews */,
 				34EBEE372CA80CBC006FBCC6 /* DetailSubviews */,
 			);

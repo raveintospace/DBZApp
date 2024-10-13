@@ -34,7 +34,7 @@ struct ProgressColorBarsView: View {
 extension ProgressColorBarsView {
     
     private func startAnimation() {
-        Timer.scheduledTimer(withTimeInterval: 0.33, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.30, repeats: true) { timer in
             currentIndex = (currentIndex + 1) % colors.count
         }
     }
