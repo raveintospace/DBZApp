@@ -27,6 +27,7 @@ struct FiltersBarView: View {
                         
                         if selectedFilter != nil {
                             ImageBlueCircle(imageName: "xmark")
+                                .sensoryFeedback(.impact, trigger: trigger)
                                 .withTrigger(trigger: $trigger) {
                                     onXMarkPressed?()
                                 }
@@ -41,6 +42,7 @@ struct FiltersBarView: View {
                                     title: filter.title.capitalized,
                                     isSelected: selectedFilter == filter
                                 )
+                                .sensoryFeedback(.impact, trigger: trigger)
                                 .withTrigger(trigger: $trigger) {
                                     onFilterPressed?(filter)
                                 }

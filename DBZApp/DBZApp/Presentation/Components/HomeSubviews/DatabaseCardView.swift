@@ -32,6 +32,7 @@ struct DatabaseCardView: View {
         .background(.dbzBlue.opacity(0.1))
         .clipShape(.rect(cornerRadius: 10))
         .aspectRatio(0.8, contentMode: .fit)
+        .sensoryFeedback(.impact, trigger: trigger)
         .withTrigger(trigger: $trigger) {
             onCardPressed?()
         }
