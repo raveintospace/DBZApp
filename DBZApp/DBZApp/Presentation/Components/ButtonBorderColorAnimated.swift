@@ -25,7 +25,6 @@ struct ButtonBorderColorAnimated: View {
     var buttonFontWeight: Font.Weight = .bold
     
     @State private var trigger = false
-    private let triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
@@ -49,13 +48,8 @@ struct ButtonBorderColorAnimated: View {
             isAnimating.toggle()
         }
         .sensoryFeedback(.impact, trigger: trigger)
-        .asButton(.press) {
-            trigger = true
+        .withTrigger(trigger: $trigger) {
             onButtonPressed?()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
-                trigger = false
-            }
         }
     }
 }

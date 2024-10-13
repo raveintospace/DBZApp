@@ -16,13 +16,12 @@ struct DetailHeaderBar: View {
     var onFavButtonPressed: (() -> Void)? = nil
     
     @State private var trigger = false
-    private let triggerDelay: Double = 0.3
     
     var body: some View {
         HStack(spacing: 0) {
             ImageBlueCircle(imageName: "arrowshape.backward.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
-                .withTrigger(trigger: $trigger, delay: 0.3) {
+                .withTrigger(trigger: $trigger) {
                     onBackButtonPressed?()
                 }
                 .frame(width: 50, alignment: .leading)
@@ -42,7 +41,7 @@ struct DetailHeaderBar: View {
                 .opacity(isFavorite ? 1 : 0.5)
                 .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
                 .sensoryFeedback(.impact, trigger: trigger)
-                .withTrigger(trigger: $trigger, delay: 0.3) {
+                .withTrigger(trigger: $trigger) {
                     onFavButtonPressed?()
                 }
                 .frame(width: 50, alignment: .trailing)

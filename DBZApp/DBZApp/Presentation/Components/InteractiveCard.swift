@@ -19,7 +19,6 @@ struct InteractiveCard: View {
     @State private var rotation: Double = 0
     
     @State private var trigger = false
-    private let triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
@@ -53,16 +52,8 @@ struct InteractiveCard: View {
             })
         .animation(isDragging ? .none : .spring(), value: dragOffset)
         .sensoryFeedback(.impact, trigger: trigger)
-        
-        .asButton(.press) {
-            trigger = true
-            withAnimation {
-                onCardPressed?()
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
-                trigger = false
-            }
+        .withTrigger(trigger: $trigger) {
+            onCardPressed?()
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 1)) {

@@ -20,7 +20,6 @@ struct FiltersSheet: View {
     @Binding var selection: FilterOption
    
     @State private var trigger = false
-    private let triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
@@ -62,14 +61,9 @@ struct FiltersSheet: View {
                             }
                         )
                         .sensoryFeedback(.impact, trigger: trigger)
-                        .asButton(.press) {
+                        .withTrigger(trigger: $trigger) {
                             selection = filterOption
-                            trigger = true
                             viewModel.selectedFilterOption = filterOption
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
-                                trigger = false
-                            }
                         }
                 }
             }
