@@ -76,6 +76,7 @@ struct DetailView: View {
                 if let detailedCharacter = viewModel.detailedCharacter {
                     debugPrint(detailedCharacter.originPlanet.translatedPlanetName)
                     debugPrint(detailedCharacter.transformations.count)
+                    debugPrint(viewModel.hasTransformations())
                 }
             }
             

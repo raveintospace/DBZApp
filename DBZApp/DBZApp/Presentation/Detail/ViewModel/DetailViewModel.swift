@@ -50,6 +50,9 @@ final class DetailViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Logic to show Planet & Transformation buttons
-    
+    // MARK: - Logic to show transformation button
+    func hasTransformations() -> Bool {
+        guard let detailedCharacter = detailedCharacter else { return false }
+        return !detailedCharacter.transformations.isEmpty
+    }
 }
