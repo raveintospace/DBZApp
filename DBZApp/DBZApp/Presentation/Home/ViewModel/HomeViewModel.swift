@@ -114,12 +114,7 @@ final class HomeViewModel: ObservableObject {
             self.error = .undefinedError
         }
         
-        let elapsedTime = Date().timeIntervalSince(startTime)
-        
-        // Pause removing ProgressColorBarsView if data is loaded fast, to have a smooth transition to expected view
-        if elapsedTime < 0.5 {
-            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
-        }
+        await pauseForSmoothTransition(startTime: startTime)
         
         isLoading = false
     }
@@ -128,6 +123,7 @@ final class HomeViewModel: ObservableObject {
         guard allCharacters.isEmpty else { return }
         
         isLoading = true
+        let startTime = Date()
         
         do {
             self.allCharacters = try await fetchCharactersFromAPIUseCase.execute()
@@ -135,6 +131,8 @@ final class HomeViewModel: ObservableObject {
         } catch {
             self.error = .undefinedError
         }
+        
+        await pauseForSmoothTransition(startTime: startTime)
         
         isLoading = false
     }
@@ -300,6 +298,17 @@ final class HomeViewModel: ObservableObject {
             return true
         } else {
             return false
+        }
+    }
+    
+    // MARK: - Transition from progress view to expected final view
+    private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 0.5) async {
+        let elapsedTime = Date().timeIntervalSince(startTime)
+        
+        // Ensure a 0.5 seconds pause
+        if elapsedTime < minDuration {
+            let remainingTime = minDuration - elapsedTime
+            try? await Task.sleep(nanoseconds: UInt64(remainingTime * 1_000_000_000))
         }
     }
 }
