@@ -21,6 +21,8 @@ struct DatabaseCardView: View {
     var onCardPressed: (() -> Void)? = nil
     var onFavButtonPressed: (() -> Void)? = nil
     
+    @State private var trigger: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             characterImage
@@ -30,7 +32,7 @@ struct DatabaseCardView: View {
         .background(.dbzBlue.opacity(0.1))
         .clipShape(.rect(cornerRadius: 10))
         .aspectRatio(0.8, contentMode: .fit)
-        .asButton(.tap) {
+        .withTrigger(trigger: $trigger) {
             onCardPressed?()
         }
     }
