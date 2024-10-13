@@ -147,6 +147,16 @@ extension DetailView {
     }
     
     private var bottomButtons: some View {
-        DetailBottomButtons(showTransformationsButton: viewModel.hasTransformations())
+        DetailBottomButtons(
+            showTransformationsButton: viewModel.hasTransformations(),
+            onPlanetButtonPressed: {
+                router.showScreen(.push) { _ in
+                    PlanetView()
+                }
+            },
+            onTransformationButtonPressed: {
+                debugPrint("Go to planet view")
+            }
+        )
     }
 }
