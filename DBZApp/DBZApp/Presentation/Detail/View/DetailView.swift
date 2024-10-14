@@ -57,16 +57,16 @@ struct DetailView: View {
                             showHeader = frame.maxY < 100
                         }
                     
-                    if viewModel.isLoading {
-                        ProgressColorBarsView()
-                            .padding(.top, 60)
+                    if let _ = viewModel.detailedCharacter {
+                        detailCharacterInfo
+                        bottomButtons
                     } else if let error = viewModel.error {
                         Text(error.errorDescription)
                             .foregroundColor(.red)
                             .padding()
                     } else {
-                        detailCharacterInfo
-                        bottomButtons
+                        ProgressColorBarsView()
+                            .padding(.top, 60)
                     }
                 }
             }
