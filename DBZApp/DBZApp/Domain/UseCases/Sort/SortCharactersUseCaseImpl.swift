@@ -8,7 +8,7 @@
 import Foundation
 
 struct SortCharactersUseCaseImpl: SortCharactersUsecaseProtocol {
-    func convertKiPointsToNumber(_ kiPoints: String) -> Decimal? {
+    func executeConvertKiPointsToNumber(_ kiPoints: String) -> Decimal? {
         
         // Remove whitespaces and convert to lowercase
         var normalizedKi = kiPoints

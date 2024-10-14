@@ -9,13 +9,9 @@ import Foundation
 
 struct CharacterArray: Codable {
     let characters: [Character]
-    let meta: Meta
-    let links: Links
     
     enum CodingKeys: String, CodingKey {
         case characters = "items"
-        case meta
-        case links
     }
 }
 
@@ -31,7 +27,7 @@ struct Character: Codable, Identifiable {
     // MARK: - Mocks
     static var mock: Character {
         Character(
-            id: 444,
+            id: 1,
             name: "Goku",
             ki: "60.000.000",
             maxKi: "90 Septillion",
@@ -45,7 +41,7 @@ struct Character: Codable, Identifiable {
     
     static var mockTwo: Character {
         Character(
-            id: 333,
+            id: 5,
             name: "Freezer",
             ki: "530.000",
             maxKi: "52.71 Septillion",
@@ -73,36 +69,28 @@ struct Character: Codable, Identifiable {
         }
     }
     
-    var kiToDisplay: String {
-        let normalizedKi = ki.replacingOccurrences(of: ",", with: ".")
-        
-        let components = ki.split(separator: " ")
+    private func formatKiValue(_ value: String) -> String {
+        let normalizedValue = value.replacingOccurrences(of: ",", with: ".")
+        let components = normalizedValue.split(separator: " ")
         
         if components.count == 2 {
-            let value = components[0]
+            let number = components[0]
             let unit = components[1].capitalized
-            return "\(value) \(unit)"
+            return "\(number) \(unit)"
         }
         
-        return normalizedKi.capitalized   // capitalize Unknown
+        return normalizedValue.capitalized
+    }
+    
+    var kiToDisplay: String {
+        return formatKiValue(ki)
     }
     
     var kiToCompare: String {
         return ki.replacingOccurrences(of: ",", with: "")
     }
     
-    
-}
-
-// MARK: - Links
-struct Links: Codable {
-    let first: String
-    let previous, next: String?
-    let last: String
-}
-
-// MARK: - Meta
-struct Meta: Codable {
-    let totalItems, itemCount, itemsPerPage, totalPages: Int
-    let currentPage: Int
+    var maxKiToDisplay: String {
+        return formatKiValue(maxKi)
+    }
 }

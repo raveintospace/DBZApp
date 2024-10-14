@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageOrangeCircleButton: View {
+struct ImageOrangeCircle: View {
     
     var imageName: String = ""
     var frameSize: CGFloat = 50
@@ -28,10 +28,10 @@ struct ImageOrangeCircleButton: View {
 
 #Preview {
     HStack {
-        ImageBlueCircleButton(imageName: "heart.fill")
-        ImageBlueCircleButton(imageName: "slider.vertical.3")
-        ImageOrangeCircleButton(imageName: "heart.fill")
-        ImageOrangeCircleButton(imageName: "slider.vertical.3")
-        ImageOrangeCircleButton(imageName: "star.fill", frameSize: 26, fontSize: 13)
+        ImageBlueCircle(imageName: "heart.fill")
+        ImageBlueCircle(imageName: "slider.vertical.3")
+        ImageOrangeCircle(imageName: "heart.fill")
+        ImageOrangeCircle(imageName: "slider.vertical.3")
+        ImageOrangeCircle(imageName: "star.fill", frameSize: 26, fontSize: 13)
     }
 }

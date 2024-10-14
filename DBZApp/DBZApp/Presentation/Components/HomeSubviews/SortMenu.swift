@@ -26,8 +26,8 @@ struct SortMenu: View {
                 menuTitleView(sortOption: viewModel.sortOption)
             }
             .tint(.dbzBlue)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(maxWidth: .infinity, alignment: .trailing)
     }
 }
 

@@ -18,7 +18,7 @@ final class FavoritesUseCaseImpl: FavoritesUseCaseProtocol {
         return repository.savedFavorites
     }
     
-    func updateFavorite(character: Character) {
+    func executeUpdateFavorite(character: Character) {
         repository.updateFavorite(character: character)
     }
 }

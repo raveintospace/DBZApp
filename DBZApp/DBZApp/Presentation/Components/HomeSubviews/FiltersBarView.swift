@@ -17,6 +17,8 @@ struct FiltersBarView: View {
     // The value is passed by the parent view
     var selectedFilter: Filter? = nil
     
+    @State private var trigger: Bool = false
+    
     var body: some View {
         HStack(spacing: 0) {
             ScrollViewReader { scrollViewProxy in
@@ -24,8 +26,9 @@ struct FiltersBarView: View {
                     HStack(spacing: 8) {
                         
                         if selectedFilter != nil {
-                            ImageBlueCircleButton(imageName: "xmark")
-                                .asButton(.press) {
+                            ImageBlueCircle(imageName: "xmark")
+                                .sensoryFeedback(.impact, trigger: trigger)
+                                .withTrigger(trigger: $trigger) {
                                     onXMarkPressed?()
                                 }
                                 .transition(.move(edge: .leading).combined(with: .opacity))
@@ -39,7 +42,8 @@ struct FiltersBarView: View {
                                     title: filter.title.capitalized,
                                     isSelected: selectedFilter == filter
                                 )
-                                .asButton(.press) {
+                                .sensoryFeedback(.impact, trigger: trigger)
+                                .withTrigger(trigger: $trigger) {
                                     onFilterPressed?(filter)
                                 }
                                 .transition(.move(edge: .trailing).combined(with: .opacity)) // check
@@ -58,7 +62,7 @@ struct FiltersBarView: View {
                 .animation(.bouncy, value: selectedFilter)
             }
             
-            ImageBlueCircleButton(imageName: "slider.vertical.3")
+            ImageBlueCircle(imageName: "slider.vertical.3")
                 .asButton(.press) {
                     onOptionButtonPressed?()
                 }

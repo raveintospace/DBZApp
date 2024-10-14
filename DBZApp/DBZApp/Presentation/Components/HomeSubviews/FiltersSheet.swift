@@ -20,7 +20,6 @@ struct FiltersSheet: View {
     @Binding var selection: FilterOption
    
     @State private var trigger = false
-    var triggerDelay: Double = 0.3
     
     var body: some View {
         ZStack {
@@ -30,7 +29,7 @@ struct FiltersSheet: View {
                 .opacity(0.12)
             
             HStack {
-                ImageOrangeCircleButton(imageName: "xmark")
+                ImageOrangeCircle(imageName: "xmark")
                     .asButton(.press) {
                         router.dismissScreen()
                     }
@@ -62,14 +61,9 @@ struct FiltersSheet: View {
                             }
                         )
                         .sensoryFeedback(.impact, trigger: trigger)
-                        .asButton(.press) {
+                        .withTrigger(trigger: $trigger) {
                             selection = filterOption
-                            trigger = true
                             viewModel.selectedFilterOption = filterOption
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + triggerDelay) {
-                                trigger = false
-                            }
                         }
                 }
             }

@@ -21,6 +21,8 @@ struct DatabaseCardView: View {
     var onCardPressed: (() -> Void)? = nil
     var onFavButtonPressed: (() -> Void)? = nil
     
+    @State private var trigger: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             characterImage
@@ -30,7 +32,8 @@ struct DatabaseCardView: View {
         .background(.dbzBlue.opacity(0.1))
         .clipShape(.rect(cornerRadius: 10))
         .aspectRatio(0.8, contentMode: .fit)
-        .asButton(.tap) {
+        .sensoryFeedback(.impact, trigger: trigger)
+        .withTrigger(trigger: $trigger) {
             onCardPressed?()
         }
     }
@@ -64,19 +67,20 @@ extension DatabaseCardView {
         ZStack(alignment: .bottom) {
             ImageLoaderView(url: imageName)
                 .padding(.top, 8)
-            ImageOrangeCircleButton(
+            ImageOrangeCircle(
                 imageName: isFavorite ? "star.fill" : "star",
                 frameSize: 26,
                 fontSize: 13
             )
             .opacity(isFavorite ? 1 : 0.5)
-                .padding(.trailing, 16)
-                .padding(.bottom, 8)
-                .background(.dbzBlue.opacity(0.001))
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .asButton(.press) {
-                    onFavButtonPressed?()
-                }
+            .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
+            .padding(.trailing, 16)
+            .padding(.bottom, 8)
+            .background(.clear)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .asButton(.press) {
+                onFavButtonPressed?()
+            }
         }
     }
     

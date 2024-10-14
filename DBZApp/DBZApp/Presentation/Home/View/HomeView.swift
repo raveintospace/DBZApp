@@ -13,13 +13,11 @@ struct HomeView: View {
     
     @Environment(\.router) var router
     
-    @StateObject private var viewModel: HomeViewModel
+    @EnvironmentObject var viewModel: HomeViewModel
     
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    @State private var selectedCharacter: Character? = nil
     
-    init(viewModel: HomeViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @State private var setScrollToZero: Bool = false
     
     var body: some View {
         ZStack {
@@ -29,30 +27,53 @@ struct HomeView: View {
                 fullHeader
                 ScrollViewReader { proxy in
                     ScrollView(.vertical) {
-                        LazyVStack(spacing: 0) {
-                            if viewModel.showNoResultsView {
-                                noCharactersView
+                        VStack(spacing: 0) {
+                            if viewModel.isLoading {
+                                ProgressColorBarsView()
+                                    .padding(.top, 60)
+                            } else if let error = viewModel.error {
+                                Text(error.errorDescription)
+                                    .foregroundColor(.red)
+                                    .padding()
                             } else {
-                                if !viewModel.showFavorites {
-                                    displayedCardsSection
-                                        .transition(.move(edge: .leading))
-                                }
-                                if viewModel.showFavorites {
-                                    if viewModel.favoriteCharacters.isEmpty {
-                                        noFavoritesView
-                                            .transition(.move(edge: .trailing))
-                                    } else {
+                                if viewModel.showNoResultsView {
+                                    noCharactersView
+                                } else {
+                                    if !viewModel.showFavorites {
                                         displayedCardsSection
-                                            .transition(.move(edge: .trailing))
+                                            .transition(.move(edge: .leading))
+                                    }
+                                    if viewModel.showFavorites {
+                                        if viewModel.favoriteCharacters.isEmpty {
+                                            noFavoritesView
+                                                .transition(.move(edge: .trailing))
+                                        } else {
+                                            displayedCardsSection
+                                                .transition(.move(edge: .trailing))
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                     .scrollIndicators(.hidden)
-                    .clipped()
                     .onChange(of: viewModel.showFavorites) { _, _ in
                         proxy.scrollTo(0, anchor: .top)
+                    }
+                    .onChange(of: viewModel.sortOption) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
+                    }
+                    .onChange(of: viewModel.selectedFilter) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
+                    }
+                    .onChange(of: setScrollToZero) { _, _ in
+                        withAnimation(.smooth) {
+                            proxy.scrollTo(0, anchor: .top)
+                        }
                     }
                 }
             }
@@ -66,8 +87,9 @@ struct HomeView: View {
 
 #Preview {
     RouterView { _ in
-        HomeView(viewModel: DeveloperPreview.instance.homeViewModel)
+        HomeView()
     }
+    .environmentObject(DeveloperPreview.instance.homeViewModel)
 }
 
 extension HomeView {
@@ -84,16 +106,17 @@ extension HomeView {
             databaseTitleHeader
             searchBar
             filterBar
-            sortMenuBar
+            sortBar
         }
         .padding()
     }
     
     private var databaseTitleHeader: some View {
         TitleHeader(
-            onHomePressed: {
-                
-            }, onFavPressed: {
+            isStarFilled: viewModel.showFavorites,
+            onHomeButtonPressed: {
+                // go to main view
+            }, onFavButtonPressed: {
                 withAnimation {
                     viewModel.showFavorites.toggle()
                 }
@@ -101,7 +124,12 @@ extension HomeView {
     }
     
     private var searchBar: some View {
-        SearchBarView(searchText: $viewModel.searchText)
+        SearchBarView(
+            searchText: $viewModel.searchText,
+            onSubmit: {
+                setScrollToZero.toggle()
+            }
+        )
     }
     
     private var filterBar: some View {
@@ -123,7 +151,7 @@ extension HomeView {
         .padding(.leading, -10)
     }
     
-    private var sortMenuBar: some View {
+    private var sortBar: some View {
         SortMenu(viewModel: viewModel)
     }
     
@@ -145,7 +173,7 @@ extension HomeView {
     
     // cards expand if unpair
     private var displayedCardsSection: some View {
-        NonLazyVGrid(columns: 2, alignment: .center, items: viewModel.displayedCharacters) { character in
+        NonLazyVGrid(columns: 2, alignment: .center, spacing: 4, items: viewModel.displayedCharacters) { character in
             if let character {
                 DatabaseCardView(
                     imageName: character.image,
@@ -156,16 +184,23 @@ extension HomeView {
                     gender: character.genderToDisplay,
                     isFavorite: viewModel.isFavorited(character: character),
                     onCardPressed: {
-                        router.showScreen(.fullScreenCover) { _ in
-                            DetailView()
-                        }
+                        goToDetailView(character: character)
                     },
                     onFavButtonPressed: {
-                        viewModel.updateFavorites(character: character)
-                        debugPrint(viewModel.favoriteCharacters.count)
+                        withAnimation {
+                            viewModel.updateFavorites(character: character)
+                        }
                     }
                 )
+                .padding(.horizontal, 4)
             }
+        }
+    }
+    
+    private func goToDetailView(character: Character) {
+        selectedCharacter = character
+        router.showScreen(.push) { _ in
+            DetailLoadingView(character: $selectedCharacter)
         }
     }
 }

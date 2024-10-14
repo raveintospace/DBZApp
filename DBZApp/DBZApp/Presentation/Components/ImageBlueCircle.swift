@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageBlueCircleButton: View {
+struct ImageBlueCircle: View {
     
     var imageName: String = ""
     
@@ -24,9 +24,9 @@ struct ImageBlueCircleButton: View {
 
 #Preview {
     HStack {
-        ImageBlueCircleButton(imageName: "heart.fill")
-        ImageBlueCircleButton(imageName: "slider.vertical.3")
-        ImageOrangeCircleButton(imageName: "heart.fill")
-        ImageOrangeCircleButton(imageName: "slider.vertical.3")
+        ImageBlueCircle(imageName: "heart.fill")
+        ImageBlueCircle(imageName: "slider.vertical.3")
+        ImageOrangeCircle(imageName: "heart.fill")
+        ImageOrangeCircle(imageName: "slider.vertical.3")
     }
 }

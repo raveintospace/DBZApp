@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
   "originHash" : "a94f2d6ca257b310ac47e88dc5c13b80ee073f4bf0cffda7b395f984418e3c52",
+||||||| 856256d
+  "originHash" : "b9136e1dce48ddb14481b48dc159b13bacfed26f00e105b3f45048d70ee464d8",
+=======
+  "originHash" : "4a78520a5ae83d6c068cdc3868c552c7099aae5cddbcdfe0ec554241c49aa8ea",
+>>>>>>> Detail
   "pins" : [
     {
       "identity" : "confettiswiftui",

@@ -70,7 +70,7 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Loading states and error handling
     @Published var isLoading: Bool = false
     @Published var error: UseCaseError?
-    
+        
     // MARK: - Use Cases
     private let getLocalCharactersUseCase: GetLocalCharactersUseCaseProtocol
     private let fetchCharactersFromAPIUseCase: FetchCharactersFromAPIUseCaseProtocol
@@ -105,6 +105,7 @@ final class HomeViewModel: ObservableObject {
         guard allCharacters.isEmpty else { return }
         
         isLoading = true
+        let startTime = Date()
         
         do {
             self.allCharacters = try await getLocalCharactersUseCase.execute()
@@ -112,6 +113,9 @@ final class HomeViewModel: ObservableObject {
         } catch {
             self.error = .undefinedError
         }
+        
+        await pauseForSmoothTransition(startTime: startTime)
+        
         isLoading = false
     }
     
@@ -119,6 +123,7 @@ final class HomeViewModel: ObservableObject {
         guard allCharacters.isEmpty else { return }
         
         isLoading = true
+        let startTime = Date()
         
         do {
             self.allCharacters = try await fetchCharactersFromAPIUseCase.execute()
@@ -127,7 +132,20 @@ final class HomeViewModel: ObservableObject {
             self.error = .undefinedError
         }
         
+        await pauseForSmoothTransition(startTime: startTime)
+        
         isLoading = false
+    }
+    
+    // MARK: - Transition from progress view to expected final view
+    private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 1) async {
+        let elapsedTime = Date().timeIntervalSince(startTime)
+        
+        // Ensure a 1 second pause
+        if elapsedTime < minDuration {
+            let remainingTime = minDuration - elapsedTime
+            try? await Task.sleep(nanoseconds: UInt64(remainingTime * 1_000_000_000))
+        }
     }
     
     // MARK: - Loading filters logic
@@ -221,7 +239,7 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        // Apply Filters (Affiliation, gender, race)
+        // Apply Filters (Affiliation, Gender, Race)
         if let filter = selectedFilter {
             filtered = applyFilter(filter: filter, characters: filtered)
         }
@@ -258,14 +276,14 @@ final class HomeViewModel: ObservableObject {
             return characters.sorted { $0.name.localizedCompare($1.name) == .orderedDescending }
         case .kiPoints:
             return characters.sorted {
-                let first = sortCharactersUseCase.convertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
-                let second = sortCharactersUseCase.convertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
+                let first = sortCharactersUseCase.executeConvertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
+                let second = sortCharactersUseCase.executeConvertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
                 return first > second
             }
         case .kiPointsReversed:
             return characters.sorted {
-                let first = sortCharactersUseCase.convertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
-                let second = sortCharactersUseCase.convertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
+                let first = sortCharactersUseCase.executeConvertKiPointsToNumber($0.kiToCompare) ?? Decimal(-1)
+                let second = sortCharactersUseCase.executeConvertKiPointsToNumber($1.kiToCompare) ?? Decimal(-1)
                 return first < second
             }
         }
@@ -283,7 +301,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func updateFavorites(character: Character) {
-        favoritesUseCase.updateFavorite(character: character)
+        favoritesUseCase.executeUpdateFavorite(character: character)
     }
     
     func isFavorited(character: Character) -> Bool {

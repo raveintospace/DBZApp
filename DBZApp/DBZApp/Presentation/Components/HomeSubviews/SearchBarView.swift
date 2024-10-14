@@ -15,8 +15,8 @@ struct SearchBarView: View {
     @Binding var searchText: String
     
     var placeholderText: String = "Search on database"
-    
     var characterLimit: Int = 28
+    var onSubmit: (() -> Void)? = nil
     
     var body: some View {
         HStack {
@@ -30,6 +30,9 @@ struct SearchBarView: View {
                 .foregroundStyle(.dbzBlue)
                 .autocorrectionDisabled()
                 .submitLabel(.done)
+                .onSubmit {
+                    onSubmit?()
+                }
                 .onChange(of: searchText) { _, newValue in
                     if newValue.count > characterLimit {
                         searchText = String(newValue.prefix(characterLimit))
@@ -41,7 +44,7 @@ struct SearchBarView: View {
                         .offset(x: 10)  // easier for users to tap
                         .foregroundStyle(.dbzBlue)
                         .opacity(searchText.isEmpty ? 0 : 1)
-                        .background(.dbzBlue.opacity(0.001)) // easier for users to tap
+                        .background(.clear) // easier for users to tap
                         .asButton(.opacity) {
                             UIApplication.shared.hideKeyboard()
                             searchText = ""
