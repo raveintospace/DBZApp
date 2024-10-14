@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3407D9B92CBABA09000720B5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3407D9B82CBABA09000720B5 /* ConfettiSwiftUI */; };
 		3407D9BB2CBAC53A000720B5 /* ProgressColorBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3407D9BA2CBAC53A000720B5 /* ProgressColorBarsView.swift */; };
 		3407D9BD2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */; };
 		342373E92C93493800046832 /* FiltersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342373E82C93493800046832 /* FiltersSheet.swift */; };
-		3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3428790A2C99E256002AF7A5 /* SwiftfulUI */; };
 		3428790D2C99E5A5002AF7A5 /* ImageOrangeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */; };
 		342D19822CB29C34006603DE /* DetailedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19812CB29C34006603DE /* DetailedCharacter.swift */; };
 		342D19842CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19832CB29FD7006603DE /* DetailCharacterDataSourceProtocol.swift */; };
@@ -53,7 +51,10 @@
 		348C767E2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C767D2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift */; };
 		348C76812CA0601C00235D7F /* FavoritesUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C76802CA0601C00235D7F /* FavoritesUseCaseProtocol.swift */; };
 		348C76832CA0603100235D7F /* FavoritesUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C76822CA0603100235D7F /* FavoritesUseCaseImpl.swift */; };
-		348F0C3C2C94816400A7736A /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 348F0C3B2C94816400A7736A /* SwiftfulRouting */; };
+		349277C52CBD7E0500F9A99A /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 349277C42CBD7E0500F9A99A /* ConfettiSwiftUI */; };
+		349277C82CBD7E0F00F9A99A /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 349277C72CBD7E0F00F9A99A /* SwiftfulUI */; };
+		349277CB2CBD7E1800F9A99A /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 349277CA2CBD7E1800F9A99A /* SwiftfulRouting */; };
+		349277CE2CBD7E2100F9A99A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 349277CD2CBD7E2100F9A99A /* Kingfisher */; };
 		34A704F32CB030DD00CCE7B5 /* DetailInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A704F22CB030DD00CCE7B5 /* DetailInfoSection.swift */; };
 		34BF19A52C95D14C00A6B55A /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A42C95D14C00A6B55A /* NoResultsView.swift */; };
 		34BF19A72C95D81700A6B55A /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A62C95D81700A6B55A /* SortOption.swift */; };
@@ -70,7 +71,6 @@
 		34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */; };
 		34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */; };
 		34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */; };
-		34DCBDD12C96F758005DEDAA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 34DCBDD02C96F758005DEDAA /* Kingfisher */; };
 		34DCBDD32C96F7D4005DEDAA /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */; };
 		34DCBDD52C96F82E005DEDAA /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */; };
 		34DFF8F42CBBFA0B004E4769 /* SensoryTriggerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DFF8F32CBBFA0B004E4769 /* SensoryTriggerModifier.swift */; };
@@ -158,10 +158,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */,
-				34DCBDD12C96F758005DEDAA /* Kingfisher in Frameworks */,
-				3407D9B92CBABA09000720B5 /* ConfettiSwiftUI in Frameworks */,
-				348F0C3C2C94816400A7736A /* SwiftfulRouting in Frameworks */,
+				349277CE2CBD7E2100F9A99A /* Kingfisher in Frameworks */,
+				349277C82CBD7E0F00F9A99A /* SwiftfulUI in Frameworks */,
+				349277CB2CBD7E1800F9A99A /* SwiftfulRouting in Frameworks */,
+				349277C52CBD7E0500F9A99A /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,10 +548,10 @@
 			);
 			name = DBZApp;
 			packageProductDependencies = (
-				348F0C3B2C94816400A7736A /* SwiftfulRouting */,
-				34DCBDD02C96F758005DEDAA /* Kingfisher */,
-				3428790A2C99E256002AF7A5 /* SwiftfulUI */,
-				3407D9B82CBABA09000720B5 /* ConfettiSwiftUI */,
+				349277C42CBD7E0500F9A99A /* ConfettiSwiftUI */,
+				349277C72CBD7E0F00F9A99A /* SwiftfulUI */,
+				349277CA2CBD7E1800F9A99A /* SwiftfulRouting */,
+				349277CD2CBD7E2100F9A99A /* Kingfisher */,
 			);
 			productName = DBZApp;
 			productReference = 343DC2E92C89AA4400BCCF39 /* DBZApp.app */;
@@ -582,10 +582,10 @@
 			);
 			mainGroup = 343DC2E02C89AA4400BCCF39;
 			packageReferences = (
-				348F0C3A2C94816400A7736A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
-				34DCBDCF2C96F758005DEDAA /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				342879092C99E256002AF7A5 /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
-				3407D9B72CBABA09000720B5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				349277C32CBD7E0500F9A99A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				349277C62CBD7E0F00F9A99A /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				349277C92CBD7E1800F9A99A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+				349277CC2CBD7E2100F9A99A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 343DC2EA2C89AA4400BCCF39 /* Products */;
 			projectDirPath = "";
@@ -884,7 +884,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3407D9B72CBABA09000720B5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+		349277C32CBD7E0500F9A99A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
 			requirement = {
@@ -892,7 +892,7 @@
 				minimumVersion = 1.1.0;
 			};
 		};
-		342879092C99E256002AF7A5 /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+		349277C62CBD7E0F00F9A99A /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
 			requirement = {
@@ -900,7 +900,7 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		348F0C3A2C94816400A7736A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+		349277C92CBD7E1800F9A99A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
 			requirement = {
@@ -908,35 +908,35 @@
 				minimumVersion = 5.3.6;
 			};
 		};
-		34DCBDCF2C96F758005DEDAA /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		349277CC2CBD7E2100F9A99A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.12.0;
+				minimumVersion = 8.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3407D9B82CBABA09000720B5 /* ConfettiSwiftUI */ = {
+		349277C42CBD7E0500F9A99A /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3407D9B72CBABA09000720B5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			package = 349277C32CBD7E0500F9A99A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
 		};
-		3428790A2C99E256002AF7A5 /* SwiftfulUI */ = {
+		349277C72CBD7E0F00F9A99A /* SwiftfulUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 342879092C99E256002AF7A5 /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			package = 349277C62CBD7E0F00F9A99A /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
 			productName = SwiftfulUI;
 		};
-		348F0C3B2C94816400A7736A /* SwiftfulRouting */ = {
+		349277CA2CBD7E1800F9A99A /* SwiftfulRouting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 348F0C3A2C94816400A7736A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			package = 349277C92CBD7E1800F9A99A /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
 			productName = SwiftfulRouting;
 		};
-		34DCBDD02C96F758005DEDAA /* Kingfisher */ = {
+		349277CD2CBD7E2100F9A99A /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 34DCBDCF2C96F758005DEDAA /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 349277CC2CBD7E2100F9A99A /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
