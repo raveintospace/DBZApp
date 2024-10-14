@@ -23,6 +23,8 @@ final class DetailViewModel: ObservableObject {
     }
     
     func fetchCharacterDetails(id: Int) async {
+        guard detailedCharacter == nil else { return }
+        
         isLoading = true
         let startTime = Date()
         
