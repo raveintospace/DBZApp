@@ -41,3 +41,10 @@ struct PlanetImageCell: View {
 #Preview {
     PlanetImageCell()
 }
+
+/*
+ Articles to check
+ https://www.hackingwithswift.com/quick-start/swiftui/how-to-handle-pinch-to-zoom-for-views
+ 
+ https://github.com/ryohey/Zoomable
+ */
