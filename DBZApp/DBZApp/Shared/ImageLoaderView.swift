@@ -14,13 +14,14 @@ struct ImageLoaderView: View {
     
     let url: String
     var contentMode: ContentMode = .fit
+    var allowHitTesting: Bool = false
     
     var body: some View {
         Rectangle()
             .opacity(0)
             .overlay(
                 KingfisherImageLoader(url: url, contentMode: contentMode)
-                    .allowsHitTesting(false)
+                    .allowsHitTesting(allowHitTesting)
             )
             .clipped()
     }
