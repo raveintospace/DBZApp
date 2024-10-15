@@ -10,7 +10,7 @@ import SwiftUI
 struct PlanetImageCell: View {
     
     var imageName: String = DetailedCharacter.mock.originPlanet.image
-
+    
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
