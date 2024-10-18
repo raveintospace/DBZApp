@@ -1,7 +1,7 @@
 //
 //  CustomZoomableModifier.swift
 //  DBZApp
-//  Enables zoom to any view
+//  Enables zoom to any view, based on https://github.com/ryohey/Zoomable
 //  Created by Uri on 18/10/24.
 //
 
