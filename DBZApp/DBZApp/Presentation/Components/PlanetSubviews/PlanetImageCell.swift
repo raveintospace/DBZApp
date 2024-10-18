@@ -15,7 +15,7 @@ struct PlanetImageCell: View {
     
     var body: some View {
         ImageLoaderView(url: imageName, allowHitTesting: true)
-            .beZoomable()
+            .zoompanable()
     }
 }
 

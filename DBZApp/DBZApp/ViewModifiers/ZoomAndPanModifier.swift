@@ -1,16 +1,15 @@
 //
-//  CustomZoomableModifier.swift
+//  ZoomAndPanModifier.swift
 //  DBZApp
-//  Enables zoom to any view
+//  Enables zoom & pan to any view
 //  Created by Uri on 18/10/24.
 //
 
-#if os(iOS)
-
 import SwiftUI
 
-struct CustomZoomableModifier: ViewModifier {
+struct ZoomAndPanModifier: ViewModifier {
     let minZoomScale: CGFloat
+    let doubleTapZoomScale: CGFloat
 
     @State private var lastTransform: CGAffineTransform = .identity
     @State private var transform: CGAffineTransform = .identity
@@ -35,14 +34,15 @@ struct CustomZoomableModifier: ViewModifier {
                     view.gesture(oldMagnificationGesture)
                 }
             }
+      //      .gesture(doubleTapGesture)
     }
 
     @available(iOS, introduced: 16.0, deprecated: 17.0)
     private var oldMagnificationGesture: some Gesture {
         MagnificationGesture()
             .onChanged { value in
-                let zoomFactor = max(value, 1.0)
-                let scale = zoomFactor
+                let zoomFactor = 0.5
+                let scale = value * zoomFactor
                 transform = lastTransform.scaledBy(x: scale, y: scale)
             }
             .onEnded { _ in
@@ -54,9 +54,8 @@ struct CustomZoomableModifier: ViewModifier {
     private var magnificationGesture: some Gesture {
         MagnifyGesture(minimumScaleDelta: 0)
             .onChanged { value in
-                let zoomFactor = max(value.magnification, 1.0)
                 let newTransform = CGAffineTransform.anchoredScale(
-                    scale: zoomFactor,
+                    scale: value.magnification,
                     anchor: value.startAnchor.scaledBy(contentSize)
                 )
 
@@ -66,6 +65,23 @@ struct CustomZoomableModifier: ViewModifier {
             }
             .onEnded { _ in
                 onEndGesture()
+            }
+    }
+
+    private var doubleTapGesture: some Gesture {
+        SpatialTapGesture(count: 2)
+            .onEnded { value in
+                let newTransform: CGAffineTransform =
+                    if transform.isIdentity {
+                        .anchoredScale(scale: doubleTapZoomScale, anchor: value.location)
+                    } else {
+                        .identity
+                    }
+
+                withAnimation(.linear(duration: 0.15)) {
+                    transform = newTransform
+                    lastTransform = newTransform
+                }
             }
     }
 
@@ -80,10 +96,10 @@ struct CustomZoomableModifier: ViewModifier {
                 }
             }
             .onEnded { _ in
-                onEndGesture()
+              //  onEndGesture()
             }
     }
-
+    
     private func onEndGesture() {
         withAnimation(.easeInOut) {
             transform = .identity
@@ -92,8 +108,12 @@ struct CustomZoomableModifier: ViewModifier {
     }
 
     private func limitTransform(_ transform: CGAffineTransform) -> CGAffineTransform {
-        let scaleX = max(transform.scaleX, minZoomScale)
-        let scaleY = max(transform.scaleY, minZoomScale)
+        let scaleX = transform.scaleX
+        let scaleY = transform.scaleY
+
+        if scaleX < minZoomScale || scaleY < minZoomScale {
+            return .identity
+        }
 
         let maxX = contentSize.width * (scaleX - 1)
         let maxY = contentSize.height * (scaleY - 1)
@@ -117,21 +137,29 @@ struct CustomZoomableModifier: ViewModifier {
 
 public extension View {
     @ViewBuilder
-    func beZoomable(
-        minZoomScale: CGFloat = 1
+    func zoompanable(
+        minZoomScale: CGFloat = 1,
+        doubleTapZoomScale: CGFloat = 3
     ) -> some View {
-        modifier(CustomZoomableModifier(minZoomScale: minZoomScale))
+        modifier(ZoomAndPanModifier(
+            minZoomScale: minZoomScale,
+            doubleTapZoomScale: doubleTapZoomScale
+        ))
     }
 
     @ViewBuilder
-    func beZoomable(
+    func zoompanable(
         minZoomScale: CGFloat = 1,
+        doubleTapZoomScale: CGFloat = 3,
         outOfBoundsColor: Color = .clear
     ) -> some View {
         GeometryReader { proxy in
             ZStack {
                 outOfBoundsColor
-                self.beZoomable(minZoomScale: minZoomScale)
+                self.zoompanable(
+                    minZoomScale: minZoomScale,
+                    doubleTapZoomScale: doubleTapZoomScale
+                )
             }
         }
     }
@@ -178,5 +206,3 @@ private extension CGAffineTransform {
         sqrt(b * b + d * d)
     }
 }
-
-#endif
