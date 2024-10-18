@@ -47,7 +47,7 @@
 		345D5A992C8B5375003BA242 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A982C8B5375003BA242 /* SearchBarView.swift */; };
 		345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9A2C8B5507003BA242 /* UIApplication.swift */; };
 		345D5A9D2C8B5F11003BA242 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D5A9C2C8B5F11003BA242 /* FilterCell.swift */; };
-		34858D862CC2C3A200F97AE9 /* Zoomable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34858D852CC2C3A200F97AE9 /* Zoomable.swift */; };
+		34858D862CC2C3A200F97AE9 /* CustomZoomableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34858D852CC2C3A200F97AE9 /* CustomZoomableModifier.swift */; };
 		348C76772CA050CC00235D7F /* FavoritesContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 348C76752CA050CC00235D7F /* FavoritesContainer.xcdatamodeld */; };
 		348C76792CA0525100235D7F /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C76782CA0525100235D7F /* FavoritesDataSource.swift */; };
 		348C767C2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C767B2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift */; };
@@ -123,7 +123,7 @@
 		345D5A982C8B5375003BA242 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		345D5A9A2C8B5507003BA242 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		345D5A9C2C8B5F11003BA242 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
-		34858D852CC2C3A200F97AE9 /* Zoomable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zoomable.swift; sourceTree = "<group>"; };
+		34858D852CC2C3A200F97AE9 /* CustomZoomableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomZoomableModifier.swift; sourceTree = "<group>"; };
 		348C76762CA050CC00235D7F /* FavoritesContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesContainer.xcdatamodel; sourceTree = "<group>"; };
 		348C76782CA0525100235D7F /* FavoritesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
 		348C767B2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -473,7 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				34DFF8F32CBBFA0B004E4769 /* SensoryTriggerModifier.swift */,
-				34858D852CC2C3A200F97AE9 /* Zoomable.swift */,
+				34858D852CC2C3A200F97AE9 /* CustomZoomableModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -657,7 +657,7 @@
 				345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */,
 				34C5E2D02C98920800A1AC41 /* ImageBlueCircle.swift in Sources */,
 				34C4BDD32CB1890200C5060C /* ExpandableText.swift in Sources */,
-				34858D862CC2C3A200F97AE9 /* Zoomable.swift in Sources */,
+				34858D862CC2C3A200F97AE9 /* CustomZoomableModifier.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
 				3407D9BD2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift in Sources */,
 				348C767E2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift in Sources */,
