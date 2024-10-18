@@ -17,22 +17,17 @@ struct ImageLoaderView: View {
     var allowHitTesting: Bool = false
     
     var body: some View {
-        Rectangle()
-            .opacity(0)
-            .overlay(
-                KingfisherImageLoader(url: url, contentMode: contentMode)
-                    .allowsHitTesting(allowHitTesting)
-            )
-            .clipped()
+        KingfisherImageLoader(url: url, contentMode: contentMode)
+            .allowsHitTesting(allowHitTesting)
     }
 }
 
 #Preview {
     ImageLoaderView(url: "https://dragonball-api.com/characters/vegeta_normal.webp")
-    .background(.red)
-    .clipShape(.rect(cornerRadius: 30))
-    .padding(20)
-    .padding(.vertical, 30)
+        .background(.red)
+        .clipShape(.rect(cornerRadius: 30))
+        .padding(20)
+        .padding(.vertical, 30)
 }
 
 // fit: image without cuts, whole image with original proportions
@@ -42,3 +37,15 @@ struct ImageLoaderView: View {
 // If we don't use rectangle, with the same frame (200*200), image occupies more space than rectangle, because it is higher (200*300)
 // Clipped puts the image inside the rectangle
 // .allowsHitTesting(false) - only rectangle frame is clickable
+
+/*
+ Code with Rectangle + overlay
+ Rectangle()
+     .opacity(0)
+     .overlay(
+         KingfisherImageLoader(url: url, contentMode: contentMode)
+             .allowsHitTesting(allowHitTesting)
+     )
+     .clipped()
+
+ */
