@@ -14,12 +14,8 @@ struct DetailImageTopCell: View {
     var imageName: String = Character.mockTwo.image
     
     var body: some View {
-        Rectangle()
-            .opacity(0)
-            .overlay(
-                ImageLoaderView(url: imageName)
-                    .padding(.top, 60)
-            )
+        ImageLoaderView(url: imageName)
+            .padding(.top, 60)
             .asStretchyHeader(startingHeight: height)
     }
 }

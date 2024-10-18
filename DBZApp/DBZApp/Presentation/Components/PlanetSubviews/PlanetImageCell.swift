@@ -14,37 +14,11 @@ struct PlanetImageCell: View {
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
-        Rectangle()
-            .opacity(0)
-            .overlay(
-                ImageLoaderView(url: imageName, allowHitTesting: true)
-                    .scaleEffect(scale)
-                    .gesture(MagnificationGesture()
-                        .onChanged { value in
-                            if value.magnitude < 1.0 {
-                                scale = 1.0
-                            } else {
-                                scale = value.magnitude
-                            }
-                        }
-                        .onEnded { _ in
-                            withAnimation(.easeInOut) {
-                                scale = 1.0
-                                
-                            }
-                        }
-                    )
-            )
+        ImageLoaderView(url: imageName, allowHitTesting: true)
+            .zoomable()
     }
 }
 
 #Preview {
     PlanetImageCell()
 }
-
-/*
- Articles to check
- https://www.hackingwithswift.com/quick-start/swiftui/how-to-handle-pinch-to-zoom-for-views
- 
- https://github.com/ryohey/Zoomable
- */

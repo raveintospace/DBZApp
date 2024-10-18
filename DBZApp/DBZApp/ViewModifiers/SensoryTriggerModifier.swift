@@ -1,7 +1,7 @@
 //
 //  SensoryTriggerModifier.swift
 //  DBZApp
-//
+//  To manage device's vibration when combined with .sensoryFeedback(.impact)
 //  Created by Uri on 13/10/24.
 //
 
