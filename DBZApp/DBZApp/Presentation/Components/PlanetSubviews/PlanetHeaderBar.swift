@@ -17,7 +17,7 @@ struct PlanetHeaderBar: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircle(imageName: "arrowshape.backward.fill")
+            ImageBlueCircle(imageName: "arrowshape.down.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .withTrigger(trigger: $trigger) {
                     onBackButtonPressed?()

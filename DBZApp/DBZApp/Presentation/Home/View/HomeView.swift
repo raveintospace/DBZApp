@@ -109,6 +109,7 @@ extension HomeView {
             sortBar
         }
         .padding()
+        .padding(.top, -10)
     }
     
     private var databaseTitleHeader: some View {
