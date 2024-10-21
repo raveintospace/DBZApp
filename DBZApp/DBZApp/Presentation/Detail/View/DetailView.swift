@@ -79,7 +79,8 @@ struct DetailView: View {
                 }
             }
             
-            header                
+            header
+                .frame(maxHeight: .infinity, alignment: .top)
         }
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -120,7 +121,6 @@ extension DetailView {
         )
         .padding()
         .padding(.top, -10)
-        .frame(maxHeight: .infinity, alignment: .top)
         .background(showHeader ? Color.own.opacity(0.95) : Color.background.opacity(0.001))
         .animation(.smooth(duration: 0.2), value: showHeader)
         .confettiCannon(

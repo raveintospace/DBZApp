@@ -18,7 +18,9 @@ struct PlanetView: View {
     
     var body: some View {
         ZStack {
-            header            
+            header
+                .frame(maxHeight: .infinity, alignment: .top)
+            
             PlanetImageCell(imageName: detailedCharacter.originPlanet.image)
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -48,6 +50,5 @@ extension PlanetView {
         )
         .padding()
         .padding(.top, -10)
-        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
