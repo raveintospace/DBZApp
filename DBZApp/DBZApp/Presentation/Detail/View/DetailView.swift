@@ -149,7 +149,7 @@ extension DetailView {
         DetailBottomButtons(
             showTransformationsButton: viewModel.hasTransformations(),
             onPlanetButtonPressed: {
-                router.showScreen(.push) { _ in
+                router.showScreen(.fullScreenCover) { _ in
                     PlanetView()
                 }
             },
