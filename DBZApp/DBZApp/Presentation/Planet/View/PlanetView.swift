@@ -13,8 +13,9 @@ struct PlanetView: View {
     @Environment(\.router) var router
     
     var body: some View {
-        VStack {
+        ZStack {
             Text("close view")
+                .frame(maxHeight: .infinity, alignment: .top)
                 .onTapGesture {
                     router.dismissScreen()
                 }

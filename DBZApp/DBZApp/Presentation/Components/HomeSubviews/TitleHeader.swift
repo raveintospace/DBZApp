@@ -31,8 +31,8 @@ struct TitleHeader: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             
             ImageBlueCircle(imageName: isStarFilled ? "star.fill" : "star")
-                .sensoryFeedback(.impact, trigger: trigger)
                 .rotationEffect(Angle(degrees: isStarFilled ? -72 : 0))
+                .sensoryFeedback(.impact, trigger: trigger)
                 .withTrigger(trigger: $trigger) {
                     onFavButtonPressed?()
                 }

@@ -73,6 +73,7 @@
 		34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */; };
 		34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */; };
 		34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */; };
+		34D8DB262CC6B99000ACC0B7 /* PlanetHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D8DB252CC6B99000ACC0B7 /* PlanetHeaderBar.swift */; };
 		34DCBDD12C96F758005DEDAA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 34DCBDD02C96F758005DEDAA /* Kingfisher */; };
 		34DCBDD32C96F7D4005DEDAA /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */; };
 		34DCBDD52C96F82E005DEDAA /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */; };
@@ -149,6 +150,7 @@
 		34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseProtocol.swift; sourceTree = "<group>"; };
 		34C9FB3C2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseImpl.swift; sourceTree = "<group>"; };
 		34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
+		34D8DB252CC6B99000ACC0B7 /* PlanetHeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetHeaderBar.swift; sourceTree = "<group>"; };
 		34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherImageLoader.swift; sourceTree = "<group>"; };
 		34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
 		34DFF8F32CBBFA0B004E4769 /* SensoryTriggerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensoryTriggerModifier.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				349FC5352CBD83C7009DE850 /* PlanetImageCell.swift */,
+				34D8DB252CC6B99000ACC0B7 /* PlanetHeaderBar.swift */,
 			);
 			path = PlanetSubviews;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
 				342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */,
 				34DFF8F42CBBFA0B004E4769 /* SensoryTriggerModifier.swift in Sources */,
+				34D8DB262CC6B99000ACC0B7 /* PlanetHeaderBar.swift in Sources */,
 				349FC5362CBD83C7009DE850 /* PlanetImageCell.swift in Sources */,
 				34ECF97E2C9F076F00ADFDF8 /* DatabaseCardView.swift in Sources */,
 				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
