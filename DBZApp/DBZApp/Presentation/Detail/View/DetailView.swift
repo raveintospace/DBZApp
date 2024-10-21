@@ -40,10 +40,9 @@ struct DetailView: View {
             )
         )
     }
-      
+    
     @State private var showHeader: Bool = true
     @State private var offset: CGFloat = 0
-    
     @State private var confettiCounter: Int = 0
     
     var body: some View {
@@ -112,7 +111,9 @@ extension DetailView {
                 router.dismissScreen()
             },
             onFavButtonPressed: {
-                homeViewModel.updateFavorites(character: viewModel.character)
+                withAnimation {
+                    homeViewModel.updateFavorites(character: viewModel.character)
+                }
                 if homeViewModel.isFavorited(character: viewModel.character) {
                     confettiCounter += 1
                 }
@@ -121,7 +122,6 @@ extension DetailView {
         .padding()
         .padding(.top, -10)
         .background(showHeader ? Color.own.opacity(0.95) : Color.background.opacity(0.001))
-        .foregroundStyle(.accent)
         .animation(.smooth(duration: 0.2), value: showHeader)
         .confettiCannon(
             counter: $confettiCounter,
@@ -150,7 +150,9 @@ extension DetailView {
             showTransformationsButton: viewModel.hasTransformations(),
             onPlanetButtonPressed: {
                 router.showScreen(.fullScreenCover) { _ in
-                    PlanetView()
+                    if let detailedCharacter = viewModel.detailedCharacter {
+                        PlanetView(detailedCharacter: detailedCharacter)
+                    }
                 }
             },
             onTransformationButtonPressed: {

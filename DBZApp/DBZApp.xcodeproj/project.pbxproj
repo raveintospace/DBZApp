@@ -420,8 +420,8 @@
 		349FC5342CBD839F009DE850 /* PlanetSubviews */ = {
 			isa = PBXGroup;
 			children = (
-				349FC5352CBD83C7009DE850 /* PlanetImageCell.swift */,
 				34D8DB252CC6B99000ACC0B7 /* PlanetHeaderBar.swift */,
+				349FC5352CBD83C7009DE850 /* PlanetImageCell.swift */,
 			);
 			path = PlanetSubviews;
 			sourceTree = "<group>";

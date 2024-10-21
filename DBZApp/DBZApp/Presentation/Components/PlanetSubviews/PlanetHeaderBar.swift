@@ -26,8 +26,9 @@ struct PlanetHeaderBar: View {
             
             Text(headerTitle.uppercased())
                 .lineLimit(1)
-                .font(.largeTitle)
+                .font(.title2)
                 .bold()
+                .foregroundStyle(.accent)
                 .frame(maxWidth: .infinity)
             
             ImageBlueCircle(imageName: showPlanetModal ? "info.circle.fill" : "info.circle")
@@ -42,7 +43,7 @@ struct PlanetHeaderBar: View {
 
 #Preview {
     VStack(spacing: 20) {
-        PlanetHeaderBar(showPlanetModal: true)
-        PlanetHeaderBar(showPlanetModal: false)
+        PlanetHeaderBar(headerTitle: "North Kai", showPlanetModal: true)
+        PlanetHeaderBar(headerTitle: "Zeno's Moving Temple",showPlanetModal: false)
     }
 }

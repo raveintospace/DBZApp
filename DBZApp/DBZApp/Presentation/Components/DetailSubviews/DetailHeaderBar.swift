@@ -30,6 +30,7 @@ struct DetailHeaderBar: View {
                 .lineLimit(1)
                 .font(.largeTitle)
                 .bold()
+                .foregroundStyle(.accent)
                 .frame(maxWidth: .infinity)
                 .opacity(showHeaderTitle ? 1 : 0)
             
