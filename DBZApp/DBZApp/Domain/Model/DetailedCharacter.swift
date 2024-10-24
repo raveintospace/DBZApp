@@ -65,6 +65,10 @@ struct OriginPlanet: Codable, Identifiable {
         return translations[id] ?? name
     }
     
+    var planetStatus: String {
+        isDestroyed ? "Destroyed" : "Undestroyed"
+    }
+    
     var translatedPlanetDescription: String {
         let translations: [Int: String] = [
             1: "Home planet of the Namekians. Scene of important battles and the acquisition of the Namek Dragon Balls.",

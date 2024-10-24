@@ -58,6 +58,7 @@
 		348F0C3C2C94816400A7736A /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 348F0C3B2C94816400A7736A /* SwiftfulRouting */; };
 		349FC5362CBD83C7009DE850 /* PlanetImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349FC5352CBD83C7009DE850 /* PlanetImageCell.swift */; };
 		34A704F32CB030DD00CCE7B5 /* DetailInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A704F22CB030DD00CCE7B5 /* DetailInfoSection.swift */; };
+		34A952E22CCA3A2300213860 /* PlanetInfoModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A952E12CCA3A2200213860 /* PlanetInfoModal.swift */; };
 		34BF19A52C95D14C00A6B55A /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A42C95D14C00A6B55A /* NoResultsView.swift */; };
 		34BF19A72C95D81700A6B55A /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A62C95D81700A6B55A /* SortOption.swift */; };
 		34BF19AA2C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */; };
@@ -135,6 +136,7 @@
 		348C76822CA0603100235D7F /* FavoritesUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesUseCaseImpl.swift; sourceTree = "<group>"; };
 		349FC5352CBD83C7009DE850 /* PlanetImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetImageCell.swift; sourceTree = "<group>"; };
 		34A704F22CB030DD00CCE7B5 /* DetailInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoSection.swift; sourceTree = "<group>"; };
+		34A952E12CCA3A2200213860 /* PlanetInfoModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoModal.swift; sourceTree = "<group>"; };
 		34BF19A42C95D14C00A6B55A /* NoResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsView.swift; sourceTree = "<group>"; };
 		34BF19A62C95D81700A6B55A /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCharactersUsecaseProtocol.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			children = (
 				34D8DB252CC6B99000ACC0B7 /* PlanetHeaderBar.swift */,
 				349FC5352CBD83C7009DE850 /* PlanetImageCell.swift */,
+				34A952E12CCA3A2200213860 /* PlanetInfoModal.swift */,
 			);
 			path = PlanetSubviews;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				342D198B2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift in Sources */,
 				34EBEE392CA8150B006FBCC6 /* DetailHeaderBar.swift in Sources */,
 				342D19892CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift in Sources */,
+				34A952E22CCA3A2300213860 /* PlanetInfoModal.swift in Sources */,
 				34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */,
 				343DC31F2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift in Sources */,
 				343DC31D2C89CCC300BCCF39 /* GetLocalCharactersUseCaseImpl.swift in Sources */,
