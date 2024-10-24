@@ -24,7 +24,8 @@ struct PlanetHeaderBar: View {
                 .frame(width: 50, alignment: .leading)
             
             Text(headerTitle.uppercased())
-                .lineLimit(1)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
                 .font(.title2)
                 .bold()
                 .foregroundStyle(.accent)
@@ -44,5 +45,6 @@ struct PlanetHeaderBar: View {
     VStack(spacing: 20) {
         PlanetHeaderBar(headerTitle: "North Kai")
         PlanetHeaderBar(headerTitle: "Zeno's Moving Temple")
+            .padding(.horizontal)
     }
 }

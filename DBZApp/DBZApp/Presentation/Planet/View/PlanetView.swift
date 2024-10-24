@@ -18,6 +18,8 @@ struct PlanetView: View {
     
     var body: some View {
         ZStack {
+            planetWallpaper
+            
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
@@ -34,6 +36,13 @@ struct PlanetView: View {
 }
 
 extension PlanetView {
+    
+    private var planetWallpaper: some View {
+        Image("planetsWallpaper")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.20)
+    }
     
     private var header: some View {
         PlanetHeaderBar(
@@ -58,7 +67,7 @@ extension PlanetView {
     private var planetPopover: some View {
         PlanetInfoPopover(
             title: "Planet info",
-            name: detailedCharacter.originPlanet.name,
+            name: detailedCharacter.originPlanet.translatedPlanetName,
             status: detailedCharacter.originPlanet.planetStatus,
             description: detailedCharacter.originPlanet.translatedPlanetDescription
         )
