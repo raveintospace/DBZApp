@@ -97,7 +97,7 @@ struct OriginPlanet: Codable, Identifiable {
 }
 
 // MARK: - Transformation
-struct Transformation: Codable, Identifiable {
+struct Transformation: Codable, Identifiable, Hashable {
     let id: Int
     let name: String
     let image: String

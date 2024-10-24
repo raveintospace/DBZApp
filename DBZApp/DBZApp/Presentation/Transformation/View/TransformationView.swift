@@ -15,10 +15,14 @@ struct TransformationView: View {
     var detailedCharacter: DetailedCharacter
     
     var body: some View {
-        Text(detailedCharacter.transformations[0].name)
-            .onTapGesture {
-                router.dismissScreen()
+        VStack {
+            ForEach(detailedCharacter.transformations, id: \.self) { transformation in
+                Text(transformation.name)
+                    .onTapGesture {
+                        router.dismissScreen()
+                    }
             }
+        }
     }
 }
 
