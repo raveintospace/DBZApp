@@ -18,7 +18,7 @@ struct TransformationView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 12) {
                 transformationsSlider
                 customPageControl
             }
@@ -52,7 +52,6 @@ extension TransformationView {
                     imageName: transformation.image,
                     kiPoints: transformation.ki
                 )
-                .background(.gray)
                 .tag(index)
             }
         }
@@ -69,6 +68,5 @@ extension TransformationView {
                     .animation(.easeInOut, value: sliderCurrentIndex)
             }
         }
-        .padding(.top, 8)
     }
 }

@@ -16,9 +16,14 @@ struct TransformationCard: View {
     var body: some View {
         VStack(spacing: 0) {
             nameSection
+                .frame(alignment: .top)
             ImageLoaderView(url: imageName)
+                .padding(.vertical, 4)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             kiSection
+                .frame(alignment: .bottom)
         }
+        .foregroundStyle(.accent)
     }
 }
 
@@ -34,7 +39,6 @@ extension TransformationCard {
             .bold()
             .lineLimit(2)
             .multilineTextAlignment(.center)
-            .foregroundStyle(.accent)
     }
     
     private var kiSection: some View {
@@ -42,6 +46,5 @@ extension TransformationCard {
             .font(.title3)
             .fontWeight(.semibold) +
         Text(kiPoints)
-            .fontWeight(.semibold)
     }
 }

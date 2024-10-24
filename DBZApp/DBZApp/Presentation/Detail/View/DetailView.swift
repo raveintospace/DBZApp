@@ -77,7 +77,7 @@ struct DetailView: View {
             header
                 .frame(maxHeight: .infinity, alignment: .top)
         }
-     //   .toolbar(.hidden, for: .navigationBar)
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
