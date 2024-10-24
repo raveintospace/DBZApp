@@ -71,12 +71,7 @@ struct DetailView: View {
             }
             .scrollIndicators(.hidden)
             .task {
-                debugPrint("character id: \(viewModel.character.id)")
                 await viewModel.fetchCharacterDetails(id: viewModel.character.id)
-                if let detailedCharacter = viewModel.detailedCharacter {
-                    debugPrint(detailedCharacter.originPlanet.translatedPlanetName)
-                    debugPrint(viewModel.hasTransformations())
-                }
             }
             
             header
@@ -149,15 +144,25 @@ extension DetailView {
         DetailBottomButtons(
             showTransformationsButton: viewModel.hasTransformations(),
             onPlanetButtonPressed: {
-                router.showScreen(.fullScreenCover) { _ in
-                    if let detailedCharacter = viewModel.detailedCharacter {
+                if let detailedCharacter = viewModel.detailedCharacter {
+                    showFullScreenCover {
                         PlanetView(detailedCharacter: detailedCharacter)
                     }
                 }
             },
             onTransformationButtonPressed: {
-                debugPrint("Go to planet view")
+                if let detailedCharacter = viewModel.detailedCharacter {
+                    showFullScreenCover {
+                        TransformationView(detailedCharacter: detailedCharacter)
+                    }
+                }
             }
         )
+    }
+    
+    private func showFullScreenCover<Content: View>(@ViewBuilder content: @escaping () -> Content) {
+        router.showScreen(.fullScreenCover) { _ in
+            content()
+        }
     }
 }
