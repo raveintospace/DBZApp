@@ -12,8 +12,6 @@ struct PlanetView: View {
     
     @Environment(\.router) var router
     
-  //  @State private var showPlanetPopover: Bool = false
-    
     var detailedCharacter: DetailedCharacter
     
     var body: some View {
