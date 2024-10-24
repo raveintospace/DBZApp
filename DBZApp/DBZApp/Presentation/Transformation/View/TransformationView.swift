@@ -14,16 +14,16 @@ struct TransformationView: View {
     
     var detailedCharacter: DetailedCharacter
     
+    @State private var sliderCurrentIndex: Int = 0
+    
     var body: some View {
         ZStack {
+            //horizontalSlider
+            transformationsSlider
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
-            VStack {
-                ForEach(detailedCharacter.transformations, id: \.self) { transformation in
-                    Text(transformation.name)
-                }
-            }
+            
         }
     }
 }
@@ -42,5 +42,43 @@ extension TransformationView {
         })
         .padding()
         .padding(.top, -10)
+    }
+    
+    private var horizontalSlider: some View {
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 16) {
+                ForEach(detailedCharacter.transformations, id: \.self) { transformation in
+                    TransformationCard(
+                        name: transformation.name,
+                        imageName: transformation.image,
+                        kiPoints: transformation.ki
+                    )
+                    .background(.red)
+                }
+            }
+        }
+        .padding(.top, 50)
+    }
+    
+    private var transformationsSlider: some View {
+        TabView(selection: $sliderCurrentIndex) {
+            ForEach(detailedCharacter.transformations, id: \.self) { transformation in
+                TransformationCard(
+                    name: transformation.name,
+                    imageName: transformation.image,
+                    kiPoints: transformation.ki
+                )
+                .background(.red)
+                .tag(transformation)
+            }
+        }
+        .tabViewStyle(PageTabViewStyle())
+        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
+        .padding(.top, 50)
+    }
+    
+    private func setupTabViewAppearance() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = .dbzOrange
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.dbzYellow
     }
 }
