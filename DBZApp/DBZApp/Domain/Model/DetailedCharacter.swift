@@ -84,11 +84,11 @@ struct OriginPlanet: Codable, Identifiable {
             15: "Home planet of the Tsufur, the race to which Dr. Raichi belonged.",
             16: "No information available.",
             18: "The Other World, in contrast to the World of the Living, is, in Dragon Ball, the version of the world of the dead. It is where characters go when they die and also where the higher deities of the universe reside. In episode 53 of the anime, the Other World was described as 'the next dimension,' and the act of wishing someone back to life with the Dragon Balls is called 'bringing them to this dimension.'",
-            19: "Bills' Planet is a celestial body located within the world of the living in Universe 7. It first appeared in the movie Dragon Ball Z: Battle of Gods.",
+            19: "Beerus' Planet is a celestial body located within the world of the living in Universe 7. It first appeared in the movie Dragon Ball Z: Battle of Gods.",
             20: "The Grand Kaio's Planet is where the Other World Martial Arts Tournament is held in honor of the death of the North Kaio (Kaito), where powerful warriors participate.",
             21: "The Core of the World is the native planet of the entire nucleic species, from which the benevolent Kaio and Kaio-shin, as well as the malevolent Makaio, Makaio-shin, and Demon Gods, originate.",
             22: "The Sacred Planet is located in the Kaio-shin Realm, where the Kaio-shin of Universe 7 reside. It should not be confused with the Core of the World. The Kaio-shin Realm, where the planet is located, is a special realm completely separate from the macrocosm of Universe 7, meaning it is separate from the Other World, the World of the Living, and the Dark Demon Realm.",
-            23: "The New Planet Plant, also known as New Planet Tsufru, is the name given to the new home of the Tsufruians controlled by Vegeta Baby, created thanks to the wish granted by the Ultimate Dragon Balls to restore Planet Plant into Earth's orbit.",
+            23: "The New Planet Plant, also known as New Tsufrui Planet, is the name given to the new home of the Tsufruians controlled by Vegeta Baby, created thanks to the wish granted by the Ultimate Dragon Balls to restore Planet Plant into Earth's orbit.",
             24: "The mobile temple of the King of All (throne room) is, as its name suggests, a mobile temple where the thrones of the two Kings of All reside in the Place of Survival in Dragon Ball Super.",
             25: "Universe 11, as its name suggests, is the eleventh of the twelve universes currently existing in the Dragon Ball world. It is twin to Universe 2 and the origin of the Pride Troopers."
         ]
