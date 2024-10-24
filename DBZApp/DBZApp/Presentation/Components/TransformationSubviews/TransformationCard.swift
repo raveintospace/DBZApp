@@ -16,6 +16,7 @@ struct TransformationCard: View {
     var body: some View {
         VStack(spacing: 0) {
             nameSection
+                .padding(.horizontal)
                 .frame(alignment: .top)
             ImageLoaderView(url: imageName)
                 .padding(.vertical, 4)
@@ -34,7 +35,7 @@ struct TransformationCard: View {
 extension TransformationCard {
     
     private var nameSection: some View {
-        Text(name)
+        Text(name.uppercased())
             .font(.title2)
             .bold()
             .lineLimit(2)

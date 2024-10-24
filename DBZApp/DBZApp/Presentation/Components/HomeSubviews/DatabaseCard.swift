@@ -51,10 +51,8 @@ struct DatabaseCard: View {
                 gender: character.genderToDisplay,
                 isFavorite: false,
                 onCardPressed: {
-                    // go to detail view
                 },
                 onFavButtonPressed: {
-                    // viewmodel update favorite
                 }
             )
         }
