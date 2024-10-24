@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct TransformationCard: View {
+    
+    var name: String = DetailedCharacter.mock.transformations[0].name
+    var imageName: String = DetailedCharacter.mock.transformations[0].image
+    var kiPoints: String = DetailedCharacter.mock.transformations[0].ki
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            nameSection
+            ImageLoaderView(url: imageName)
+            kiSection
+        }
     }
 }
 
 #Preview {
     TransformationCard()
+}
+
+extension TransformationCard {
+    
+    private var nameSection: some View {
+        Text(name)
+            .font(.title2)
+            .bold()
+            .lineLimit(2)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.accent)
+    }
+    
+    private var kiSection: some View {
+        Text("Ki points: ")
+            .font(.title3)
+            .fontWeight(.semibold) +
+        Text(kiPoints)
+            .fontWeight(.semibold)
+    }
 }

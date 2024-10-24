@@ -31,8 +31,6 @@ struct PlanetInfoPopover: View {
     }
 }
 
-// posar tot en vstack i donar mes padding bottom a modaltitle
-
 #Preview {
     PlanetInfoPopover(title: "Planet info")
         .background(.dbzBlue)
