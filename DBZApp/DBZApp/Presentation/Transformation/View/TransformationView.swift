@@ -18,12 +18,12 @@ struct TransformationView: View {
     
     var body: some View {
         ZStack {
-            //horizontalSlider
-            transformationsSlider
+            VStack {
+                transformationsSlider
+                customPageControl
+            }
             header
                 .frame(maxHeight: .infinity, alignment: .top)
-            
-            
         }
     }
 }
@@ -44,41 +44,31 @@ extension TransformationView {
         .padding(.top, -10)
     }
     
-    private var horizontalSlider: some View {
-        ScrollView(.horizontal) {
-            LazyHStack(spacing: 16) {
-                ForEach(detailedCharacter.transformations, id: \.self) { transformation in
-                    TransformationCard(
-                        name: transformation.name,
-                        imageName: transformation.image,
-                        kiPoints: transformation.ki
-                    )
-                    .background(.red)
-                }
-            }
-        }
-        .padding(.top, 50)
-    }
-    
     private var transformationsSlider: some View {
         TabView(selection: $sliderCurrentIndex) {
-            ForEach(detailedCharacter.transformations, id: \.self) { transformation in
+            ForEach(Array(detailedCharacter.transformations.enumerated()), id: \.offset) { index, transformation in
                 TransformationCard(
                     name: transformation.name,
                     imageName: transformation.image,
                     kiPoints: transformation.ki
                 )
-                .background(.red)
-                .tag(transformation)
+                .background(.gray)
+                .tag(index)
             }
         }
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
+        .tabViewStyle(.page(indexDisplayMode: .never))
         .padding(.top, 50)
     }
     
-    private func setupTabViewAppearance() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = .dbzOrange
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor.dbzYellow
+    private var customPageControl: some View {
+        HStack {
+            ForEach(0..<detailedCharacter.transformations.count, id: \.self) { index in
+                Circle()
+                    .fill(index == sliderCurrentIndex ? .dbzOrange : .dbzYellow)
+                    .frame(width: 8, height: 8)
+                    .animation(.easeInOut, value: sliderCurrentIndex)
+            }
+        }
+        .padding(.top, 8)
     }
 }

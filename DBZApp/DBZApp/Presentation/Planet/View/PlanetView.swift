@@ -23,7 +23,6 @@ struct PlanetView: View {
             
             PlanetImageCell(imageName: detailedCharacter.originPlanet.image)
         }
-        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
