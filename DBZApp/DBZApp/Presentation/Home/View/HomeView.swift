@@ -125,7 +125,7 @@ extension HomeView {
     }
     
     private var searchBar: some View {
-        SearchBarView(
+        SearchBar(
             searchText: $viewModel.searchText,
             onSubmit: {
                 setScrollToZero.toggle()
@@ -134,7 +134,7 @@ extension HomeView {
     }
     
     private var filterBar: some View {
-        FiltersBarView(
+        FiltersBar(
             filters: viewModel.activeSubfilters,
             onXMarkPressed: {
                 viewModel.selectedFilter = nil
@@ -176,7 +176,7 @@ extension HomeView {
     private var displayedCardsSection: some View {
         NonLazyVGrid(columns: 2, alignment: .center, spacing: 4, items: viewModel.displayedCharacters) { character in
             if let character {
-                DatabaseCardView(
+                DatabaseCard(
                     imageName: character.image,
                     name: character.name,
                     ki: character.kiToDisplay,

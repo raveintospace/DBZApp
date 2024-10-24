@@ -8,10 +8,10 @@
 import SwiftUI
 import SwiftfulUI
 
-struct SearchBarView: View {
+struct SearchBar: View {
     
     // Binding instead of State so searchText can bind to any string in our app
-    // Where we put a SearchBarView, we will bind a string to it
+    // Where we put a SearchBar, we will bind a string to it
     @Binding var searchText: String
     
     var placeholderText: String = "Search on database"
@@ -62,6 +62,6 @@ struct SearchBarView: View {
 }
 
 #Preview {
-    SearchBarView(searchText: .constant(""))
+    SearchBar(searchText: .constant(""))
 }
 

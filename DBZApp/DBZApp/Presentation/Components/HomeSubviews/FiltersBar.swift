@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct FiltersBarView: View {
+struct FiltersBar: View {
     var filters: [Filter] = []
     var onXMarkPressed: (() -> Void)? = nil
     var onFilterPressed: ((Filter) -> Void)? = nil
@@ -81,7 +81,7 @@ fileprivate struct FiltersBarViewPreview: View {
     @State private var selectedFilter: Filter? = nil
     
     var body: some View {
-        FiltersBarView(
+        FiltersBar(
             filters: filters,
             onXMarkPressed: {
                 selectedFilter = nil

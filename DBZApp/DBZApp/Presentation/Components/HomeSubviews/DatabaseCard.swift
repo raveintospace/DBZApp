@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct DatabaseCardView: View {
+struct DatabaseCard: View {
     
     var imageName: String = Character.mock.image
     var name: String = Character.mock.name
@@ -42,7 +42,7 @@ struct DatabaseCardView: View {
 #Preview {
     NonLazyVGrid(columns: 2, alignment: .center, items: [Character.mock, Character.mockTwo]) { character in
         if let character {
-            DatabaseCardView(
+            DatabaseCard(
                 imageName: character.image,
                 name: character.name,
                 ki: character.kiToDisplay,
@@ -61,7 +61,7 @@ struct DatabaseCardView: View {
     }
 }
 
-extension DatabaseCardView {
+extension DatabaseCard {
     
     private var characterImage: some View {
         ZStack(alignment: .bottom) {
