@@ -15,12 +15,14 @@ struct TransformationView: View {
     var detailedCharacter: DetailedCharacter
     
     var body: some View {
-        VStack {
-            ForEach(detailedCharacter.transformations, id: \.self) { transformation in
-                Text(transformation.name)
-                    .onTapGesture {
-                        router.dismissScreen()
-                    }
+        ZStack {
+            header
+                .frame(maxHeight: .infinity, alignment: .top)
+            
+            VStack {
+                ForEach(detailedCharacter.transformations, id: \.self) { transformation in
+                    Text(transformation.name)
+                }
             }
         }
     }
@@ -29,5 +31,16 @@ struct TransformationView: View {
 #Preview {
     RouterView { _ in
         TransformationView(detailedCharacter: DetailedCharacter.mock)
+    }
+}
+
+extension TransformationView {
+    
+    private var header: some View {
+        TransformationHeaderButton(onBackButtonPressed: {
+            router.dismissScreen()
+        })
+        .padding()
+        .padding(.top, -10)
     }
 }

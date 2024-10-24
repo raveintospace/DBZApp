@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TransformationHeaderBar: View {
+struct TransformationHeaderButton: View {
     
     var onBackButtonPressed: (() -> Void)? = nil
     
@@ -24,5 +24,5 @@ struct TransformationHeaderBar: View {
 }
 
 #Preview {
-    TransformationHeaderBar()
+    TransformationHeaderButton()
 }
