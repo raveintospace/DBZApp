@@ -12,7 +12,7 @@ struct PlanetView: View {
     
     @Environment(\.router) var router
     
-    @State private var showPlanetModal: Bool = false
+  //  @State private var showPlanetPopover: Bool = false
     
     var detailedCharacter: DetailedCharacter
     
@@ -38,17 +38,32 @@ extension PlanetView {
     private var header: some View {
         PlanetHeaderBar(
             headerTitle: detailedCharacter.originPlanet.translatedPlanetName,
-            showPlanetModal: showPlanetModal,
             onBackButtonPressed: {
                 router.dismissScreen()
             },
-            onFavButtonPressed: {
-                withAnimation {
-                    showPlanetModal.toggle()
-                }
+            onInfoButtonPressed: {
+                router.showModal(
+                    transition: AnyTransition.scale.animation(.easeInOut),
+                    backgroundColor: Color.black.opacity(0.001),
+                    ignoreSafeArea: false) {
+                        planetPopover
+                            .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                    }
             }
         )
         .padding()
         .padding(.top, -10)
+    }
+    
+    private var planetPopover: some View {
+        PlanetInfoPopover(
+            title: "Planet info",
+            name: detailedCharacter.originPlanet.name,
+            status: detailedCharacter.originPlanet.planetStatus,
+            description: detailedCharacter.originPlanet.translatedPlanetDescription
+        )
+        .padding(.vertical)
+        .background(.dbzBlue)
+        .cornerRadius(20)
     }
 }

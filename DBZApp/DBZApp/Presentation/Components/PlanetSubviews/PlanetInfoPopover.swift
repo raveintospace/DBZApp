@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlanetInfoModal: View {
+struct PlanetInfoPopover: View {
     
     var title: String = ""
     var name: String = DetailedCharacter.mock.originPlanet.name
@@ -26,7 +26,7 @@ struct PlanetInfoModal: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .foregroundStyle(.accent)
+        .foregroundStyle(.dbzYellow)
         .padding(.horizontal)
     }
 }
@@ -34,10 +34,11 @@ struct PlanetInfoModal: View {
 // posar tot en vstack i donar mes padding bottom a modaltitle
 
 #Preview {
-    PlanetInfoModal(title: "Planet info")
+    PlanetInfoPopover(title: "Planet info")
+        .background(.dbzBlue)
 }
 
-extension PlanetInfoModal {
+extension PlanetInfoPopover {
     
     private var modalTitle: some View {
         Text(title)
@@ -48,19 +49,19 @@ extension PlanetInfoModal {
     
     private var nameSection: some View {
         Text("Name: ")
-            .fontWeight(.semibold) +
+            .fontWeight(.bold) +
         Text(name)
     }
     
     private var statusSection: some View {
         Text("Status: ")
-            .fontWeight(.semibold) +
+            .fontWeight(.bold) +
         Text(status)
     }
     
     private var descriptionSection: some View {
         Text("Description: ")
-            .fontWeight(.semibold) +
+            .fontWeight(.bold) +
         Text(description)
     }
 }

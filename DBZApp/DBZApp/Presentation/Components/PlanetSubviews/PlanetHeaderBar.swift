@@ -9,9 +9,8 @@ import SwiftUI
 
 struct PlanetHeaderBar: View {
     var headerTitle: String = ""
-    var showPlanetModal: Bool = false
     var onBackButtonPressed: (() -> Void)? = nil
-    var onFavButtonPressed: (() -> Void)? = nil
+    var onInfoButtonPressed: (() -> Void)? = nil
     
     @State private var trigger = false
     
@@ -31,10 +30,10 @@ struct PlanetHeaderBar: View {
                 .foregroundStyle(.accent)
                 .frame(maxWidth: .infinity)
             
-            ImageBlueCircle(imageName: showPlanetModal ? "info.circle.fill" : "info.circle")
+            ImageBlueCircle(imageName: "info")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .withTrigger(trigger: $trigger) {
-                    onFavButtonPressed?()
+                    onInfoButtonPressed?()
                 }
                 .frame(width: 50, alignment: .trailing)
         }
@@ -43,7 +42,7 @@ struct PlanetHeaderBar: View {
 
 #Preview {
     VStack(spacing: 20) {
-        PlanetHeaderBar(headerTitle: "North Kai", showPlanetModal: true)
-        PlanetHeaderBar(headerTitle: "Zeno's Moving Temple",showPlanetModal: false)
+        PlanetHeaderBar(headerTitle: "North Kai")
+        PlanetHeaderBar(headerTitle: "Zeno's Moving Temple")
     }
 }
