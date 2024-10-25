@@ -63,7 +63,8 @@ struct FiltersBar: View {
             }
             
             ImageBlueCircle(imageName: "slider.vertical.3")
-                .asButton(.press) {
+                .sensoryFeedback(.impact, trigger: trigger)
+                .withTrigger(trigger: $trigger) {
                     onOptionButtonPressed?()
                 }
         }

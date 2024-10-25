@@ -76,7 +76,8 @@ extension DatabaseCard {
             .padding(.bottom, 8)
             .background(.clear)
             .frame(maxWidth: .infinity, alignment: .trailing)
-            .asButton(.press) {
+            .sensoryFeedback(.impact, trigger: trigger)
+            .withTrigger(trigger: $trigger) {
                 onFavButtonPressed?()
             }
         }

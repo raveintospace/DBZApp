@@ -30,7 +30,8 @@ struct FiltersSheet: View {
             
             HStack {
                 ImageOrangeCircle(imageName: "xmark")
-                    .asButton(.press) {
+                    .sensoryFeedback(.impact, trigger: trigger)
+                    .withTrigger(trigger: $trigger) {
                         router.dismissScreen()
                     }
             }
