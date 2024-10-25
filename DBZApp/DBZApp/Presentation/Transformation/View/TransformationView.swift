@@ -18,6 +18,8 @@ struct TransformationView: View {
     
     var body: some View {
         ZStack {
+            transformationWallpaper
+            
             VStack(spacing: 12) {
                 transformationsSlider
                 customPageControl
@@ -35,6 +37,13 @@ struct TransformationView: View {
 }
 
 extension TransformationView {
+    
+    private var transformationWallpaper: some View {
+        Image("transWallpaper")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.15)
+    }
     
     private var header: some View {
         TransformationHeaderButton(onBackButtonPressed: {
