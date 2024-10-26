@@ -13,6 +13,10 @@ struct SplashView: View {
     @State private var progress: Double = 0
     @State private var xOffset: CGFloat = .zero
     
+    @State private var isTextAnimating: Bool = false
+    private let creatorText: String = "Created by Uri46"
+    private let myGradient: Gradient = Gradient(colors: [.dbzOrange, .dbzBlue])
+    
     var body: some View {
         ZStack {
             Color.dbzYellow.ignoresSafeArea()
@@ -20,7 +24,7 @@ struct SplashView: View {
             VStack {
                 headerLogo
                 animatedDragonBall
-                headerLogo
+                creatorAnimation
             }
         }
     }
@@ -71,6 +75,25 @@ extension SplashView {
                 } else {
                     progress += 0.01
                 }
+            }
+        }
+    }
+    
+    private var creatorAnimation: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(creatorText.enumerated()), id: \.offset) { index, letter in
+                Text(String(letter))
+                    .font(.system(size: 30, weight: .heavy, design: .rounded))
+                    .foregroundStyle(.dbzOrange)
+                    .rotation3DEffect(
+                        .degrees(isTextAnimating ? 360 : 0),
+                        axis: (x: 1, y: 0, z: 0))
+                    .animation(.spring(duration: 1)
+                        .repeatForever(autoreverses: false)
+                        .delay(Double(index) * 0.1), value: isTextAnimating)
+            }
+            .onAppear {
+                isTextAnimating = true
             }
         }
     }
