@@ -25,7 +25,7 @@ struct TitleHeader: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            ImageHeaderLogo()
+            ImageDBZHeaderLogo()
                 .frame(maxWidth: .infinity, alignment: .center)
             
             ImageBlueCircle(imageName: isStarFilled ? "star.fill" : "star")

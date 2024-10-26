@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageHeaderLogo: View {
+struct ImageDBZHeaderLogo: View {
     var body: some View {
         Image("headerLogo")
             .resizable()
@@ -16,5 +16,5 @@ struct ImageHeaderLogo: View {
 }
 
 #Preview {
-    ImageHeaderLogo()
+    ImageDBZHeaderLogo()
 }

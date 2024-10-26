@@ -36,7 +36,7 @@ struct SplashView: View {
 extension SplashView {
     
     private var splashHeaderLogo: some View {
-        ImageHeaderLogo()
+        ImageDBZHeaderLogo()
             .frame(alignment: .top)
     }
     
