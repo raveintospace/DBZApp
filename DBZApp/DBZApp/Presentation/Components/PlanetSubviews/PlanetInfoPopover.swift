@@ -16,7 +16,7 @@ struct PlanetInfoPopover: View {
     
     var body: some View {
         VStack {
-            modalTitle
+            popoverTitle
                 .padding(.bottom, 10)
             
             VStack(alignment: .leading, spacing: 12) {
@@ -38,7 +38,7 @@ struct PlanetInfoPopover: View {
 
 extension PlanetInfoPopover {
     
-    private var modalTitle: some View {
+    private var popoverTitle: some View {
         Text(title)
             .font(.largeTitle)
             .bold()
