@@ -25,9 +25,7 @@ struct TitleHeader: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Image("headerLogo")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            ImageHeaderLogo()
                 .frame(maxWidth: .infinity, alignment: .center)
             
             ImageBlueCircle(imageName: isStarFilled ? "star.fill" : "star")
