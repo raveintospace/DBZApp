@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var waveOffset: Angle = .zero
-    @State private var progress: Double = 0.60
+    @State private var progress: Double = 0
     @State private var xOffset: CGFloat = .zero
     
     var body: some View {
@@ -37,20 +37,19 @@ extension SplashView {
             .resizable()
             .scaledToFit()
             .frame(alignment: .top)
-        //    .background(.green)
     }
     
     private var animatedDragonBall: some View {
         ZStack {
             Circle()
-                .stroke(.dbzBlue, lineWidth: 4)
+                .fill(.dbzOrange.opacity(0.6))
             
             WaveShape(offset: waveOffset, percent: progress, xOffset: 0)
-                .fill(.dbzOrange.opacity(0.4))
+                .fill(.dbzOrange.opacity(0.8))
                 .clipShape(Circle())
             
             WaveShape(offset: waveOffset + .degrees(60), percent: progress, xOffset: 0.7)
-                .fill(.dbzOrange.opacity(0.4))
+                .fill(.dbzOrange.opacity(0.8))
                 .clipShape(Circle())
             
             Image(systemName: "star.fill")
@@ -60,11 +59,18 @@ extension SplashView {
         }
         .padding(.horizontal, 30)
         .frame(maxHeight: .infinity, alignment: .center)
-        .background(.gray)
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
             withAnimation(.linear(duration: 2).repeatForever(autoreverses: false)) {
                 waveOffset = .init(degrees: 360)
+            }
+            
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                if progress >= 1.0 {
+                    timer.invalidate()
+                } else {
+                    progress += 0.01
+                }
             }
         }
     }
