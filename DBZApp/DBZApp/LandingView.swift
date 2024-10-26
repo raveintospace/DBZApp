@@ -20,6 +20,8 @@ struct LandingView: View {
                     HomeView()
                 }
             }
+            // Game
+            // App info
         }
     }
 }
@@ -30,3 +32,9 @@ struct LandingView: View {
     }
     .environmentObject(DeveloperPreview.instance.homeViewModel)
 }
+
+/*
+ Wallpaper all characters
+ 3 buttons
+ */
+
