@@ -116,7 +116,7 @@ extension HomeView {
         TitleHeader(
             isStarFilled: viewModel.showFavorites,
             onHomeButtonPressed: {
-                // go to main view
+                router.dismissScreen()
             }, onFavButtonPressed: {
                 withAnimation {
                     viewModel.showFavorites.toggle()
