@@ -15,17 +15,17 @@ struct SplashView: View {
     
     @State private var isTextAnimating: Bool = false
     private let creatorText: String = "Created by Uri46"
-    private let myGradient: Gradient = Gradient(colors: [.dbzOrange, .dbzBlue])
     
     var body: some View {
         ZStack {
-            Color.dbzYellow.ignoresSafeArea()
+            Color.dbzBlue.ignoresSafeArea()
             
             VStack {
                 headerLogo
                 animatedDragonBall
                 creatorAnimation
             }
+            .frame(maxHeight: .infinity)
         }
     }
 }
@@ -65,15 +65,15 @@ extension SplashView {
         .frame(maxHeight: .infinity, alignment: .center)
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
-            withAnimation(.linear(duration: 2).repeatForever(autoreverses: false)) {
+            withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: false)) {
                 waveOffset = .init(degrees: 360)
             }
             
-            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+            Timer.scheduledTimer(withTimeInterval: 0.025, repeats: true) { timer in
                 if progress >= 1.0 {
                     timer.invalidate()
                 } else {
-                    progress += 0.01
+                    progress += 0.0125
                 }
             }
         }
@@ -83,14 +83,16 @@ extension SplashView {
         HStack(spacing: 0) {
             ForEach(Array(creatorText.enumerated()), id: \.offset) { index, letter in
                 Text(String(letter))
-                    .font(.system(size: 30, weight: .heavy, design: .rounded))
-                    .foregroundStyle(.dbzOrange)
+                    .font(.system(size: 40, weight: .heavy, design: .rounded))
+                    .foregroundStyle(.dbzYellow)
+                    .shadow(color: .dbzOrange, radius: 1, x: 0, y: 0)
+                    .shadow(color: .dbzOrange, radius: 2, x: 0, y: 0)
+                    .shadow(color: .dbzBlue, radius: 3, x: 0, y: 0)
                     .rotation3DEffect(
                         .degrees(isTextAnimating ? 360 : 0),
                         axis: (x: 1, y: 0, z: 0))
                     .animation(.spring(duration: 1)
-                        .repeatForever(autoreverses: false)
-                        .delay(Double(index) * 0.1), value: isTextAnimating)
+                        .delay(Double(index) * 0.05), value: isTextAnimating)
             }
             .onAppear {
                 isTextAnimating = true
