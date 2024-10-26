@@ -28,4 +28,5 @@ struct LandingView: View {
     RouterView { _ in
         LandingView()
     }
+    .environmentObject(DeveloperPreview.instance.homeViewModel)
 }

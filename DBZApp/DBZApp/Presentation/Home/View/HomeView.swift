@@ -188,9 +188,7 @@ extension HomeView {
                         goToDetailView(character: character)
                     },
                     onFavButtonPressed: {
-                        withAnimation {
-                            viewModel.updateFavorites(character: character)
-                        }
+                        viewModel.updateFavorites(character: character)
                     }
                 )
                 .padding(.horizontal, 4)

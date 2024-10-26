@@ -36,7 +36,7 @@ struct DBZApp: App {
     var body: some Scene {
         WindowGroup {
             RouterView { _ in
-                HomeView()
+                LandingView()
             }
             .environmentObject(vm) // -> Available for the whole app
         }
