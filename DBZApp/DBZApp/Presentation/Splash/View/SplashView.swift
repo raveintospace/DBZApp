@@ -46,10 +46,10 @@ extension SplashView {
     private var animatedDragonBall: some View {
         ZStack {
             Circle()
-                .fill(.dbzOrange.opacity(0.6))
+                .fill(.dbzYellow)
             
             WaveShape(offset: waveOffset, percent: progress, xOffset: 0)
-                .fill(.dbzOrange.opacity(0.8))
+                .fill(.dbzOrange.opacity(0.6))
                 .clipShape(Circle())
             
             WaveShape(offset: waveOffset + .degrees(60), percent: progress, xOffset: 0.7)
@@ -83,15 +83,14 @@ extension SplashView {
         HStack(spacing: 0) {
             ForEach(Array(creatorText.enumerated()), id: \.offset) { index, letter in
                 Text(String(letter))
-                    .font(.system(size: 40, weight: .heavy, design: .rounded))
+                    .font(.system(size: 40, weight: .heavy, design: .serif))
                     .foregroundStyle(.dbzYellow)
                     .shadow(color: .dbzOrange, radius: 1, x: 0, y: 0)
                     .shadow(color: .dbzOrange, radius: 2, x: 0, y: 0)
-                    .shadow(color: .dbzBlue, radius: 3, x: 0, y: 0)
                     .rotation3DEffect(
                         .degrees(isTextAnimating ? 360 : 0),
                         axis: (x: 1, y: 0, z: 0))
-                    .animation(.spring(duration: 1)
+                    .animation(.spring(duration: 1.5)
                         .delay(Double(index) * 0.05), value: isTextAnimating)
             }
             .onAppear {

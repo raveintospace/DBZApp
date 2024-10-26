@@ -83,6 +83,7 @@
 		34DFF8F82CBC14E3004E4769 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DFF8F72CBC14E3004E4769 /* PlanetView.swift */; };
 		34E98FD52CCD269B0024BE36 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E98FD42CCD269B0024BE36 /* SplashView.swift */; };
 		34E98FD72CCD26F20024BE36 /* WaveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E98FD62CCD26F20024BE36 /* WaveShape.swift */; };
+		34E98FDA2CCD39DE0024BE36 /* Saiyan-Sans Right Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E98FD92CCD39DE0024BE36 /* Saiyan-Sans Right Oblique.ttf */; };
 		34EBEE332CA809DB006FBCC6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBEE322CA809DB006FBCC6 /* DetailView.swift */; };
 		34EBEE352CA80C5B006FBCC6 /* DetailImageTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBEE342CA80C5B006FBCC6 /* DetailImageTopCell.swift */; };
 		34EBEE392CA8150B006FBCC6 /* DetailHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBEE382CA8150B006FBCC6 /* DetailHeaderBar.swift */; };
@@ -166,6 +167,8 @@
 		34DFF8F72CBC14E3004E4769 /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		34E98FD42CCD269B0024BE36 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		34E98FD62CCD26F20024BE36 /* WaveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveShape.swift; sourceTree = "<group>"; };
+		34E98FD92CCD39DE0024BE36 /* Saiyan-Sans Right Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saiyan-Sans Right Oblique.ttf"; sourceTree = "<group>"; };
+		34E98FDB2CCD3B350024BE36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		34EBEE322CA809DB006FBCC6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		34EBEE342CA80C5B006FBCC6 /* DetailImageTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageTopCell.swift; sourceTree = "<group>"; };
 		34EBEE382CA8150B006FBCC6 /* DetailHeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderBar.swift; sourceTree = "<group>"; };
@@ -218,6 +221,7 @@
 		343DC2EB2C89AA4400BCCF39 /* DBZApp */ = {
 			isa = PBXGroup;
 			children = (
+				34E98FDB2CCD3B350024BE36 /* Info.plist */,
 				343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */,
 				34998EFF2CCC07540086380F /* LandingView.swift */,
 				343DC3292C8A086500BCCF39 /* Extensions */,
@@ -361,6 +365,7 @@
 				343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */,
 				34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */,
 				34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */,
+				34E98FD82CCD39B00024BE36 /* CustomFont */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -536,6 +541,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		34E98FD82CCD39B00024BE36 /* CustomFont */ = {
+			isa = PBXGroup;
+			children = (
+				34E98FD92CCD39DE0024BE36 /* Saiyan-Sans Right Oblique.ttf */,
+			);
+			path = CustomFont;
+			sourceTree = "<group>";
+		};
 		34EBEE2F2CA809A7006FBCC6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,6 +698,7 @@
 				343DC3082C89B52B00BCCF39 /* localDatabase.json in Resources */,
 				343DC2F42C89AA4500BCCF39 /* Preview Assets.xcassets in Resources */,
 				343DC2F12C89AA4500BCCF39 /* Assets.xcassets in Resources */,
+				34E98FDA2CCD39DE0024BE36 /* Saiyan-Sans Right Oblique.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,6 +921,7 @@
 				DEVELOPMENT_TEAM = 4XAMG487KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DBZApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -935,6 +950,7 @@
 				DEVELOPMENT_TEAM = 4XAMG487KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DBZApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

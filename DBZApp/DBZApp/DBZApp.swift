@@ -41,4 +41,13 @@ struct DBZApp: App {
             .environmentObject(vm) // -> Available for the whole app
         }
     }
+    
+    init() {
+        for family in UIFont.familyNames {
+            print("Family: \(family)")
+            for name in UIFont.fontNames(forFamilyName: family) {
+                print("   - \(name)")
+            }
+        }
+    }
 }
