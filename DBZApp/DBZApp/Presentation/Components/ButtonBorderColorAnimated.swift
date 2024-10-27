@@ -21,6 +21,7 @@ struct ButtonBorderColorAnimated: View {
     var buttonHeight: CGFloat = 40
     var cornerRadius: CGFloat = 20
     var radius: CGFloat = 1
+    var fontName: String? = nil
     var fontSize: CGFloat = 20
     var fontWeight: Font.Weight = .bold
     
@@ -28,7 +29,10 @@ struct ButtonBorderColorAnimated: View {
     
     var body: some View {
         Text(text)
-            .font(.system(size: fontSize, weight: fontWeight))
+            .font(
+                fontName != nil ?
+                    .custom(fontName!, size: fontSize).weight(fontWeight) : .system(size: fontSize, weight: fontWeight)
+            )
             .foregroundStyle(.accent)
             .frame(width: width, height: buttonHeight)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
@@ -59,5 +63,7 @@ struct ButtonBorderColorAnimated: View {
     VStack(spacing: 20) {
         ButtonBorderColorAnimated(text: "Planet")
         ButtonBorderColorAnimated(text: "Transformations")
+        ButtonBorderColorAnimated(text: "Home", buttonHeight: 70, fontName: "SaiyanSans", fontSize: 50)
+        ButtonBorderColorAnimated(text: "App Info", buttonHeight: 70, fontName: "SaiyanSans", fontSize: 50)
     }
 }
