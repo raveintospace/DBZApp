@@ -34,7 +34,7 @@ struct LandingView: View {
 }
 
 /*
- Wallpaper all characters
+ Wallpaper all characters + mask amb dbzblue
  3 buttons
  */
 

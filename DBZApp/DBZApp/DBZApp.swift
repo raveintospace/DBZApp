@@ -33,20 +33,18 @@ struct DBZApp: App {
         )
     )
     
+    @State private var showSplashView: Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            RouterView { _ in
-                LandingView()
-            }
-            .environmentObject(vm) // -> Available for the whole app
-        }
-    }
-    
-    init() {
-        for family in UIFont.familyNames {
-            print("Family: \(family)")
-            for name in UIFont.fontNames(forFamilyName: family) {
-                print("   - \(name)")
+            ZStack {
+                RouterView { _ in
+                    LandingView()
+                }
+                .environmentObject(vm) // -> Available for the whole app
+                
+                SplashView(showSplashView: $showSplashView)
+                    .opacity(showSplashView ? 1.0 : 0.0)
             }
         }
     }

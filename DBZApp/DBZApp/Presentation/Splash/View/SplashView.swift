@@ -15,6 +15,8 @@ struct SplashView: View {
     @State private var isTextAnimating: Bool = false
     private let creatorText: String = "Created by Uri46"
     
+    @Binding var showSplashView: Bool
+    
     var body: some View {
         ZStack {
             Color.dbzBlue.ignoresSafeArea()
@@ -26,11 +28,18 @@ struct SplashView: View {
             }
             .frame(maxHeight: .infinity)
         }
+        .onAppear {
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
+                withAnimation(.easeOut(duration: 0.3)) {
+                    showSplashView = false
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    SplashView()
+    SplashView(showSplashView: .constant(true))
 }
 
 extension SplashView {
