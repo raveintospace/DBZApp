@@ -91,7 +91,7 @@ struct DetailView: View {
 extension DetailView {
     
     private var detailWallpaper: some View {
-        Image("kingkaiWallpaper")
+        Image("detailWallpaper")
             .resizable()
             .ignoresSafeArea()
             .opacity(0.15)

@@ -42,7 +42,7 @@ extension TransformationView {
         Image("transWallpaper")
             .resizable()
             .ignoresSafeArea()
-            .opacity(0.15)
+            .opacity(0.1)
     }
     
     private var header: some View {

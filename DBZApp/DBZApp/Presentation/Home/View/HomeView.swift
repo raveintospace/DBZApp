@@ -95,7 +95,7 @@ struct HomeView: View {
 extension HomeView {
     
     private var homeWallpaper: some View {
-        Image("kamaWallpaper")
+        Image("homeWallpaper")
             .resizable()
             .ignoresSafeArea()
             .opacity(0.15)

@@ -23,7 +23,7 @@ struct FiltersSheet: View {
     
     var body: some View {
         ZStack {
-            Image("namekWallpaper")
+            Image("filtersWallpaper")
                 .resizable()
                 .ignoresSafeArea()
                 .opacity(0.12)
