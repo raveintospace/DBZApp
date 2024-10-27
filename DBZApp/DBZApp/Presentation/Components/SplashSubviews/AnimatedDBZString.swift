@@ -26,6 +26,7 @@ struct AnimatedDBZString: View {
                         .delay(Double(index) * 0.05), value: isAnimating)
             }
         }
+        .padding(.horizontal)
         .onAppear {
             isAnimating = true
         }

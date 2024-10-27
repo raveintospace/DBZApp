@@ -21,15 +21,14 @@ struct SplashView: View {
         ZStack {
             Color.dbzBlue.ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 0) {
                 splashHeaderLogo
                 splashDragonBall
                 splashAnimatedDBZString
             }
-            .frame(maxHeight: .infinity)
         }
         .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 withAnimation(.easeOut(duration: 0.3)) {
                     showSplashView = false
                 }
@@ -45,8 +44,7 @@ struct SplashView: View {
 extension SplashView {
     
     private var splashHeaderLogo: some View {
-        ImageDBZHeaderLogo()
-            .frame(alignment: .top)
+        ImageDBZHeaderLogo(hasReflectionEffect: true)
     }
     
     private var splashDragonBall: some View {
