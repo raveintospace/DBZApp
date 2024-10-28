@@ -94,6 +94,7 @@
 		34EF12592CCA866800AFF06D /* TransformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF12582CCA866800AFF06D /* TransformationView.swift */; };
 		34EF125C2CCA8A9800AFF06D /* TransformationHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF125B2CCA8A9800AFF06D /* TransformationHeaderButton.swift */; };
 		34EF125E2CCA8CE200AFF06D /* TransformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF125D2CCA8CE200AFF06D /* TransformationCard.swift */; };
+		34EF674E2CCFFE3200720340 /* ButtonAnimatedGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +183,7 @@
 		34EF12582CCA866800AFF06D /* TransformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationView.swift; sourceTree = "<group>"; };
 		34EF125B2CCA8A9800AFF06D /* TransformationHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationHeaderButton.swift; sourceTree = "<group>"; };
 		34EF125D2CCA8CE200AFF06D /* TransformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationCard.swift; sourceTree = "<group>"; };
+		34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimatedGlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +416,7 @@
 		345D5A972C8B534E003BA242 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */,
 				3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */,
 				34C4BDD22CB1890200C5060C /* ExpandableText.swift */,
 				34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */,
@@ -737,6 +740,7 @@
 				34EBEE392CA8150B006FBCC6 /* DetailHeaderBar.swift in Sources */,
 				342D19892CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift in Sources */,
 				34A952E22CCA3A2300213860 /* PlanetInfoPopover.swift in Sources */,
+				34EF674E2CCFFE3200720340 /* ButtonAnimatedGlow.swift in Sources */,
 				34E98FDE2CCD42110024BE36 /* AnimatedDragonBall.swift in Sources */,
 				34C9FB3D2C91A1C600FA0139 /* GetFiltersUseCaseImpl.swift in Sources */,
 				343DC31F2C89CCF200BCCF39 /* FetchCharactersFromAPIUseCaseImpl.swift in Sources */,

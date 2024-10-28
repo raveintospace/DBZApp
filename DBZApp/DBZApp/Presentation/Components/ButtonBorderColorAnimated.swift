@@ -16,7 +16,7 @@ struct ButtonBorderColorAnimated: View {
     var onButtonPressed: (() -> Void)? = nil
     var buttonGradient: Gradient = Gradient(colors: [.dbzYellow, .dbzOrange, .dbzBlue])
     var duration: Double = 1.5
-    var width: CGFloat = 200
+    var buttonWidth: CGFloat = 200
     var gradientHeight: CGFloat = 43
     var buttonHeight: CGFloat = 40
     var cornerRadius: CGFloat = 20
@@ -34,7 +34,7 @@ struct ButtonBorderColorAnimated: View {
                     .custom(fontName!, size: fontSize).weight(fontWeight) : .system(size: fontSize, weight: fontWeight)
             )
             .foregroundStyle(.accent)
-            .frame(width: width, height: buttonHeight)
+            .frame(width: buttonWidth, height: buttonHeight)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
@@ -64,6 +64,6 @@ struct ButtonBorderColorAnimated: View {
         ButtonBorderColorAnimated(text: "Planet")
         ButtonBorderColorAnimated(text: "Transformations")
         ButtonBorderColorAnimated(text: "Home", buttonHeight: 70, fontName: "SaiyanSans", fontSize: 50)
-        ButtonBorderColorAnimated(text: "App Info", buttonHeight: 70, fontName: "SaiyanSans", fontSize: 50)
+        ButtonBorderColorAnimated(text: " App Info ", buttonHeight: 70, fontName: "SaiyanSans", fontSize: 50)
     }
 }

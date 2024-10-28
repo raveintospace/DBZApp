@@ -11,6 +11,7 @@ struct ImageDBZHeaderLogo: View {
     
     @State private var animationOffset: CGFloat = -1.0
     var hasReflectionEffect: Bool = false
+    var reflectionDelay: Double = 2
     
     var body: some View {
         ZStack {
@@ -31,7 +32,7 @@ struct ImageDBZHeaderLogo: View {
                             .scaledToFit()
                     )
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + reflectionDelay) {
                             withAnimation(
                                 .linear(duration: 1.5)
                             ) {
@@ -46,5 +47,9 @@ struct ImageDBZHeaderLogo: View {
 }
 
 #Preview {
-    ImageDBZHeaderLogo(hasReflectionEffect: true)
+    ZStack {
+        Color.dbzBlue.ignoresSafeArea()
+        
+        ImageDBZHeaderLogo(hasReflectionEffect: true)
+    }
 }

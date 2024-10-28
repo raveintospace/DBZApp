@@ -18,20 +18,20 @@ struct LandingView: View {
             landingWallpaper
             
             VStack(spacing: 20) {
-                ButtonBorderColorAnimated(text: "Database", onButtonPressed: {
+                ButtonAnimatedGlow(text: "Database", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
                         DatabaseView()
                     }
                 })
                 
-                ButtonBorderColorAnimated(text: "Game", onButtonPressed: {
+                ButtonAnimatedGlow(text: "Game", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
                         DatabaseView()
                         // game
                     }
                 })
                 
-                ButtonBorderColorAnimated(text: "App info", onButtonPressed: {
+                ButtonAnimatedGlow(text: " App info ", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
                         DatabaseView()
                         // app info

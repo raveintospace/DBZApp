@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AnimatedDBZString: View {
+    
     let text: String
     @Binding var isAnimating: Bool
     
