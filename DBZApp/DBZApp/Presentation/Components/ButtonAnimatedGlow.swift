@@ -28,7 +28,7 @@ struct ButtonAnimatedGlow: View {
         ZStack {
             
             RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(glowAnimation ? .dbzBlue.opacity(0.85) : .dbzBlue)
+                .fill(glowAnimation ? .dbzBlue.opacity(0.75) : .dbzBlue)
                 .frame(width: buttonWidth, height: buttonHeight)
                 .animation(
                     .easeInOut(duration: duration / 2).repeatForever(autoreverses: true),
@@ -42,7 +42,7 @@ struct ButtonAnimatedGlow: View {
                         startPoint: .leading,
                         endPoint: .trailing
                     ),
-                    lineWidth: glowAnimation ? 6 : 4)
+                    lineWidth: glowAnimation ? 7 : 4)
                 .frame(width: buttonWidth, height: buttonHeight)
                 .animation(
                     .easeInOut(duration: duration / 2).repeatForever(autoreverses: true),
