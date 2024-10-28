@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SortMenu: View {
     
-    //@EnvironmentObject private var viewModel: HomeViewModel
-    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var viewModel: DatabaseViewModel
     
     var body: some View {
         HStack {
@@ -32,7 +31,7 @@ struct SortMenu: View {
 }
 
 #Preview {
-    SortMenu(viewModel: DeveloperPreview.instance.homeViewModel)
+    SortMenu(viewModel: DeveloperPreview.instance.databaseViewModel)
         .padding()
 }
 

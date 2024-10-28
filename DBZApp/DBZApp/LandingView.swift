@@ -11,29 +11,29 @@ import SwiftfulRouting
 struct LandingView: View {
     
     @Environment(\.router) var router
-    @EnvironmentObject private var homeViewModel: HomeViewModel
+    @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     
     var body: some View {
         ZStack {
             landingWallpaper
             
             VStack(spacing: 20) {
-                ButtonBorderColorAnimated(text: "Home", onButtonPressed: {
+                ButtonBorderColorAnimated(text: "Database", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
-                        HomeView()
+                        DatabaseView()
                     }
                 })
                 
                 ButtonBorderColorAnimated(text: "Game", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
-                        HomeView()
+                        DatabaseView()
                         // game
                     }
                 })
                 
                 ButtonBorderColorAnimated(text: "App info", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
-                        HomeView()
+                        DatabaseView()
                         // app info
                     }
                 })
@@ -51,7 +51,7 @@ struct LandingView: View {
     RouterView { _ in
         LandingView()
     }
-    .environmentObject(DeveloperPreview.instance.homeViewModel)
+    .environmentObject(DeveloperPreview.instance.databaseViewModel)
 }
 
 extension LandingView {

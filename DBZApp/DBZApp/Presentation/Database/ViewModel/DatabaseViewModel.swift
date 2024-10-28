@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  DatabaseViewModel.swift
 //  DBZApp
 //
 //  Created by Uri on 5/9/24.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-final class HomeViewModel: ObservableObject {
+final class DatabaseViewModel: ObservableObject {
     
     // MARK: - Character data
     @Published private(set) var allCharacters: [Character] = []

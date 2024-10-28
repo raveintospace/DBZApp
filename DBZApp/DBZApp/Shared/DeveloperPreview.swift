@@ -21,7 +21,7 @@ final class DeveloperPreview {
         networkDataSource: NetworkCharacterDataSource()
     )
     
-    let homeViewModel = HomeViewModel(
+    let databaseViewModel = DatabaseViewModel(
         getLocalCharactersUseCase: GetLocalCharactersUseCaseImpl(
             repository: CharacterRepositoryImpl(
                 localDataSource: LocalCharacterDataSource(),

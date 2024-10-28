@@ -25,7 +25,7 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @Environment(\.router) var router
-    @EnvironmentObject private var homeViewModel: HomeViewModel
+    @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @StateObject private var viewModel: DetailViewModel
     
     init(character: Character) {
@@ -84,7 +84,7 @@ struct DetailView: View {
 #Preview {
     RouterView { _ in
         DetailView(character: .mock)
-            .environmentObject(DeveloperPreview.instance.homeViewModel)
+            .environmentObject(DeveloperPreview.instance.databaseViewModel)
     }
 }
 
@@ -101,15 +101,15 @@ extension DetailView {
         DetailHeaderBar(
             headerTitle: viewModel.character.name,
             showHeaderTitle: showHeader,
-            isFavorite: homeViewModel.isFavorited(character: viewModel.character),
+            isFavorite: databaseViewModel.isFavorited(character: viewModel.character),
             onBackButtonPressed: {
                 router.dismissScreen()
             },
             onFavButtonPressed: {
                 withAnimation {
-                    homeViewModel.updateFavorites(character: viewModel.character)
+                    databaseViewModel.updateFavorites(character: viewModel.character)
                 }
-                if homeViewModel.isFavorited(character: viewModel.character) {
+                if databaseViewModel.isFavorited(character: viewModel.character) {
                     confettiCounter += 1
                 }
             }

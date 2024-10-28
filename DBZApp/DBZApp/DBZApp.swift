@@ -11,7 +11,7 @@ import SwiftfulRouting
 @main
 struct DBZApp: App {
     
-    @StateObject private var vm = HomeViewModel(
+    @StateObject private var vm = DatabaseViewModel(
         getLocalCharactersUseCase: GetLocalCharactersUseCaseImpl(
             repository: CharacterRepositoryImpl(
                 localDataSource: LocalCharacterDataSource(),

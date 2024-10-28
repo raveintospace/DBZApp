@@ -14,7 +14,7 @@ struct FiltersSheet: View {
     @Environment(\.router) var router
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var viewModel: DatabaseViewModel
     
     var filterOptions: [FilterOption] = FilterOption.allCases
     @Binding var selection: FilterOption
@@ -76,6 +76,6 @@ struct FiltersSheet: View {
 
 #Preview {
     RouterView { _ in
-        FiltersSheet(viewModel: DeveloperPreview.instance.homeViewModel, selection: .constant(.affiliation))
+        FiltersSheet(viewModel: DeveloperPreview.instance.databaseViewModel, selection: .constant(.affiliation))
     }
 }

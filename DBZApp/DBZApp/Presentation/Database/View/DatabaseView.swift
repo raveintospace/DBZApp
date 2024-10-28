@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  DatabaseView.swift
 //  DBZApp
 //
 //  Created by Uri on 5/9/24.
@@ -9,11 +9,11 @@ import SwiftUI
 import SwiftfulUI
 import SwiftfulRouting
 
-struct HomeView: View {
+struct DatabaseView: View {
     
     @Environment(\.router) var router
     
-    @EnvironmentObject var viewModel: HomeViewModel
+    @EnvironmentObject var viewModel: DatabaseViewModel
     
     @State private var selectedCharacter: Character? = nil
     
@@ -87,12 +87,12 @@ struct HomeView: View {
 
 #Preview {
     RouterView { _ in
-        HomeView()
+        DatabaseView()
     }
-    .environmentObject(DeveloperPreview.instance.homeViewModel)
+    .environmentObject(DeveloperPreview.instance.databaseViewModel)
 }
 
-extension HomeView {
+extension DatabaseView {
     
     private var homeWallpaper: some View {
         Image("homeWallpaper")
