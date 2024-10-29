@@ -33,8 +33,7 @@ struct LandingView: View {
                 
                 ButtonAnimatedGlow(text: " App info ", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
-                        DatabaseView()
-                        // app info
+                        InfoView()
                     }
                 })
             }

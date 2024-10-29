@@ -36,10 +36,10 @@ extension TransformationCard {
     
     private var nameSection: some View {
         Text(name.uppercased())
-            .font(.title2)
-            .bold()
             .lineLimit(2)
             .multilineTextAlignment(.center)
+            .font(.title2)
+            .bold()
     }
     
     private var kiSection: some View {

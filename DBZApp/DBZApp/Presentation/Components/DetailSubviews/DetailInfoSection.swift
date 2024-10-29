@@ -41,9 +41,9 @@ extension DetailInfoSection {
     private var nameGenderSection: some View {
         HStack(spacing: 0) {
             Text(name.uppercased())
+                .lineLimit(3)
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text(gender)
                 .font(.title)

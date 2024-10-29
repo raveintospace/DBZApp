@@ -39,10 +39,10 @@ struct PlanetInfoPopover: View {
 extension PlanetInfoPopover {
     
     private var popoverTitle: some View {
-        Text(title)
-            .font(.largeTitle)
+        Text(title.uppercased())
+            .font(.title)
             .bold()
-            .underline()
+            //.underline()
     }
     
     private var nameSection: some View {
