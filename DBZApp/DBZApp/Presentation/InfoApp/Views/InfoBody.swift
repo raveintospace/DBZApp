@@ -44,10 +44,11 @@ extension InfoBody {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.bottom, 10)
                 Text("""
-                    With this app I want to show my skills as an iOS developer. I have practiced some learnings from previous programs, but I have also acquired a lot of knowledge, facing challenges, a few dead end situations and refactor sessions.
+                    This is my most ambitious app to date. Through this project, I aim to showcase my recent learnings in clean code, asynchronous programming, reusable views, and appealing animations, to name a few.
 
-                    It uses MVVM architechture, Combine & CoreData.
+                    The app leverages the MVVM architecture, Async/Await, and Core Data. The game section benefits from insights gained through my enrollment in Stanford University’s CS193p course (2023 lectures).
                     """)
                     .font(.callout)
                     .fontWeight(.medium)
@@ -62,15 +63,16 @@ extension InfoBody {
     private var dragonBallApiSection: some View {
         Section {
             VStack(alignment: .leading) {
-                Image("ods")
+                Image("dbzApiLogo")
                     .resizable()
-                    .frame(height: 100)
+                    .frame(width: 100, height: 100)
+                    .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding(.bottom, 10)
                 Text("""
-                The Airbnb data used in this app comes from a free Opendatasoft's API. JSON content may vary or come incomplete.
-                
-                Some dummy data has been added, as the app was created with a json response that is completely different from the current one offered by Opendatasoft.
+                The Dragon Ball data in this app is sourced from The Dragon Ball API.
+
+                To make the information more coherent and also accessible in English, I’ve added some local data, as the API data is originally in Spanish.
                 """)
                     .font(.callout)
                     .fontWeight(.medium)
@@ -92,9 +94,9 @@ extension InfoBody {
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding(.bottom, 10)
                 Text("""
-                    This is Uri, a junior iOS developer trying to get my first iOS job.
+                    Hi, I’m Uri, a junior iOS developer actively pursuing my first role in iOS development.
 
-                    I have learned autonomously and by taking courses from some of the most renowned iOS developers, such as Paul Hudson, Swiftful Thinking or SwiftBeta.
+                    I’ve been learning independently and through courses from some of the most renowned iOS developers, including Paul Hudson, Swiftful Thinking and SwiftBeta.
                     """)
                 .font(.callout)
                 .fontWeight(.medium)
