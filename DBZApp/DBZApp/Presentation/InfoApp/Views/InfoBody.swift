@@ -17,13 +17,13 @@ struct InfoBody: View {
     var body: some View {
         List {
             appPurposeSection
-                .listRowBackground(Color.background)
+                .listRowBackground(Color.own)
             dragonBallApiSection
-                .listRowBackground(Color.background)
+                .listRowBackground(Color.own)
             developerSection
-                .listRowBackground(Color.background)
+                .listRowBackground(Color.own)
             appSection
-                .listRowBackground(Color.background)
+                .listRowBackground(Color.own)
         }
         .font(.headline)
         .tint(.dbzBlue)

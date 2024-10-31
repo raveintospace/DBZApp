@@ -59,8 +59,8 @@ extension LandingView {
         Image("landingWallpaper")
             .resizable()
             .scaledToFill()
-            .offset(x: -25)
             .ignoresSafeArea()
+            .offset(x: -25)
             .opacity(0.15)
     }
 }

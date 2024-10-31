@@ -14,11 +14,13 @@ struct InfoView: View {
     
     var body: some View {
         ZStack {
-            Color.dbzYellow.ignoresSafeArea()
-            // set a wallpaper
+            infoWallpaper
             
-            header
-                .frame(maxHeight: .infinity, alignment: .top)
+            VStack(spacing: 0) {
+                header
+                InfoBody()
+            }
+            .scrollIndicators(.hidden)
         }
     }
 }
@@ -30,6 +32,13 @@ struct InfoView: View {
 }
 
 extension InfoView {
+    
+    private var infoWallpaper: some View {
+        Image("infoWallpaper")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.15)
+    }
     
     private var header: some View {
         InfoHeaderBar(onBackButtonPressed: {

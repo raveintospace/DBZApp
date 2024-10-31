@@ -16,14 +16,13 @@ struct InfoHeaderBar: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ImageBlueCircle(imageName: "arrowshape.down.fill")
+            ImageBlueCircle(imageName: "house.fill")
                 .sensoryFeedback(.impact, trigger: trigger)
                 .withTrigger(trigger: $trigger) {
                     onBackButtonPressed?()
                 }
                 .frame(alignment: .leading)
                 .padding(.trailing, 10)
-                .background(.red)
             
             Text(headerTitle.uppercased())
                 .lineLimit(2)
@@ -32,12 +31,10 @@ struct InfoHeaderBar: View {
                 .bold()
                 .foregroundStyle(.accent)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .background(.blue)
             
-            ImageBlueCircle(imageName: "arrowshape.down.fill")
+            ImageBlueCircle(imageName: "house.fill")
                 .hidden()
                 .frame(alignment: .trailing)
-                .background(.red)
         }
     }
 }
