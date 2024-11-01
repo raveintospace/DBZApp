@@ -16,7 +16,7 @@ struct KingfisherImageLoader: View {
     var body: some View {
         KFImage(URL(string: url))
             .placeholder {
-                Image("zStarBall")
+                Image("traced-sevenDragonBalls")
                     .resizable()
             }
             .resizable()
