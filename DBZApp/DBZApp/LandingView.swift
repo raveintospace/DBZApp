@@ -26,8 +26,7 @@ struct LandingView: View {
                 
                 ButtonAnimatedGlow(text: "Game", onButtonPressed: {
                     router.showScreen(.fullScreenCover) { _ in
-                        DatabaseView()
-                        // game
+                        GameView()
                     }
                 })
                 
