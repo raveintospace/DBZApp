@@ -59,7 +59,6 @@ extension LandingView {
             .resizable()
             .scaledToFill()
             .ignoresSafeArea()
-            .offset(x: -25)
             .opacity(0.15)
     }
 }

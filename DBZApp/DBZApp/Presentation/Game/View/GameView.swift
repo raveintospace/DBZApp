@@ -15,6 +15,8 @@ struct GameView: View {
     var body: some View {
         ZStack {
             
+            gameWallpaper
+            
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
@@ -29,6 +31,13 @@ struct GameView: View {
 }
 
 extension GameView {
+    
+    private var gameWallpaper: some View {
+        Image("gameWallpaper")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.15)
+    }
     
     private var header: some View {
         GameHeaderBar(
