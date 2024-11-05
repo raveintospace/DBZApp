@@ -12,6 +12,7 @@
 		3407D9BD2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */; };
 		340C22C62CDA8F0100F8341C /* GameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C22C52CDA8EFE00F8341C /* GameCharacter.swift */; };
 		340C22C82CDA8FFA00F8341C /* GameCharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C22C72CDA8FFA00F8341C /* GameCharacterMapper.swift */; };
+		340C22CA2CDA91D300F8341C /* KiFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C22C92CDA91D300F8341C /* KiFormatter.swift */; };
 		342373E92C93493800046832 /* FiltersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342373E82C93493800046832 /* FiltersSheet.swift */; };
 		3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3428790A2C99E256002AF7A5 /* SwiftfulUI */; };
 		3428790D2C99E5A5002AF7A5 /* ImageOrangeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */; };
@@ -109,6 +110,7 @@
 		3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorderColorAnimated.swift; sourceTree = "<group>"; };
 		340C22C52CDA8EFE00F8341C /* GameCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCharacter.swift; sourceTree = "<group>"; };
 		340C22C72CDA8FFA00F8341C /* GameCharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCharacterMapper.swift; sourceTree = "<group>"; };
+		340C22C92CDA91D300F8341C /* KiFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiFormatter.swift; sourceTree = "<group>"; };
 		342373E82C93493800046832 /* FiltersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersSheet.swift; sourceTree = "<group>"; };
 		3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrangeCircle.swift; sourceTree = "<group>"; };
 		342D19812CB29C34006603DE /* DetailedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCharacter.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				343DC32A2C8A088800BCCF39 /* DeveloperPreview.swift */,
 				34DCBDD42C96F82E005DEDAA /* ImageLoaderView.swift */,
 				34DCBDD22C96F7D4005DEDAA /* KingfisherImageLoader.swift */,
+				340C22C92CDA91D300F8341C /* KiFormatter.swift */,
 				34E98FD82CCD39B00024BE36 /* CustomFont */,
 			);
 			path = Shared;
@@ -842,6 +845,7 @@
 				3448DE902CB2A4FA004AE3EE /* FetchDetailCharacterUseCaseImpl.swift in Sources */,
 				34BF19A52C95D14C00A6B55A /* NoResultsView.swift in Sources */,
 				34858D902CC2D04C00F97AE9 /* ZoomAndPanModifier.swift in Sources */,
+				340C22CA2CDA91D300F8341C /* KiFormatter.swift in Sources */,
 				34A18BA72CD5474900FB0F0D /* GameView.swift in Sources */,
 				343DC32B2C8A088800BCCF39 /* DeveloperPreview.swift in Sources */,
 				345D5A9B2C8B5507003BA242 /* UIApplication.swift in Sources */,

@@ -12,24 +12,27 @@ struct GameCharacter: Codable {
     let ki: String
     let image: String
     
-    private func formatKiValue(_ value: String) -> String {
-        let normalizedValue = value.replacingOccurrences(of: ",", with: ".")
-        let components = normalizedValue.split(separator: " ")
-        
-        if components.count == 2 {
-            let number = components[0]
-            let unit = components[1].capitalized
-            return "\(number) \(unit)"
-        }
-        
-        return normalizedValue.capitalized
-    }
-    
     var kiToDisplay: String {
-        return formatKiValue(ki)
+        KiFormatter.formatKiValue(ki)
     }
     
     var kiToCompare: String {
-        return ki.replacingOccurrences(of: ",", with: "")
+        KiFormatter.kiToCompare(ki)
+    }
+    
+    static var mock: GameCharacter {
+        GameCharacter(
+            name: "Goku",
+            ki: "60.000.000",
+            image: "https://dragonball-api.com/characters/goku_normal.webp"
+        )
+    }
+    
+    static var mock2: GameCharacter {
+        GameCharacter(
+            name: "Freezer",
+            ki: "530.000",
+            image: "https://dragonball-api.com/characters/Freezer.webp"
+        )
     }
 }
