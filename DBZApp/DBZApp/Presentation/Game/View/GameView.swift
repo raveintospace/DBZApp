@@ -11,6 +11,12 @@ import SwiftfulRouting
 struct GameView: View {
     
     @Environment(\.router) private var router
+    @EnvironmentObject private var databaseViewModel: DatabaseViewModel
+    @StateObject private var viewModel: GameViewModel
+    
+    init(databaseViewModel: DatabaseViewModel) {
+        _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
+    }
     
     var body: some View {
         ZStack {
@@ -20,13 +26,17 @@ struct GameView: View {
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
+            VStack {
+                Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
+            }
         }
     }
 }
 
 #Preview {
     RouterView { _ in
-        GameView()
+        GameView(databaseViewModel: DeveloperPreview.instance.databaseViewModel)
+            .environmentObject(DeveloperPreview.instance.databaseViewModel)
     }
 }
 
