@@ -11,7 +11,7 @@ import SwiftfulRouting
 
 struct FiltersSheet: View {
     
-    @Environment(\.router) var router
+    @Environment(\.router) private var router
     @Environment(\.dismiss) var dismiss
     
     @ObservedObject var viewModel: DatabaseViewModel

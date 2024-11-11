@@ -10,7 +10,7 @@ import SwiftfulRouting
 
 struct LandingView: View {
     
-    @Environment(\.router) var router
+    @Environment(\.router) private var router
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     
     var body: some View {

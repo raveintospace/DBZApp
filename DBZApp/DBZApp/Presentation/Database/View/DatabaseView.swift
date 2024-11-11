@@ -11,7 +11,7 @@ import SwiftfulRouting
 
 struct DatabaseView: View {
     
-    @Environment(\.router) var router
+    @Environment(\.router) private var router
     
     @EnvironmentObject var viewModel: DatabaseViewModel
     

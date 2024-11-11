@@ -24,7 +24,7 @@ struct DetailLoadingView: View {
 
 struct DetailView: View {
     
-    @Environment(\.router) var router
+    @Environment(\.router) private var router
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @StateObject private var viewModel: DetailViewModel
     

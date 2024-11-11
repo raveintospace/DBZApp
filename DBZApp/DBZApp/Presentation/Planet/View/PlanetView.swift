@@ -10,7 +10,7 @@ import SwiftfulRouting
 
 struct PlanetView: View {
     
-    @Environment(\.router) var router
+    @Environment(\.router) private var router
     
     var detailedCharacter: DetailedCharacter
     

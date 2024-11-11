@@ -42,3 +42,11 @@ struct InfoHeaderBar: View {
 #Preview {
     InfoHeaderBar()
 }
+
+/*
+ func onBackButtonPressed(_ completion: @escaping () -> Void) -> Self {
+     var copy = self
+     copy.onBackButtonPressed = completion
+     return copy
+ }
+ */

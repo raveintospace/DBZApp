@@ -10,7 +10,7 @@ import SwiftfulRouting
 
 struct TransformationView: View {
     
-    @Environment(\.router) var router
+    @Environment(\.router) private var router
     
     var detailedCharacter: DetailedCharacter
     
