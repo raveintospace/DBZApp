@@ -26,8 +26,14 @@ struct GameView: View {
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
-            VStack {
-                Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
+            if viewModel.gameCharacters.isEmpty {
+                ProgressColorBarsView()
+            } else {
+                VStack {
+                    Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
+                    Text(viewModel.gameCharacters[0].name)
+                    Text(viewModel.gameCharacters[10].name)
+                }
             }
         }
     }
