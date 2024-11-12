@@ -37,7 +37,9 @@ struct GameFooterBar: View {
         leftButtonText: "Round:",
         leftButtonFigures: "1 / 3",
         centerButtonText: "Total points:",
-        rightButtonText: "Score:"
+        centerButtonFigures: "150.000.000.000",
+        rightButtonText: "Score:",
+        rightbuttonFigures: "R-1 / P-1"
     )
         .padding()
 }
@@ -65,8 +67,9 @@ extension GameFooterBar {
             .frame(width: 150, height: 70)
             .overlay {
                 VStack {
-                    Text(leftButtonText)
-                    Text(leftButtonFigures)
+                    Text(centerButtonText)
+                    Text(centerButtonFigures)
+                        .font(.caption)
                 }
                 .foregroundStyle(.dbzYellow)
                 .bold()
@@ -80,11 +83,17 @@ extension GameFooterBar {
             .frame(width: 100, height: 70)
             .overlay {
                 VStack {
-                    Text(leftButtonText)
-                    Text(leftButtonFigures)
+                    Text(rightButtonText)
+                    Text(rightbuttonFigures)
                 }
                 .foregroundStyle(.dbzYellow)
                 .bold()
             }
     }
 }
+
+// MARK: - To-Do
+/* Extract game rectangle to its own view
+ Add a font size for center rectangle figure
+ 
+ */
