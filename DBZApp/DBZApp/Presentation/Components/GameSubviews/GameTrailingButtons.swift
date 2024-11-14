@@ -13,10 +13,9 @@ struct GameTrailingButtons: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            GameActionButton(imageName: "play.fill")
-            GameActionButton(imageName: "arrow.clockwise")
-            GameActionButton(imageName: "play.rectangle.on.rectangle")
-            GameActionButton(imageName: "tray.and.arrow.down", imageYOffset: -2)
+            topButton
+            centerButton
+            bottomButton
             GameActionButton(imageName: "checkmark")
             GameActionButton(imageName: "xmark")
         }
@@ -24,11 +23,26 @@ struct GameTrailingButtons: View {
 }
 
 #Preview {
-    GameTrailingButtons()
+    HStack {
+        GameTrailingButtons(hasGameStarted: false)
+        GameTrailingButtons(hasGameStarted: true)
+    }
 }
 
 extension GameTrailingButtons {
     private var topButton: some View {
-        GameActionButton(imageName: "play.fill")
+        if hasGameStarted {
+            GameActionButton(imageName: "arrow.clockwise")
+        } else {
+            GameActionButton(imageName: "play.fill")
+        }
+    }
+    
+    private var centerButton: some View {
+        GameActionButton(imageName: "play.rectangle.on.rectangle", isEnabled: hasGameStarted)
+    }
+    
+    private var bottomButton: some View {
+        GameActionButton(imageName: "tray.and.arrow.down", imageYOffset: -2, isEnabled: hasGameStarted)
     }
 }
