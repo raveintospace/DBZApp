@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct GameActionButton: View {
+    
     var imageName: String = ""
     var linewidth: CGFloat = 3
     var width: CGFloat = 60
     var imageYOffset: CGFloat = 0
+    var onButtonPressed: (() -> Void)? = nil
+    
+    @State private var trigger: Bool = false
     
     var body: some View {
         Circle()
@@ -23,6 +27,10 @@ struct GameActionButton: View {
                     .font(.title)
                     .offset(y: imageYOffset)
                 .foregroundStyle(.dbzYellow)
+            }
+            .sensoryFeedback(.impact, trigger: trigger)
+            .withTrigger(trigger: $trigger) {
+                onButtonPressed?()
             }
     }
 }
