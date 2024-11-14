@@ -22,12 +22,12 @@ struct GameFooterBar: View {
     var rightRectangleFigures: String = ""
     
     var body: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 8) {
             HStack {
                 pointsRectangle
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-            HStack(spacing: 6) {
+            HStack(spacing: 8) {
                 gamesRectangle
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
