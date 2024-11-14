@@ -10,9 +10,8 @@ import SwiftUI
 struct GameInfoRectangle: View {
     
     var cornerRadius: CGFloat = 15
-    var linewidth: CGFloat = 4
-    var width: CGFloat = 100
-    var height: CGFloat = 60
+    var linewidth: CGFloat = 3
+    var height: CGFloat = 50
     var upperText: String = "Some text"
     var lowerText: String = "123456"
     
@@ -20,7 +19,7 @@ struct GameInfoRectangle: View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .fill(.dbzBlue)
             .stroke(.dbzOrange, lineWidth: linewidth)
-            .frame(width: width, height: height)
+            .frame(height: height)
             .overlay {
                 VStack {
                     Text(upperText)
@@ -34,8 +33,13 @@ struct GameInfoRectangle: View {
 }
 
 #Preview {
-    VStack {
-        GameInfoRectangle()
-        GameInfoRectangle(width: 200)
+    GeometryReader { geometry in
+        VStack {
+            GameInfoRectangle(lowerText: "15 Septillion")
+                .frame(width: geometry.size.width)
+            GameInfoRectangle()
+                .frame(width: geometry.size.width / 3)
+        }
     }
+    .padding()
 }

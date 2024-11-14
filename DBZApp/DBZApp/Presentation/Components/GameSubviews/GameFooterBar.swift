@@ -9,25 +9,25 @@ import SwiftUI
 
 struct GameFooterBar: View {
     
-    var mainButtonText: String = "Total points"
-    var mainButtonFigures: String = ""
+    var mainRectangleText: String = "Total points"
+    var mainRectangleFigures: String = ""
     
-    var leftButtonText: String = "Game"
-    var leftButtonFigures: String = ""
+    var leftRectangleText: String = "Game"
+    var leftRectangleFigures: String = ""
     
-    var centerButtonText: String = "Set"
-    var centerButtonFigures: String = ""
+    var centerRectangleText: String = "Set"
+    var centerRectangleFigures: String = ""
     
-    var rightButtonText: String = "Discard"
-    var rightButtonFigures: String = ""
+    var rightRectangleText: String = "Discard"
+    var rightRectangleFigures: String = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 6) {
             HStack {
                 pointsRectangle
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-            HStack(spacing: 0) {
+            HStack(spacing: 6) {
                 gamesRectangle
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -43,34 +43,28 @@ struct GameFooterBar: View {
 
 #Preview {
     GameFooterBar(
-        mainButtonFigures: "150.000.000.000",
-        leftButtonFigures: "1 / 3",
-        centerButtonFigures: "R-1 / P-1",
-        rightButtonFigures: "0 / 3"
+        mainRectangleFigures: "150.000.000.000",
+        leftRectangleFigures: "1 / 3",
+        centerRectangleFigures: "R-1 / P-1",
+        rightRectangleFigures: "0 / 3"
     )
         .padding()
 }
 
 extension GameFooterBar {
     private var pointsRectangle: some View {
-        GameInfoRectangle(upperText: mainButtonText, lowerText: mainButtonFigures)
+        GameInfoRectangle(upperText: mainRectangleText, lowerText: mainRectangleFigures)
     }
     
     private var gamesRectangle: some View {
-        GameInfoRectangle(upperText: leftButtonText, lowerText: leftButtonFigures)
+        GameInfoRectangle(upperText: leftRectangleText, lowerText: leftRectangleFigures)
     }
     
     private var setGameRectangle: some View {
-        GameInfoRectangle(upperText: centerButtonText, lowerText: centerButtonFigures)
+        GameInfoRectangle(upperText: centerRectangleText, lowerText: centerRectangleFigures)
     }
     
     private var discardsRectangle: some View {
-        GameInfoRectangle(upperText: rightButtonText, lowerText: rightButtonFigures)
+        GameInfoRectangle(upperText: rightRectangleText, lowerText: rightRectangleFigures)
     }
 }
-
-// MARK: - To-Do
-/* Extract game rectangle to its own view
- Add a font size for center rectangle figure
- 
- */
