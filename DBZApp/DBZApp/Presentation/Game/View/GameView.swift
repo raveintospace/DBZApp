@@ -84,7 +84,7 @@ extension GameView {
         HStack(spacing: 0) {
             // deck of cards
             // messages
-            GameTrailingButtons(hasGameStarted: false)
+            GameTrailingButtons(hasGameStarted: true)
                 .padding(.horizontal)
         }
     }

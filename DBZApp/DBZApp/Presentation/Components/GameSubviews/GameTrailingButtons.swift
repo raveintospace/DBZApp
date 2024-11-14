@@ -67,4 +67,3 @@ extension GameTrailingButtons {
 }
 
 // add actions to each button
-// netflix context vertical
