@@ -9,6 +9,9 @@ import SwiftUI
 
 struct GameFooterBar: View {
     
+    var mainButtonText: String = ""
+    var mainButtonFigures: String = ""
+    
     var leftButtonText: String = ""
     var leftButtonFigures: String = ""
     
@@ -19,47 +22,38 @@ struct GameFooterBar: View {
     var rightbuttonFigures: String = ""
     
     var body: some View {
-        HStack(spacing: 8) {
-            roundsRectangle
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            pointsRectangle
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            currentGameRectangle
-                .frame(maxWidth: .infinity, alignment: .trailing)
+        VStack {
+            HStack {
+                pointsRectangle
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+            HStack(spacing: 8) {
+                gameRectangle
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                setGameRectangle
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                setGameRectangle
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
         }
     }
 }
 
 #Preview {
     GameFooterBar(
-        leftButtonText: "Round:",
+        leftButtonText: "Game:",
         leftButtonFigures: "1 / 3",
         centerButtonText: "Total points:",
         centerButtonFigures: "150.000.000.000",
-        rightButtonText: "Score:",
+        rightButtonText: "Set:",
         rightbuttonFigures: "R-1 / P-1"
     )
         .padding()
 }
 
 extension GameFooterBar {
-    private var roundsRectangle: some View {
-        RoundedRectangle(cornerRadius: 15)
-            .fill(.dbzBlue)
-            .stroke(.dbzOrange, lineWidth: 4)
-            .frame(width: 100, height: 70)
-            .overlay {
-                VStack {
-                    Text(leftButtonText)
-                    Text(leftButtonFigures)
-                }
-                .foregroundStyle(.dbzYellow)
-                .bold()
-            }
-    }
-    
     private var pointsRectangle: some View {
         RoundedRectangle(cornerRadius: 15)
             .fill(.dbzBlue)
@@ -76,7 +70,22 @@ extension GameFooterBar {
             }
     }
     
-    private var currentGameRectangle: some View {
+    private var gameRectangle: some View {
+        RoundedRectangle(cornerRadius: 15)
+            .fill(.dbzBlue)
+            .stroke(.dbzOrange, lineWidth: 4)
+            .frame(width: 100, height: 70)
+            .overlay {
+                VStack {
+                    Text(leftButtonText)
+                    Text(leftButtonFigures)
+                }
+                .foregroundStyle(.dbzYellow)
+                .bold()
+            }
+    }
+    
+    private var setGameRectangle: some View {
         RoundedRectangle(cornerRadius: 15)
             .fill(.dbzBlue)
             .stroke(.dbzOrange, lineWidth: 4)
@@ -85,6 +94,22 @@ extension GameFooterBar {
                 VStack {
                     Text(rightButtonText)
                     Text(rightbuttonFigures)
+                }
+                .foregroundStyle(.dbzYellow)
+                .bold()
+            }
+    }
+    
+    private var discardsRectangle: some View {
+        RoundedRectangle(cornerRadius: 15)
+            .fill(.dbzBlue)
+            .stroke(.dbzOrange, lineWidth: 4)
+            .frame(width: 100, height: 70)
+            .overlay {
+                VStack {
+                    Text(centerButtonText)
+                    Text(centerButtonFigures)
+                        .font(.caption)
                 }
                 .foregroundStyle(.dbzYellow)
                 .bold()
