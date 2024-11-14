@@ -23,10 +23,10 @@ struct GameInfoRectangle: View {
             .overlay {
                 VStack {
                     Text(upperText)
+                        .bold()
                     Text(lowerText)
                 }
                 .foregroundStyle(.dbzYellow)
-                .bold()
                 .lineLimit(1)
             }
     }

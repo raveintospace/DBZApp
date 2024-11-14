@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameFooterBar: View {
     
-    var mainRectangleText: String = "Total points"
+    var mainRectangleText: String = "Total Ki points"
     var mainRectangleFigures: String = ""
     
     var leftRectangleText: String = "Game"
@@ -44,7 +44,7 @@ struct GameFooterBar: View {
 #Preview {
     GameFooterBar(
         mainRectangleFigures: "150.000.000.000",
-        leftRectangleFigures: "1 / 3",
+        leftRectangleFigures: "R-0 / P-1",
         centerRectangleFigures: "R-1 / P-1",
         rightRectangleFigures: "0 / 3"
     )

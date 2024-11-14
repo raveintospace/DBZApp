@@ -94,7 +94,7 @@ extension DatabaseCard {
                     .font(.title3)
                     .frame(width: 20)
             }
-            Text("\(ki) ki points")
+            Text("\(ki) Ki points")
                 .font(.caption)
                 .fontWeight(.bold)
             Text("Affiliation: ")

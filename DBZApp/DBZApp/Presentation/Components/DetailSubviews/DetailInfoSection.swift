@@ -57,7 +57,7 @@ extension DetailInfoSection {
                 .fontWeight(.semibold) +
             Text(kiPoints)
             
-            Text("Max ki points: ")
+            Text("Max Ki points: ")
                 .fontWeight(.semibold) +
             Text(maxKi)
             

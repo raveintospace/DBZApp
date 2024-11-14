@@ -26,6 +26,9 @@ struct GameView: View {
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
+            footer
+                .frame(maxHeight: .infinity, alignment: .bottom)
+            
             if viewModel.gameCharacters.isEmpty {
                 ProgressColorBarsView()
             } else {
@@ -72,5 +75,15 @@ extension GameView {
         )
         .padding()
         .padding(.top, -10)
+    }
+    
+    private var footer: some View {
+        GameFooterBar(
+            mainRectangleFigures: "150.000.000.000",
+            leftRectangleFigures: "R-1 / P-1",
+            centerRectangleFigures: "R-1 / P-1",
+            rightRectangleFigures: "0 / 3"
+        )
+        .padding()
     }
 }
