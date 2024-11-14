@@ -11,13 +11,13 @@ struct GameTrailingButtons: View {
     
     var hasGameStarted: Bool = false // viewModel.hasGameStarted
     
+    @State private var showPopover: Bool = false
+    
     var body: some View {
         VStack(spacing: 8) {
             topButton
             centerButton
             bottomButton
-            GameActionButton(imageName: "checkmark")
-            GameActionButton(imageName: "xmark")
         }
     }
 }
@@ -43,6 +43,28 @@ extension GameTrailingButtons {
     }
     
     private var bottomButton: some View {
-        GameActionButton(imageName: "tray.and.arrow.down", imageYOffset: -2, isEnabled: hasGameStarted)
+        GameActionButton(
+            imageName: "tray.and.arrow.down",
+            imageYOffset: -2,
+            isEnabled: hasGameStarted,
+            onButtonPressed: {
+                showPopover.toggle()
+            }
+        )
+        .popover(isPresented: $showPopover) {
+            ZStack {
+                Color.dbzBlue.opacity(0.5).ignoresSafeArea()
+                
+                VStack(spacing: 8) {
+                    GameActionButton(imageName: "checkmark")
+                    GameActionButton(imageName: "xmark")
+                }
+                .padding(4)
+            }
+            .presentationCompactAdaptation(.popover)
+        }
     }
 }
+
+// add actions to each button
+// netflix context vertical

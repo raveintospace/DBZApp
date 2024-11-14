@@ -26,6 +26,9 @@ struct GameView: View {
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
+            bodyStack
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            
             footer
                 .frame(maxHeight: .infinity, alignment: .bottom)
             
@@ -75,6 +78,15 @@ extension GameView {
         )
         .padding()
         .padding(.top, -10)
+    }
+    
+    private var bodyStack: some View {
+        HStack(spacing: 0) {
+            // deck of cards
+            // messages
+            GameTrailingButtons(hasGameStarted: false)
+                .padding(.horizontal)
+        }
     }
     
     private var footer: some View {

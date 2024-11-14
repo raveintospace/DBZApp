@@ -51,25 +51,4 @@ struct GameActionButton: View {
     }
 }
 
-/*
- play.circle - start game
- arrow.clockwise.circle - restart game
- play.rectangle.on.rectangle.circle.fill // play.rectangle.on.rectangle.circle - play hand
- tray.and.arrow.down - discard
- checkmark.circle - confirm discard
- xmark.octagon - cancel discard
- 
- Image(systemName: imageName)
- .font(.title)
- .padding(10)
- .background(
- Circle()
- .fill(.dbzBlue)
- .stroke(.dbzOrange, lineWidth: 3))
- .foregroundStyle(.dbzYellow)
- 
- 
- 
- */
-
 
