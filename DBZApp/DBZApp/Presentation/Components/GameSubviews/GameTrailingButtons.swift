@@ -10,6 +10,11 @@ import SwiftUI
 struct GameTrailingButtons: View {
     
     var hasGameStarted: Bool = false // viewModel.hasGameStarted
+    var onPlayButtonPressed: (() -> Void)? = nil
+    var onRestartButtonPressed: (() -> Void)? = nil
+    var onRevealButtonPressed: (() -> Void)? = nil
+    var onConfirmButtonPressed: (() -> Void)? = nil
+    var onCancelButtonPressed: (() -> Void)? = nil
     
     @State private var showPopover: Bool = false
     
@@ -32,14 +37,24 @@ struct GameTrailingButtons: View {
 extension GameTrailingButtons {
     private var topButton: some View {
         if hasGameStarted {
-            GameActionButton(imageName: "arrow.clockwise")
+            GameActionButton(
+                imageName: "arrow.clockwise",
+                onButtonPressed: { onRestartButtonPressed?()}
+            )
         } else {
-            GameActionButton(imageName: "play.fill")
+            GameActionButton(
+                imageName: "play.fill",
+                onButtonPressed: { onPlayButtonPressed?()}
+            )
         }
     }
     
     private var centerButton: some View {
-        GameActionButton(imageName: "play.rectangle.on.rectangle", isEnabled: hasGameStarted)
+        GameActionButton(
+            imageName: "play.rectangle.on.rectangle",
+            isEnabled: hasGameStarted,
+            onButtonPressed: { onRevealButtonPressed?() }
+        )
     }
     
     private var bottomButton: some View {
@@ -56,8 +71,12 @@ extension GameTrailingButtons {
                 Color.dbzBlue.opacity(0.5).ignoresSafeArea()
                 
                 VStack(spacing: 8) {
-                    GameActionButton(imageName: "checkmark")
-                    GameActionButton(imageName: "xmark")
+                    GameActionButton(imageName: "checkmark",
+                                     onButtonPressed: { onConfirmButtonPressed?()}
+                    )
+                    GameActionButton(imageName: "xmark",
+                                     onButtonPressed: { onCancelButtonPressed?()}
+                    )
                 }
                 .padding(4)
             }
@@ -65,5 +84,3 @@ extension GameTrailingButtons {
         }
     }
 }
-
-// add actions to each button
