@@ -84,9 +84,29 @@ extension GameView {
         HStack(spacing: 0) {
             // deck of cards
             // messages
-            GameTrailingButtons(hasGameStarted: true)
-                .padding(.horizontal)
+            gameTrailingButtons
         }
+    }
+    
+    private var gameTrailingButtons: some View {
+        GameTrailingButtons(
+            hasGameStarted: true,
+            onPlayButtonPressed: {
+                // start playing
+            },
+            onRestartButtonPressed: {
+                // restart playing
+            },
+            onRevealButtonPressed: {
+                // compete with rival
+            },
+            onConfirmButtonPressed: {
+                // discard selected cards and deal new ones
+            },
+            onCancelButtonPressed: {
+                // cancel cards to discard
+            })
+            .padding(.horizontal)
     }
     
     private var footer: some View {
