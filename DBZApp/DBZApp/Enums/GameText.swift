@@ -16,6 +16,7 @@ enum GameText {
     case matchWon
     case matchLost
     case welcome
+    case empty
     
     var message: String {
         switch self {
@@ -35,6 +36,8 @@ enum GameText {
             return "Match lost"
         case .welcome:
             return "Welcome"
+        case .empty:
+            return ""
         }
     }
 }

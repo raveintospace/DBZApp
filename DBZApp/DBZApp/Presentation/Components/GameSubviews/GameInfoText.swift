@@ -9,13 +9,13 @@ import SwiftUI
 
 struct GameInfoText: View {
     
-    var text: String = "Game Text"
+    var text: GameText = .empty
     var fontName: String? = "SaiyanSans"
     var fontSize: CGFloat = 45
     var fontWeight: Font.Weight = .bold
     
     var body: some View {
-        Text(text)
+        Text(text.message)
             .font(fontName != nil ? .custom(fontName!, size: fontSize) : .system(size: fontSize, weight: fontWeight))
             .kerning(1.5)
             .baselineOffset(-5)
@@ -27,5 +27,16 @@ struct GameInfoText: View {
 }
 
 #Preview {
-    GameInfoText()
+    VStack(spacing: 15) {
+        GameInfoText(text: .gameWon)
+        GameInfoText(text: .gameLost)
+        GameInfoText(text: .setWon)
+        GameInfoText(text: .setLost)
+        GameInfoText(text: .matchWon)
+        GameInfoText(text: .matchLost)
+        GameInfoText(text: .draw)
+        GameInfoText(text: .welcome)
+    }
 }
+
+// fer un onAppear pq l'escala passi de 0 a 1 i alguna animacio mes
