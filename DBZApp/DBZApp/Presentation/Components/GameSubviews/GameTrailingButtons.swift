@@ -10,6 +10,8 @@ import SwiftUI
 struct GameTrailingButtons: View {
     
     var hasGameStarted: Bool = false // viewModel.hasGameStarted
+    var hasSelectedCards: Bool = false // !viewmodel.cardsToDiscardArray.isEmpty
+    
     var onPlayButtonPressed: (() -> Void)? = nil
     var onRestartButtonPressed: (() -> Void)? = nil
     var onRevealButtonPressed: (() -> Void)? = nil
@@ -72,9 +74,11 @@ extension GameTrailingButtons {
                 
                 VStack(spacing: 8) {
                     GameActionButton(imageName: "checkmark",
+                                     isEnabled: hasSelectedCards,
                                      onButtonPressed: { onConfirmButtonPressed?()}
                     )
                     GameActionButton(imageName: "xmark",
+                                     isEnabled: hasSelectedCards,
                                      onButtonPressed: { onCancelButtonPressed?()}
                     )
                 }

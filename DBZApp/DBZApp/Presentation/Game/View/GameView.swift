@@ -91,6 +91,7 @@ extension GameView {
     private var gameTrailingButtons: some View {
         GameTrailingButtons(
             hasGameStarted: true,
+            hasSelectedCards: false,
             onPlayButtonPressed: {
                 // start playing
             },
