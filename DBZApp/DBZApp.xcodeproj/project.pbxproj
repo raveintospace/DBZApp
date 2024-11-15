@@ -109,6 +109,7 @@
 		34EF125E2CCA8CE200AFF06D /* TransformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF125D2CCA8CE200AFF06D /* TransformationCard.swift */; };
 		34EF674E2CCFFE3200720340 /* ButtonAnimatedGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */; };
 		34F6AD7F2CE7BE0F008DE709 /* GameInfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */; };
+		34F6AD812CE7C09F008DE709 /* GameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F6AD802CE7C09F008DE709 /* GameText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		34EF125D2CCA8CE200AFF06D /* TransformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationCard.swift; sourceTree = "<group>"; };
 		34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimatedGlow.swift; sourceTree = "<group>"; };
 		34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoText.swift; sourceTree = "<group>"; };
+		34F6AD802CE7C09F008DE709 /* GameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -601,9 +603,10 @@
 		34C9FB3E2C91A8A100FA0139 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
 				34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */,
 				34BF19A62C95D81700A6B55A /* SortOption.swift */,
+				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
+				34F6AD802CE7C09F008DE709 /* GameText.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				3452BEDA2C90BA3F00E32517 /* FiltersBar.swift in Sources */,
 				340C22CC2CDA944700F8341C /* GameViewModel.swift in Sources */,
 				34A18BAB2CD547DA00FB0F0D /* GameHeaderBar.swift in Sources */,
+				34F6AD812CE7C09F008DE709 /* GameText.swift in Sources */,
 				343DC30A2C89BE7900BCCF39 /* CharacterDataSourceProtocol.swift in Sources */,
 				343DC3282C89FCA500BCCF39 /* MockFetchCharactersFromAPIUseCase.swift in Sources */,
 				34B439B32CD1557500CE139F /* InfoView.swift in Sources */,
