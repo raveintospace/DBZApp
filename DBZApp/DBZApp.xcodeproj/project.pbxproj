@@ -108,6 +108,7 @@
 		34EF125C2CCA8A9800AFF06D /* TransformationHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF125B2CCA8A9800AFF06D /* TransformationHeaderButton.swift */; };
 		34EF125E2CCA8CE200AFF06D /* TransformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF125D2CCA8CE200AFF06D /* TransformationCard.swift */; };
 		34EF674E2CCFFE3200720340 /* ButtonAnimatedGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */; };
+		34F6AD7F2CE7BE0F008DE709 /* GameInfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +211,7 @@
 		34EF125B2CCA8A9800AFF06D /* TransformationHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationHeaderButton.swift; sourceTree = "<group>"; };
 		34EF125D2CCA8CE200AFF06D /* TransformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationCard.swift; sourceTree = "<group>"; };
 		34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimatedGlow.swift; sourceTree = "<group>"; };
+		34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,6 +539,7 @@
 				34B83F682CE64F640080BAD8 /* GameTrailingButtons.swift */,
 				34B83F662CE646930080BAD8 /* GameActionButton.swift */,
 				34B83F642CE613040080BAD8 /* GameInfoRectangle.swift */,
+				34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */,
 			);
 			path = GameSubviews;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 				343DC30E2C89BFD500BCCF39 /* NetworkCharacterDataSource.swift in Sources */,
 				34B83F652CE613040080BAD8 /* GameInfoRectangle.swift in Sources */,
 				343DC3152C89C95300BCCF39 /* CharacterRepositoryImpl.swift in Sources */,
+				34F6AD7F2CE7BE0F008DE709 /* GameInfoText.swift in Sources */,
 				343DC3232C89F97300BCCF39 /* DatabaseView.swift in Sources */,
 				348C767C2CA05EA800235D7F /* FavoritesRepositoryProtocol.swift in Sources */,
 				34B439B52CD1569300CE139F /* InfoHeaderBar.swift in Sources */,
