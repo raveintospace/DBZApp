@@ -27,20 +27,19 @@ struct GameView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             bodyStack
-                .frame(maxWidth: .infinity, alignment: .trailing)
             
             footer
                 .frame(maxHeight: .infinity, alignment: .bottom)
             
             if viewModel.gameCharacters.isEmpty {
                 ProgressColorBarsView()
-            } else {
-                VStack {
-                    Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
-                    Text(viewModel.gameCharacters[0].name)
-                    Text(viewModel.gameCharacters[10].name)
-                }
-            }
+            } // else {
+//                VStack {
+//                    Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
+//                    Text(viewModel.gameCharacters[0].name)
+//                    Text(viewModel.gameCharacters[10].name)
+//                }
+//            }
         }
     }
 }
@@ -82,10 +81,21 @@ extension GameView {
     
     private var bodyStack: some View {
         HStack(spacing: 0) {
-            // deck of cards
-            // messages
-            gameTrailingButtons
+            if viewModel.gameCharacters.isEmpty {
+                ProgressColorBarsView()
+            } else {
+                gameTrailingButtons
+                    .frame(width: 70, alignment: .leading)
+                    .background(.green)
+                GameInfoText(text: .matchLost)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .background(.red)
+                gameTrailingButtons
+                    .frame(width: 70, alignment: .trailing)
+                    .background(.green)
+            }
         }
+        .padding()
     }
     
     private var gameTrailingButtons: some View {
@@ -107,7 +117,7 @@ extension GameView {
             onCancelButtonPressed: {
                 // cancel cards to discard
             })
-            .padding(.horizontal)
+          //  .padding(.horizontal)
     }
     
     private var footer: some View {
@@ -118,5 +128,6 @@ extension GameView {
             rightRectangleFigures: "0 / 3"
         )
         .padding()
+        
     }
 }

@@ -21,19 +21,19 @@ enum GameText {
     var message: String {
         switch self {
         case .gameWon:
-            return "Game won"
+            return "Game\nwon"
         case .gameLost:
-            return "Game lost"
+            return "Game\nlost"
         case .draw:
             return "Draw"
         case .setWon:
-            return "Set won"
+            return "Set\nwon"
         case .setLost:
-            return "Set lost"
+            return "Set\nlost"
         case .matchWon:
-            return "Match won"
+            return "Match\nwon"
         case .matchLost:
-            return "Match lost"
+            return "Match\nlost"
         case .welcome:
             return "Welcome"
         case .empty:

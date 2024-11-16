@@ -11,7 +11,7 @@ struct GameInfoText: View {
     
     var text: GameText = .empty
     var fontName: String? = "SaiyanSans"
-    var fontSize: CGFloat = 45
+    var fontSize: CGFloat = 70
     var fontWeight: Font.Weight = .bold
     
     var body: some View {
@@ -19,6 +19,7 @@ struct GameInfoText: View {
             .font(fontName != nil ? .custom(fontName!, size: fontSize) : .system(size: fontSize, weight: fontWeight))
             .kerning(1.5)
             .baselineOffset(-5)
+            .multilineTextAlignment(.center)
             .foregroundStyle(.dbzYellow)
             .shadow(color: .dbzOrange, radius: 1, x: 0, y: 0)
             .shadow(color: .dbzOrange, radius: 2, x: 0, y: 0)
@@ -27,7 +28,7 @@ struct GameInfoText: View {
 }
 
 #Preview {
-    VStack(spacing: 15) {
+    ScrollView(.vertical) {
         GameInfoText(text: .gameWon)
         GameInfoText(text: .gameLost)
         GameInfoText(text: .setWon)
@@ -40,3 +41,4 @@ struct GameInfoText: View {
 }
 
 // fer un onAppear pq l'escala passi de 0 a 1 i alguna animacio mes
+// multilinetext center
