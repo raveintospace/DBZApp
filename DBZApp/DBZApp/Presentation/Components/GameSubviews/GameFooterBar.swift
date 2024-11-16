@@ -9,8 +9,11 @@ import SwiftUI
 
 struct GameFooterBar: View {
     
-    var mainRectangleText: String = "Total Ki points"
-    var mainRectangleFigures: String = ""
+    var rivalRectangleText: String = "Rival Ki points"
+    var rivalRectangleFigures: String = ""
+    
+    var playerRectangleText: String = "Player Ki points"
+    var playerRectangleFigures: String = ""
     
     var leftRectangleText: String = "Game"
     var leftRectangleFigures: String = ""
@@ -23,9 +26,11 @@ struct GameFooterBar: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            HStack {
-                pointsRectangle
-                    .frame(maxWidth: .infinity, alignment: .center)
+            HStack(spacing: 8) {
+                rivalRectangle
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                playerRectangle
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             HStack(spacing: 8) {
                 gamesRectangle
@@ -43,7 +48,8 @@ struct GameFooterBar: View {
 
 #Preview {
     GameFooterBar(
-        mainRectangleFigures: "150.000.000.000",
+        rivalRectangleFigures: "150.000.000.000",
+        playerRectangleFigures: "15 Septillion",
         leftRectangleFigures: "R-0 / P-1",
         centerRectangleFigures: "R-1 / P-1",
         rightRectangleFigures: "0 / 3"
@@ -52,8 +58,11 @@ struct GameFooterBar: View {
 }
 
 extension GameFooterBar {
-    private var pointsRectangle: some View {
-        GameInfoRectangle(upperText: mainRectangleText, lowerText: mainRectangleFigures)
+    private var rivalRectangle: some View {
+        GameInfoRectangle(upperText: rivalRectangleText, lowerText: rivalRectangleFigures)
+    }
+    private var playerRectangle: some View {
+        GameInfoRectangle(upperText: playerRectangleText, lowerText: playerRectangleFigures)
     }
     
     private var gamesRectangle: some View {

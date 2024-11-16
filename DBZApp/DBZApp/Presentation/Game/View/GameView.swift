@@ -112,18 +112,17 @@ extension GameView {
             onCancelButtonPressed: {
                 // cancel cards to discard
             })
-          //  .padding(.horizontal)
     }
     
     private var footer: some View {
         GameFooterBar(
-            mainRectangleFigures: "150.000.000.000",
+            rivalRectangleFigures: "150.000.000.000",
+            playerRectangleFigures: "15 Septillion",
             leftRectangleFigures: "R-1 / P-1",
             centerRectangleFigures: "R-1 / P-1",
             rightRectangleFigures: "0 / 3"
         )
         .padding()
-        
     }
 }
 
