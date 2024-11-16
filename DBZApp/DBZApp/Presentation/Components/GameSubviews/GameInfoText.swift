@@ -14,6 +14,8 @@ struct GameInfoText: View {
     var fontSize: CGFloat = 70
     var fontWeight: Font.Weight = .bold
     
+    @State private var isVisible: Bool = false
+    
     var body: some View {
         Text(text.message)
             .font(fontName != nil ? .custom(fontName!, size: fontSize) : .system(size: fontSize, weight: fontWeight))
@@ -24,6 +26,20 @@ struct GameInfoText: View {
             .shadow(color: .dbzOrange, radius: 1, x: 0, y: 0)
             .shadow(color: .dbzOrange, radius: 2, x: 0, y: 0)
             .shadow(color: .dbzBlue, radius: 3, x: 0, y: 0)
+            .opacity(isVisible ? 1 : 0)
+            .scaleEffect(isVisible ? 1 : 0.3)
+            .offset(y: isVisible ? 0 : 30)
+            .animation(.easeOut(duration: 0.65), value: isVisible)
+            .onAppear {
+                withAnimation {
+                    isVisible = true
+                }
+            }
+            .onDisappear {
+                withAnimation {
+                    isVisible = false
+                }
+            }
     }
 }
 

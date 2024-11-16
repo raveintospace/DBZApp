@@ -102,6 +102,9 @@ extension GameView {
             onRevealButtonPressed: {
                 // compete with rival
             },
+            onDealButtonPressed: {
+                // deal new cards
+            },
             onConfirmButtonPressed: {
                 // discard selected cards and deal new ones
             },
