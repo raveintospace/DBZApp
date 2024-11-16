@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameInfoText: View {
     
-    var text: GameText = .empty
+    @Binding var text: GameText
     var fontName: String? = "SaiyanSans"
     var fontSize: CGFloat = 70
     var fontWeight: Font.Weight = .bold
@@ -32,7 +32,7 @@ struct GameInfoText: View {
             .animation(.easeOut(duration: 0.65), value: isVisible)
             .onAppear {
                 withAnimation {
-                    isVisible = true
+                    isVisible = text != .empty
                 }
             }
             .onDisappear {
@@ -40,19 +40,24 @@ struct GameInfoText: View {
                     isVisible = false
                 }
             }
+            .onChange(of: text) { _, newText in
+                withAnimation {
+                    isVisible = newText != .empty
+                }
+            }
     }
 }
 
 #Preview {
     ScrollView(.vertical) {
-        GameInfoText(text: .gameWon)
-        GameInfoText(text: .gameLost)
-        GameInfoText(text: .setWon)
-        GameInfoText(text: .setLost)
-        GameInfoText(text: .matchWon)
-        GameInfoText(text: .matchLost)
-        GameInfoText(text: .draw)
-        GameInfoText(text: .welcome)
+        GameInfoText(text: .constant(.gameWon))
+        GameInfoText(text: .constant(.gameLost))
+        GameInfoText(text: .constant(.setWon))
+        GameInfoText(text: .constant(.setLost))
+        GameInfoText(text: .constant(.matchWon))
+        GameInfoText(text: .constant(.matchLost))
+        GameInfoText(text: .constant(.draw))
+        GameInfoText(text: .constant(.welcome))
     }
 }
 

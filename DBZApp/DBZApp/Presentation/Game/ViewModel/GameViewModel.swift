@@ -36,6 +36,5 @@ final class GameViewModel: ObservableObject {
  var hasSelectedCards: Bool = false // !viewModel.cardsToDiscardArray.isEmpty
  var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
  
- Boolean to remove gameinfotext from view - 
  Var to set gameinfotext - viewmodel.gameinfotext - based on enum switch, empty as default
  */

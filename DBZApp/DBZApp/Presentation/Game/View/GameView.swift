@@ -77,7 +77,7 @@ extension GameView {
                 gameTrailingButtons
                     .frame(width: 70, alignment: .leading)
                     .background(.green)
-                GameInfoText(text: .matchLost)
+                GameInfoText(text: .constant(.matchLost))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .background(.red)
                 gameTrailingButtons
