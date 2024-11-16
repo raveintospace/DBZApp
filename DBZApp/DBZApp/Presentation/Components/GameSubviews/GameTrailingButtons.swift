@@ -10,6 +10,7 @@ import SwiftUI
 struct GameTrailingButtons: View {
     
     var hasGameStarted: Bool = false // viewModel.hasGameStarted
+    var hasGameFinished: Bool = false // viewModel.hasGameFinished
     var hasSelectedCards: Bool = false // !viewModel.cardsToDiscardArray.isEmpty
     var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
     
@@ -36,12 +37,13 @@ struct GameTrailingButtons: View {
         GameTrailingButtons(hasGameStarted: false)
         GameTrailingButtons(hasGameStarted: true)
         GameTrailingButtons(hasGameStarted: true, hasSelectedCards: true, areRivalCardsShown: true)
+        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true)
     }
 }
 
 extension GameTrailingButtons {
     private var topButton: some View {
-        if hasGameStarted {
+        if hasGameStarted || hasGameFinished {
             GameActionButton(
                 imageName: "arrow.2.circlepath",
                 onButtonPressed: { onRestartButtonPressed?()}
@@ -58,13 +60,13 @@ extension GameTrailingButtons {
         if areRivalCardsShown {
             GameActionButton(
                 imageName: "play.rectangle",
-                isEnabled: hasGameStarted,
+                isEnabled: hasGameStarted && !hasGameFinished,
                 onButtonPressed: { onDealButtonPressed?() }
             )
         } else {
             GameActionButton(
                 imageName: "play.rectangle.on.rectangle",
-                isEnabled: hasGameStarted,
+                isEnabled: hasGameStarted && !hasGameFinished,
                 onButtonPressed: { onRevealButtonPressed?() }
             )
         }
@@ -74,7 +76,7 @@ extension GameTrailingButtons {
         GameActionButton(
             imageName: "tray.and.arrow.down",
             imageYOffset: -2,
-            isEnabled: hasGameStarted,
+            isEnabled: hasGameStarted && !hasGameFinished,
             onButtonPressed: {
                 showPopover.toggle()
             }
