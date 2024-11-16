@@ -30,16 +30,6 @@ struct GameView: View {
             
             footer
                 .frame(maxHeight: .infinity, alignment: .bottom)
-            
-            if viewModel.gameCharacters.isEmpty {
-                ProgressColorBarsView()
-            } // else {
-//                VStack {
-//                    Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
-//                    Text(viewModel.gameCharacters[0].name)
-//                    Text(viewModel.gameCharacters[10].name)
-//                }
-//            }
         }
     }
 }
@@ -102,6 +92,7 @@ extension GameView {
         GameTrailingButtons(
             hasGameStarted: true,
             hasSelectedCards: false,
+            areRivalCardsShown: false,
             onPlayButtonPressed: {
                 // start playing
             },
@@ -131,3 +122,11 @@ extension GameView {
         
     }
 }
+
+/*
+ VStack {
+ //                    Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
+ //                    Text(viewModel.gameCharacters[0].name)
+ //                    Text(viewModel.gameCharacters[10].name)
+ //                }
+ */

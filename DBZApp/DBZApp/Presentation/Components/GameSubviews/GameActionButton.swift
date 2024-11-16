@@ -43,8 +43,9 @@ struct GameActionButton: View {
 #Preview {
     VStack(spacing: 8) {
         GameActionButton(imageName: "play.fill", isEnabled: false)
-        GameActionButton(imageName: "arrow.clockwise")
+        GameActionButton(imageName: "arrow.2.circlepath")
         GameActionButton(imageName: "play.rectangle.on.rectangle")
+        GameActionButton(imageName: "play.rectangle")
         GameActionButton(imageName: "tray.and.arrow.down", imageYOffset: -2)
         GameActionButton(imageName: "checkmark")
         GameActionButton(imageName: "xmark")

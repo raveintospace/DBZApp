@@ -10,11 +10,13 @@ import SwiftUI
 struct GameTrailingButtons: View {
     
     var hasGameStarted: Bool = false // viewModel.hasGameStarted
-    var hasSelectedCards: Bool = false // !viewmodel.cardsToDiscardArray.isEmpty
+    var hasSelectedCards: Bool = false // !viewModel.cardsToDiscardArray.isEmpty
+    var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
     
     var onPlayButtonPressed: (() -> Void)? = nil
     var onRestartButtonPressed: (() -> Void)? = nil
     var onRevealButtonPressed: (() -> Void)? = nil
+    var onDealButtonPressed: (() -> Void)? = nil
     var onConfirmButtonPressed: (() -> Void)? = nil
     var onCancelButtonPressed: (() -> Void)? = nil
     
@@ -33,6 +35,7 @@ struct GameTrailingButtons: View {
     HStack {
         GameTrailingButtons(hasGameStarted: false)
         GameTrailingButtons(hasGameStarted: true)
+        GameTrailingButtons(hasGameStarted: true, hasSelectedCards: true, areRivalCardsShown: true)
     }
 }
 
@@ -40,7 +43,7 @@ extension GameTrailingButtons {
     private var topButton: some View {
         if hasGameStarted {
             GameActionButton(
-                imageName: "arrow.clockwise",
+                imageName: "arrow.2.circlepath",
                 onButtonPressed: { onRestartButtonPressed?()}
             )
         } else {
@@ -52,11 +55,19 @@ extension GameTrailingButtons {
     }
     
     private var centerButton: some View {
-        GameActionButton(
-            imageName: "play.rectangle.on.rectangle",
-            isEnabled: hasGameStarted,
-            onButtonPressed: { onRevealButtonPressed?() }
-        )
+        if areRivalCardsShown {
+            GameActionButton(
+                imageName: "play.rectangle",
+                isEnabled: hasGameStarted,
+                onButtonPressed: { onDealButtonPressed?() }
+            )
+        } else {
+            GameActionButton(
+                imageName: "play.rectangle.on.rectangle",
+                isEnabled: hasGameStarted,
+                onButtonPressed: { onRevealButtonPressed?() }
+            )
+        }
     }
     
     private var bottomButton: some View {
