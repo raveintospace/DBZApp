@@ -12,38 +12,45 @@ struct GameCard: View {
     var name: String = GameCharacter.mock.name
     var imageName: String = GameCharacter.mock.image
     var kiPoints: String = GameCharacter.mock.ki
+    var isRevealed: Bool = false
     
     var body: some View {
         ZStack {
-            backgroundRoundedRectangle
-            cardContent
+            if isRevealed {
+                revealedBackgroundRoundedRectangle
+                cardContent
+            } else {
+                unrevealedCard
+            }
         }
     }
 }
 
 #Preview {
-    GameCard()
-        .padding()
+    VStack {
+        GameCard(isRevealed: true)
+        GameCard(isRevealed: false)
+    }
+    .padding()
 }
 
 extension GameCard {
-    private var backgroundRoundedRectangle: some View {
+    private var revealedBackgroundRoundedRectangle: some View {
         RoundedRectangle(cornerRadius: 25)
             .strokeBorder(lineWidth: 5)
             .background(
-                gameCardLogo
+                revealedGameCardLogo
                     .clipShape(RoundedRectangle(cornerRadius: 25))
             )
             .foregroundStyle(.dbzBlue)
     }
     
-    private var gameCardLogo: some View {
+    private var revealedGameCardLogo: some View {
         ZStack {
-            Color.dbzOrange.opacity(0.75)
+            Color.dbzOrange
             Image("gameCardLogo")
                 .resizable()
                 .scaledToFit()
-                .opacity(0.15)
         }
     }
     
@@ -77,5 +84,24 @@ extension GameCard {
             Text(kiPoints)
         }
         
+    }
+    
+    private var unrevealedCard: some View {
+        RoundedRectangle(cornerRadius: 25)
+            .strokeBorder(lineWidth: 5)
+            .background(
+                unrevealedGameCardLogo
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+            )
+            .foregroundStyle(.dbzOrange)
+    }
+    
+    private var unrevealedGameCardLogo: some View {
+        ZStack {
+            Color.dbzBlue
+            Image("gameCardLogo")
+                .resizable()
+                .scaledToFit()
+        }
     }
 }
