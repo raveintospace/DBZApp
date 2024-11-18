@@ -17,17 +17,17 @@ struct GameCard: View {
     var body: some View {
         ZStack {
             if isRevealed {
-                revealedBackgroundRoundedRectangle
+                frontCard
                 cardContent
             } else {
-                unrevealedCard
+                backCard
             }
         }
     }
 }
 
 #Preview {
-    VStack {
+    HStack {
         GameCard(isRevealed: true)
         GameCard(isRevealed: false)
     }
@@ -35,7 +35,7 @@ struct GameCard: View {
 }
 
 extension GameCard {
-    private var revealedBackgroundRoundedRectangle: some View {
+    private var frontCard: some View {
         RoundedRectangle(cornerRadius: 25)
             .strokeBorder(lineWidth: 5)
             .background(
@@ -48,7 +48,7 @@ extension GameCard {
     private var revealedGameCardLogo: some View {
         ZStack {
             Color.dbzOrange
-            Image("gameCardLogo")
+            Image("gameCardBlackLogo")
                 .resizable()
                 .scaledToFit()
         }
@@ -86,7 +86,7 @@ extension GameCard {
         
     }
     
-    private var unrevealedCard: some View {
+    private var backCard: some View {
         RoundedRectangle(cornerRadius: 25)
             .strokeBorder(lineWidth: 5)
             .background(
@@ -99,7 +99,7 @@ extension GameCard {
     private var unrevealedGameCardLogo: some View {
         ZStack {
             Color.dbzBlue
-            Image("gameCardLogo")
+            Image("gameCardYellowLogo")
                 .resizable()
                 .scaledToFit()
         }
