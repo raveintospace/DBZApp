@@ -31,16 +31,17 @@ extension GameCard {
         RoundedRectangle(cornerRadius: 25)
             .strokeBorder(lineWidth: 5)
             .background(
-                gameCardWallpaper
+                gameCardLogo
                     .clipShape(RoundedRectangle(cornerRadius: 25))
             )
             .foregroundStyle(.dbzOrange)
     }
     
     // pending update image, search for a Z logo
-    private var gameCardWallpaper: some View {
-        Image("gameWallpaper")
+    private var gameCardLogo: some View {
+        Image("gameCardLogo")
             .resizable()
+            .scaledToFit()
             .opacity(0.15)
     }
     
