@@ -34,15 +34,17 @@ extension GameCard {
                 gameCardLogo
                     .clipShape(RoundedRectangle(cornerRadius: 25))
             )
-            .foregroundStyle(.dbzOrange)
+            .foregroundStyle(.dbzBlue)
     }
     
-    // pending update image, search for a Z logo
     private var gameCardLogo: some View {
-        Image("gameCardLogo")
-            .resizable()
-            .scaledToFit()
-            .opacity(0.15)
+        ZStack {
+            Color.dbzOrange.opacity(0.75)
+            Image("gameCardLogo")
+                .resizable()
+                .scaledToFit()
+                .opacity(0.15)
+        }
     }
     
     private var cardContent: some View {
