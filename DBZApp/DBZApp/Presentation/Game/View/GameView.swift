@@ -115,13 +115,25 @@ extension GameView {
     }
     
     private var footer: some View {
-        GameFooterBar(
-            rivalRectangleFigures: "150.000.000.000",
-            playerRectangleFigures: "15 Septillion",
-            leftRectangleFigures: "R-1 / P-1",
-            centerRectangleFigures: "R-1 / P-1",
-            rightRectangleFigures: "0 / 3"
-        )
+        VStack {
+            HStack {
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+            }
+            .frame(height: 130)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical)
+            
+            GameFooterBar(
+                rivalRectangleFigures: "150.000.000.000",
+                playerRectangleFigures: "15 Septillion",
+                leftRectangleFigures: "R-1 / P-1",
+                centerRectangleFigures: "R-1 / P-1",
+                rightRectangleFigures: "0 / 3"
+            )
+            
+        }
         .padding()
     }
 }

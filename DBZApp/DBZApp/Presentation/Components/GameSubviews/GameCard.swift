@@ -104,3 +104,5 @@ extension GameCard {
 
 
 // create a view (GameCardDeck) for the Zstack of cards and test the animation with a bool shouldShuffle
+
+// test gameCard as a small one
