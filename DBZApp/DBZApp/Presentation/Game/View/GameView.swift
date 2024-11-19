@@ -76,13 +76,13 @@ extension GameView {
             } else {
                 GameCard(isRevealed: false)
                     .frame(width: 70, alignment: .leading)
-                    .background(.green)
+                //    .background(.green)
                 GameInfoText(text: .constant(.matchLost))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .background(.red)
+                //    .background(.red)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
-                    .background(.green)
+                 //   .background(.green)
             }
         }
         .padding()
