@@ -14,15 +14,22 @@ struct GameCard: View {
     var kiPoints: String = GameCharacter.mock.ki
     var isRevealed: Bool = false
     
+    var aspectRatio: CGFloat = 2/3
+    var contentMode: ContentMode = .fit
+    var cornerRadius: CGFloat = 25
+    var strokeBorder: CGFloat = 3
+    var lineLimit: Int = 2
+    
     var body: some View {
         ZStack {
             if isRevealed {
-                frontCard
-                cardContent
+                cardCanva(revealedGameCardLogo, borderColor: .dbzBlue)
+                cardCharacter
             } else {
-                backCard
+                cardCanva(unrevealedGameCardLogo, borderColor: .dbzOrange)
             }
         }
+        .aspectRatio(aspectRatio, contentMode: contentMode)
     }
 }
 
@@ -35,15 +42,15 @@ struct GameCard: View {
 }
 
 extension GameCard {
-    private var frontCard: some View {
-        RoundedRectangle(cornerRadius: 25)
-            .strokeBorder(lineWidth: 5)
-            .background(
-                revealedGameCardLogo
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
-            )
-            .foregroundStyle(.dbzBlue)
-    }
+    private func cardCanva(_ background: some View, borderColor: Color) -> some View {
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .strokeBorder(lineWidth: strokeBorder)
+                .background(
+                    background
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                )
+                .foregroundStyle(borderColor)
+        }
     
     private var revealedGameCardLogo: some View {
         ZStack {
@@ -54,7 +61,7 @@ extension GameCard {
         }
     }
     
-    private var cardContent: some View {
+    private var cardCharacter: some View {
         VStack(spacing: 0) {
             nameSection
                 .frame(alignment: .top)
@@ -70,7 +77,7 @@ extension GameCard {
     
     private var nameSection: some View {
         Text(name.uppercased())
-            .lineLimit(2)
+            .lineLimit(lineLimit)
             .multilineTextAlignment(.center)
             .font(.title2)
             .bold()
@@ -83,17 +90,6 @@ extension GameCard {
                 .fontWeight(.semibold)
             Text(kiPoints)
         }
-        
-    }
-    
-    private var backCard: some View {
-        RoundedRectangle(cornerRadius: 25)
-            .strokeBorder(lineWidth: 5)
-            .background(
-                unrevealedGameCardLogo
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
-            )
-            .foregroundStyle(.dbzOrange)
     }
     
     private var unrevealedGameCardLogo: some View {

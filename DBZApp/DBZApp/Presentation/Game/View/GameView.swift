@@ -74,7 +74,7 @@ extension GameView {
             if viewModel.gameCharacters.isEmpty {
                 ProgressColorBarsView()
             } else {
-                gameTrailingButtons
+                GameCard(isRevealed: false)
                     .frame(width: 70, alignment: .leading)
                     .background(.green)
                 GameInfoText(text: .constant(.matchLost))
