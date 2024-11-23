@@ -20,13 +20,16 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            
             gameWallpaper
+            
+                if viewModel.gameCharacters.isEmpty {
+                    ProgressColorBarsView()
+                } else {
+                    bodyStack
+                }
             
             header
                 .frame(maxHeight: .infinity, alignment: .top)
-            
-            bodyStack
             
             footer
                 .frame(maxHeight: .infinity, alignment: .bottom)
@@ -65,15 +68,21 @@ extension GameView {
                     }
             }
         )
-        .padding()
-        .padding(.top, -10)
+        .padding(.horizontal)
+        .background(.green)
     }
     
     private var bodyStack: some View {
-        HStack(spacing: 0) {
-            if viewModel.gameCharacters.isEmpty {
-                ProgressColorBarsView()
-            } else {
+        VStack {
+            HStack {
+                GameCard(isRevealed: false)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+            }
+            .padding(.horizontal)
+            .background(.red)
+            
+            HStack(spacing: 0) {
                 GameCard(isRevealed: false)
                     .frame(width: 70, alignment: .leading)
                 //    .background(.green)
@@ -82,10 +91,20 @@ extension GameView {
                 //    .background(.red)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
-                 //   .background(.green)
+                    .background(.green)
+                
             }
+            .padding()
+            
+            HStack {
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+            }
+            .padding(.horizontal)
+            .background(.red)
         }
-        .padding()
+        
     }
     
     private var gameTrailingButtons: some View {
@@ -116,15 +135,6 @@ extension GameView {
     
     private var footer: some View {
         VStack {
-            HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
-            }
-            .frame(height: 130)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical)
-            
             GameFooterBar(
                 rivalRectangleFigures: "150.000.000.000",
                 playerRectangleFigures: "15 Septillion",
@@ -134,14 +144,12 @@ extension GameView {
             )
             
         }
-        .padding()
+        .padding(.horizontal)
+        .background(.green)
     }
 }
 
 /*
- VStack {
- //                    Text("GameViewModel characters: \(viewModel.gameCharacters.count)")
- //                    Text(viewModel.gameCharacters[0].name)
- //                    Text(viewModel.gameCharacters[10].name)
- //                }
+Fer que bodystack tingui padding vertical respecte header & footer
+Header & footer han de mantenir la posicio
  */

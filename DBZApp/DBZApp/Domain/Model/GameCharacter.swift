@@ -28,7 +28,7 @@ struct GameCharacter: Codable {
         )
     }
     
-    static var mock2: GameCharacter {
+    static var mockTwo: GameCharacter {
         GameCharacter(
             name: "Freezer",
             ki: "530.000",

@@ -1,7 +1,7 @@
 //
 //  GameCard.swift
 //  DBZApp
-//  https://youtu.be/n1qabtjZ_jg?si=rtl9vzA_eK7kJaI4 - 1h09m - finish !isRevealed
+//  https://youtu.be/n1qabtjZ_jg?si=rtl9vzA_eK7kJaI4 - Memoroji
 //  Created by Uri on 16/11/24.
 //
 
@@ -16,7 +16,7 @@ struct GameCard: View {
     
     var aspectRatio: CGFloat = 2/3
     var contentMode: ContentMode = .fit
-    var cornerRadius: CGFloat = 25
+    var cornerRadius: CGFloat = 15
     var strokeBorder: CGFloat = 3
     var lineLimit: Int = 2
     
@@ -34,23 +34,31 @@ struct GameCard: View {
 }
 
 #Preview {
-    HStack {
-        GameCard(isRevealed: true)
-        GameCard(isRevealed: false)
+    ScrollView(.vertical) {
+        VStack(spacing: 10) {
+            GameCard(isRevealed: true)
+            GameCard(isRevealed: false)
+            HStack {
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplay, isRevealed: true)
+                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+            }
+            .padding(.vertical)
+        }
     }
     .padding()
 }
 
 extension GameCard {
     private func cardCanva(_ background: some View, borderColor: Color) -> some View {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .strokeBorder(lineWidth: strokeBorder)
-                .background(
-                    background
-                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-                )
-                .foregroundStyle(borderColor)
-        }
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .strokeBorder(lineWidth: strokeBorder)
+            .background(
+                background
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            )
+            .foregroundStyle(borderColor)
+    }
     
     private var revealedGameCardLogo: some View {
         ZStack {
@@ -58,6 +66,7 @@ extension GameCard {
             Image("gameCardBlackLogo")
                 .resizable()
                 .scaledToFit()
+                .opacity(0.15)
         }
     }
     
@@ -75,19 +84,19 @@ extension GameCard {
     
     private var nameSection: some View {
         Text(name.uppercased())
+            .font(.caption2)
             .lineLimit(lineLimit)
             .multilineTextAlignment(.center)
-            .font(.title2)
             .bold()
     }
     
     private var kiSection: some View {
         VStack {
             Text("Ki points")
-                .font(.title3)
                 .fontWeight(.semibold)
             Text(kiPoints)
         }
+        .font(.caption2)
     }
     
     private var unrevealedGameCardLogo: some View {
