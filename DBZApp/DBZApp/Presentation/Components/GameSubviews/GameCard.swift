@@ -64,12 +64,10 @@ extension GameCard {
     private var cardCharacter: some View {
         VStack(spacing: 0) {
             nameSection
-                .frame(alignment: .top)
+                .padding(.horizontal)
             ImageLoaderView(url: imageName)
                 .padding(.vertical, 4)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             kiSection
-                .frame(alignment: .bottom)
         }
         .foregroundStyle(.accent)
         .padding()
@@ -106,3 +104,4 @@ extension GameCard {
 // create a view (GameCardDeck) for the Zstack of cards and test the animation with a bool shouldShuffle
 
 // test gameCard as a small one
+// try with geometry reader too and check if memoroji has geometry reader

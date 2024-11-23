@@ -17,12 +17,9 @@ struct TransformationCard: View {
         VStack(spacing: 0) {
             nameSection
                 .padding(.horizontal)
-                .frame(alignment: .top)
             ImageLoaderView(url: imageName)
                 .padding(.vertical, 4)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             kiSection
-                .frame(alignment: .bottom)
         }
         .foregroundStyle(.accent)
     }
