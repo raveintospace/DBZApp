@@ -21,18 +21,19 @@ struct GameView: View {
     var body: some View {
         ZStack {
             gameWallpaper
-            
+            VStack {
+                header
+                Spacer()
+                
                 if viewModel.gameCharacters.isEmpty {
                     ProgressColorBarsView()
                 } else {
                     bodyStack
                 }
-            
-            header
-                .frame(maxHeight: .infinity, alignment: .top)
-            
-            footer
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                
+                Spacer()
+                footer
+            }
         }
     }
 }
@@ -83,12 +84,12 @@ extension GameView {
             .background(.red)
             
             HStack(spacing: 0) {
-                GameCard(isRevealed: false)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: false)
                     .frame(width: 70, alignment: .leading)
-                //    .background(.green)
+                    .background(.green)
                 GameInfoText(text: .constant(.matchLost))
                     .frame(maxWidth: .infinity, alignment: .center)
-                //    .background(.red)
+                    .background(.red)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
                     .background(.green)
