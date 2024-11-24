@@ -41,7 +41,7 @@ struct GameCard: View {
             HStack {
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
                 GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true)
-                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true)
             }
             .padding(.vertical)
         }
@@ -96,7 +96,7 @@ extension GameCard {
             Text("Ki points")
                 .fontWeight(.semibold)
             Text(kiPoints)
-        }
+        }   
         .font(.caption2)
     }
     

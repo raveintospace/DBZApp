@@ -13,12 +13,7 @@ struct GameCharacter: Codable {
     let image: String
     
     var kiToDisplayInGame: String {
-        if let kiDecimal = Decimal(string: KiFormatter.kiToCompare(ki)) {
-            return KiFormatter.formatKiPointsForGameCard(kiDecimal)
-        }
-        
-        // Return the original value if it can't be converted
-        return ki
+        KiFormatter.formatKiValue(ki)
     }
     
     var kiToCompare: String {
