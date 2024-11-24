@@ -21,6 +21,7 @@ struct GameView: View {
     var body: some View {
         ZStack {
             gameWallpaper
+            
             VStack {
                 header
                 Spacer()
@@ -76,7 +77,7 @@ extension GameView {
     private var bodyStack: some View {
         VStack {
             HStack {
-                GameCard(isRevealed: false)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: false)
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
             }
@@ -84,7 +85,8 @@ extension GameView {
             .background(.red)
             
             HStack(spacing: 0) {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: false)
+                // should be a gameZstack
+                GameCard(isRevealed: false)
                     .frame(width: 70, alignment: .leading)
                     .background(.green)
                 GameInfoText(text: .constant(.matchLost))
@@ -105,7 +107,6 @@ extension GameView {
             .padding(.horizontal)
             .background(.red)
         }
-        
     }
     
     private var gameTrailingButtons: some View {
@@ -150,7 +151,8 @@ extension GameView {
     }
 }
 
+
+// MARK: - To Do
 /*
-Fer que bodystack tingui padding vertical respecte header & footer
-Header & footer han de mantenir la posicio
+ Update components to display info from viewmodel
  */
