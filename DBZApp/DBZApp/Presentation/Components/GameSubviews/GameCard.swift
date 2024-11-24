@@ -75,7 +75,7 @@ extension GameCard {
             nameSection
                 .padding(.horizontal, 4)
             ImageLoaderView(url: imageName)
-                .padding(.vertical, 4)
+                .padding(4)
             kiSection
                 .padding(.horizontal, 4)
         }
