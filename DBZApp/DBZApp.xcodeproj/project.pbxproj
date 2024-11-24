@@ -22,7 +22,6 @@
 		342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */; };
 		342D19892CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */; };
 		342D198B2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */; };
-		3439E4D12CF38101009C5707 /* KiUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3439E4D02CF38101009C5707 /* KiUnit.swift */; };
 		343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */; };
 		343DC2F12C89AA4500BCCF39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F02C89AA4500BCCF39 /* Assets.xcassets */; };
 		343DC2F42C89AA4500BCCF39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F32C89AA4500BCCF39 /* Preview Assets.xcassets */; };
@@ -129,7 +128,6 @@
 		342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDetailCharacterDataSource.swift; sourceTree = "<group>"; };
 		342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterRepositoryProtocol.swift; sourceTree = "<group>"; };
 		342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterRepositoryImpl.swift; sourceTree = "<group>"; };
-		3439E4D02CF38101009C5707 /* KiUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiUnit.swift; sourceTree = "<group>"; };
 		343DC2E92C89AA4400BCCF39 /* DBZApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBZApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBZApp.swift; sourceTree = "<group>"; };
 		343DC2F02C89AA4500BCCF39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -615,7 +613,6 @@
 				34BF19A62C95D81700A6B55A /* SortOption.swift */,
 				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
 				34F6AD802CE7C09F008DE709 /* GameText.swift */,
-				3439E4D02CF38101009C5707 /* KiUnit.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -842,7 +839,6 @@
 				34A704F32CB030DD00CCE7B5 /* DetailInfoSection.swift in Sources */,
 				34BF19AE2C95E04A00A6B55A /* SortMenu.swift in Sources */,
 				34E98FD52CCD269B0024BE36 /* SplashView.swift in Sources */,
-				3439E4D12CF38101009C5707 /* KiUnit.swift in Sources */,
 				348C76812CA0601C00235D7F /* FavoritesUseCaseProtocol.swift in Sources */,
 				3452BEDA2C90BA3F00E32517 /* FiltersBar.swift in Sources */,
 				340C22CC2CDA944700F8341C /* GameViewModel.swift in Sources */,

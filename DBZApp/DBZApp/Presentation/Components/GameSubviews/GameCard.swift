@@ -39,7 +39,7 @@ struct GameCard: View {
             GameCard(isRevealed: true)
             GameCard(isRevealed: false)
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true)
                 GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true)
                 GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true)
             }
@@ -77,7 +77,7 @@ extension GameCard {
             ImageLoaderView(url: imageName)
                 .padding(.vertical, 4)
             kiSection
-                .padding(.horizontal)
+                .padding(.horizontal, 4)
         }
         .foregroundStyle(.black)
         .padding()
@@ -98,6 +98,8 @@ extension GameCard {
             Text(kiPoints)
         }   
         .font(.caption2)
+        .lineLimit(lineLimit)
+        .multilineTextAlignment(.center)
     }
     
     private var unrevealedGameCardLogo: some View {
