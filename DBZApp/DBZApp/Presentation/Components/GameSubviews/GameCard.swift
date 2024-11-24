@@ -73,7 +73,7 @@ extension GameCard {
     private var cardCharacter: some View {
         VStack(spacing: 0) {
             nameSection
-                .padding(.horizontal)
+                .padding(.horizontal, 4)
             ImageLoaderView(url: imageName)
                 .padding(.vertical, 4)
             kiSection
