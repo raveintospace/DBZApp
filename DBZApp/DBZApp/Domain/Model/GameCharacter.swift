@@ -12,8 +12,13 @@ struct GameCharacter: Codable {
     let ki: String
     let image: String
     
-    var kiToDisplay: String {
-        KiFormatter.formatKiValue(ki)
+    var kiToDisplayInGame: String {
+        if let kiDecimal = Decimal(string: KiFormatter.kiToCompare(ki)) {
+            return KiFormatter.formatKiPointsForGameCard(kiDecimal)
+        }
+        
+        // Return the original value if it can't be converted
+        return ki
     }
     
     var kiToCompare: String {
@@ -33,6 +38,14 @@ struct GameCharacter: Codable {
             name: "Freezer",
             ki: "530.000",
             image: "https://dragonball-api.com/characters/Freezer.webp"
+        )
+    }
+    
+    static var mockThree: GameCharacter {
+        GameCharacter(
+            name: "Vermoudh",
+            ki: "9.9 Septillion",
+            image: "https://dragonball-api.com/characters/Vermoud.webp"
         )
     }
 }

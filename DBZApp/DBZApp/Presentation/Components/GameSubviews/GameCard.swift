@@ -11,7 +11,7 @@ struct GameCard: View {
     
     var name: String = GameCharacter.mock.name
     var imageName: String = GameCharacter.mock.image
-    var kiPoints: String = GameCharacter.mock.ki
+    var kiPoints: String = GameCharacter.mock.kiToDisplayInGame
     var isRevealed: Bool = false
     
     var aspectRatio: CGFloat = 2/3
@@ -39,9 +39,9 @@ struct GameCard: View {
             GameCard(isRevealed: true)
             GameCard(isRevealed: false)
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
-                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplay, isRevealed: true)
-                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplay, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
             }
             .padding(.vertical)
         }
@@ -77,8 +77,9 @@ extension GameCard {
             ImageLoaderView(url: imageName)
                 .padding(.vertical, 4)
             kiSection
+                .padding(.horizontal)
         }
-        .foregroundStyle(.accent)
+        .foregroundStyle(.black)
         .padding()
     }
     
@@ -111,6 +112,3 @@ extension GameCard {
 
 
 // create a view (GameCardDeck) for the Zstack of cards and test the animation with a bool shouldShuffle
-
-// test gameCard as a small one
-// try with geometry reader too and check if memoroji has geometry reader
