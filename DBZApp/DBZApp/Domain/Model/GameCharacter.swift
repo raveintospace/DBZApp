@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct GameCharacter: Codable {
+struct GameCharacter: Codable, Identifiable {
+    var id = UUID()
     let name: String
     let ki: String
     let image: String

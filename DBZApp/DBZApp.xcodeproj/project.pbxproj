@@ -22,6 +22,7 @@
 		342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */; };
 		342D19892CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */; };
 		342D198B2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */; };
+		343A5F7B2CF4E54200C65A08 /* GamePileOfCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343A5F7A2CF4E54200C65A08 /* GamePileOfCards.swift */; };
 		343DC2ED2C89AA4400BCCF39 /* DBZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */; };
 		343DC2F12C89AA4500BCCF39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F02C89AA4500BCCF39 /* Assets.xcassets */; };
 		343DC2F42C89AA4500BCCF39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343DC2F32C89AA4500BCCF39 /* Preview Assets.xcassets */; };
@@ -128,6 +129,7 @@
 		342D19852CB2A045006603DE /* NetworkDetailCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDetailCharacterDataSource.swift; sourceTree = "<group>"; };
 		342D19882CB2A2F9006603DE /* DetailCharacterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterRepositoryProtocol.swift; sourceTree = "<group>"; };
 		342D198A2CB2A348006603DE /* DetailCharacterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterRepositoryImpl.swift; sourceTree = "<group>"; };
+		343A5F7A2CF4E54200C65A08 /* GamePileOfCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePileOfCards.swift; sourceTree = "<group>"; };
 		343DC2E92C89AA4400BCCF39 /* DBZApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBZApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		343DC2EC2C89AA4400BCCF39 /* DBZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBZApp.swift; sourceTree = "<group>"; };
 		343DC2F02C89AA4500BCCF39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				34B83F682CE64F640080BAD8 /* GameTrailingButtons.swift */,
 				34B83F662CE646930080BAD8 /* GameActionButton.swift */,
 				344AC3AD2CE91764001453A3 /* GameCard.swift */,
+				343A5F7A2CF4E54200C65A08 /* GamePileOfCards.swift */,
 				34B83F642CE613040080BAD8 /* GameInfoRectangle.swift */,
 				34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */,
 			);
@@ -886,6 +889,7 @@
 				34E98FD72CCD26F20024BE36 /* WaveShape.swift in Sources */,
 				34858D862CC2C3A200F97AE9 /* CustomZoomableModifier.swift in Sources */,
 				343DC3052C89AFE600BCCF39 /* Character.swift in Sources */,
+				343A5F7B2CF4E54200C65A08 /* GamePileOfCards.swift in Sources */,
 				3407D9BD2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift in Sources */,
 				348C767E2CA05ECD00235D7F /* FavoritesRepositoryImpl.swift in Sources */,
 				343DC3172C89CC3C00BCCF39 /* UseCaseError.swift in Sources */,
