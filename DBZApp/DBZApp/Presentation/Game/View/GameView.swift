@@ -14,6 +14,10 @@ struct GameView: View {
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @StateObject private var viewModel: GameViewModel
     
+    private var undealtCards: [GameCharacter] = [GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree] // viewmodel.undealtcards
+    
+    @State private var shouldShuffle: Bool = false // viewmodel.shouldShuffle
+    
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
     }
@@ -71,7 +75,6 @@ extension GameView {
             }
         )
         .padding(.horizontal)
-        .background(.green)
     }
     
     private var bodyStack: some View {
@@ -82,19 +85,15 @@ extension GameView {
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
             }
             .padding(.horizontal)
-            .background(.red)
             
             HStack(spacing: 0) {
                 // should be a gameZstack
-                GameCard(isRevealed: false)
+                GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: shouldShuffle)
                     .frame(width: 70, alignment: .leading)
-                    .background(.green)
                 GameInfoText(text: .constant(.matchLost))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .background(.red)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
-                    .background(.green)
                 
             }
             .padding()
@@ -105,7 +104,6 @@ extension GameView {
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
             }
             .padding(.horizontal)
-            .background(.red)
         }
     }
     
@@ -113,7 +111,7 @@ extension GameView {
         GameTrailingButtons(
             hasGameStarted: true,
             hasGameFinished: false,
-            hasSelectedCards: false,
+            hasSelectedCards: true,
             areRivalCardsShown: false,
             onPlayButtonPressed: {
                 // start playing
@@ -129,6 +127,7 @@ extension GameView {
             },
             onConfirmButtonPressed: {
                 // discard selected cards and deal new ones
+                shouldShuffle.toggle()
             },
             onCancelButtonPressed: {
                 // cancel cards to discard
@@ -147,7 +146,6 @@ extension GameView {
             
         }
         .padding(.horizontal)
-        .background(.green)
     }
 }
 

@@ -15,7 +15,6 @@ struct GamePileOfCards: View {
     // Properties for animation
     @State private var cardPositions: [CGSize] = []
     @State private var cardRotations: [Angle] = []
-    @State private var shuffledIndices: [Int] = []
     @State private var isShuffling: Bool = false
     
     var body: some View {
@@ -29,14 +28,13 @@ struct GamePileOfCards: View {
                 )
                 .offset(cardPositions.indices.contains(index) ? cardPositions[index] : .zero)
                 .rotationEffect(cardRotations.indices.contains(index) ? cardRotations[index] : .zero)
-                .zIndex(Double(shuffledIndices.firstIndex(of: index) ?? index))
+                .zIndex(Double(undealtCards.count - index))
                 .animation(isShuffling ? .easeInOut(duration: 0.6) : .default, value: cardPositions)
             }
         }
         .onAppear {
             cardPositions = Array(repeating: .zero, count: undealtCards.count)
             cardRotations = Array(repeating: .zero, count: undealtCards.count)
-            shuffledIndices = Array(0..<undealtCards.count)
         }
         .onChange(of: shouldShuffleCards) { _, newValue in
             if newValue {
@@ -70,21 +68,17 @@ extension GamePileOfCards {
         
         // Random positions & rotations to simulate shuffle
         let randomPositions: [CGSize] = undealtCards.map { _ in
-            CGSize(width: CGFloat.random(in: -30...30),
-                   height: CGFloat.random(in: -100...100))
+            CGSize(width: CGFloat.random(in: -5...30),
+                   height: CGFloat.random(in: -50...50))
         }
         let randomRotations: [Angle] = undealtCards.map { _ in
             Angle(degrees: Double.random(in: -15...15))
         }
         
-        // New sort for shuffling cards
-        let newShuffledIndices = Array(0..<undealtCards.count).shuffled()
-        
         // Assign the random positions & rotations
         withAnimation(.easeInOut(duration: 0.3)) {
             cardPositions = randomPositions
             cardRotations = randomRotations
-            shuffledIndices = newShuffledIndices
         }
         
         // Pile the cards after being shuffled
@@ -92,7 +86,6 @@ extension GamePileOfCards {
             withAnimation(.easeInOut(duration: 0.6)) {
                 cardPositions = Array(repeating: .zero, count: undealtCards.count)
                 cardRotations = Array(repeating: .zero, count: undealtCards.count)
-                shuffledIndices = Array(0..<undealtCards.count)
             }
             isShuffling = false
         }
