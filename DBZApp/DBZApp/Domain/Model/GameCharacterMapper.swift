@@ -10,6 +10,7 @@ import Foundation
 struct GameCharacterMapper {
     static func mapCharacterToGameCharacter(_ character: Character) -> GameCharacter {
         return GameCharacter(
+            id: character.id,
             name: character.name,
             ki: character.ki,
             image: character.image

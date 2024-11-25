@@ -8,7 +8,7 @@
 import Foundation
 
 struct GameCharacter: Codable, Identifiable {
-    var id = UUID()
+    let id: Int
     let name: String
     let ki: String
     let image: String
@@ -23,6 +23,7 @@ struct GameCharacter: Codable, Identifiable {
     
     static var mock: GameCharacter {
         GameCharacter(
+            id: 1,
             name: "Goku",
             ki: "60.000.000",
             image: "https://dragonball-api.com/characters/goku_normal.webp"
@@ -31,6 +32,7 @@ struct GameCharacter: Codable, Identifiable {
     
     static var mockTwo: GameCharacter {
         GameCharacter(
+            id: 5,
             name: "Freezer",
             ki: "530.000",
             image: "https://dragonball-api.com/characters/Freezer.webp"
@@ -39,6 +41,7 @@ struct GameCharacter: Codable, Identifiable {
     
     static var mockThree: GameCharacter {
         GameCharacter(
+            id: 43,
             name: "Vermoudh",
             ki: "9.9 Septillion",
             image: "https://dragonball-api.com/characters/Vermoud.webp"
