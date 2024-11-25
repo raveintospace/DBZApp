@@ -60,6 +60,3 @@ struct GameInfoText: View {
         GameInfoText(text: .constant(.welcome))
     }
 }
-
-// fer un onAppear pq l'escala passi de 0 a 1 i alguna animacio mes
-// multilinetext center

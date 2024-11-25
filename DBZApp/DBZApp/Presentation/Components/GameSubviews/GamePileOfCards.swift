@@ -10,7 +10,7 @@ import SwiftUI
 struct GamePileOfCards: View {
     
     var undealtCards: [GameCharacter] = []
-    var shouldShuffleCards: Bool = false
+    @Binding var shouldShuffleCards: Bool
     
     // Properties for animation
     @State private var cardPositions: [CGSize] = []
@@ -28,7 +28,6 @@ struct GamePileOfCards: View {
                 )
                 .offset(cardPositions.indices.contains(index) ? cardPositions[index] : .zero)
                 .rotationEffect(cardRotations.indices.contains(index) ? cardRotations[index] : .zero)
-                .zIndex(Double(undealtCards.count - index))
                 .animation(isShuffling ? .easeInOut(duration: 0.6) : .default, value: cardPositions)
             }
         }
@@ -51,10 +50,8 @@ struct GamePileOfCards: View {
     let undealtCards: [GameCharacter] = [GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree]
     
     VStack(spacing: 20) {
-        GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: shouldShuffle)
+        GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $shouldShuffle)
             .frame(width: 140)
-        GamePileOfCards(undealtCards: undealtCards)
-            .frame(width: 70)
         
         Button("Shuffle") {
             shouldShuffle.toggle()
@@ -79,15 +76,20 @@ extension GamePileOfCards {
         withAnimation(.easeInOut(duration: 0.3)) {
             cardPositions = randomPositions
             cardRotations = randomRotations
+            
         }
         
         // Pile the cards after being shuffled
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             withAnimation(.easeInOut(duration: 0.6)) {
                 cardPositions = Array(repeating: .zero, count: undealtCards.count)
                 cardRotations = Array(repeating: .zero, count: undealtCards.count)
             }
-            isShuffling = false
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                shouldShuffleCards = false
+                isShuffling = false
+            }
         }
     }
 }

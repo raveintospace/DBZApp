@@ -75,7 +75,7 @@ extension GameTrailingButtons {
     private var bottomButton: some View {
         GameActionButton(
             imageName: "tray.and.arrow.down",
-            imageYOffset: -2,
+            imageYOffset: -3,
             isEnabled: hasGameStarted && !hasGameFinished,
             onButtonPressed: {
                 showPopover.toggle()

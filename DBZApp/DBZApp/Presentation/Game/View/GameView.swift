@@ -81,16 +81,16 @@ extension GameView {
         VStack {
             HStack {
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false)
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false)
             }
             .padding(.horizontal)
             
             HStack(spacing: 0) {
                 // should be a gameZstack
-                GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: shouldShuffle)
+                GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $shouldShuffle)
                     .frame(width: 70, alignment: .leading)
-                GameInfoText(text: .constant(.matchLost))
+                GameInfoText(text: .constant(.matchWon))
                     .frame(maxWidth: .infinity, alignment: .center)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
@@ -100,8 +100,8 @@ extension GameView {
             
             HStack {
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true)
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: GameCharacter.mockThree.name, imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true)
             }
             .padding(.horizontal)
         }
@@ -126,7 +126,7 @@ extension GameView {
                 // deal new cards
             },
             onConfirmButtonPressed: {
-                // discard selected cards and deal new ones
+                // discard selected cards and deal new ones - cards onTapGesture update their position with y+3
                 shouldShuffle.toggle()
             },
             onCancelButtonPressed: {
