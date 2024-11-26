@@ -13,7 +13,9 @@ struct GameCharacterMapper {
             id: character.id,
             name: character.name,
             ki: character.ki,
-            image: character.image
+            image: character.image,
+            isRevealed: false,
+            isSelected: false
         )
     }
 }

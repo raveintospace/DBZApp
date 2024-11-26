@@ -21,12 +21,17 @@ struct GameCharacter: Codable, Identifiable {
         KiFormatter.kiToCompare(ki)
     }
     
+    var isRevealed: Bool = false    
+    var isSelected: Bool = false
+    
     static var mock: GameCharacter {
         GameCharacter(
             id: 1,
             name: "Goku",
             ki: "60.000.000",
-            image: "https://dragonball-api.com/characters/goku_normal.webp"
+            image: "https://dragonball-api.com/characters/goku_normal.webp",
+            isRevealed: false,
+            isSelected: false
         )
     }
     
@@ -35,7 +40,9 @@ struct GameCharacter: Codable, Identifiable {
             id: 5,
             name: "Freezer",
             ki: "530.000",
-            image: "https://dragonball-api.com/characters/Freezer.webp"
+            image: "https://dragonball-api.com/characters/Freezer.webp",
+            isRevealed: false,
+            isSelected: false
         )
     }
     
@@ -44,7 +51,9 @@ struct GameCharacter: Codable, Identifiable {
             id: 43,
             name: "Vermoudh",
             ki: "9.9 Septillion",
-            image: "https://dragonball-api.com/characters/Vermoud.webp"
+            image: "https://dragonball-api.com/characters/Vermoud.webp",
+            isRevealed: false,
+            isSelected: false  
         )
     }
 }

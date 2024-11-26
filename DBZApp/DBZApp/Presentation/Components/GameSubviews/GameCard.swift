@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct GameCard: View {
     
     var name: String = GameCharacter.mock.name
     var imageName: String = GameCharacter.mock.image
     var kiPoints: String = GameCharacter.mock.kiToDisplayInGame
-    var isRevealed: Bool = false
+    var isRevealed: Bool = GameCharacter.mock.isRevealed
     
     var aspectRatio: CGFloat = 2/3
     var contentMode: ContentMode = .fit
     var cornerRadius: CGFloat = 15
     var strokeBorder: CGFloat = 3
     var lineLimit: Int = 2
+    
+    @State private var trigger: Bool = false
+    @Binding var isCardSelected: Bool
     
     var body: some View {
         ZStack {
@@ -30,18 +34,26 @@ struct GameCard: View {
             }
         }
         .aspectRatio(aspectRatio, contentMode: contentMode)
+        .offset(y: isCardSelected ? -15 : 0)
+        .animation(.spring(duration: 0.2), value: isCardSelected)
+        .sensoryFeedback(.impact, trigger: trigger)
+        .withTrigger(trigger: $trigger) {
+            if isRevealed {
+                isCardSelected.toggle()
+            }
+        }
     }
 }
 
 #Preview {
     ScrollView(.vertical) {
         VStack(spacing: 10) {
-            GameCard(isRevealed: true)
-            GameCard(isRevealed: false)
+            GameCard(isRevealed: true, isCardSelected: .constant(false))
+            GameCard(isRevealed: false, isCardSelected: .constant(false))
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true)
-                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true)
-                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true, isCardSelected: .constant(true))
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true, isCardSelected: .constant(false))
+                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isCardSelected: .constant(false))
             }
             .padding(.vertical)
         }
@@ -111,6 +123,3 @@ extension GameCard {
         }
     }
 }
-
-
-// create a view (GameCardDeck) for the Zstack of cards and test the animation with a bool shouldShuffle

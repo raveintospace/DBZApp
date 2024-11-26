@@ -24,7 +24,8 @@ struct GamePileOfCards: View {
                     name: undealtCards[index].name,
                     imageName: undealtCards[index].image,
                     kiPoints: undealtCards[index].kiToDisplayInGame,
-                    isRevealed: false
+                    isRevealed: false,
+                    isCardSelected: .constant(false)
                 )
                 .offset(cardPositions.indices.contains(index) ? cardPositions[index] : .zero)
                 .rotationEffect(cardRotations.indices.contains(index) ? cardRotations[index] : .zero)
