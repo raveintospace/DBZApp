@@ -21,8 +21,10 @@ struct GameCard: View {
     var strokeBorder: CGFloat = 3
     var lineLimit: Int = 2
     
+    @Binding var isSelected: Bool
+    
     @State private var trigger: Bool = false
-    @Binding var isCardSelected: Bool
+    
     
     var body: some View {
         ZStack {
@@ -34,26 +36,30 @@ struct GameCard: View {
             }
         }
         .aspectRatio(aspectRatio, contentMode: contentMode)
-        .offset(y: isCardSelected ? -15 : 0)
-        .animation(.spring(duration: 0.2), value: isCardSelected)
+        .offset(y: isSelected ? -15 : 0)
+        .animation(.spring(duration: 0.2), value: isSelected)
         .sensoryFeedback(.impact, trigger: trigger)
         .withTrigger(trigger: $trigger) {
             if isRevealed {
-                isCardSelected.toggle()
+                isSelected.toggle()
             }
         }
     }
 }
 
 #Preview {
+    @Previewable @State var isSelected: Bool = false
+    @Previewable @State var isSelected2: Bool = false
+    @Previewable @State var isSelected3: Bool = false
+    
     ScrollView(.vertical) {
         VStack(spacing: 10) {
-            GameCard(isRevealed: true, isCardSelected: .constant(false))
-            GameCard(isRevealed: false, isCardSelected: .constant(false))
+            GameCard(isRevealed: true, isSelected: $isSelected)
+            GameCard(isRevealed: false, isSelected: .constant(false))
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true, isCardSelected: .constant(true))
-                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true, isCardSelected: .constant(false))
-                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isCardSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true, isSelected: $isSelected)
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true, isSelected: $isSelected2)
+                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isSelected: $isSelected3)
             }
             .padding(.vertical)
         }

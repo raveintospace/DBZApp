@@ -82,9 +82,9 @@ extension GameView {
     private var bodyStack: some View {
         VStack {
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isCardSelected: .constant(false))
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isCardSelected: .constant(false))
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isCardSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isSelected: .constant(false))
             }
             .padding(.horizontal)
             
@@ -101,9 +101,9 @@ extension GameView {
             .padding()
             
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true, isCardSelected: .constant(true))
-                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true, isCardSelected: .constant(true))
-                GameCard(name: GameCharacter.mockThree.name, imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isCardSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: true, isSelected: .constant(true))
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true, isSelected: .constant(true))
+                GameCard(name: GameCharacter.mockThree.name, imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isSelected: .constant(false))
             }
             .padding(.horizontal)
         }
