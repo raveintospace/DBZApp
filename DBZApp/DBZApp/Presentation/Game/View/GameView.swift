@@ -18,6 +18,7 @@ struct GameView: View {
     
     @State private var shouldShuffle: Bool = false // viewmodel.shouldShuffle
     @State private var liftedStates: [Bool]
+    @State private var shouldRevealCards: Bool = false // viewmodel.shouldRevealCards
     
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
@@ -82,9 +83,9 @@ extension GameView {
     private var bodyStack: some View {
         VStack {
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isSelected: .constant(false))
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isSelected: .constant(false))
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: false, isSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: shouldRevealCards, isSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: shouldRevealCards, isSelected: .constant(false))
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: GameCharacter.mock.kiToDisplayInGame, isRevealed: shouldRevealCards, isSelected: .constant(false))
             }
             .padding(.horizontal)
             
@@ -122,7 +123,8 @@ extension GameView {
                 // restart playing
             },
             onRevealButtonPressed: {
-                // compete with rival
+                // compete with rival - viewModel.revealCards()
+                shouldRevealCards.toggle()
             },
             onDealButtonPressed: {
                 // deal new cards

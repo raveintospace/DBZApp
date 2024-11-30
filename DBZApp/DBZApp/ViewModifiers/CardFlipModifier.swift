@@ -39,7 +39,7 @@ struct CardFlipModifier<Front: View, Back: View>: ViewModifier, Animatable {
             }
         }
         .rotation3DEffect(.degrees(rotation), axis: (x: 0, y: 1, z: 0))
-        .animation(.easeInOut(duration: 0.3), value: rotation)
+        .animation(.easeInOut(duration: 0.4), value: rotation)
     }
 }
 
