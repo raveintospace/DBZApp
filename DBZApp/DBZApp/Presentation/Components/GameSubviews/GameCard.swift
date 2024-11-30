@@ -27,9 +27,7 @@ struct GameCard: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                            .strokeBorder(lineWidth: strokeBorder)
-                            .foregroundColor(.clear)
+            EmptyView()
         }
         .cardFlipModifier(isRevealed: isRevealed) {
             revealedSide
