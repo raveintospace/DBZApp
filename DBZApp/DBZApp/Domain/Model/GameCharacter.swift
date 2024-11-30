@@ -21,7 +21,8 @@ struct GameCharacter: Codable, Identifiable {
         KiFormatter.kiToCompare(ki)
     }
     
-    var isRevealed: Bool = false    
+    // Properties for game logic
+    var isRevealed: Bool = false
     var isSelected: Bool = false
     
     static var mock: GameCharacter {

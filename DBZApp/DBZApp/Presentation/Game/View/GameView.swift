@@ -124,6 +124,7 @@ extension GameView {
             },
             onRevealButtonPressed: {
                 // compete with rival - viewModel.revealCards()
+                // disable button from viewmodel
                 shouldRevealCards.toggle()
             },
             onDealButtonPressed: {
