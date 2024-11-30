@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CardFlip<Front: View, Back: View>: ViewModifier, Animatable {
+struct CardFlipModifier<Front: View, Back: View>: ViewModifier, Animatable {
     
-    var rotation: Double
     let front: Front
     let back: Back
+    var rotation: Double
     
     var isRevealed: Bool {
         rotation < 90
@@ -35,16 +35,16 @@ struct CardFlip<Front: View, Back: View>: ViewModifier, Animatable {
                 front
             } else {
                 back
-                    .scaleEffect(x: -1, y: 1)
+                    .scaleEffect(x: -1, y: 1)       // avoids mirror effect
             }
         }
         .rotation3DEffect(.degrees(rotation), axis: (x: 0, y: 1, z: 0))
-        .animation(.easeInOut(duration: 0.5), value: rotation)
+        .animation(.easeInOut(duration: 0.3), value: rotation)
     }
 }
 
 extension View {
-    func cardFlip<Front: View, Back: View>(isRevealed: Bool, front: () -> Front, back: () -> Back) -> some View {
-        modifier(CardFlip(isRevealed: isRevealed, front: front(), back: back()))
+    func cardFlipModifier<Front: View, Back: View>(isRevealed: Bool, front: () -> Front, back: () -> Back) -> some View {
+        modifier(CardFlipModifier(isRevealed: isRevealed, front: front(), back: back()))
     }
 }

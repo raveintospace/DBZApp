@@ -31,7 +31,7 @@ struct GameCard: View {
                             .strokeBorder(lineWidth: strokeBorder)
                             .foregroundColor(.clear)
         }
-        .cardFlip(isRevealed: isRevealed) {
+        .cardFlipModifier(isRevealed: isRevealed) {
             revealedSide
         } back: {
             unrevealedSide
