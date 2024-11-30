@@ -13,20 +13,21 @@ struct CardFlipModifier<Front: View, Back: View>: ViewModifier, Animatable {
     let back: Back
     var rotation: Double
     
+    // 0 - 90 = front / 91 - 180 = back
     var isRevealed: Bool {
         rotation < 90
     }
     
-    // custom rotation
+    // animate rotation using interpolation
     var animatableData: Double {
         get { rotation }
         set { rotation = newValue }
     }
     
     init(isRevealed: Bool, front: Front, back: Back) {
+        self.rotation = isRevealed ? 0 : 180
         self.front = front
         self.back = back
-        self.rotation = isRevealed ? 0 : 180
     }
     
     func body(content: Content) -> some View {
@@ -35,7 +36,7 @@ struct CardFlipModifier<Front: View, Back: View>: ViewModifier, Animatable {
                 front
             } else {
                 back
-                    .scaleEffect(x: -1, y: 1)       // avoids mirror effect
+                    .scaleEffect(x: -1, y: 1)       // avoids mirror effect caused by rotation3DEffect
             }
         }
         .rotation3DEffect(.degrees(rotation), axis: (x: 0, y: 1, z: 0))
