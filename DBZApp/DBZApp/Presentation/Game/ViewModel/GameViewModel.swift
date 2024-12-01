@@ -60,6 +60,15 @@ final class GameViewModel: ObservableObject {
         updatePoints()
     }
     
+    func testDealAndUpdate() {
+        dealCards()
+        updatePoints()
+        debugPrint(rivalCards.count)
+        debugPrint(playerCards.count)
+        debugPrint("Rival points: \(rivalPoints)")
+        debugPrint("Player points: \(playerPoints)")
+    }
+    
     func endGame() {
         
     }
@@ -97,6 +106,24 @@ final class GameViewModel: ObservableObject {
     private func dealCards() {
         // deal cards to rival: append to array + animation
         // deal cards to player: append to array + animation
+        guard gameCharacters.count >= 6 else {
+            debugPrint("Not enough cards to deal")
+            return
+        }
+        
+        // Shuffle cards
+        var shuffledCharacters = gameCharacters.shuffled()
+        
+        // Deal cards to rival
+        rivalCards = Array(shuffledCharacters.prefix(3))
+        shuffledCharacters.removeFirst(3)
+        
+        // Deal cards to player
+        playerCards = Array(shuffledCharacters.prefix(3))
+        shuffledCharacters.removeFirst(3)
+        
+        // Update gameCharacters with shuffledCharacters left
+        gameCharacters = shuffledCharacters
         shouldRevealPlayerCards = true
     }
     

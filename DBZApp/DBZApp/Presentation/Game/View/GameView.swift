@@ -120,7 +120,7 @@ extension GameView {
                 // start playing
             },
             onRestartButtonPressed: {
-                // restart playing
+                viewModel.testDealAndUpdate()
             },
             onRevealButtonPressed: {
                 // compete with rival - viewModel.revealCards()
