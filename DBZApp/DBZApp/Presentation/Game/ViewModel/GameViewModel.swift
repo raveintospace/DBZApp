@@ -66,6 +66,11 @@ final class GameViewModel: ObservableObject {
         debugPrint("Rival points: \(KiFormatter.formatDecimalToString(rivalPoints))")
         debugPrint("Player points: \(KiFormatter.formatDecimalToString(playerPoints))")
         updateScoreboard()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            debugPrint("Returning cards to deck")
+            self.returnCardsToDeck()
+        }
     }
     
     func endGame() {
@@ -103,7 +108,6 @@ final class GameViewModel: ObservableObject {
     }
     
     private func dealCards() {
-        // deal cards to rival: append to array + animation
         // deal cards to player: append to array + animation
         guard gameCharacters.count >= 6 else {
             debugPrint("Not enough cards to deal")
@@ -113,17 +117,32 @@ final class GameViewModel: ObservableObject {
         // Shuffle cards
         var shuffledCharacters = gameCharacters.shuffled()
         
-        // Deal cards to rival
+        // Deal cards to rival - pending animation
         rivalCards = Array(shuffledCharacters.prefix(3))
         shuffledCharacters.removeFirst(3)
         
-        // Deal cards to player
+        // Deal cards to player - pending animation
         playerCards = Array(shuffledCharacters.prefix(3))
         shuffledCharacters.removeFirst(3)
         
         // Update gameCharacters with shuffledCharacters left
         gameCharacters = shuffledCharacters
         shouldRevealPlayerCards = true
+    }
+    
+    private func returnCardsToDeck() {
+        shouldRevealPlayerCards = false
+        
+        // animate return player cards to deck
+        gameCharacters.append(contentsOf: playerCards)
+        playerCards.removeAll()
+        
+        shouldRevealRivalCards = false
+        // animate return rival cards to deck
+        gameCharacters.append(contentsOf: rivalCards)
+        rivalCards.removeAll()
+        
+        shouldShuffleCards = true
     }
     
     func dealCardsAfterDiscard() {
@@ -146,6 +165,7 @@ final class GameViewModel: ObservableObject {
                 playerGames += 1
             } else {
                 playerGames = 0
+                rivalGames = 0
                 playerSets += 1
             }
         } else {
@@ -160,6 +180,7 @@ final class GameViewModel: ObservableObject {
                 rivalGames += 1
             } else {
                 rivalGames = 0
+                playerGames = 0
                 rivalSets += 1
             }
         } else {
