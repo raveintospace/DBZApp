@@ -71,7 +71,7 @@ struct KiFormatter {
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         
-        let suffixes = ["", "", " Million", " Billion", " Trillion", " Quadrillion", " Quintillion", " Sextillion", " Septillion", " Googolplex"]
+        let suffixes = ["", "", " Million", " Billion", " Trillion", " Quadrillion", " Quintillion", " Sextillion", " Septillion",  " Octillion", " Nonillion", " Decillion", " Undecillion", " Duodecillion", " Tredecillion", " Quattuordecillion", " Quindecillion", " Sexdecillion", " Septendecillion", " Octodecillion", " Novemdecillion", " Vigintillion", " Centillion", " Googolplex"]
         var index = 0
         var value = decimal
         
@@ -82,7 +82,7 @@ struct KiFormatter {
         // Googolplex Handling
         if value >= googolplexThreshold {
             value /= googolplexThreshold // Reduce to 1e+24
-            index = suffixes.count - 1   // Assign "Glpx"
+            index = suffixes.count - 1   // Assign "Googolplex"
         } else if value >= million {
             // Use suffixes starting from " M" for values >= 1M
             while value >= thousand && index < suffixes.count - 1 {
