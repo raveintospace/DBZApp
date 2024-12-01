@@ -145,10 +145,11 @@ final class GameViewModel: ObservableObject {
             if playerGames < gamesToWin {
                 playerGames += 1
             } else {
+                playerGames = 0
                 playerSets += 1
             }
         } else {
-            // player has won the match
+            playerHasWon()
         }
     }
     
@@ -158,10 +159,11 @@ final class GameViewModel: ObservableObject {
             if rivalGames < gamesToWin {
                 rivalGames += 1
             } else {
+                rivalGames = 0
                 rivalSets += 1
             }
         } else {
-            // rival has won the match
+            rivalHasWon()
         }
     }
     
