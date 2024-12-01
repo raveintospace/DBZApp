@@ -158,4 +158,6 @@ final class GameViewModel: ObservableObject {
  var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
  
  Var to set gameinfotext - viewmodel.gameinfotext - based on enum switch, empty as default
+ 
+ comment to check merge
  */
