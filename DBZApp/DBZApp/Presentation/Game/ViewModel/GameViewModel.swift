@@ -23,8 +23,8 @@ final class GameViewModel: ObservableObject {
     @Published var showResetGameAlert: Bool = false
     @Published var showPlayAgainAlert: Bool = false
     
-    @Published var rivalPoints: Int = 0
-    @Published var playerPoints: Int = 0
+    @Published var rivalPoints: Decimal = 0
+    @Published var playerPoints: Decimal = 0
     
     @Published var rivalGames: Int = 0
     @Published var playerGames: Int = 0
@@ -57,6 +57,7 @@ final class GameViewModel: ObservableObject {
         // remove welcome message - set to empty
         shouldShuffleCards = true
         dealCards()
+        updatePoints()
     }
     
     func endGame() {
@@ -147,6 +148,30 @@ final class GameViewModel: ObservableObject {
         // play sound
         hasGameFinished = true
         // show play again alert
+    }
+    
+    private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {
+        var totalPoints: Decimal = 0
+        var hasJoker = false
+
+        for character in characters {
+            if character.kiToCompare.lowercased() == "unknown" {
+                hasJoker = true
+            } else if let kiValue = KiFormatter.convertKiPointsToDecimal(character.kiToCompare) {
+                totalPoints += kiValue
+            }
+        }
+
+        if hasJoker {
+            totalPoints *= 1.5
+        }
+
+        return totalPoints
+    }
+    
+    private func updatePoints() {
+        rivalPoints = calculateTotalPoints(for: rivalCards)
+        playerPoints = calculateTotalPoints(for: playerCards)
     }
 }
 
