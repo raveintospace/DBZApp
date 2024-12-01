@@ -46,7 +46,7 @@ extension GameTrailingButtons {
         if hasGameStarted || hasGameFinished {
             GameActionButton(
                 imageName: "arrow.2.circlepath",
-                onButtonPressed: { onRestartButtonPressed?()}
+                onButtonPressed: { onRestartButtonPressed?()} // showAlert
             )
         } else {
             GameActionButton(
@@ -81,7 +81,7 @@ extension GameTrailingButtons {
                 showPopover.toggle()
             }
         )
-        .popover(isPresented: $showPopover) {
+        .popover(isPresented: $showPopover) { // showAlert
             ZStack {
                 Color.dbzBlue.opacity(0.5).ignoresSafeArea()
                 
