@@ -65,4 +65,34 @@ struct KiFormatter {
         // Convert String to Decimal for non-suffix values
         return Decimal(string: normalizedKi)
     }
+    
+    static func formatDecimalToString(_ decimal: Decimal) -> String {
+        let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 2
+
+            let suffixes = ["", " K", " M", " B", " T", " Quad", " Quint", " Sext", " Sept", " Glpx"]
+            var index = 0
+            var value = decimal
+
+            let googolplexThreshold = Decimal(string: "1e+24") ?? Decimal.greatestFiniteMagnitude
+
+            // Googolplex Handling
+            if value >= googolplexThreshold {
+                value /= googolplexThreshold // Reduce to 1e+24
+                index = suffixes.count - 1   // Assign "Glpx"
+            } else {
+                let thousand = Decimal(1000)
+                while value >= thousand && index < suffixes.count - 1 {
+                    value /= thousand
+                    index += 1
+                }
+            }
+
+            if let formattedValue = formatter.string(from: NSDecimalNumber(decimal: value)) {
+                return "\(formattedValue)\(suffixes[index])"
+            }
+
+            return "\(value)\(suffixes[index])"
+    }
 }

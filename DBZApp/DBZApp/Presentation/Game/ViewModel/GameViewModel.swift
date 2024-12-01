@@ -63,10 +63,8 @@ final class GameViewModel: ObservableObject {
     func testDealAndUpdate() {
         dealCards()
         updatePoints()
-        debugPrint(rivalCards.count)
-        debugPrint(playerCards.count)
-        debugPrint("Rival points: \(rivalPoints)")
-        debugPrint("Player points: \(playerPoints)")
+        debugPrint("Rival points: \(KiFormatter.formatDecimalToString(rivalPoints))")
+        debugPrint("Player points: \(KiFormatter.formatDecimalToString(playerPoints))")
     }
     
     func endGame() {
@@ -180,19 +178,29 @@ final class GameViewModel: ObservableObject {
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {
         var totalPoints: Decimal = 0
         var hasJoker = false
-
+        var hasMalus = false
+        
         for character in characters {
-            if character.kiToCompare.lowercased() == "unknown" {
+            let kiLowercased = character.kiToCompare.lowercased()
+            
+            if kiLowercased == "unknown" {
                 hasJoker = true
+            } else if kiLowercased.contains("googolplex") {
+                hasMalus = true
             } else if let kiValue = KiFormatter.convertKiPointsToDecimal(character.kiToCompare) {
                 totalPoints += kiValue
             }
         }
-
+        
         if hasJoker {
             totalPoints *= 1.5
         }
-
+        
+        if hasMalus {
+            debugPrint("**Malus appeared**")
+            totalPoints /= 2
+        }
+        
         return totalPoints
     }
     
