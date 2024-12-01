@@ -65,6 +65,7 @@ final class GameViewModel: ObservableObject {
         updatePoints()
         debugPrint("Rival points: \(KiFormatter.formatDecimalToString(rivalPoints))")
         debugPrint("Player points: \(KiFormatter.formatDecimalToString(playerPoints))")
+        updateScoreboard()
     }
     
     func endGame() {
@@ -135,9 +136,11 @@ final class GameViewModel: ObservableObject {
     
     private func updateScoreboard() {
         playerPoints > rivalPoints ? addVictoryToPlayer() : addVictoryToRival()
+        
     }
     
     private func addVictoryToPlayer() {
+        debugPrint("Player has won")
         if playerSets < setsToWin {
             if playerGames < gamesToWin {
                 playerGames += 1
@@ -150,6 +153,7 @@ final class GameViewModel: ObservableObject {
     }
     
     private func addVictoryToRival() {
+        debugPrint("Rival has won")
         if rivalSets < setsToWin {
             if rivalGames < gamesToWin {
                 rivalGames += 1
