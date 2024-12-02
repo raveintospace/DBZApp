@@ -203,14 +203,14 @@ final class GameViewModel: ObservableObject {
     
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {
         var totalPoints: Decimal = 0
-        var hasJoker = false
+        var jokerCount = 0
         var hasMalus = false
         
         for character in characters {
             let kiLowercased = character.kiToCompare.lowercased()
             
             if kiLowercased == "unknown" {
-                hasJoker = true
+                jokerCount += 1
             } else if kiLowercased.contains("googolplex") {
                 hasMalus = true
             } else if let kiValue = KiFormatter.convertKiPointsToDecimal(character.kiToCompare) {
@@ -218,8 +218,13 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        if hasJoker {
-            totalPoints *= 1.5
+        if totalPoints == 0 && jokerCount > 0 {
+            totalPoints = 0
+        }
+        
+        if jokerCount > 0 && totalPoints > 0 {
+            let multiplier = pow(1.5, jokerCount)
+            totalPoints *= Decimal(string: "\(multiplier)") ?? 1
         }
         
         if hasMalus {
