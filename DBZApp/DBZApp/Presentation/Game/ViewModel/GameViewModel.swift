@@ -67,10 +67,10 @@ final class GameViewModel: ObservableObject {
         debugPrint("Player points: \(KiFormatter.formatDecimalToString(playerPoints))")
         updateScoreboard()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            debugPrint("Returning cards to deck")
-            self.returnCardsToDeck()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            debugPrint("Returning cards to deck")
+//            self.returnCardsToDeck()
+//        }
     }
     
     func endGame() {
