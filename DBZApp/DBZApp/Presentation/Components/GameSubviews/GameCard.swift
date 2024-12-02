@@ -118,8 +118,10 @@ extension GameCard {
         VStack(spacing: 0) {
             nameSection
                 .padding(.horizontal, 4)
+            Spacer()
             ImageLoaderView(url: imageName)
                 .padding(4)
+            Spacer()
             kiSection
                 .padding(.horizontal, 4)
         }
@@ -139,7 +141,7 @@ extension GameCard {
         VStack {
             Text("Ki points")
                 .fontWeight(.semibold)
-            Text(kiPoints)
+            Text(kiPoints.capitalized)
         }
         .font(.caption2)
         .lineLimit(lineLimit)
