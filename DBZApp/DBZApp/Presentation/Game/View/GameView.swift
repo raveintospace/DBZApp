@@ -142,8 +142,8 @@ extension GameView {
     private var footer: some View {
         VStack {
             GameFooterBar(
-                rivalRectangleFigures: "150.000.000.000",
-                playerRectangleFigures: "15 Septillion",
+                rivalRectangleFigures: showRivalPoints(),
+                playerRectangleFigures: showPlayerPoints(),
                 leftRectangleFigures: "R-1 / P-1",
                 centerRectangleFigures: "R-1 / P-1",
                 rightRectangleFigures: "0 / 3"
@@ -151,6 +151,14 @@ extension GameView {
             
         }
         .padding(.horizontal)
+    }
+    
+    private func showRivalPoints() -> String {
+        viewModel.shouldRevealRivalCards ? viewModel.rivalPointsInView() : "¿?"
+    }
+    
+    private func showPlayerPoints() -> String {
+        viewModel.shouldRevealPlayerCards ? viewModel.playerPointsInView() : "¿?"
     }
 }
 

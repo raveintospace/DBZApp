@@ -63,8 +63,8 @@ final class GameViewModel: ObservableObject {
     func testDealAndUpdate() {
         dealCards()
         updatePoints()
-        debugPrint("Rival points: \(KiFormatter.formatDecimalToString(rivalPoints))")
-        debugPrint("Player points: \(KiFormatter.formatDecimalToString(playerPoints))")
+        debugPrint("Rival points: \(rivalPointsInView())")
+        debugPrint("Player points: \(playerPointsInView())")
         updateScoreboard()
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -155,7 +155,6 @@ final class GameViewModel: ObservableObject {
     
     private func updateScoreboard() {
         playerPoints > rivalPoints ? addVictoryToPlayer() : addVictoryToRival()
-        
     }
     
     private func addVictoryToPlayer() {
@@ -234,6 +233,14 @@ final class GameViewModel: ObservableObject {
     private func updatePoints() {
         rivalPoints = calculateTotalPoints(for: rivalCards)
         playerPoints = calculateTotalPoints(for: playerCards)
+    }
+    
+    func rivalPointsInView() -> String {
+        return KiFormatter.formatDecimalToString(rivalPoints)
+    }
+    
+    func playerPointsInView() -> String {
+        return KiFormatter.formatDecimalToString(playerPoints)
     }
 }
 
