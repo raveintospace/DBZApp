@@ -91,7 +91,7 @@ extension GameView {
             
             HStack(spacing: 0) {
                 // should be a gameZstack
-                GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $shouldShuffle)
+                GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $viewModel.shouldShuffleCards)
                     .frame(width: 70, alignment: .leading)
                 GameInfoText(text: .constant(.matchWon))
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -112,12 +112,12 @@ extension GameView {
     
     private var gameTrailingButtons: some View {
         GameTrailingButtons(
-            hasGameStarted: true,
+            hasGameStarted: viewModel.hasGameStarted,
             hasGameFinished: false,
             hasSelectedCards: true,
-            areRivalCardsShown: false,
+            areRivalCardsShown: viewModel.shouldRevealRivalCards,
             onPlayButtonPressed: {
-                // start playing
+                viewModel.startGame()
             },
             onRestartButtonPressed: {
                 viewModel.testDealAndUpdate()
@@ -125,7 +125,7 @@ extension GameView {
             onRevealButtonPressed: {
                 // compete with rival - viewModel.revealCards()
                 // disable button from viewmodel
-                shouldRevealCards.toggle()
+                viewModel.shouldRevealRivalCards.toggle()
             },
             onDealButtonPressed: {
                 // deal new cards
@@ -166,4 +166,5 @@ extension GameView {
 // MARK: - To Do
 /*
  Update components to display info from viewmodel
+ 
  */

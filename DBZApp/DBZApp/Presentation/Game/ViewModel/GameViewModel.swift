@@ -56,8 +56,12 @@ final class GameViewModel: ObservableObject {
     func startGame() {
         // remove welcome message - set to empty
         shouldShuffleCards = true
-        dealCards()
-        updatePoints()
+        hasGameStarted = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.dealCards()
+            self.updatePoints()
+        }
     }
     
     func testDealAndUpdate() {
