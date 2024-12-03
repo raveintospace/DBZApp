@@ -158,32 +158,34 @@ final class GameViewModel: ObservableObject {
     }
     
     private func addVictoryToPlayer() {
-        debugPrint("Player has won")
-        if playerSets < setsToWin {
-            if playerGames < gamesToWin {
-                playerGames += 1
-            } else {
-                playerGames = 0
-                rivalGames = 0
-                playerSets += 1
+        debugPrint("Player has won a game")
+        playerGames += 1
+            
+        if playerGames == gamesToWin {
+            debugPrint("Player has won a set")
+            playerGames = 0
+            rivalGames = 0
+            playerSets += 1
+            
+            if playerSets == setsToWin {
+                playerHasWon()
             }
-        } else {
-            playerHasWon()
         }
     }
     
     private func addVictoryToRival() {
         debugPrint("Rival has won")
-        if rivalSets < setsToWin {
-            if rivalGames < gamesToWin {
-                rivalGames += 1
-            } else {
-                rivalGames = 0
-                playerGames = 0
-                rivalSets += 1
+        rivalGames += 1
+        
+        if rivalGames == gamesToWin {
+            debugPrint("Player has won a set")
+            playerGames = 0
+            rivalGames = 0
+            rivalSets += 1
+            
+            if playerSets == setsToWin {
+                rivalHasWon()
             }
-        } else {
-            rivalHasWon()
         }
     }
     
@@ -192,6 +194,7 @@ final class GameViewModel: ObservableObject {
         // play sound
         hasGameFinished = true
         // show play again alert
+        debugPrint("Player wins")
     }
     
     private func rivalHasWon() {
@@ -199,6 +202,7 @@ final class GameViewModel: ObservableObject {
         // play sound
         hasGameFinished = true
         // show play again alert
+        debugPrint("Rival wins")
     }
     
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {

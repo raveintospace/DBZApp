@@ -144,9 +144,9 @@ extension GameView {
             GameFooterBar(
                 rivalRectangleFigures: showRivalPoints(),
                 playerRectangleFigures: showPlayerPoints(),
-                leftRectangleFigures: "R-1 / P-1",
-                centerRectangleFigures: "R-1 / P-1",
-                rightRectangleFigures: "0 / 3"
+                leftRectangleFigures: "R-\(viewModel.rivalGames) / P-\(viewModel.playerGames)",
+                centerRectangleFigures: "R-\(viewModel.rivalSets) / P-\(viewModel.playerSets)",
+                rightRectangleFigures: "\(viewModel.discardsUsed) / 3"
             )
             
         }
