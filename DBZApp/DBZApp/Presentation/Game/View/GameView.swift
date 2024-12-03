@@ -166,5 +166,5 @@ extension GameView {
 // MARK: - To Do
 /*
  Update components to display info from viewmodel
- 
+ Fix size of gameTrailingButtons when cards are not dealt, only happens with iphone
  */
