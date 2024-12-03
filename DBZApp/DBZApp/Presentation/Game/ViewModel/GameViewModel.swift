@@ -154,7 +154,12 @@ final class GameViewModel: ObservableObject {
     }
     
     private func updateScoreboard() {
-        playerPoints > rivalPoints ? addVictoryToPlayer() : addVictoryToRival()
+        playerPoints == rivalPoints ? handleDraw() : (playerPoints > rivalPoints ? addVictoryToPlayer() : addVictoryToRival())
+    }
+    
+    private func handleDraw() {
+        debugPrint("Draw")
+        // show draw message
     }
     
     private func addVictoryToPlayer() {
