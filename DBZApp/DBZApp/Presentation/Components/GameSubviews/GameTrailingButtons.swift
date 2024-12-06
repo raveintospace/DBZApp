@@ -43,7 +43,7 @@ struct GameTrailingButtons: View {
 
 extension GameTrailingButtons {
     private var topButton: some View {
-        if hasGameStarted {
+        if hasGameStarted && !hasGameFinished {
             GameActionButton(
                 imageName: "arrow.2.circlepath",
                 onButtonPressed: { onRestartButtonPressed?()} // showAlert

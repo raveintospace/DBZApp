@@ -113,7 +113,7 @@ extension GameView {
     private var gameTrailingButtons: some View {
         GameTrailingButtons(
             hasGameStarted: viewModel.hasGameStarted,
-            hasGameFinished: false,
+            hasGameFinished: viewModel.hasGameFinished,
             hasSelectedCards: true,
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
             onPlayButtonPressed: {

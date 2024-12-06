@@ -187,7 +187,7 @@ final class GameViewModel: ObservableObject {
         rivalGames += 1
         
         if rivalGames == gamesToWin {
-            debugPrint("Player has won a set")
+            debugPrint("Rival has won a set")
             playerGames = 0
             rivalGames = 0
             rivalSets += 1
