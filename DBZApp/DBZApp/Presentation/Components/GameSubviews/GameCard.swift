@@ -25,6 +25,24 @@ struct GameCard: View {
     
     @State private var trigger: Bool = false
     
+    private var isJoker: Bool {
+        kiPoints.lowercased() == "unknown"
+    }
+    
+    private var isMalus: Bool {
+        kiPoints.lowercased().contains("googolplex")
+    }
+    
+    private var cardBackgroundColor: Color {
+        if isJoker {
+            return .green
+        } else if isMalus {
+            return .red
+        } else {
+            return .dbzOrange
+        }
+    }
+    
     var body: some View {
         ZStack {
             EmptyView()
@@ -56,7 +74,7 @@ struct GameCard: View {
     
     ScrollView(.vertical) {
         VStack(spacing: 10) {
-            GameCard(isRevealed: true, isSelected: $isSelected)
+            GameCard(kiPoints: "unknown", isRevealed: true, isSelected: $isSelected)
             GameCard(isRevealed: isRevealed2, isSelected: .constant(false))
             
             Button("Reveal") {
@@ -65,8 +83,8 @@ struct GameCard: View {
             }
             
             HStack {
-                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "999.999.999", isRevealed: isRevealed1, isSelected: $isSelected)
-                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: GameCharacter.mockTwo.kiToDisplayInGame, isRevealed: true, isSelected: $isSelected2)
+                GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "unknown", isRevealed: isRevealed1, isSelected: $isSelected)
+                GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: "969 Googolplex", isRevealed: true, isSelected: $isSelected2)
                 GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isSelected: $isSelected3)
             }
             .padding(.vertical)
@@ -106,7 +124,7 @@ extension GameCard {
     
     private var revealedGameCardLogo: some View {
         ZStack {
-            Color.dbzOrange
+            cardBackgroundColor
             Image("gameCardBlackLogo")
                 .resizable()
                 .scaledToFit()
