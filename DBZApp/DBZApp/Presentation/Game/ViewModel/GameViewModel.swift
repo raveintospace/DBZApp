@@ -72,10 +72,6 @@ final class GameViewModel: ObservableObject {
     }
     
     func endGame() {
-        
-    }
-    
-    func resetGame() {
         rivalPoints = 0 // rivalCards.kitocompare.count
         playerPoints = 0 // playerCards.kitocompare.count
         rivalGames = 0
@@ -86,6 +82,15 @@ final class GameViewModel: ObservableObject {
         rivalCards.removeAll()
         playerCards.removeAll()
         cardsToDiscard.removeAll()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            debugPrint("endgame activated")
+            self.hasGameStarted = false
+            self.hasGameFinished = false
+            self.shouldRevealRivalCards = false
+            self.shouldRevealPlayerCards = false
+            
+        }
     }
     
     func compareCards() {
@@ -196,16 +201,18 @@ final class GameViewModel: ObservableObject {
         // update message
         // play sound
         hasGameFinished = true
-        // show play again alert
-        debugPrint("Player wins")
+        // show play again alert -> endGame
+        debugPrint("Player wins the match")
+        endGame()
     }
     
     private func rivalHasWon() {
         // update message
         // play sound
         hasGameFinished = true
-        // show play again alert
-        debugPrint("Rival wins")
+        // show play again alert -> endGame
+        debugPrint("Rival wins the match")
+        endGame()
     }
     
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {
@@ -245,6 +252,7 @@ final class GameViewModel: ObservableObject {
     private func updatePoints() {
         rivalPoints = calculateTotalPoints(for: rivalCards)
         playerPoints = calculateTotalPoints(for: playerCards)
+        debugPrint("Rival Points: \(rivalPoints), Player Points: \(playerPoints)")
     }
     
     func rivalPointsInView() -> String {
