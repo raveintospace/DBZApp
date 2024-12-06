@@ -79,6 +79,8 @@ final class GameViewModel: ObservableObject {
         rivalSets = 0
         playerSets = 0
         
+        shouldRevealRivalCards = false
+        
         rivalCards.removeAll()
         playerCards.removeAll()
         cardsToDiscard.removeAll()
@@ -87,7 +89,6 @@ final class GameViewModel: ObservableObject {
             debugPrint("endgame activated")
             self.hasGameStarted = false
             self.hasGameFinished = false
-            self.shouldRevealRivalCards = false
             self.shouldRevealPlayerCards = false
             
         }

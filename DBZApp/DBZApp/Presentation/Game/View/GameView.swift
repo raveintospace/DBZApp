@@ -88,9 +88,9 @@ extension GameView {
                 }
             }
             .padding(.horizontal)
+            .padding(.top)
             
             HStack(spacing: 0) {
-                // should be a gameZstack
                 GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $viewModel.shouldShuffleCards)
                     .frame(width: 70, alignment: .leading)
                 GameInfoText(text: .constant(.matchWon))
@@ -107,6 +107,7 @@ extension GameView {
                 }
             }
             .padding(.horizontal)
+            .padding(.bottom)
         }
     }
     
