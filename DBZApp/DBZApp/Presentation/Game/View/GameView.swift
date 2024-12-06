@@ -125,10 +125,10 @@ extension GameView {
             onRevealButtonPressed: {
                 // compete with rival - viewModel.revealCards()
                 // disable button from viewmodel
-                viewModel.shouldRevealRivalCards.toggle()
+                viewModel.compareCards()
             },
             onDealButtonPressed: {
-                // deal new cards
+                viewModel.playNextRound()
             },
             onConfirmButtonPressed: {
                 // discard selected cards and deal new ones - cards onTapGesture update their position with y+3

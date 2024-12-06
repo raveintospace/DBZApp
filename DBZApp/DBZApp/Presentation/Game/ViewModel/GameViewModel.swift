@@ -69,12 +69,6 @@ final class GameViewModel: ObservableObject {
         updatePoints()
         debugPrint("Rival points: \(rivalPointsInView())")
         debugPrint("Player points: \(playerPointsInView())")
-        updateScoreboard()
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            debugPrint("Returning cards to deck")
-//            self.returnCardsToDeck()
-//        }
     }
     
     func endGame() {
@@ -94,21 +88,21 @@ final class GameViewModel: ObservableObject {
         cardsToDiscard.removeAll()
     }
     
-    func revealPlayerCards() {
+    func compareCards() {
         shouldRevealRivalCards = true
         discardsUsed = 0
         // updateScoreboard
         // update message
+        updateScoreboard()
     }
     
     func playNextRound() {
-        // send cards back to deck
-        rivalCards.removeAll()
-        playerCards.removeAll()
+        returnCardsToDeck()
         shouldShuffleCards = true
         shouldRevealRivalCards = false
         shouldRevealPlayerCards = false
         dealCards()
+        updatePoints()
     }
     
     private func dealCards() {
