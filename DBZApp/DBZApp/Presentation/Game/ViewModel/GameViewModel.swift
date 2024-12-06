@@ -33,7 +33,7 @@ final class GameViewModel: ObservableObject {
     @Published var playerSets: Int = 0
     
     @Published var gamesToWin: Int = 3
-    @Published var setsToWin: Int = 3
+    @Published var setsToWin: Int = 1
     
     @Published var discardsUsed: Int = 0
     
@@ -191,7 +191,7 @@ final class GameViewModel: ObservableObject {
             rivalGames = 0
             rivalSets += 1
             
-            if playerSets == setsToWin {
+            if rivalSets == setsToWin {
                 rivalHasWon()
             }
         }
@@ -203,7 +203,10 @@ final class GameViewModel: ObservableObject {
         hasGameFinished = true
         // show play again alert -> endGame
         debugPrint("Player wins the match")
-        endGame()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.endGame()
+        }
     }
     
     private func rivalHasWon() {
@@ -212,7 +215,10 @@ final class GameViewModel: ObservableObject {
         hasGameFinished = true
         // show play again alert -> endGame
         debugPrint("Rival wins the match")
-        endGame()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.endGame()
+        }
     }
     
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {
