@@ -149,7 +149,7 @@ extension GameView {
                 playerRectangleFigures: showPlayerPoints(),
                 leftRectangleFigures: "R-\(viewModel.rivalGames) / P-\(viewModel.playerGames)",
                 centerRectangleFigures: "R-\(viewModel.rivalSets) / P-\(viewModel.playerSets)",
-                rightRectangleFigures: "\(viewModel.discardsUsed) / 3"
+                rightRectangleFigures: "\(viewModel.discardsUsed) / \(viewModel.discardsAllowed)"
             )
             
         }
@@ -169,5 +169,6 @@ extension GameView {
 // MARK: - To Do
 /*
  Update components to display info from viewmodel
- Fix size of gameTrailingButtons when cards are not dealt, only happens with iphone
+ Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
+ 
  */

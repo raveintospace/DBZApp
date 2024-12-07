@@ -42,7 +42,7 @@ struct GameInfoText: View {
             }
             .onChange(of: text) { _, newText in
                 withAnimation {
-                    isVisible = newText != .empty
+                    isVisible = newText != .empty   // true if newText != empty
                 }
             }
     }

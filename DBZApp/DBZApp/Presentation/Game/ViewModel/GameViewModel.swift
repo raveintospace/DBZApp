@@ -36,6 +36,7 @@ final class GameViewModel: ObservableObject {
     @Published var setsToWin: Int = 2
     
     @Published var discardsUsed: Int = 0
+    let discardsAllowed: Int = 2
     
     @Published var gameTextMessage: GameText = .welcome
     
@@ -152,6 +153,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func dealCardsAfterDiscard() {
+        // check if discard is allowed
         discardsUsed += 1
         // send discarted cards back to deck
         // remove discarted cards from cardsToDiscard & playerCards
