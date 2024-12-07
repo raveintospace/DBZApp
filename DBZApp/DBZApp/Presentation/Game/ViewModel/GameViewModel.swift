@@ -93,7 +93,7 @@ final class GameViewModel: ObservableObject {
             self.hasGameStarted = false
             self.hasGameFinished = false
             self.shouldRevealPlayerCards = false
-            
+            self.gameTextMessage = .empty
         }
     }
     
