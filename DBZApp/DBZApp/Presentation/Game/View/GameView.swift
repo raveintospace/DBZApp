@@ -18,6 +18,8 @@ struct GameView: View {
     
     @State private var liftedStates: [Bool]
     
+    @State private var showResetMatchAlert: Bool = false
+    
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
         _liftedStates = State(initialValue: Array(repeating: false, count: undealtCards.count))
@@ -40,6 +42,9 @@ struct GameView: View {
                 Spacer()
                 footer
             }
+        }
+        .alert(isPresented: $showResetMatchAlert) {
+            resetMatchAlert()
         }
     }
 }
@@ -121,7 +126,7 @@ extension GameView {
                 viewModel.startGame()
             },
             onRestartButtonPressed: {
-                viewModel.endGame()
+                showResetMatchAlert = true
             },
             onRevealButtonPressed: {
                 // compete with rival - viewModel.revealCards()
@@ -159,6 +164,16 @@ extension GameView {
     
     private func showPlayerPoints() -> String {
         viewModel.shouldRevealPlayerCards ? viewModel.playerPointsInView() : "¿?"
+    }
+    
+    private func resetMatchAlert() -> Alert {
+        return Alert(
+            title: Text("Reset Match"),
+            message: Text("Do you want to reset the current match?"),
+            primaryButton: .default(Text("Cancel")),
+            secondaryButton: .destructive(Text("Reset")) {
+            viewModel.endGame()
+        })
     }
 }
 
