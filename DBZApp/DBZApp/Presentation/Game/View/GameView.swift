@@ -16,9 +16,7 @@ struct GameView: View {
     
     private var undealtCards: [GameCharacter] = [GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree] // viewmodel.undealtcards
     
-    @State private var shouldShuffle: Bool = false // viewmodel.shouldShuffle
     @State private var liftedStates: [Bool]
-    @State private var shouldRevealCards: Bool = false // viewmodel.shouldRevealCards
     
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
@@ -135,7 +133,6 @@ extension GameView {
             },
             onConfirmButtonPressed: {
                 // discard selected cards and deal new ones - cards onTapGesture update their position with y+3
-                shouldShuffle.toggle()
             },
             onCancelButtonPressed: {
                 // cancel cards to discard
