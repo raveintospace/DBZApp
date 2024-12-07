@@ -33,7 +33,7 @@ final class GameViewModel: ObservableObject {
     @Published var playerSets: Int = 0
     
     @Published var gamesToWin: Int = 3
-    @Published var setsToWin: Int = 1
+    @Published var setsToWin: Int = 2
     
     @Published var discardsUsed: Int = 0
     
@@ -100,8 +100,6 @@ final class GameViewModel: ObservableObject {
     func compareCards() {
         shouldRevealRivalCards = true
         discardsUsed = 0
-        // updateScoreboard
-        // update message
         updateScoreboard()
     }
     
@@ -287,6 +285,4 @@ final class GameViewModel: ObservableObject {
  var hasGameFinished: Bool = false // viewModel.hasGameFinished
  var hasSelectedCards: Bool = false // !viewModel.cardsToDiscardArray.isEmpty
  var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
- 
- Var to set gameinfotext - viewmodel.gameinfotext - based on enum switch, empty as default
  */
