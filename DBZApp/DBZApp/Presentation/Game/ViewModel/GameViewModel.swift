@@ -213,10 +213,6 @@ final class GameViewModel: ObservableObject {
         hasGameFinished = true
         // show play again alert -> endGame
         debugPrint("Player wins the match")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.endGame()
-        }
     }
     
     private func rivalHasWon() {
@@ -226,10 +222,6 @@ final class GameViewModel: ObservableObject {
         hasGameFinished = true
         // show play again alert -> endGame
         debugPrint("Rival wins the match")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.endGame()
-        }
     }
     
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {

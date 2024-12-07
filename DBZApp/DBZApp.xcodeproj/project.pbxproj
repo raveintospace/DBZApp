@@ -85,6 +85,7 @@
 		34C4BDD32CB1890200C5060C /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4BDD22CB1890200C5060C /* ExpandableText.swift */; };
 		34C4BDD82CB192AA00C5060C /* DetailBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4BDD72CB192AA00C5060C /* DetailBottomButtons.swift */; };
 		34C4BDDA2CB1979700C5060C /* InteractiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4BDD92CB1979700C5060C /* InteractiveCard.swift */; };
+		34C58C2C2D048005007B39F2 /* GameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C58C2B2D048005007B39F2 /* GameAlert.swift */; };
 		34C5E2D02C98920800A1AC41 /* ImageBlueCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */; };
 		34C5E2D22C98945600A1AC41 /* TitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E2D12C98945600A1AC41 /* TitleHeader.swift */; };
 		34C9FB352C919FAF00FA0139 /* FilterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */; };
@@ -193,6 +194,7 @@
 		34C4BDD22CB1890200C5060C /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		34C4BDD72CB192AA00C5060C /* DetailBottomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBottomButtons.swift; sourceTree = "<group>"; };
 		34C4BDD92CB1979700C5060C /* InteractiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveCard.swift; sourceTree = "<group>"; };
+		34C58C2B2D048005007B39F2 /* GameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAlert.swift; sourceTree = "<group>"; };
 		34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBlueCircle.swift; sourceTree = "<group>"; };
 		34C5E2D12C98945600A1AC41 /* TitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeader.swift; sourceTree = "<group>"; };
 		34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 				34C9FB3F2C91A8C300FA0139 /* FilterOption.swift */,
 				34BF19A62C95D81700A6B55A /* SortOption.swift */,
 				343DC3162C89CC3C00BCCF39 /* UseCaseError.swift */,
+				34C58C2B2D048005007B39F2 /* GameAlert.swift */,
 				34F6AD802CE7C09F008DE709 /* GameText.swift */,
 			);
 			path = Enums;
@@ -918,6 +921,7 @@
 				3460DD1A2CD3F29200AF414E /* InfoBody.swift in Sources */,
 				349FC5362CBD83C7009DE850 /* PlanetImageCell.swift in Sources */,
 				34ECF97E2C9F076F00ADFDF8 /* DatabaseCard.swift in Sources */,
+				34C58C2C2D048005007B39F2 /* GameAlert.swift in Sources */,
 				34C9FB402C91A8C300FA0139 /* FilterOption.swift in Sources */,
 				345D5A992C8B5375003BA242 /* SearchBar.swift in Sources */,
 				34B83F692CE64F640080BAD8 /* GameTrailingButtons.swift in Sources */,

@@ -18,7 +18,7 @@ struct GameView: View {
     
     @State private var liftedStates: [Bool]
     
-    @State private var showResetMatchAlert: Bool = false
+    @State private var activeAlert: GameAlertType? = nil
     
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
@@ -43,8 +43,18 @@ struct GameView: View {
                 footer
             }
         }
-        .alert(isPresented: $showResetMatchAlert) {
-            resetMatchAlert()
+        .alert(item: $activeAlert) { alertType in
+            switch alertType {
+            case .resetMatch:
+                return resetMatchAlert()
+            case .gameFinished:
+                return playAgainAlert()
+            }
+        }
+        .onChange(of: viewModel.hasGameFinished) { _, newValue in
+            if newValue {
+                activeAlert = .gameFinished
+            }
         }
     }
 }
@@ -126,7 +136,7 @@ extension GameView {
                 viewModel.startGame()
             },
             onRestartButtonPressed: {
-                showResetMatchAlert = true
+                activeAlert = .resetMatch
             },
             onRevealButtonPressed: {
                 // compete with rival - viewModel.revealCards()
@@ -172,7 +182,17 @@ extension GameView {
             message: Text("Do you want to reset the current match?"),
             primaryButton: .default(Text("Cancel")),
             secondaryButton: .destructive(Text("Reset")) {
-            viewModel.endGame()
+                viewModel.endGame()
+        })
+    }
+    
+    private func playAgainAlert() -> Alert {
+        return Alert(
+            title: Text("Match Finished"),
+            message: Text("Do you want to play again?"),
+            primaryButton: .default(Text("No")),
+            secondaryButton: .destructive(Text("Yes")) {
+                viewModel.endGame()
         })
     }
 }
