@@ -93,13 +93,15 @@ extension GameView {
             HStack(spacing: 0) {
                 GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $viewModel.shouldShuffleCards)
                     .frame(width: 70, alignment: .leading)
-                GameInfoText(text: .constant(.matchWon))
+                GameInfoText(text: $viewModel.gameTextMessage)
                     .frame(maxWidth: .infinity, alignment: .center)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
+                    .background(.red)
                 
             }
             .padding()
+            .background(.brown)
             
             HStack {
                 ForEach(viewModel.playerCards) { card in

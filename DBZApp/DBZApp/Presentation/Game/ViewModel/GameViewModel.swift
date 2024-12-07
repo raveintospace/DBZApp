@@ -37,6 +37,8 @@ final class GameViewModel: ObservableObject {
     
     @Published var discardsUsed: Int = 0
     
+    @Published var gameTextMessage: GameText = .welcome
+    
     private let databaseViewModel: DatabaseViewModel
     
     init(databaseViewModel: DatabaseViewModel) {
@@ -55,6 +57,7 @@ final class GameViewModel: ObservableObject {
     
     func startGame() {
         // remove welcome message - set to empty
+        gameTextMessage = .empty
         shouldShuffleCards = true
         hasGameStarted = true
         
@@ -103,6 +106,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func playNextRound() {
+        gameTextMessage = .empty
         returnCardsToDeck()
         shouldShuffleCards = true
         shouldRevealRivalCards = false
@@ -163,18 +167,20 @@ final class GameViewModel: ObservableObject {
     
     private func handleDraw() {
         debugPrint("Draw")
-        // show draw message
+        gameTextMessage = .draw
     }
     
     private func addVictoryToPlayer() {
         debugPrint("Player has won a game")
         playerGames += 1
+        gameTextMessage = .gameWon
             
         if playerGames == gamesToWin {
             debugPrint("Player has won a set")
             playerGames = 0
             rivalGames = 0
             playerSets += 1
+            gameTextMessage = .setWon
             
             if playerSets == setsToWin {
                 playerHasWon()
@@ -185,12 +191,14 @@ final class GameViewModel: ObservableObject {
     private func addVictoryToRival() {
         debugPrint("Rival has won")
         rivalGames += 1
+        gameTextMessage = .gameLost
         
         if rivalGames == gamesToWin {
             debugPrint("Rival has won a set")
             playerGames = 0
             rivalGames = 0
             rivalSets += 1
+            gameTextMessage = .setLost
             
             if rivalSets == setsToWin {
                 rivalHasWon()
@@ -200,6 +208,7 @@ final class GameViewModel: ObservableObject {
     
     private func playerHasWon() {
         // update message
+        gameTextMessage = .matchWon
         // play sound
         hasGameFinished = true
         // show play again alert -> endGame
@@ -212,6 +221,7 @@ final class GameViewModel: ObservableObject {
     
     private func rivalHasWon() {
         // update message
+        gameTextMessage = .matchLost
         // play sound
         hasGameFinished = true
         // show play again alert -> endGame
