@@ -97,7 +97,15 @@ extension GameView {
         VStack {
             HStack {
                 ForEach(viewModel.rivalCards) { card in
-                    GameCard(name: card.name, imageName: card.image, kiPoints: card.kiToDisplayInGame, isRevealed: viewModel.shouldRevealRivalCards, isSelected: .constant(false))
+                    GameCard(
+                        name: card.name,
+                        imageName: card.image,
+                        kiPoints: card.kiToDisplayInGame,
+                        isRevealed: viewModel.shouldRevealRivalCards,
+                        isSelected: .constant(
+                            false
+                        )
+                    )
                 }
             }
             .padding(.horizontal)
@@ -118,7 +126,18 @@ extension GameView {
             
             HStack {
                 ForEach(viewModel.playerCards) { card in
-                    GameCard(name: card.name, imageName: card.image, kiPoints: card.kiToDisplayInGame, isRevealed: viewModel.shouldRevealPlayerCards, isSelected: .constant(false))
+                    GameCard(
+                        name: card.name,
+                        imageName: card.image,
+                        kiPoints: card.kiToDisplayInGame,
+                        isRevealed: viewModel.shouldRevealPlayerCards,
+                        isSelected: Binding(
+                            get: { card.isSelected },
+                            set: { newValue in
+                                viewModel.toggleCardSelection(card)
+                            }
+                        )
+                    )
                 }
             }
             .padding(.horizontal)
@@ -130,7 +149,7 @@ extension GameView {
         GameTrailingButtons(
             hasGameStarted: viewModel.hasGameStarted,
             hasGameFinished: viewModel.hasGameFinished,
-            hasSelectedCards: true,
+            hasSelectedCards: !viewModel.cardsToDiscard.isEmpty,
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
             onPlayButtonPressed: {
                 viewModel.startGame()

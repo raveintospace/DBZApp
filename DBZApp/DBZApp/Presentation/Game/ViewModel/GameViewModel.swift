@@ -20,8 +20,7 @@ final class GameViewModel: ObservableObject {
     @Published var shouldShuffleCards: Bool = false
     @Published var shouldRevealPlayerCards: Bool = false
     @Published var shouldRevealRivalCards: Bool = false
-    @Published var showResetGameAlert: Bool = false
-    @Published var showPlayAgainAlert: Bool = false
+    
     
     @Published var rivalPoints: Decimal = 0
     @Published var playerPoints: Decimal = 0
@@ -152,6 +151,19 @@ final class GameViewModel: ObservableObject {
         shouldShuffleCards = true
     }
     
+    func toggleCardSelection(_ card: GameCharacter) {
+        if let index = playerCards.firstIndex(where: { $0.id == card.id }) {
+            playerCards[index].isSelected.toggle()
+            if playerCards[index].isSelected {
+                cardsToDiscard.append(playerCards[index])
+                debugPrint("Card added to discarded")
+            } else {
+                cardsToDiscard.removeAll { $0.id == card.id }
+                debugPrint("Card removed from discarded")
+            }
+        }
+    }
+    
     func dealCardsAfterDiscard() {
         // check if discard is allowed
         discardsUsed += 1
@@ -171,12 +183,10 @@ final class GameViewModel: ObservableObject {
     }
     
     private func addVictoryToPlayer() {
-        debugPrint("Player has won a game")
         playerGames += 1
         gameTextMessage = .gameWon
             
         if playerGames == gamesToWin {
-            debugPrint("Player has won a set")
             playerGames = 0
             rivalGames = 0
             playerSets += 1
@@ -189,12 +199,10 @@ final class GameViewModel: ObservableObject {
     }
     
     private func addVictoryToRival() {
-        debugPrint("Rival has won")
         rivalGames += 1
         gameTextMessage = .gameLost
         
         if rivalGames == gamesToWin {
-            debugPrint("Rival has won a set")
             playerGames = 0
             rivalGames = 0
             rivalSets += 1
@@ -209,7 +217,6 @@ final class GameViewModel: ObservableObject {
     private func playerHasWon() {
         // update message
         gameTextMessage = .matchWon
-        debugPrint("Player wins the match")
         // play sound
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.hasGameFinished = true
@@ -219,7 +226,6 @@ final class GameViewModel: ObservableObject {
     private func rivalHasWon() {
         // update message
         gameTextMessage = .matchLost
-        debugPrint("Rival wins the match")
         // play sound
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.hasGameFinished = true
