@@ -190,7 +190,9 @@ extension GameView {
         return Alert(
             title: Text("Match Finished"),
             message: Text("Do you want to play again?"),
-            primaryButton: .default(Text("No")),
+            primaryButton: .default(Text("No")) {
+                router.dismissScreen()
+            },
             secondaryButton: .destructive(Text("Yes")) {
                 viewModel.endGame()
         })

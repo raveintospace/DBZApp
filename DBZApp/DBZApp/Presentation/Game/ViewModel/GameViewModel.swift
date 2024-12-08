@@ -32,8 +32,8 @@ final class GameViewModel: ObservableObject {
     @Published var rivalSets: Int = 0
     @Published var playerSets: Int = 0
     
-    @Published var gamesToWin: Int = 3
-    @Published var setsToWin: Int = 2
+    @Published var gamesToWin: Int = 2  // update
+    @Published var setsToWin: Int = 2   // update
     
     @Published var discardsUsed: Int = 0
     let discardsAllowed: Int = 2
@@ -84,6 +84,8 @@ final class GameViewModel: ObservableObject {
         playerSets = 0
         
         shouldRevealRivalCards = false
+        shouldRevealPlayerCards = false
+        gameTextMessage = .empty
         
         rivalCards.removeAll()
         playerCards.removeAll()
@@ -93,8 +95,6 @@ final class GameViewModel: ObservableObject {
             debugPrint("endgame activated")
             self.hasGameStarted = false
             self.hasGameFinished = false
-            self.shouldRevealPlayerCards = false
-            self.gameTextMessage = .empty
         }
     }
     
@@ -209,19 +209,21 @@ final class GameViewModel: ObservableObject {
     private func playerHasWon() {
         // update message
         gameTextMessage = .matchWon
-        // play sound
-        hasGameFinished = true
-        // show play again alert -> endGame
         debugPrint("Player wins the match")
+        // play sound
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.hasGameFinished = true
+        }
     }
     
     private func rivalHasWon() {
         // update message
         gameTextMessage = .matchLost
-        // play sound
-        hasGameFinished = true
-        // show play again alert -> endGame
         debugPrint("Rival wins the match")
+        // play sound
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.hasGameFinished = true
+        }
     }
     
     private func calculateTotalPoints(for characters: [GameCharacter]) -> Decimal {
