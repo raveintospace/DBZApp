@@ -38,6 +38,7 @@ struct GameTrailingButtons: View {
         GameTrailingButtons(hasGameStarted: true)
         GameTrailingButtons(hasGameStarted: true, hasSelectedCards: true, areRivalCardsShown: true)
         GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, discardLimitReached: true)
+        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, discardLimitReached: false, areRivalCardsShown: false)
     }
 }
 
@@ -76,7 +77,7 @@ extension GameTrailingButtons {
         GameActionButton(
             imageName: "tray.and.arrow.down",
             imageYOffset: -3,
-            isEnabled: hasSelectedCards && !discardLimitReached,
+            isEnabled: hasSelectedCards && !discardLimitReached && !areRivalCardsShown,
             onButtonPressed: { onDiscardButtonPressed?() }
         )
     }

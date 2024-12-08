@@ -182,6 +182,7 @@ final class GameViewModel: ObservableObject {
         gameCharacters.removeFirst(newCardsToDeal)
         
         shouldRevealPlayerCards = true
+        updatePoints()
     }
     
     func discardLimitReached() -> Bool {
