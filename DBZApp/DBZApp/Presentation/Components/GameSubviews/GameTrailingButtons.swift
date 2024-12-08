@@ -18,8 +18,7 @@ struct GameTrailingButtons: View {
     var onRestartButtonPressed: (() -> Void)? = nil
     var onRevealButtonPressed: (() -> Void)? = nil
     var onDealButtonPressed: (() -> Void)? = nil
-    var onConfirmButtonPressed: (() -> Void)? = nil
-    var onCancelButtonPressed: (() -> Void)? = nil
+    var onDiscardButtonPressed: (() -> Void)? = nil
     
     @State private var showPopover: Bool = false
     
@@ -76,28 +75,8 @@ extension GameTrailingButtons {
         GameActionButton(
             imageName: "tray.and.arrow.down",
             imageYOffset: -3,
-            isEnabled: hasGameStarted && !hasGameFinished,
-            onButtonPressed: {
-                showPopover.toggle()
-            }
+            isEnabled: hasGameStarted && hasSelectedCards,
+            onButtonPressed: { onDiscardButtonPressed?() }
         )
-        .popover(isPresented: $showPopover) { // showAlert
-            ZStack {
-                Color.dbzBlue.opacity(0.5).ignoresSafeArea()
-                
-                VStack(spacing: 8) {
-                    GameActionButton(imageName: "checkmark",
-                                     isEnabled: hasSelectedCards,
-                                     onButtonPressed: { onConfirmButtonPressed?()}
-                    )
-                    GameActionButton(imageName: "xmark",
-                                     isEnabled: hasSelectedCards,
-                                     onButtonPressed: { onCancelButtonPressed?()}
-                    )
-                }
-                .padding(4)
-            }
-            .presentationCompactAdaptation(.popover)
-        }
     }
 }

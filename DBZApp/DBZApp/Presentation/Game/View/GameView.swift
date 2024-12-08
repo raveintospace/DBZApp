@@ -146,11 +146,8 @@ extension GameView {
             onDealButtonPressed: {
                 viewModel.playNextRound()
             },
-            onConfirmButtonPressed: {
-                // discard selected cards and deal new ones - cards onTapGesture update their position with y+3
-            },
-            onCancelButtonPressed: {
-                // cancel cards to discard
+            onDiscardButtonPressed: {
+                // viewmodel.discardCards()
             })
     }
     
