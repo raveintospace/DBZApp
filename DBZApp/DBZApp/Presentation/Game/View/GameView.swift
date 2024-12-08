@@ -102,9 +102,7 @@ extension GameView {
                         imageName: card.image,
                         kiPoints: card.kiToDisplayInGame,
                         isRevealed: viewModel.shouldRevealRivalCards,
-                        isSelected: .constant(
-                            false
-                        )
+                        isSelected: .constant(false)
                     )
                 }
             }

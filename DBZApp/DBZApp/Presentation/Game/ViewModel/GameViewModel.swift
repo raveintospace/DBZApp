@@ -114,25 +114,22 @@ final class GameViewModel: ObservableObject {
     }
     
     private func dealCards() {
-        // deal cards to player: append to array + animation
         guard gameCharacters.count >= 6 else {
             debugPrint("Not enough cards to deal")
             return
         }
         
         // Shuffle cards
-        var shuffledCharacters = gameCharacters.shuffled()
+        gameCharacters.shuffle()
         
         // Deal cards to rival - pending animation
-        rivalCards = Array(shuffledCharacters.prefix(3))
-        shuffledCharacters.removeFirst(3)
+        rivalCards = Array(gameCharacters.prefix(3))
+        gameCharacters.removeFirst(3)
         
         // Deal cards to player - pending animation
-        playerCards = Array(shuffledCharacters.prefix(3))
-        shuffledCharacters.removeFirst(3)
+        playerCards = Array(gameCharacters.prefix(3))
+        gameCharacters.removeFirst(3)
         
-        // Update gameCharacters with shuffledCharacters left
-        gameCharacters = shuffledCharacters
         shouldRevealPlayerCards = true
     }
     
@@ -165,12 +162,22 @@ final class GameViewModel: ObservableObject {
     }
     
     func dealCardsAfterDiscard() {
-        // check if discard is allowed
+        guard discardsUsed < discardsAllowed else { return }
+        
         discardsUsed += 1
-        // send discarted cards back to deck
-        // remove discarted cards from cardsToDiscard & playerCards
-        // deal new cards to player
-        // reveal new cards
+        let newCardsToDeal = cardsToDiscard.count
+        
+        gameCharacters.append(contentsOf: cardsToDiscard)
+        cardsToDiscard.removeAll()
+        
+        shouldShuffleCards = true
+        gameCharacters.shuffle()
+        
+        let dealtCards = Array(gameCharacters.prefix(newCardsToDeal))
+        playerCards.append(contentsOf: dealtCards)
+        gameCharacters.removeFirst(newCardsToDeal)
+        
+        shouldRevealPlayerCards = true
     }
     
     private func updateScoreboard() {
