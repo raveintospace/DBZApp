@@ -157,8 +157,6 @@ extension GameView {
                 activeAlert = .resetMatch
             },
             onRevealButtonPressed: {
-                // compete with rival - viewModel.revealCards()
-                // disable button from viewmodel
                 viewModel.compareCards()
             },
             onDealButtonPressed: {
@@ -219,5 +217,5 @@ extension GameView {
 /*
  Update components to display info from viewmodel
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
- 
+ Check score method, Septillion are read as Googolplex
  */

@@ -148,7 +148,7 @@ final class GameViewModel: ObservableObject {
         shouldShuffleCards = true
     }
     
-    func toggleCardSelection(_ card: GameCharacter) {
+    func toggleCardSelection(_ card: GameCharacter) {        
         if let index = playerCards.firstIndex(where: { $0.id == card.id }) {
             playerCards[index].isSelected.toggle()
             if playerCards[index].isSelected {
@@ -299,8 +299,5 @@ final class GameViewModel: ObservableObject {
 
 // MARK: - To Do
 /*
- var hasGameStarted: Bool = false // viewModel.hasGameStarted
- var hasGameFinished: Bool = false // viewModel.hasGameFinished
- var hasSelectedCards: Bool = false // !viewModel.cardsToDiscardArray.isEmpty
- var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
+
  */
