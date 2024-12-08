@@ -148,6 +148,7 @@ extension GameView {
             hasGameStarted: viewModel.hasGameStarted,
             hasGameFinished: viewModel.hasGameFinished,
             hasSelectedCards: !viewModel.cardsToDiscard.isEmpty,
+            discardLimitReached: viewModel.discardLimitReached(),
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
             onPlayButtonPressed: {
                 viewModel.startGame()
@@ -164,7 +165,7 @@ extension GameView {
                 viewModel.playNextRound()
             },
             onDiscardButtonPressed: {
-                // viewmodel.discardCards()
+                viewModel.discardCardsAndDealNewOnes()
             })
     }
     

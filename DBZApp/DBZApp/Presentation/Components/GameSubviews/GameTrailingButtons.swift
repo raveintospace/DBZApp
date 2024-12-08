@@ -9,10 +9,11 @@ import SwiftUI
 
 struct GameTrailingButtons: View {
     
-    var hasGameStarted: Bool = false // viewModel.hasGameStarted
-    var hasGameFinished: Bool = false // viewModel.hasGameFinished
-    var hasSelectedCards: Bool = false // !viewModel.cardsToDiscardArray.isEmpty
-    var areRivalCardsShown: Bool = false  // viewModel.areRivalCardsShown
+    var hasGameStarted: Bool = false
+    var hasGameFinished: Bool = false
+    var hasSelectedCards: Bool = false
+    var discardLimitReached: Bool = false
+    var areRivalCardsShown: Bool = false
     
     var onPlayButtonPressed: (() -> Void)? = nil
     var onRestartButtonPressed: (() -> Void)? = nil
@@ -36,7 +37,7 @@ struct GameTrailingButtons: View {
         GameTrailingButtons(hasGameStarted: false)
         GameTrailingButtons(hasGameStarted: true)
         GameTrailingButtons(hasGameStarted: true, hasSelectedCards: true, areRivalCardsShown: true)
-        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true)
+        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, discardLimitReached: true)
     }
 }
 
@@ -75,7 +76,7 @@ extension GameTrailingButtons {
         GameActionButton(
             imageName: "tray.and.arrow.down",
             imageYOffset: -3,
-            isEnabled: hasGameStarted && hasSelectedCards,
+            isEnabled: hasSelectedCards && !discardLimitReached,
             onButtonPressed: { onDiscardButtonPressed?() }
         )
     }

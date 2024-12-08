@@ -161,11 +161,15 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func dealCardsAfterDiscard() {
+    func discardCardsAndDealNewOnes() {
         guard discardsUsed < discardsAllowed else { return }
         
         discardsUsed += 1
         let newCardsToDeal = cardsToDiscard.count
+        
+        playerCards.removeAll { card in
+            cardsToDiscard.contains { $0.id == card.id }
+        }
         
         gameCharacters.append(contentsOf: cardsToDiscard)
         cardsToDiscard.removeAll()
@@ -178,6 +182,10 @@ final class GameViewModel: ObservableObject {
         gameCharacters.removeFirst(newCardsToDeal)
         
         shouldRevealPlayerCards = true
+    }
+    
+    func discardLimitReached() -> Bool {
+        discardsUsed == discardsAllowed ? true : false
     }
     
     private func updateScoreboard() {
