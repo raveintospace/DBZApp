@@ -56,7 +56,6 @@ final class GameViewModel: ObservableObject {
     }
     
     func startGame() {
-        // remove welcome message - set to empty
         gameTextMessage = .empty
         shouldShuffleCards = true
         hasGameStarted = true
@@ -75,8 +74,8 @@ final class GameViewModel: ObservableObject {
     }
     
     func endGame() {
-        rivalPoints = 0 // rivalCards.kitocompare.count
-        playerPoints = 0 // playerCards.kitocompare.count
+        rivalPoints = 0
+        playerPoints = 0
         rivalGames = 0
         playerGames = 0
         rivalSets = 0
@@ -119,7 +118,6 @@ final class GameViewModel: ObservableObject {
             return
         }
         
-        // Shuffle cards
         gameCharacters.shuffle()
         
         // Deal cards to rival - pending animation
@@ -165,21 +163,37 @@ final class GameViewModel: ObservableObject {
         guard discardsUsed < discardsAllowed else { return }
         
         discardsUsed += 1
-        let newCardsToDeal = cardsToDiscard.count
+        var newCardsToDeal = [GameCharacter]() // Array of new cards to deal
+        var discardedIndices = [Int]()        // Array of discarted cards' indices
         
+        // Identify discarted card's indices
+        for (index, card) in playerCards.enumerated() {
+            if cardsToDiscard.contains(where: { $0.id == card.id }) {
+                discardedIndices.append(index)
+            }
+        }
+        
+        // Remove discarted cards from player
         playerCards.removeAll { card in
             cardsToDiscard.contains { $0.id == card.id }
         }
         
+        // Return discarted cards to deck
         gameCharacters.append(contentsOf: cardsToDiscard)
         cardsToDiscard.removeAll()
         
+        // Animate shuffle cards
         shouldShuffleCards = true
         gameCharacters.shuffle()
         
-        let dealtCards = Array(gameCharacters.prefix(newCardsToDeal))
-        playerCards.append(contentsOf: dealtCards)
-        gameCharacters.removeFirst(newCardsToDeal)
+        // Deal new cards to empty indices
+        for index in discardedIndices {
+            if let newCard = gameCharacters.first {
+                newCardsToDeal.append(newCard)
+                playerCards.insert(newCard, at: index)
+                gameCharacters.removeFirst()
+            }
+        }
         
         shouldRevealPlayerCards = true
         updatePoints()
@@ -231,7 +245,6 @@ final class GameViewModel: ObservableObject {
     }
     
     private func playerHasWon() {
-        // update message
         gameTextMessage = .matchWon
         // play sound
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -240,7 +253,6 @@ final class GameViewModel: ObservableObject {
     }
     
     private func rivalHasWon() {
-        // update message
         gameTextMessage = .matchLost
         // play sound
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
