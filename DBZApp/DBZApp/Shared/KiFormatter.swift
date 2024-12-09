@@ -35,21 +35,20 @@ struct KiFormatter {
         
         // Dictionary for json units
         let suffixes: [String: Decimal] = [
-            "thousand": Decimal(string: "1e+3") ?? 1_000,
-            "million": Decimal(string: "1e+6") ?? 1_000_000,
-            "billion": Decimal(string: "1e+9") ?? 1_000_000_000,
-            "trillion": Decimal(string: "1e+12") ?? 1_000_000_000_000,
-            "quadrillion": Decimal(string: "1e+15") ?? 1_000_000_000_000_000,
-            "quintillion": Decimal(string: "1e+18") ?? 1_000_000_000_000_000_000,
-            "sextillion": Decimal(string: "1e+21") ?? Decimal.greatestFiniteMagnitude,
+            "googolplex": Decimal(string: "1e+100") ?? Decimal.greatestFiniteMagnitude,
             "septillion": Decimal(string: "1e+24") ?? Decimal.greatestFiniteMagnitude,
-            "googolplex": Decimal(string: "1e+100") ?? Decimal.greatestFiniteMagnitude
+            "sextillion": Decimal(string: "1e+21") ?? Decimal.greatestFiniteMagnitude,
+            "quintillion": Decimal(string: "1e+18") ?? 1_000_000_000_000_000_000,
+            "quadrillion": Decimal(string: "1e+15") ?? 1_000_000_000_000_000,
+            "trillion": Decimal(string: "1e+12") ?? 1_000_000_000_000,
+            "billion": Decimal(string: "1e+9") ?? 1_000_000_000,
+            "million": Decimal(string: "1e+6") ?? 1_000_000,
+            "thousand": Decimal(string: "1e+3") ?? 1_000
         ]
         
         // Convert values with suffix
-        for (suffix, multiplier) in suffixes {
-            if normalizedKi.contains(suffix) {
-                
+        for (suffix, multiplier) in suffixes.sorted(by: { $0.key.count > $1.key.count }) {
+            if normalizedKi.hasSuffix(suffix) {
                 // Get the numeric part, keeping decimal points
                 let numberPart = normalizedKi.replacingOccurrences(of: suffix, with: "").trimmingCharacters(in: .whitespaces)
                 
@@ -77,11 +76,11 @@ struct KiFormatter {
         
         let thousand = Decimal(1000)
         let million = Decimal(1_000_000)
-        let googolplexThreshold = Decimal(string: "1e+24") ?? Decimal.greatestFiniteMagnitude
+        let googolplexThreshold = Decimal(string: "1e+100") ?? Decimal.greatestFiniteMagnitude
         
         // Googolplex Handling
         if value >= googolplexThreshold {
-            value /= googolplexThreshold // Reduce to 1e+24
+            value /= googolplexThreshold // Reduce to 1e+100
             index = suffixes.count - 1   // Assign "Googolplex"
         } else if value >= million {
             // Use suffixes starting from " M" for values >= 1M
