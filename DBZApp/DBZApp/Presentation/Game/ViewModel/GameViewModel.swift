@@ -265,10 +265,6 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        if totalPoints == 0 && jokerCount > 0 {
-            totalPoints = 0
-        }
-        
         if jokerCount > 0 && totalPoints > 0 {
             let multiplier = pow(1.5, jokerCount)
             totalPoints *= Decimal(string: "\(multiplier)") ?? 1
