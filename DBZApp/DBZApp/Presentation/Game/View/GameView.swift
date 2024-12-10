@@ -129,6 +129,8 @@ extension GameView {
                         imageName: card.image,
                         kiPoints: card.kiToDisplayInGame,
                         isRevealed: viewModel.shouldRevealPlayerCards,
+                        areRivalCardsRevealed: viewModel.shouldRevealRivalCards,
+                        areDiscardsAllowed: viewModel.areDiscardsAllowed(),
                         isSelected: Binding(
                             get: { card.isSelected },
                             set: { newValue in
@@ -217,4 +219,6 @@ extension GameView {
 /*
  Update components to display info from viewmodel
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
+ update gameCard with 2 new bools
+ Alert to discard cards
  */

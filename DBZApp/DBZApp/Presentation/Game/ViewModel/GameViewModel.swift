@@ -303,6 +303,10 @@ final class GameViewModel: ObservableObject {
     func playerPointsInView() -> String {
         return KiFormatter.formatDecimalToString(playerPoints)
     }
+    
+    func areDiscardsAllowed() -> Bool {
+        return discardsUsed < discardsAllowed
+    }
 }
 
 // MARK: - To Do

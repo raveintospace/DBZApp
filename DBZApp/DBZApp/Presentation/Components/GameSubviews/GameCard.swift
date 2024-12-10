@@ -21,6 +21,9 @@ struct GameCard: View {
     var strokeBorder: CGFloat = 3
     var lineLimit: Int = 2
     
+    var areRivalCardsRevealed: Bool = false
+    var areDiscardsAllowed: Bool = true
+    
     @Binding var isSelected: Bool
     
     @State private var trigger: Bool = false
@@ -57,7 +60,7 @@ struct GameCard: View {
         .animation(.spring(duration: 0.2), value: isSelected)
         .sensoryFeedback(.impact, trigger: trigger)
         .withTrigger(trigger: $trigger) {
-            if isRevealed {
+            if isRevealed && !areRivalCardsRevealed && areDiscardsAllowed {
                 isSelected.toggle()
             }
         }
@@ -85,7 +88,7 @@ struct GameCard: View {
             HStack {
                 GameCard(name: GameCharacter.mock.name, imageName: GameCharacter.mock.image, kiPoints: "unknown", isRevealed: isRevealed1, isSelected: $isSelected)
                 GameCard(name: GameCharacter.mockTwo.name, imageName: GameCharacter.mockTwo.image, kiPoints: "969 Googolplex", isRevealed: true, isSelected: $isSelected2)
-                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, isSelected: $isSelected3)
+                GameCard(name: "dsfdaifajodsaipa", imageName: GameCharacter.mockThree.image, kiPoints: GameCharacter.mockThree.kiToDisplayInGame, isRevealed: true, areDiscardsAllowed: false, isSelected: $isSelected3)
             }
             .padding(.vertical)
         }
