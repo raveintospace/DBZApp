@@ -150,7 +150,7 @@ extension GameView {
             hasGameStarted: viewModel.hasGameStarted,
             hasGameFinished: viewModel.hasGameFinished,
             hasSelectedCards: !viewModel.cardsToDiscard.isEmpty,
-            discardLimitReached: viewModel.discardLimitReached(),
+            areDiscardsAllowed: viewModel.areDiscardsAllowed(),
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
             onPlayButtonPressed: {
                 viewModel.startGame()

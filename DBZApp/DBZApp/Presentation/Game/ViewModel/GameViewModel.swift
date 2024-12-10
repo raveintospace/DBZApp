@@ -99,6 +99,7 @@ final class GameViewModel: ObservableObject {
     func compareCards() {
         shouldRevealRivalCards = true
         discardsUsed = 0
+        deselectSelectedCards()
         updateScoreboard()
     }
     
@@ -199,8 +200,13 @@ final class GameViewModel: ObservableObject {
         updatePoints()
     }
     
-    func discardLimitReached() -> Bool {
-        discardsUsed == discardsAllowed ? true : false
+    private func deselectSelectedCards() {
+        for card in cardsToDiscard {
+            if let index = playerCards.firstIndex(where: { $0.id == card.id }) {
+                playerCards[index].isSelected = false
+            }
+        }
+        cardsToDiscard.removeAll()
     }
     
     private func updateScoreboard() {

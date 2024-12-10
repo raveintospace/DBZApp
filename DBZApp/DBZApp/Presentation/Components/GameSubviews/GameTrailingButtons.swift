@@ -12,7 +12,7 @@ struct GameTrailingButtons: View {
     var hasGameStarted: Bool = false
     var hasGameFinished: Bool = false
     var hasSelectedCards: Bool = false
-    var discardLimitReached: Bool = false
+    var areDiscardsAllowed: Bool = false
     var areRivalCardsShown: Bool = false
     
     var onPlayButtonPressed: (() -> Void)? = nil
@@ -37,8 +37,8 @@ struct GameTrailingButtons: View {
         GameTrailingButtons(hasGameStarted: false)
         GameTrailingButtons(hasGameStarted: true)
         GameTrailingButtons(hasGameStarted: true, hasSelectedCards: true, areRivalCardsShown: true)
-        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, discardLimitReached: true)
-        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, discardLimitReached: false, areRivalCardsShown: false)
+        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, areDiscardsAllowed: true)
+        GameTrailingButtons(hasGameStarted: false, hasGameFinished: true, hasSelectedCards: true, areDiscardsAllowed: false, areRivalCardsShown: false)
     }
 }
 
@@ -77,7 +77,7 @@ extension GameTrailingButtons {
         GameActionButton(
             imageName: "tray.and.arrow.down",
             imageYOffset: -3,
-            isEnabled: hasSelectedCards && !discardLimitReached && !areRivalCardsShown,
+            isEnabled: hasSelectedCards && areDiscardsAllowed && !areRivalCardsShown,
             onButtonPressed: { onDiscardButtonPressed?() }
         )
     }
