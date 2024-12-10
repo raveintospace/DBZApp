@@ -14,15 +14,10 @@ struct GameView: View {
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @StateObject private var viewModel: GameViewModel
     
-    private var undealtCards: [GameCharacter] = [GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree] // viewmodel.undealtcards
-    
-    @State private var liftedStates: [Bool]
-    
     @State private var activeAlert: GameAlertType? = nil
     
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
-        _liftedStates = State(initialValue: Array(repeating: false, count: undealtCards.count))
     }
     
     var body: some View {
@@ -110,7 +105,7 @@ extension GameView {
             .padding(.top)
             
             HStack(spacing: 0) {
-                GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $viewModel.shouldShuffleCards)
+                GamePileOfCards(undealtCards: viewModel.gameCharacters, shouldShuffleCards: $viewModel.shouldShuffleCards)
                     .frame(width: 70, alignment: .leading)
                 GameInfoText(text: $viewModel.gameTextMessage)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -219,6 +214,5 @@ extension GameView {
 /*
  Update components to display info from viewmodel
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
- update gameCard with 2 new bools
  Alert to discard cards
  */
