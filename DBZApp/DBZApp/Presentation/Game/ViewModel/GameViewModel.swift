@@ -179,8 +179,11 @@ final class GameViewModel: ObservableObject {
             cardsToDiscard.contains { $0.id == card.id }
         }
         
-        // Return discarted cards to deck
-        gameCharacters.append(contentsOf: cardsToDiscard)
+        // Reset isSelected and return discarted cards to deck
+        for var card in cardsToDiscard {
+            card.isSelected = false
+            gameCharacters.append(card)
+        }
         cardsToDiscard.removeAll()
         
         // Animate shuffle cards
