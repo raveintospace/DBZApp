@@ -89,11 +89,8 @@ final class GameViewModel: ObservableObject {
         playerCards.removeAll()
         cardsToDiscard.removeAll()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            debugPrint("endgame activated")
-            self.hasGameStarted = false
-            self.hasGameFinished = false
-        }
+        hasGameStarted = false
+        hasGameFinished = false
     }
     
     func compareCards() {

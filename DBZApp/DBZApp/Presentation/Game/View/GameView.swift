@@ -214,7 +214,6 @@ extension GameView {
 /*
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
  Alert to discard cards
- Prevent play after "play again yes"
  Prevent reveal before cards are shown in view
  Check draw
  Disable top & middle trailing buttons when game has finished
