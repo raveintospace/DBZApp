@@ -20,20 +20,35 @@ struct GameSettingsPopover: View {
     
     var body: some View {
         VStack {
-            gamesSelector
-            setsSelector
+            settingsPopoverTitle
+            
+            VStack(spacing: 12) {
+                gamesSelector
+                setsSelector
+            }
         }
     }
 }
 
 #Preview {
     RouterView { _ in
-        GameSettingsPopover(databaseViewModel: DeveloperPreview.instance.databaseViewModel)
-            .environmentObject(DeveloperPreview.instance.databaseViewModel)
+        ZStack {
+            Color.dbzBlue.ignoresSafeArea()
+            
+            GameSettingsPopover(databaseViewModel: DeveloperPreview.instance.databaseViewModel)
+                .environmentObject(DeveloperPreview.instance.databaseViewModel)
+        }
     }
 }
 
 extension GameSettingsPopover {
+    
+    private var settingsPopoverTitle: some View {
+        Text("SETTINGS")
+            .font(.title)
+            .bold()
+            .foregroundStyle(.dbzYellow)
+    }
     
     private var gamesSelector: some View {
         GameSegmentedControl(

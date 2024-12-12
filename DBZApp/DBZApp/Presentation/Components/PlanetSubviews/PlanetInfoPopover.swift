@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlanetInfoPopover: View {
     
-    var title: String = ""
+    var title: String = "Planet info"
     var name: String = DetailedCharacter.mock.originPlanet.name
     var status: String = DetailedCharacter.mock.originPlanet.planetStatus
     var description: String = DetailedCharacter.mock.originPlanet.translatedPlanetDescription

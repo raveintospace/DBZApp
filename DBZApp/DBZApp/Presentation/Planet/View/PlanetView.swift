@@ -63,7 +63,6 @@ extension PlanetView {
     
     private var planetPopover: some View {
         PlanetInfoPopover(
-            title: "Planet info",
             name: detailedCharacter.originPlanet.translatedPlanetName,
             status: detailedCharacter.originPlanet.planetStatus,
             description: detailedCharacter.originPlanet.translatedPlanetDescription

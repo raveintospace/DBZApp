@@ -80,7 +80,7 @@ extension GameView {
                     transition: AnyTransition.scale.animation(.easeInOut),
                     backgroundColor: Color.black.opacity(0.001),
                     ignoreSafeArea: false) {
-                        Text("This will be the settings menu")
+                        settingsPopover
                             .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                     }
             }
@@ -179,6 +179,13 @@ extension GameView {
         .padding(.horizontal)
     }
     
+    private var settingsPopover: some View {
+        GameSettingsPopover(databaseViewModel: databaseViewModel)
+            .padding(.vertical)
+            .background(.dbzBlue)
+            .cornerRadius(20)
+    }
+    
     private func showRivalPoints() -> String {
         viewModel.shouldRevealRivalCards ? viewModel.rivalPointsInView() : "¿?"
     }
@@ -215,4 +222,6 @@ extension GameView {
 /*
  Animate deal & undeal cards
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
+ review implementation of gameviewmodel in gamesettingspopover
+ update viewmodel games & sets to win, they are read but not updated - do as select cards
  */
