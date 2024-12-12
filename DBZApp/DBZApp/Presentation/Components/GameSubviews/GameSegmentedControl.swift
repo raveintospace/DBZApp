@@ -9,11 +9,46 @@ import SwiftUI
 
 struct GameSegmentedControl: View {
     
+    var segmentedTitle: String = "Some title"
     var options: [Int] = [2, 3, 5]
     @Binding var selection: Int
     @Namespace private var segmentedControl
     
     var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            title
+            selector
+        }
+    }
+}
+
+fileprivate struct GameSegmentedControlPreview: View {
+    
+    var segmentedTitle: String = "Number of sets"
+    var options: [Int] = [2, 3, 5]
+    @State private var selection = 2
+    
+    var body: some View {
+        GameSegmentedControl(segmentedTitle: segmentedTitle, options: options, selection: $selection)
+        .padding()
+    }
+    
+}
+
+#Preview {
+    GameSegmentedControlPreview()
+}
+
+extension GameSegmentedControl {
+    
+    private var title: some View {
+        Text(segmentedTitle)
+            .font(.title2)
+            .fontWeight(.semibold)
+            .foregroundStyle(.dbzYellow)
+    }
+    
+    private var selector: some View {
         HStack {
             ForEach(options, id: \.self) { option in
                 Text("\(option)")
@@ -29,7 +64,7 @@ struct GameSegmentedControl: View {
                             }
                         }
                     )
-                    .foregroundColor(selection == option ? .dbzOrange : .dbzYellow)
+                    .foregroundStyle(selection == option ? .dbzOrange : .dbzYellow)
                     .onTapGesture {
                         selection = option
                     }
@@ -43,44 +78,4 @@ struct GameSegmentedControl: View {
         )
     }
 }
-
-fileprivate struct GameSegmentedControlPreview: View {
-    
-    var options: [Int] = [2, 3, 5]
-    @State private var selection = 2
-    
-    var body: some View {
-        GameSegmentedControl(options: options, selection: $selection)
-        .padding()
-    }
-    
-}
-
-#Preview {
-    GameSegmentedControlPreview()
-}
-
-/*
- Text("\(option)")
-     .frame(maxWidth: .infinity)
-     .font(.headline)
-     .fontWeight(.medium)
-     .background(
-         ZStack {
-             if selection == option {
-                 Capsule()
-                     .fill(.dbzBlue)
-                     .matchedGeometryEffect(id: "selection", in: segmentedControl)
-             }
-         }
-     )
-     .foregroundColor(selection == option ? .dbzYellow : .dbzOrange)
-     .onTapGesture {
-         selection = option
-     }
-}
-.frame(maxWidth: .infinity)
-.animation(.smooth, value: selection)
- */
-
 
