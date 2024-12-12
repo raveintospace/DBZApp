@@ -42,7 +42,6 @@ extension PlanetInfoPopover {
         Text(title.uppercased())
             .font(.title)
             .bold()
-            //.underline()
     }
     
     private var nameSection: some View {
