@@ -36,7 +36,10 @@ fileprivate struct GameSegmentedControlPreview: View {
 }
 
 #Preview {
-    GameSegmentedControlPreview()
+    ZStack {
+        Color.dbzBlue
+        GameSegmentedControlPreview()
+    }
 }
 
 extension GameSegmentedControl {
@@ -59,12 +62,12 @@ extension GameSegmentedControl {
                         ZStack {
                             if selection == option {
                                 Capsule()
-                                    .fill(.dbzBlue)
+                                    .fill(.dbzOrange)
                                     .matchedGeometryEffect(id: "selection", in: segmentedControl)
                             }
                         }
                     )
-                    .foregroundStyle(selection == option ? .dbzOrange : .dbzYellow)
+                    .foregroundStyle(selection == option ? .dbzBlue : .dbzBlue)
                     .onTapGesture {
                         selection = option
                     }
@@ -74,7 +77,7 @@ extension GameSegmentedControl {
         }
         .background(
             Capsule()
-                .fill(.dbzBlue.opacity(0.5))
+                .fill(.dbzYellow)
         )
     }
 }
