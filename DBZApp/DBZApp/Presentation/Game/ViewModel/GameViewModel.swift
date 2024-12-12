@@ -66,13 +66,6 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func testDealAndUpdate() {
-        dealCards()
-        updatePoints()
-        debugPrint("Rival points: \(rivalPointsInView())")
-        debugPrint("Player points: \(playerPointsInView())")
-    }
-    
     func endGame() {
         rivalPoints = 0
         playerPoints = 0

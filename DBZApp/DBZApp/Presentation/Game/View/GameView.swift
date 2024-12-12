@@ -147,6 +147,7 @@ extension GameView {
             hasSelectedCards: !viewModel.cardsToDiscard.isEmpty,
             areDiscardsAllowed: viewModel.areDiscardsAllowed(),
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
+            hasRivalCards: !viewModel.rivalCards.isEmpty,
             onPlayButtonPressed: {
                 viewModel.startGame()
             },
@@ -214,7 +215,6 @@ extension GameView {
 /*
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
  Alert to discard cards
- Prevent reveal before cards are shown in view
  Check draw
  Disable top & middle trailing buttons when game has finished
  */
