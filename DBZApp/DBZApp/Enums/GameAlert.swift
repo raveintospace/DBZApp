@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum GameAlertType: Identifiable {
+enum GameAlert: Identifiable {
     case resetMatch
     case playAgain
     
-    var id: GameAlertType {
+    var id: GameAlert {
         return self
     }
 }

@@ -14,7 +14,7 @@ struct GameView: View {
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @StateObject private var viewModel: GameViewModel
     
-    @State private var activeAlert: GameAlertType? = nil
+    @State private var activeAlert: GameAlert? = nil
     
     init(databaseViewModel: DatabaseViewModel) {
         _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))

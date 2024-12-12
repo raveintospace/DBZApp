@@ -82,6 +82,7 @@
 		34BF19AA2C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */; };
 		34BF19AC2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19AB2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift */; };
 		34BF19AE2C95E04A00A6B55A /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF19AD2C95E04A00A6B55A /* SortMenu.swift */; };
+		34C2960A2D0B2F2400B0B513 /* GameSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C296092D0B2F2300B0B513 /* GameSegmentedControl.swift */; };
 		34C4BDD32CB1890200C5060C /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4BDD22CB1890200C5060C /* ExpandableText.swift */; };
 		34C4BDD82CB192AA00C5060C /* DetailBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4BDD72CB192AA00C5060C /* DetailBottomButtons.swift */; };
 		34C4BDDA2CB1979700C5060C /* InteractiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4BDD92CB1979700C5060C /* InteractiveCard.swift */; };
@@ -191,6 +192,7 @@
 		34BF19A92C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCharactersUsecaseProtocol.swift; sourceTree = "<group>"; };
 		34BF19AB2C95D96F00A6B55A /* SortCharactersUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCharactersUseCaseImpl.swift; sourceTree = "<group>"; };
 		34BF19AD2C95E04A00A6B55A /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
+		34C296092D0B2F2300B0B513 /* GameSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSegmentedControl.swift; sourceTree = "<group>"; };
 		34C4BDD22CB1890200C5060C /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		34C4BDD72CB192AA00C5060C /* DetailBottomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBottomButtons.swift; sourceTree = "<group>"; };
 		34C4BDD92CB1979700C5060C /* InteractiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveCard.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				343A5F7A2CF4E54200C65A08 /* GamePileOfCards.swift */,
 				34B83F642CE613040080BAD8 /* GameInfoRectangle.swift */,
 				34F6AD7E2CE7BE0F008DE709 /* GameInfoText.swift */,
+				34C296092D0B2F2300B0B513 /* GameSegmentedControl.swift */,
 			);
 			path = GameSubviews;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				34BF19A72C95D81700A6B55A /* SortOption.swift in Sources */,
 				3407D9BB2CBAC53A000720B5 /* ProgressColorBarsView.swift in Sources */,
 				34EF12592CCA866800AFF06D /* TransformationView.swift in Sources */,
+				34C2960A2D0B2F2400B0B513 /* GameSegmentedControl.swift in Sources */,
 				343DC3262C89FB7400BCCF39 /* MockGetLocalCharactersUseCase.swift in Sources */,
 				343F837F2C8EFC9A0053CBA4 /* Filter.swift in Sources */,
 				34C4BDDA2CB1979700C5060C /* InteractiveCard.swift in Sources */,
