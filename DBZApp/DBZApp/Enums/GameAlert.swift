@@ -9,7 +9,7 @@ import Foundation
 
 enum GameAlertType: Identifiable {
     case resetMatch
-    case gameFinished
+    case playAgain
     
     var id: GameAlertType {
         return self

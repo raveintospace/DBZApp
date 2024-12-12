@@ -42,13 +42,13 @@ struct GameView: View {
             switch alertType {
             case .resetMatch:
                 return resetMatchAlert()
-            case .gameFinished:
+            case .playAgain:
                 return playAgainAlert()
             }
         }
-        .onChange(of: viewModel.hasGameFinished) { _, newValue in
+        .onChange(of: viewModel.showPlayAgainAlert) { _, newValue in
             if newValue {
-                activeAlert = .gameFinished
+                activeAlert = .playAgain
             }
         }
     }

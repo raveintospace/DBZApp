@@ -20,7 +20,7 @@ final class GameViewModel: ObservableObject {
     @Published var shouldShuffleCards: Bool = false
     @Published var shouldRevealPlayerCards: Bool = false
     @Published var shouldRevealRivalCards: Bool = false
-    
+    @Published var showPlayAgainAlert: Bool = false
     
     @Published var rivalPoints: Decimal = 0
     @Published var playerPoints: Decimal = 0
@@ -67,12 +67,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func endGame() {
-        rivalPoints = 0
-        playerPoints = 0
-        rivalGames = 0
-        playerGames = 0
-        rivalSets = 0
-        playerSets = 0
+        resetScoreboard()
         
         shouldRevealRivalCards = false
         shouldRevealPlayerCards = false
@@ -84,6 +79,7 @@ final class GameViewModel: ObservableObject {
         
         hasGameStarted = false
         hasGameFinished = false
+        showPlayAgainAlert = false
     }
     
     func compareCards() {
@@ -246,16 +242,18 @@ final class GameViewModel: ObservableObject {
     private func playerHasWon() {
         gameTextMessage = .matchWon
         // play sound
+        hasGameFinished = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.hasGameFinished = true
+            self.showPlayAgainAlert = true
         }
     }
     
     private func rivalHasWon() {
         gameTextMessage = .matchLost
         // play sound
+        hasGameFinished = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.hasGameFinished = true
+            self.showPlayAgainAlert = true
         }
     }
     
@@ -293,6 +291,15 @@ final class GameViewModel: ObservableObject {
         rivalPoints = calculateTotalPoints(for: rivalCards)
         playerPoints = calculateTotalPoints(for: playerCards)
         debugPrint("Rival Points: \(rivalPoints), Player Points: \(playerPoints)")
+    }
+    
+    private func resetScoreboard() {
+        rivalPoints = 0
+        playerPoints = 0
+        rivalGames = 0
+        playerGames = 0
+        rivalSets = 0
+        playerSets = 0
     }
     
     func rivalPointsInView() -> String {
