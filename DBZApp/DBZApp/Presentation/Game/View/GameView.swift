@@ -215,4 +215,5 @@ extension GameView {
 /*
  Animate deal & undeal cards
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
+ Start settings view
  */
