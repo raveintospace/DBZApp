@@ -553,8 +553,8 @@
 			children = (
 				34A18BAA2CD547DA00FB0F0D /* GameHeaderBar.swift */,
 				344F29B22CE3BCA00056F2DB /* GameFooterBar.swift */,
-				34B83F682CE64F640080BAD8 /* GameTrailingButtons.swift */,
 				34B83F662CE646930080BAD8 /* GameActionButton.swift */,
+				34B83F682CE64F640080BAD8 /* GameTrailingButtons.swift */,
 				344AC3AD2CE91764001453A3 /* GameCard.swift */,
 				343A5F7A2CF4E54200C65A08 /* GamePileOfCards.swift */,
 				34B83F642CE613040080BAD8 /* GameInfoRectangle.swift */,
