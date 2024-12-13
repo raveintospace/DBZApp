@@ -53,6 +53,7 @@ extension GameSettingsPopover {
     private var gamesSelector: some View {
         GameSegmentedControl(
             segmentedTitle: "Games to win",
+            isEnabled: !viewModel.hasGameStarted,
             selection: $viewModel.gamesToWin
         )
         .padding()
@@ -61,6 +62,7 @@ extension GameSettingsPopover {
     private var setsSelector: some View {
         GameSegmentedControl(
             segmentedTitle: "Sets to win",
+            isEnabled: !viewModel.hasGameStarted,
             selection: $viewModel.setsToWin
         )
         .padding()
