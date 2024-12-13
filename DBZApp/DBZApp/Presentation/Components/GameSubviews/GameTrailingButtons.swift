@@ -53,6 +53,7 @@ extension GameTrailingButtons {
         } else {
             GameActionButton(
                 imageName: "play.fill",
+                isEnabled: !hasGameFinished,
                 onButtonPressed: { onPlayButtonPressed?()}
             )
         }
