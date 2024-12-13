@@ -46,7 +46,7 @@ struct FiltersBar: View {
                                 .withTrigger(trigger: $trigger) {
                                     onFilterPressed?(filter)
                                 }
-                                .transition(.move(edge: .trailing).combined(with: .opacity)) // check
+                                .transition(.move(edge: .trailing).combined(with: .opacity))
                                 .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 4 : 0)
                             }
                         }

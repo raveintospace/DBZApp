@@ -13,7 +13,9 @@ struct GameSettingsPopover: View {
     @Environment(\.router) private var router
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @ObservedObject var viewModel: GameViewModel // Observes the existing viewModel
-        
+    
+    @State private var showDisabledAlert: Bool = false
+    
     init(viewModel: GameViewModel) {
         self.viewModel = viewModel
     }
@@ -26,6 +28,9 @@ struct GameSettingsPopover: View {
                 gamesSelector
                 setsSelector
             }
+        }
+        .alert(isPresented: $showDisabledAlert) {
+            Alert(title: Text("Setting disabled"), message: Text("You can only update settings when game has not started"), dismissButton: .default(Text("OK")))
         }
     }
 }
@@ -54,6 +59,7 @@ extension GameSettingsPopover {
         GameSegmentedControl(
             segmentedTitle: "Games to win",
             isEnabled: !viewModel.hasGameStarted,
+            disabledAction: { showDisabledAlert = true },
             selection: $viewModel.gamesToWin
         )
         .padding()
@@ -63,6 +69,7 @@ extension GameSettingsPopover {
         GameSegmentedControl(
             segmentedTitle: "Sets to win",
             isEnabled: !viewModel.hasGameStarted,
+            disabledAction: { showDisabledAlert = true },
             selection: $viewModel.setsToWin
         )
         .padding()

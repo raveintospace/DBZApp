@@ -12,6 +12,7 @@ struct GameSegmentedControl: View {
     var segmentedTitle: String = "Some title"
     var options: [Int] = [2, 3, 5]
     var isEnabled: Bool = true
+    var disabledAction: (() -> Void)? = nil
     @Binding var selection: Int
     @Namespace private var segmentedControl
     
@@ -30,7 +31,10 @@ fileprivate struct GameSegmentedControlPreview: View {
     @State private var selection = 2
     
     var body: some View {
-        GameSegmentedControl(segmentedTitle: segmentedTitle, options: options, isEnabled: false, selection: $selection)
+        VStack(spacing: 20) {
+            GameSegmentedControl(segmentedTitle: segmentedTitle, options: options, isEnabled: false, selection: $selection)
+            GameSegmentedControl(segmentedTitle: segmentedTitle, options: options, isEnabled: true, selection: $selection)
+        }
         .padding()
     }
     
@@ -63,16 +67,14 @@ extension GameSegmentedControl {
                         ZStack {
                             if selection == option {
                                 Capsule()
-                                    .fill(.dbzOrange)
+                                    .fill(isEnabled ? .dbzOrange : .dbzOrange.opacity(0.5))
                                     .matchedGeometryEffect(id: "selection", in: segmentedControl)
                             }
                         }
                     )
                     .foregroundStyle(selection == option ? .dbzBlue : .dbzBlue)
                     .onTapGesture {
-                        if isEnabled {
-                            selection = option
-                        }
+                        isEnabled ? selection = option : disabledAction?()
                     }
             }
             .frame(maxWidth: .infinity)

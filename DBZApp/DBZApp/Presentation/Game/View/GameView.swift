@@ -220,8 +220,6 @@ extension GameView {
 
 // MARK: - To Do
 /*
- Animate deal & undeal cards
+ Animate deal & undeal cards to players
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone
- review implementation of gameviewmodel in gamesettingspopover
- update viewmodel games & sets to win, they are read but not updated - do as select cards
  */
