@@ -12,10 +12,10 @@ struct GameSettingsPopover: View {
     
     @Environment(\.router) private var router
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
-    @StateObject private var viewModel: GameViewModel
-    
-    init(databaseViewModel: DatabaseViewModel) {
-        _viewModel = StateObject(wrappedValue: GameViewModel(databaseViewModel: databaseViewModel))
+    @ObservedObject var viewModel: GameViewModel // Observes the existing viewModel
+        
+    init(viewModel: GameViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -35,7 +35,7 @@ struct GameSettingsPopover: View {
         ZStack {
             Color.dbzBlue.ignoresSafeArea()
             
-            GameSettingsPopover(databaseViewModel: DeveloperPreview.instance.databaseViewModel)
+            GameSettingsPopover(viewModel: GameViewModel(databaseViewModel: DeveloperPreview.instance.databaseViewModel))
                 .environmentObject(DeveloperPreview.instance.databaseViewModel)
         }
     }

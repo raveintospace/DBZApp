@@ -180,7 +180,7 @@ extension GameView {
     }
     
     private var settingsPopover: some View {
-        GameSettingsPopover(databaseViewModel: databaseViewModel)
+        GameSettingsPopover(viewModel: viewModel)
             .padding(.vertical)
             .background(.dbzBlue)
             .cornerRadius(20)
