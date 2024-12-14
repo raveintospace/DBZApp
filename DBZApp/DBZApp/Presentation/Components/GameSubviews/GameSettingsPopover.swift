@@ -60,7 +60,7 @@ extension GameSettingsPopover {
     private var gamesSelector: some View {
         GameSegmentedControl(
             segmentedTitle: "Games to win",
-            isEnabled: !viewModel.hasGameStarted,
+            isEnabled: !viewModel.hasMatchStarted,
             disabledAction: { showDisabledAlert = true },
             selection: $viewModel.gamesToWin
         )
@@ -69,7 +69,7 @@ extension GameSettingsPopover {
     private var setsSelector: some View {
         GameSegmentedControl(
             segmentedTitle: "Sets to win",
-            isEnabled: !viewModel.hasGameStarted,
+            isEnabled: !viewModel.hasMatchStarted,
             disabledAction: { showDisabledAlert = true },
             selection: $viewModel.setsToWin
         )

@@ -8,7 +8,7 @@
 import Foundation
 
 enum GameAlert: Identifiable {
-    case resetMatch
+    case finishMatch
     case playAgain
     
     var id: GameAlert {

@@ -40,8 +40,8 @@ struct GameView: View {
         }
         .alert(item: $activeAlert) { alertType in
             switch alertType {
-            case .resetMatch:
-                return resetMatchAlert()
+            case .finishMatch:
+                return finishMatchAlert()
             case .playAgain:
                 return playAgainAlert()
             }
@@ -142,17 +142,17 @@ extension GameView {
     
     private var gameTrailingButtons: some View {
         GameTrailingButtons(
-            hasGameStarted: viewModel.hasGameStarted,
-            hasGameFinished: viewModel.hasGameFinished,
+            hasMatchStarted: viewModel.hasMatchStarted,
+            hasMatchFinished: viewModel.hasMatchFinished,
             hasSelectedCards: !viewModel.cardsToDiscard.isEmpty,
             areDiscardsAllowed: viewModel.areDiscardsAllowed(),
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
             hasRivalCards: !viewModel.rivalCards.isEmpty,
             onPlayButtonPressed: {
-                viewModel.startGame()
+                viewModel.startMatch()
             },
             onRestartButtonPressed: {
-                activeAlert = .resetMatch
+                activeAlert = .finishMatch
             },
             onRevealButtonPressed: {
                 viewModel.compareCards()
@@ -195,13 +195,13 @@ extension GameView {
         viewModel.shouldRevealPlayerCards ? viewModel.playerPointsInView() : "¿?"
     }
     
-    private func resetMatchAlert() -> Alert {
+    private func finishMatchAlert() -> Alert {
         return Alert(
-            title: Text("Reset Match"),
-            message: Text("Do you want to reset the current match?"),
+            title: Text("Finish Match"),
+            message: Text("Do you want to finish the current match?"),
             primaryButton: .default(Text("Cancel")),
-            secondaryButton: .destructive(Text("Reset")) {
-                viewModel.endGame()
+            secondaryButton: .destructive(Text("Finish")) {
+                viewModel.endMatch()
         })
     }
     
@@ -213,7 +213,7 @@ extension GameView {
                 router.dismissScreen()
             },
             secondaryButton: .destructive(Text("Yes")) {
-                viewModel.endGame()
+                viewModel.endMatch()
         })
     }
 }

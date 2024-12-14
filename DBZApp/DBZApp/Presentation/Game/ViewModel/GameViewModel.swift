@@ -15,8 +15,8 @@ final class GameViewModel: ObservableObject {
     @Published var playerCards: [GameCharacter] = []
     @Published var cardsToDiscard: [GameCharacter] = []
     
-    @Published var hasGameStarted: Bool = false
-    @Published var hasGameFinished: Bool = false
+    @Published var hasMatchStarted: Bool = false
+    @Published var hasMatchFinished: Bool = false
     @Published var shouldShuffleCards: Bool = false
     @Published var shouldRevealPlayerCards: Bool = false
     @Published var shouldRevealRivalCards: Bool = false
@@ -57,10 +57,10 @@ final class GameViewModel: ObservableObject {
     }
     
     // MARK: - Intents
-    func startGame() {
+    func startMatch() {
         gameTextMessage = .empty
         shouldShuffleCards = true
-        hasGameStarted = true
+        hasMatchStarted = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.dealCards()
@@ -68,7 +68,7 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func endGame() {
+    func endMatch() {
         resetScoreboard()
         
         shouldRevealRivalCards = false
@@ -79,8 +79,8 @@ final class GameViewModel: ObservableObject {
         playerCards.removeAll()
         cardsToDiscard.removeAll()
         
-        hasGameStarted = false
-        hasGameFinished = false
+        hasMatchStarted = false
+        hasMatchFinished = false
         showPlayAgainAlert = false
     }
     
@@ -247,7 +247,7 @@ final class GameViewModel: ObservableObject {
         if isSoundEnabled {
             playGameWonSound()
         }
-        hasGameFinished = true
+        hasMatchFinished = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.showPlayAgainAlert = true
         }
@@ -258,7 +258,7 @@ final class GameViewModel: ObservableObject {
         if isSoundEnabled {
             playGameLostSound()
         }
-        hasGameFinished = true
+        hasMatchFinished = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.showPlayAgainAlert = true
         }
@@ -357,6 +357,7 @@ final class GameViewModel: ObservableObject {
             debugPrint("Game lost sound URL is nil. Sound will not play.")
             return
         }
+        soundPlayer.play(withURL: url)
     }
     
     // MARK: - Methods for view
