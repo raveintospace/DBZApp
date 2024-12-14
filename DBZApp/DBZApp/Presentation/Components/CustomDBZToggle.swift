@@ -12,6 +12,8 @@ struct CustomDBZToggle: ToggleStyle {
     var offColor: Color = .dbzYellow.opacity(0.5)
     var knobColor: Color = .dbzBlue
 
+    @State private var trigger: Bool = false
+    
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
@@ -26,7 +28,8 @@ struct CustomDBZToggle: ToggleStyle {
                         .offset(x: configuration.isOn ? 10 : -10)
                         .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
                 )
-                .onTapGesture {
+                .sensoryFeedback(.impact, trigger: trigger)
+                .withTrigger(trigger: $trigger) {
                     configuration.isOn.toggle()
                 }
         }

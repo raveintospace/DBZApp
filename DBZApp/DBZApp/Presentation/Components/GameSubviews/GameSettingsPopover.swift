@@ -32,7 +32,7 @@ struct GameSettingsPopover: View {
             .padding()
         }
         .alert(isPresented: $showDisabledAlert) {
-            Alert(title: Text("Setting disabled"), message: Text("You can only update settings when game has not started"), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Setting disabled"), message: Text("You can only update this setting when game has not started"), dismissButton: .default(Text("OK")))
         }
     }
 }
