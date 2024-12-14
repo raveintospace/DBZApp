@@ -151,7 +151,7 @@ extension GameView {
             onPlayButtonPressed: {
                 viewModel.startMatch()
             },
-            onRestartButtonPressed: {
+            onStopButtonPressed: {
                 activeAlert = .finishMatch
             },
             onRevealButtonPressed: {

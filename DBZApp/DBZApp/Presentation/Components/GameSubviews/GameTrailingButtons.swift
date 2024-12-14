@@ -17,7 +17,7 @@ struct GameTrailingButtons: View {
     var hasRivalCards: Bool = false
     
     var onPlayButtonPressed: (() -> Void)? = nil
-    var onRestartButtonPressed: (() -> Void)? = nil
+    var onStopButtonPressed: (() -> Void)? = nil
     var onRevealButtonPressed: (() -> Void)? = nil
     var onDealButtonPressed: (() -> Void)? = nil
     var onDiscardButtonPressed: (() -> Void)? = nil
@@ -47,8 +47,8 @@ extension GameTrailingButtons {
     private var topButton: some View {
         if hasMatchStarted && !hasMatchFinished {
             GameActionButton(
-                imageName: "arrow.2.circlepath",
-                onButtonPressed: { onRestartButtonPressed?()} // showAlert
+                imageName: "stop.fill",
+                onButtonPressed: { onStopButtonPressed?() }
             )
         } else {
             GameActionButton(
