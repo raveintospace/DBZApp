@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftfulUI
 
 struct FiltersBar: View {
     var filters: [Filter] = []

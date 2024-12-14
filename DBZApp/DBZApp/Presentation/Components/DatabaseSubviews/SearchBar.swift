@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftfulUI
 
 struct SearchBar: View {
     

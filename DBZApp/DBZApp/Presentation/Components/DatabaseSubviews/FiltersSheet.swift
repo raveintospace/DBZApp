@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftfulUI
 import SwiftfulRouting
 
 struct FiltersSheet: View {

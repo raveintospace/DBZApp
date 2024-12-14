@@ -13,8 +13,11 @@ struct GameSegmentedControl: View {
     var options: [Int] = [2, 3, 5]
     var isEnabled: Bool = true
     var disabledAction: (() -> Void)? = nil
+    
     @Binding var selection: Int
     @Namespace private var segmentedControl
+    
+    @State private var trigger = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -73,7 +76,8 @@ extension GameSegmentedControl {
                         }
                     )
                     .foregroundStyle(selection == option ? .dbzBlue : .dbzBlue)
-                    .onTapGesture {
+                    .sensoryFeedback(.impact, trigger: trigger)
+                    .withTrigger(trigger: $trigger) {
                         isEnabled ? selection = option : disabledAction?()
                     }
             }
