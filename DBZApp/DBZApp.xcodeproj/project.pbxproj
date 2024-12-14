@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -232,6 +232,10 @@
 		34F6AD802CE7C09F008DE709 /* GameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3410804D2D0DFB6100D7CE9F /* Sound */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sound; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		343DC2E62C89AA4400BCCF39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -286,6 +290,7 @@
 				343DC2FB2C89AAEB00BCCF39 /* Domain */,
 				343DC3062C89B51600BCCF39 /* Resources */,
 				343DC30F2C89C41F00BCCF39 /* Shared */,
+				3410804D2D0DFB6100D7CE9F /* Sound */,
 				343DC2F02C89AA4500BCCF39 /* Assets.xcassets */,
 				343DC2F22C89AA4500BCCF39 /* Preview Content */,
 			);
@@ -784,6 +789,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3410804D2D0DFB6100D7CE9F /* Sound */,
 			);
 			name = DBZApp;
 			packageProductDependencies = (
