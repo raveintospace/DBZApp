@@ -80,5 +80,6 @@ extension GameSettingsPopover {
             .font(.title2)
             .bold()
             .foregroundStyle(.dbzYellow)
+            .toggleStyle(CustomDBZToggle())
     }
 }

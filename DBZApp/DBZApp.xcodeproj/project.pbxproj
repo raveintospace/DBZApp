@@ -14,6 +14,7 @@
 		340C22C82CDA8FFA00F8341C /* GameCharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C22C72CDA8FFA00F8341C /* GameCharacterMapper.swift */; };
 		340C22CA2CDA91D300F8341C /* KiFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C22C92CDA91D300F8341C /* KiFormatter.swift */; };
 		340C22CC2CDA944700F8341C /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C22CB2CDA944700F8341C /* GameViewModel.swift */; };
+		3410804C2D0DF15C00D7CE9F /* CustomDBZToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410804B2D0DF15C00D7CE9F /* CustomDBZToggle.swift */; };
 		342373E92C93493800046832 /* FiltersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342373E82C93493800046832 /* FiltersSheet.swift */; };
 		3428790B2C99E256002AF7A5 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3428790A2C99E256002AF7A5 /* SwiftfulUI */; };
 		3428790D2C99E5A5002AF7A5 /* ImageOrangeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */; };
@@ -126,6 +127,7 @@
 		340C22C72CDA8FFA00F8341C /* GameCharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCharacterMapper.swift; sourceTree = "<group>"; };
 		340C22C92CDA91D300F8341C /* KiFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiFormatter.swift; sourceTree = "<group>"; };
 		340C22CB2CDA944700F8341C /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		3410804B2D0DF15C00D7CE9F /* CustomDBZToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDBZToggle.swift; sourceTree = "<group>"; };
 		342373E82C93493800046832 /* FiltersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersSheet.swift; sourceTree = "<group>"; };
 		3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrangeCircle.swift; sourceTree = "<group>"; };
 		342D19812CB29C34006603DE /* DetailedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCharacter.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				34EF674D2CCFFE3200720340 /* ButtonAnimatedGlow.swift */,
 				3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */,
 				344AC3AB2CE911E4001453A3 /* CardGrid.swift */,
+				3410804B2D0DF15C00D7CE9F /* CustomDBZToggle.swift */,
 				34C4BDD22CB1890200C5060C /* ExpandableText.swift */,
 				34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */,
 				3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */,
@@ -877,6 +880,7 @@
 				343DC3132C89C87400BCCF39 /* CharacterRepositoryProtocol.swift in Sources */,
 				343DC3192C89CC7A00BCCF39 /* GetLocalCharactersUseCaseProtocol.swift in Sources */,
 				343DC3112C89C43900BCCF39 /* DataService.swift in Sources */,
+				3410804C2D0DF15C00D7CE9F /* CustomDBZToggle.swift in Sources */,
 				34BF19AA2C95D95100A6B55A /* SortCharactersUsecaseProtocol.swift in Sources */,
 				34E98FE22CCD44F50024BE36 /* ImageDBZHeaderLogo.swift in Sources */,
 				34B83F672CE646930080BAD8 /* GameActionButton.swift in Sources */,
