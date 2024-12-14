@@ -244,7 +244,9 @@ final class GameViewModel: ObservableObject {
     
     private func playerHasWon() {
         gameTextMessage = .matchWon
-        // play sound
+        if isSoundEnabled {
+            playGameWonSound()
+        }
         hasGameFinished = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.showPlayAgainAlert = true
@@ -253,7 +255,9 @@ final class GameViewModel: ObservableObject {
     
     private func rivalHasWon() {
         gameTextMessage = .matchLost
-        // play sound
+        if isSoundEnabled {
+            playGameLostSound()
+        }
         hasGameFinished = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.showPlayAgainAlert = true
@@ -312,6 +316,8 @@ final class GameViewModel: ObservableObject {
         }
     }
     
+    private let soundPlayer = SoundPlayer()
+    
     private let soundUserDefaultsKey: String = "soundSetting"
     let gameWonSound = SoundModel(name: "gameWon")
     let gameLostSound = SoundModel(name: "gameLost")
@@ -336,6 +342,21 @@ final class GameViewModel: ObservableObject {
         }
         // default value if decoding fails
         return true
+    }
+    
+    private func playGameWonSound() {
+        guard let url = gameWonSound.getURL() else {
+            debugPrint("Game won sound URL is nil. Sound will not play.")
+            return
+        }
+        soundPlayer.play(withURL: url)
+    }
+    
+    private func playGameLostSound() {
+        guard let url = gameLostSound.getURL() else {
+            debugPrint("Game lost sound URL is nil. Sound will not play.")
+            return
+        }
     }
     
     // MARK: - Methods for view

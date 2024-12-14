@@ -6,14 +6,18 @@
 //
 
 import Foundation
-import AVKit
+import AVFoundation
 
 class SoundPlayer {
     var player: AVAudioPlayer?
     
-    func play(withURL: URL) {
-        player = try! AVAudioPlayer(contentsOf: withURL)
-        player?.prepareToPlay()
-        player?.play()
+    func play(withURL url: URL) {
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.prepareToPlay()
+            player?.play()
+        } catch {
+            debugPrint("Failed to play sound: \(error.localizedDescription)")
+        }
     }
 }
