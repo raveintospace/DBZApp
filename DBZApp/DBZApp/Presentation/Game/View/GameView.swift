@@ -182,6 +182,7 @@ extension GameView {
     private var settingsPopover: some View {
         GameSettingsPopover(viewModel: viewModel)
             .padding(.vertical)
+            .withBorder(color: .dbzYellow, width: 4, cornerRadius: 20)
             .background(.dbzBlue)
             .cornerRadius(20)
     }
