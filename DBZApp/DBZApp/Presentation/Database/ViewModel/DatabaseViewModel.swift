@@ -137,7 +137,7 @@ final class DatabaseViewModel: ObservableObject {
         isLoading = false
     }
     
-    // MARK: - Transition from progress view to expected final view
+    // MARK: - Smooth transition from progress view to expected final view
     private func pauseForSmoothTransition(startTime: Date, minDuration: TimeInterval = 1) async {
         let elapsedTime = Date().timeIntervalSince(startTime)
         

@@ -57,6 +57,7 @@ final class GameViewModel: ObservableObject {
         })
     }
     
+    // MARK: - Intents
     func startGame() {
         gameTextMessage = .empty
         shouldShuffleCards = true
@@ -101,41 +102,7 @@ final class GameViewModel: ObservableObject {
         updatePoints()
     }
     
-    private func dealCards() {
-        guard gameCharacters.count >= 6 else {
-            debugPrint("Not enough cards to deal")
-            return
-        }
-        
-        gameCharacters.shuffle()
-        
-        // Deal cards to rival - pending animation
-        rivalCards = Array(gameCharacters.prefix(3))
-        gameCharacters.removeFirst(3)
-        
-        // Deal cards to player - pending animation
-        playerCards = Array(gameCharacters.prefix(3))
-        gameCharacters.removeFirst(3)
-        
-        shouldRevealPlayerCards = true
-    }
-    
-    private func returnCardsToDeck() {
-        shouldRevealPlayerCards = false
-        
-        // animate return player cards to deck
-        gameCharacters.append(contentsOf: playerCards)
-        playerCards.removeAll()
-        
-        shouldRevealRivalCards = false
-        // animate return rival cards to deck
-        gameCharacters.append(contentsOf: rivalCards)
-        rivalCards.removeAll()
-        
-        shouldShuffleCards = true
-    }
-    
-    func toggleCardSelection(_ card: GameCharacter) {        
+    func toggleCardSelection(_ card: GameCharacter) {
         if let index = playerCards.firstIndex(where: { $0.id == card.id }) {
             playerCards[index].isSelected.toggle()
             if playerCards[index].isSelected {
@@ -189,6 +156,41 @@ final class GameViewModel: ObservableObject {
         
         shouldRevealPlayerCards = true
         updatePoints()
+    }
+    
+    // MARK: - Internal methods for game
+    private func dealCards() {
+        guard gameCharacters.count >= 6 else {
+            debugPrint("Not enough cards to deal")
+            return
+        }
+        
+        gameCharacters.shuffle()
+        
+        // Deal cards to rival - pending animation
+        rivalCards = Array(gameCharacters.prefix(3))
+        gameCharacters.removeFirst(3)
+        
+        // Deal cards to player - pending animation
+        playerCards = Array(gameCharacters.prefix(3))
+        gameCharacters.removeFirst(3)
+        
+        shouldRevealPlayerCards = true
+    }
+    
+    private func returnCardsToDeck() {
+        shouldRevealPlayerCards = false
+        
+        // animate return player cards to deck
+        gameCharacters.append(contentsOf: playerCards)
+        playerCards.removeAll()
+        
+        shouldRevealRivalCards = false
+        // animate return rival cards to deck
+        gameCharacters.append(contentsOf: rivalCards)
+        rivalCards.removeAll()
+        
+        shouldShuffleCards = true
     }
     
     private func deselectSelectedCards() {
@@ -304,6 +306,7 @@ final class GameViewModel: ObservableObject {
         playerSets = 0
     }
     
+    // MARK: - Methods for view
     func rivalPointsInView() -> String {
         return KiFormatter.formatDecimalToString(rivalPoints)
     }
