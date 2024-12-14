@@ -37,8 +37,6 @@ final class GameViewModel: ObservableObject {
     @Published var discardsUsed: Int = 0
     let discardsAllowed: Int = 2
     
-    @Published var isSoundEnabled: Bool = true
-    
     @Published var gameTextMessage: GameText = .welcome
     
     private let databaseViewModel: DatabaseViewModel
@@ -49,6 +47,7 @@ final class GameViewModel: ObservableObject {
             await databaseViewModel.loadLocalCharacters()
             loadGameCharacters()
         }
+        isSoundEnabled = getSoundSetting()
     }
     
     private func loadGameCharacters() {
@@ -304,6 +303,39 @@ final class GameViewModel: ObservableObject {
         playerGames = 0
         rivalSets = 0
         playerSets = 0
+    }
+    
+    // MARK: - Sound settings
+    @Published var isSoundEnabled: Bool = true {
+        didSet {
+            encodeAndSaveSoundSetting()
+        }
+    }
+    
+    private let soundUserDefaultsKey: String = "soundSetting"
+    let gameWonSound = SoundModel(name: "gameWon")
+    let gameLostSound = SoundModel(name: "gameLost")
+    
+    private func encodeAndSaveSoundSetting() {
+        do {
+            let encoded = try JSONEncoder().encode(isSoundEnabled)
+            UserDefaults.standard.set(encoded, forKey: soundUserDefaultsKey)
+        } catch {
+            debugPrint("Error encoding sound setting: \(error)")
+        }
+    }
+    
+    private func getSoundSetting() -> Bool {
+        if let soundSettingData = UserDefaults.standard.object(forKey: soundUserDefaultsKey) as? Data {
+            do {
+                let soundSetting = try JSONDecoder().decode(Bool.self, from: soundSettingData)
+                return soundSetting
+            } catch {
+                debugPrint("Error decoding sound setting: \(error)")
+            }
+        }
+        // default value if decoding fails
+        return true
     }
     
     // MARK: - Methods for view
