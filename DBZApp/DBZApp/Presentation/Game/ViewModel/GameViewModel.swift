@@ -31,11 +31,13 @@ final class GameViewModel: ObservableObject {
     @Published var rivalSets: Int = 0
     @Published var playerSets: Int = 0
     
-    @Published var gamesToWin: Int = 3  // update
-    @Published var setsToWin: Int = 2   // update
+    @Published var gamesToWin: Int = 2
+    @Published var setsToWin: Int = 2
     
     @Published var discardsUsed: Int = 0
     let discardsAllowed: Int = 2
+    
+    @Published var isSoundEnabled: Bool = true
     
     @Published var gameTextMessage: GameText = .welcome
     

@@ -24,10 +24,12 @@ struct GameSettingsPopover: View {
         VStack {
             settingsPopoverTitle
             
-            VStack(spacing: 12) {
+            VStack(spacing: 30) {
                 gamesSelector
                 setsSelector
+                soundToggle
             }
+            .padding()
         }
         .alert(isPresented: $showDisabledAlert) {
             Alert(title: Text("Setting disabled"), message: Text("You can only update settings when game has not started"), dismissButton: .default(Text("OK")))
@@ -62,7 +64,6 @@ extension GameSettingsPopover {
             disabledAction: { showDisabledAlert = true },
             selection: $viewModel.gamesToWin
         )
-        .padding()
     }
     
     private var setsSelector: some View {
@@ -72,6 +73,12 @@ extension GameSettingsPopover {
             disabledAction: { showDisabledAlert = true },
             selection: $viewModel.setsToWin
         )
-        .padding()
+    }
+    
+    private var soundToggle: some View {
+        Toggle("Sound FX", isOn: $viewModel.isSoundEnabled)
+            .font(.title2)
+            .bold()
+            .foregroundStyle(.dbzYellow)
     }
 }
