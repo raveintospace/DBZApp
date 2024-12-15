@@ -91,6 +91,7 @@
 		34C58C2C2D048005007B39F2 /* GameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C58C2B2D048005007B39F2 /* GameAlert.swift */; };
 		34C5E2D02C98920800A1AC41 /* ImageBlueCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */; };
 		34C5E2D22C98945600A1AC41 /* TitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E2D12C98945600A1AC41 /* TitleHeader.swift */; };
+		34C6A9512D0EEDF7002922B4 /* DBZDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C6A9502D0EEDF7002922B4 /* DBZDivider.swift */; };
 		34C9FB352C919FAF00FA0139 /* FilterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */; };
 		34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */; };
 		34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */; };
@@ -203,6 +204,7 @@
 		34C58C2B2D048005007B39F2 /* GameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAlert.swift; sourceTree = "<group>"; };
 		34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBlueCircle.swift; sourceTree = "<group>"; };
 		34C5E2D12C98945600A1AC41 /* TitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeader.swift; sourceTree = "<group>"; };
+		34C6A9502D0EEDF7002922B4 /* DBZDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBZDivider.swift; sourceTree = "<group>"; };
 		34C9FB342C919FAF00FA0139 /* FilterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryProtocol.swift; sourceTree = "<group>"; };
 		34C9FB362C91A03200FA0139 /* FilterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRepositoryImpl.swift; sourceTree = "<group>"; };
 		34C9FB3A2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFiltersUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				3407D9BC2CBAE15E000720B5 /* ButtonBorderColorAnimated.swift */,
 				344AC3AB2CE911E4001453A3 /* CardGrid.swift */,
 				3410804B2D0DF15C00D7CE9F /* CustomDBZToggle.swift */,
+				34C6A9502D0EEDF7002922B4 /* DBZDivider.swift */,
 				34C4BDD22CB1890200C5060C /* ExpandableText.swift */,
 				34C5E2CF2C98920800A1AC41 /* ImageBlueCircle.swift */,
 				3428790C2C99E5A5002AF7A5 /* ImageOrangeCircle.swift */,
@@ -934,6 +937,7 @@
 				34EBEE352CA80C5B006FBCC6 /* DetailImageTopCell.swift in Sources */,
 				343DC31B2C89CC9900BCCF39 /* FetchCharactersFromAPIUseCaseProtocol.swift in Sources */,
 				34C9FB372C91A03200FA0139 /* FilterRepositoryImpl.swift in Sources */,
+				34C6A9512D0EEDF7002922B4 /* DBZDivider.swift in Sources */,
 				34C9FB3B2C91A1AD00FA0139 /* GetFiltersUseCaseProtocol.swift in Sources */,
 				342D19862CB2A045006603DE /* NetworkDetailCharacterDataSource.swift in Sources */,
 				34DFF8F42CBBFA0B004E4769 /* SensoryTriggerModifier.swift in Sources */,

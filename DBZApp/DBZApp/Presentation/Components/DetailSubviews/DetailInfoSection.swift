@@ -20,11 +20,11 @@ struct DetailInfoSection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             nameGenderSection
-            yellowDivider
+            DBZDivider()
             propertiesSection
-            yellowDivider
+            DBZDivider()
             descriptionSection
-            yellowDivider
+            DBZDivider()
         }
         .foregroundStyle(.accent)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -82,11 +82,5 @@ extension DetailInfoSection {
                 .expandButton(TextSet(text: "Read more", font: .caption, fontWeight: .bold, color: .dbzBlue))
                 .collapseButton(TextSet(text: "Show less", font: .caption, fontWeight: .bold, color: .dbzBlue))
         }
-    }
-    
-    private var yellowDivider: some View {
-        Divider()
-            .overlay(.dbzYellow)
-            .padding(.horizontal, -25)
     }
 }

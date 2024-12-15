@@ -26,7 +26,9 @@ struct GameSettingsPopover: View {
             
             VStack(spacing: 30) {
                 gamesSelector
+                DBZDivider()
                 setsSelector
+                DBZDivider()
                 soundToggle
             }
             .padding()
