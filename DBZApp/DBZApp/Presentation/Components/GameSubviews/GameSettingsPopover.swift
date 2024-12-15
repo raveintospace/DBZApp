@@ -96,7 +96,7 @@ extension GameSettingsPopover {
     }
     
     private func showFullScreenCover<Content: View>(@ViewBuilder content: @escaping () -> Content) {
-        router.showScreen(.fullScreenCover) { _ in
+        router.showScreen(.sheet) { _ in
             content()
         }
     }

@@ -27,7 +27,6 @@ struct GameRulesView: View {
                         scoringText
                         DBZDivider()
                         discardingText
-                        
                     }
                 }
                 .foregroundStyle(.dbzYellow)
