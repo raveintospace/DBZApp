@@ -22,6 +22,7 @@ final class GameViewModel: ObservableObject {
     @Published var shouldRevealRivalCards: Bool = false
     @Published var showPlayAgainAlert: Bool = false
     
+    // MARK: - Scoreboard
     @Published var rivalPoints: Decimal = 0
     @Published var playerPoints: Decimal = 0
     
@@ -35,6 +36,11 @@ final class GameViewModel: ObservableObject {
     let discardsAllowed: Int = 2
     
     @Published var gameTextMessage: GameText = .welcome
+    
+    // MARK: - Deal Animation properties
+    @Published var rivalCardPositions: [CGRect] = []
+    @Published var playerCardPositions: [CGRect] = []
+    @Published var deckPosition: CGRect = .zero
     
     private let databaseViewModel: DatabaseViewModel
     
