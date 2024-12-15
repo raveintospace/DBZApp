@@ -30,6 +30,8 @@ struct GameSettingsPopover: View {
                 setsSelector
                 DBZDivider()
                 soundToggle
+                DBZDivider()
+                rulesNavigationLink
             }
             .padding()
         }
@@ -53,7 +55,7 @@ struct GameSettingsPopover: View {
 extension GameSettingsPopover {
     
     private var settingsPopoverTitle: some View {
-        Text("SETTINGS")
+        Text("SETTINGS & RULES")
             .font(.title)
             .bold()
             .foregroundStyle(.dbzYellow)
@@ -83,5 +85,19 @@ extension GameSettingsPopover {
             .bold()
             .foregroundStyle(.dbzYellow)
             .toggleStyle(CustomDBZToggle())
+    }
+    
+    private var rulesNavigationLink: some View {
+        GameRulesNavigationLink(onNavigationPressed: {
+            showFullScreenCover {
+                GameRulesView()
+            }
+        })
+    }
+    
+    private func showFullScreenCover<Content: View>(@ViewBuilder content: @escaping () -> Content) {
+        router.showScreen(.fullScreenCover) { _ in
+            content()
+        }
     }
 }
