@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor
 final class GameViewModel: ObservableObject {
@@ -67,7 +68,6 @@ final class GameViewModel: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.dealCards()
-            self.updatePoints()
         }
     }
     
@@ -174,16 +174,37 @@ final class GameViewModel: ObservableObject {
         }
         
         gameCharacters.shuffle()
+        dealCardsToRival()
+        dealCardsToPlayer()
         
-        // Deal cards to rival - pending animation
-        rivalCards = Array(gameCharacters.prefix(3))
-        gameCharacters.removeFirst(3)
-        
-        // Deal cards to player - pending animation
-        playerCards = Array(gameCharacters.prefix(3))
-        gameCharacters.removeFirst(3)
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.revealPlayerCardsAndUpdatePoints()
+        }
+    }
+    
+    private func dealCardsToRival() {
+        for index in 0..<3 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
+                withAnimation {
+                    self.rivalCards.append(self.gameCharacters.removeFirst())
+                }
+            }
+        }
+    }
+    
+    private func dealCardsToPlayer() {
+        for index in 0..<3 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index + 3) * 0.2) {
+                withAnimation {
+                    self.playerCards.append(self.gameCharacters.removeFirst())
+                }
+            }
+        }
+    }
+    
+    private func revealPlayerCardsAndUpdatePoints() {
         shouldRevealPlayerCards = true
+        updatePoints()
     }
     
     private func returnCardsToDeck() {
