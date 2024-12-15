@@ -13,17 +13,22 @@ struct GameRulesNavigationLink: View {
     @State private var trigger = false
     
     var body: some View {
-        HStack {
-            NavigationLink("Game rules", destination: GameRulesView())
-            Spacer()
-            Image(systemName: "book.pages")
-        }
-        .font(.title2)
-        .bold()
-        .foregroundStyle(.dbzYellow)
-        .sensoryFeedback(.impact, trigger: trigger)
-        .withTrigger(trigger: $trigger) {
+        Button(action: {
+            trigger = true
             onNavigationPressed?()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                trigger = false
+            }
+        }) {
+            HStack {
+                Text("Game rules")
+                Spacer()
+                Image(systemName: "book.pages")
+            }
+            .font(.title2)
+            .bold()
+            .foregroundStyle(.dbzYellow)
+            .sensoryFeedback(.impact, trigger: trigger)
         }
     }
 }
@@ -32,3 +37,5 @@ struct GameRulesNavigationLink: View {
     GameRulesNavigationLink()
         .padding()
 }
+
+// Not using withTrigger to avoid the HStack being compressed with on tap gesture
