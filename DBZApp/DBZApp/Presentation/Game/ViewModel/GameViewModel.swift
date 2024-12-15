@@ -31,9 +31,6 @@ final class GameViewModel: ObservableObject {
     @Published var rivalSets: Int = 0
     @Published var playerSets: Int = 0
     
-    @Published var gamesToWin: Int = 2
-    @Published var setsToWin: Int = 2
-    
     @Published var discardsUsed: Int = 0
     let discardsAllowed: Int = 2
     
@@ -47,7 +44,7 @@ final class GameViewModel: ObservableObject {
             await databaseViewModel.loadLocalCharacters()
             loadGameCharacters()
         }
-        isSoundEnabled = getSoundSetting()
+        loadGameSettings()
     }
     
     private func loadGameCharacters() {
@@ -158,6 +155,12 @@ final class GameViewModel: ObservableObject {
     }
     
     // MARK: - Internal methods for game
+    private func loadGameSettings() {
+        isSoundEnabled = getSoundSetting()
+        gamesToWin = getNumberOfGamesToWinSetting()
+        setsToWin = getNumberOfSetsToWinSetting()
+    }
+    
     private func dealCards() {
         guard gameCharacters.count >= 6 else {
             debugPrint("Not enough cards to deal")
@@ -309,14 +312,71 @@ final class GameViewModel: ObservableObject {
         playerSets = 0
     }
     
+    // MARK: - Match settings
+    @Published var gamesToWin: Int = 2 {
+        didSet {
+            encodeAndSaveNumberOfGamesToWin()
+        }
+    }
+    
+    private let gamesToWinUserDefaultsKey: String = "gamesToWinSetting"
+    
+    private func encodeAndSaveNumberOfGamesToWin() {
+        do {
+            let encoded = try JSONEncoder().encode(gamesToWin)
+            UserDefaults.standard.set(encoded, forKey: gamesToWinUserDefaultsKey)
+        } catch {
+            debugPrint("Error encoding number of games to win: \(error)")
+        }
+    }
+    
+    private func getNumberOfGamesToWinSetting() -> Int {
+        if let gamesToWinSetting = UserDefaults.standard.object(forKey: gamesToWinUserDefaultsKey) as? Data {
+            do {
+                let gamesToWinSetting = try JSONDecoder().decode(Int.self, from: gamesToWinSetting)
+                return gamesToWinSetting
+            } catch {
+                debugPrint("Error decoding number of games to win: \(error)")
+            }
+        }
+        return 2 // default value if decoding fails
+    }
+    
+    @Published var setsToWin: Int = 2 {
+        didSet {
+            encodeAndSaveNumberOfSetsToWin()
+        }
+    }
+    
+    private let setsToWinUserDefaultsKey: String = "setsToWinSetting"
+    
+    private func encodeAndSaveNumberOfSetsToWin() {
+        do {
+            let encoded = try JSONEncoder().encode(setsToWin)
+            UserDefaults.standard.set(encoded, forKey: setsToWinUserDefaultsKey)
+        } catch {
+            debugPrint("Error encoding number of sets to win: \(error)")
+        }
+    }
+    
+    private func getNumberOfSetsToWinSetting() -> Int {
+        if let setsToWinSetting = UserDefaults.standard.object(forKey: setsToWinUserDefaultsKey) as? Data {
+            do {
+                let setsToWinSetting = try JSONDecoder().decode(Int.self, from: setsToWinSetting)
+                return setsToWinSetting
+            } catch {
+                debugPrint("Error decoding number of sets to win: \(error)")
+            }
+        }
+        return 2 // default value if decoding fails
+    }
+    
     // MARK: - Sound settings
     @Published var isSoundEnabled: Bool = true {
         didSet {
             encodeAndSaveSoundSetting()
         }
     }
-    
-    private let soundPlayer = SoundPlayer()
     
     private let soundUserDefaultsKey: String = "soundSetting"
     let gameWonSound = SoundModel(name: "gameWon")
@@ -340,9 +400,10 @@ final class GameViewModel: ObservableObject {
                 debugPrint("Error decoding sound setting: \(error)")
             }
         }
-        // default value if decoding fails
-        return true
+        return true // default value if decoding fails
     }
+    
+    private let soundPlayer = SoundPlayer()
     
     private func playGameWonSound() {
         guard let url = gameWonSound.getURL() else {
