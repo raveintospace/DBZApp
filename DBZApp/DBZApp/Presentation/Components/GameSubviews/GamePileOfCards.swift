@@ -17,6 +17,9 @@ struct GamePileOfCards: View {
     @State private var cardRotations: [Angle] = []
     @State private var isShuffling: Bool = false
     
+    // Namespace to deal cards to players
+    @Namespace private var cardAnimationNamespace
+    
     var body: some View {
         ZStack {
             ForEach(undealtCards.indices, id: \.self) { index in
@@ -30,11 +33,11 @@ struct GamePileOfCards: View {
                 .offset(cardPositions.indices.contains(index) ? cardPositions[index] : .zero)
                 .rotationEffect(cardRotations.indices.contains(index) ? cardRotations[index] : .zero)
                 .animation(isShuffling ? .easeInOut(duration: 0.6) : .default, value: cardPositions)
+                .matchedGeometryEffect(id: "card-\(index)", in: cardAnimationNamespace)
             }
         }
         .onAppear {
-            cardPositions = Array(repeating: .zero, count: undealtCards.count)
-            cardRotations = Array(repeating: .zero, count: undealtCards.count)
+            setupInitialCardPositionsAndRotations()
         }
         .onChange(of: shouldShuffleCards) { _, newValue in
             if newValue {
@@ -92,5 +95,10 @@ extension GamePileOfCards {
                 isShuffling = false
             }
         }
+    }
+    
+    private func setupInitialCardPositionsAndRotations() {
+        cardPositions = Array(repeating: .zero, count: undealtCards.count)
+        cardRotations = Array(repeating: .zero, count: undealtCards.count)
     }
 }
