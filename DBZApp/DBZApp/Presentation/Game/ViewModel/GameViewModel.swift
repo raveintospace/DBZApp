@@ -142,11 +142,7 @@ final class GameViewModel: ObservableObject {
         }
         
         // Reset isSelected and return discarted cards to deck
-        for var card in cardsToDiscard {
-            card.isSelected = false
-            gameCharacters.append(card)
-        }
-        cardsToDiscard.removeAll()
+        returnDiscardedCardsToDeck()
         
         // Animate shuffle cards
         shouldShuffleCards = true
@@ -165,7 +161,8 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(discardedIndices.count) * 0.2) {
+        let totalDelay = Double(discardedIndices.count) * 0.2
+        DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
             self.shouldRevealPlayerCards = true
             self.updatePoints()
         }
@@ -232,6 +229,14 @@ final class GameViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.shouldShuffleCards = true
         }
+    }
+    
+    private func returnDiscardedCardsToDeck() {
+        for var card in cardsToDiscard {
+            card.isSelected = false
+            gameCharacters.append(card)
+        }
+        cardsToDiscard.removeAll()
     }
     
     private func deselectSelectedCards() {
