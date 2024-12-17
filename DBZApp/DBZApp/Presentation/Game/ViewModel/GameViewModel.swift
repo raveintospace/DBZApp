@@ -106,7 +106,10 @@ final class GameViewModel: ObservableObject {
     
     func toggleCardSelection(_ card: GameCharacter) {
         if let index = playerCards.firstIndex(where: { $0.id == card.id }) {
-            playerCards[index].isSelected.toggle()
+            withAnimation {
+                playerCards[index].isSelected.toggle()
+            }
+            
             if playerCards[index].isSelected {
                 cardsToDiscard.append(playerCards[index])
                 debugPrint("Card added to discarded")
@@ -131,9 +134,11 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        // Remove discarted cards from player
-        playerCards.removeAll { card in
-            cardsToDiscard.contains { $0.id == card.id }
+        // Remove discarted cards from player, with animation
+        withAnimation {
+            playerCards.removeAll { card in
+                cardsToDiscard.contains { $0.id == card.id }
+            }
         }
         
         // Reset isSelected and return discarted cards to deck
@@ -149,15 +154,21 @@ final class GameViewModel: ObservableObject {
         
         // Deal new cards to empty indices
         for index in discardedIndices {
-            if let newCard = gameCharacters.first {
-                newCardsToDeal.append(newCard)
-                playerCards.insert(newCard, at: index)
-                gameCharacters.removeFirst()
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
+                withAnimation {
+                    if let newCard = self.gameCharacters.first {
+                        newCardsToDeal.append(newCard)
+                        self.playerCards.insert(newCard, at: index)
+                        self.gameCharacters.removeFirst()
+                    }
+                }
             }
         }
         
-        shouldRevealPlayerCards = true
-        updatePoints()
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(discardedIndices.count) * 0.2) {
+            self.shouldRevealPlayerCards = true
+            self.updatePoints()
+        }
     }
     
     // MARK: - Internal methods for game
@@ -209,17 +220,18 @@ final class GameViewModel: ObservableObject {
     
     private func returnCardsToDeck() {
         shouldRevealPlayerCards = false
-        
-        // animate return player cards to deck
-        gameCharacters.append(contentsOf: playerCards)
-        playerCards.removeAll()
-        
         shouldRevealRivalCards = false
-        // animate return rival cards to deck
-        gameCharacters.append(contentsOf: rivalCards)
-        rivalCards.removeAll()
         
-        shouldShuffleCards = true
+        withAnimation {
+            gameCharacters.append(contentsOf: playerCards)
+            gameCharacters.append(contentsOf: rivalCards)
+            playerCards.removeAll()
+            rivalCards.removeAll()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.shouldShuffleCards = true
+        }
     }
     
     private func deselectSelectedCards() {
@@ -243,7 +255,7 @@ final class GameViewModel: ObservableObject {
     private func addVictoryToPlayer() {
         playerGames += 1
         gameTextMessage = .gameWon
-            
+        
         if playerGames == gamesToWin {
             playerGames = 0
             rivalGames = 0
@@ -464,5 +476,5 @@ final class GameViewModel: ObservableObject {
 
 // MARK: - To Do
 /*
-
+ 
  */
