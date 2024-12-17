@@ -14,6 +14,10 @@ struct GameView: View {
     @EnvironmentObject private var databaseViewModel: DatabaseViewModel
     @StateObject private var viewModel: GameViewModel
     
+    // Track cards' positions
+    @State private var playerCardPositions: [CGRect] = Array(repeating: .zero, count: 3)
+    @State private var rivalCardPositions: [CGRect] = Array(repeating: .zero, count: 3)
+    
     @State private var activeAlert: GameAlert? = nil
     
     init(databaseViewModel: DatabaseViewModel) {
@@ -91,7 +95,7 @@ extension GameView {
     private var bodyStack: some View {
         VStack {
             HStack {
-                ForEach(viewModel.rivalCards) { card in
+                ForEach(Array(viewModel.rivalCards.enumerated()), id: \.element.id) { index, card in
                     GameCard(
                         name: card.name,
                         imageName: card.image,
@@ -99,6 +103,7 @@ extension GameView {
                         isRevealed: viewModel.shouldRevealRivalCards,
                         isSelected: .constant(false)
                     )
+                    .modifier(CardPositionModifier(index: index, positions: $rivalCardPositions))
                 }
             }
             .padding(.horizontal)
@@ -111,14 +116,14 @@ extension GameView {
                     .frame(maxWidth: .infinity, alignment: .center)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
-                    .background(.red)
+                  //  .background(.red)
                 
             }
             .padding()
-            .background(.brown)
+          //  .background(.brown)
             
             HStack {
-                ForEach(viewModel.playerCards) { card in
+                ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
                     GameCard(
                         name: card.name,
                         imageName: card.image,
@@ -133,6 +138,7 @@ extension GameView {
                             }
                         )
                     )
+                    .modifier(CardPositionModifier(index: index, positions: $playerCardPositions))
                 }
             }
             .padding(.horizontal)
