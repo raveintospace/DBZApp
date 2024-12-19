@@ -17,8 +17,11 @@ struct GamePileOfCards: View {
     @State private var cardRotations: [Angle] = []
     @State private var isShuffling: Bool = false
     
-    // Namespace to deal cards to players
-    @Namespace private var cardAnimationNamespace
+    // Namespace to shuffle cards
+    @Namespace private var cardShuffleAnimationNamespace
+    
+    // Namespace to deal & undeal cards
+    var namespace: Namespace.ID
     
     var body: some View {
         ZStack {
@@ -33,7 +36,8 @@ struct GamePileOfCards: View {
                 .offset(cardPositions.indices.contains(index) ? cardPositions[index] : .zero)
                 .rotationEffect(cardRotations.indices.contains(index) ? cardRotations[index] : .zero)
                 .animation(isShuffling ? .easeInOut(duration: 0.6) : .default, value: cardPositions)
-                .matchedGeometryEffect(id: "card-\(index)", in: cardAnimationNamespace)
+                .matchedGeometryEffect(id: "card-\(index)", in: cardShuffleAnimationNamespace)
+                .matchedGeometryEffect(id: undealtCards[index].id, in: namespace)
             }
         }
         .onAppear {
@@ -51,10 +55,12 @@ struct GamePileOfCards: View {
     
     @Previewable @State var shouldShuffle: Bool = false
     
+    @Previewable @Namespace var testNamespace
+    
     let undealtCards: [GameCharacter] = [GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree, GameCharacter.mock, GameCharacter.mockTwo, GameCharacter.mockThree]
     
     VStack(spacing: 20) {
-        GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $shouldShuffle)
+        GamePileOfCards(undealtCards: undealtCards, shouldShuffleCards: $shouldShuffle, namespace: testNamespace)
             .frame(width: 140)
         
         Button("Shuffle") {

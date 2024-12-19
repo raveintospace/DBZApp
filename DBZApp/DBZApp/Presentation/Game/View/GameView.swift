@@ -15,8 +15,10 @@ struct GameView: View {
     @StateObject private var viewModel: GameViewModel
     
     // Track cards' positions
-    @State private var playerCardPositions: [CGRect] = Array(repeating: .zero, count: 3)
     @State private var rivalCardPositions: [CGRect] = Array(repeating: .zero, count: 3)
+    @State private var playerCardPositions: [CGRect] = Array(repeating: .zero, count: 3)
+    
+    @Namespace private var cardAnimationNamespace
     
     @State private var activeAlert: GameAlert? = nil
     
@@ -104,13 +106,18 @@ extension GameView {
                         isSelected: .constant(false)
                     )
                     .modifier(CardPositionModifier(index: index, positions: $rivalCardPositions))
+                    .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
                 }
             }
             .padding(.horizontal)
             .padding(.top)
             
             HStack(spacing: 0) {
-                GamePileOfCards(undealtCards: viewModel.gameCharacters, shouldShuffleCards: $viewModel.shouldShuffleCards)
+                GamePileOfCards(
+                    undealtCards: viewModel.gameCharacters,
+                    shouldShuffleCards: $viewModel.shouldShuffleCards,
+                    namespace: cardAnimationNamespace
+                )
                     .frame(width: 70, alignment: .leading)
                 GameInfoText(text: $viewModel.gameTextMessage)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -139,6 +146,7 @@ extension GameView {
                         )
                     )
                     .modifier(CardPositionModifier(index: index, positions: $playerCardPositions))
+                    .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
                 }
             }
             .padding(.horizontal)
