@@ -1,7 +1,7 @@
 //
 //  CardPositionModifier.swift
 //  DBZApp
-//  Gets global position of each card in the view where it is used and store it
+//  Gets global position of each card on the view where it is used and store it
 //  Created by Uri on 15/12/24.
 //
 

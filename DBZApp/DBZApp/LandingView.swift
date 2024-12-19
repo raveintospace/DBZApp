@@ -37,10 +37,7 @@ struct LandingView: View {
                 })
             }
             
-            ImageDBZHeaderLogo()
-                .frame(width: 300)
-                .frame(maxHeight: .infinity, alignment: .top)
-                .padding(.top, 10)
+            headerWithLogo
         }
     }
 }
@@ -61,23 +58,12 @@ extension LandingView {
             .ignoresSafeArea()
             .opacity(0.15)
     }
+    
+    private var headerWithLogo: some View {
+        ImageDBZHeaderLogo()
+            .frame(width: 300)
+            .frame(maxHeight: .infinity, alignment: .top)
+            .padding(.top, 10)
+    }
 }
-
-/*
- Wallpaper all characters + mask amb dbzblue
- 3 buttons
- SaiyanSans
- */
-
-/*
- Text("Home")
-     .font(Font.custom("SaiyanSans", size: 50))
-     .kerning(5)
- Text("Game")
-     .font(Font.custom("SaiyanSans", size: 50))
-     .kerning(5)
- Text("App info")
-     .font(Font.custom("SaiyanSans", size: 50))
-     .kerning(5)
- */
 

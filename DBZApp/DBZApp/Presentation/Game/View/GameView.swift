@@ -116,11 +116,11 @@ extension GameView {
                     .frame(maxWidth: .infinity, alignment: .center)
                 gameTrailingButtons
                     .frame(width: 70, alignment: .trailing)
-                  //  .background(.red)
+                    .background(.red)
                 
             }
             .padding()
-          //  .background(.brown)
+            .background(.brown)
             
             HStack {
                 ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
