@@ -239,6 +239,7 @@ final class GameViewModel: ObservableObject {
     private func returnDiscardedCardsToDeck() {
         for var card in cardsToDiscard {
             card.isSelected = false
+            card.isRevealed = false
             gameCharacters.append(card)
         }
         cardsToDiscard.removeAll()

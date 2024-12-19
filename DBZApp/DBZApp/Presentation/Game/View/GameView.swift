@@ -161,7 +161,7 @@ extension GameView {
             hasSelectedCards: !viewModel.cardsToDiscard.isEmpty,
             areDiscardsAllowed: viewModel.areDiscardsAllowed(),
             areRivalCardsShown: viewModel.shouldRevealRivalCards,
-            hasRivalCards: !viewModel.rivalCards.isEmpty,
+            arePlayerCardsShown: viewModel.shouldRevealPlayerCards,
             onPlayButtonPressed: {
                 viewModel.startMatch()
             },
@@ -237,5 +237,5 @@ extension GameView {
 /*
  Animate deal & undeal cards to players
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone, probably because of spacers
- Disable reveal button until player cards are revealed
+isRevealed false & true when discarding cards
  */

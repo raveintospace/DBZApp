@@ -14,7 +14,7 @@ struct GameTrailingButtons: View {
     var hasSelectedCards: Bool = false
     var areDiscardsAllowed: Bool = false
     var areRivalCardsShown: Bool = false
-    var hasRivalCards: Bool = false
+    var arePlayerCardsShown: Bool = false
     
     var onPlayButtonPressed: (() -> Void)? = nil
     var onStopButtonPressed: (() -> Void)? = nil
@@ -69,7 +69,7 @@ extension GameTrailingButtons {
         } else {
             GameActionButton(
                 imageName: "play.rectangle.on.rectangle",
-                isEnabled: hasMatchStarted && !hasMatchFinished && hasRivalCards,
+                isEnabled: hasMatchStarted && !hasMatchFinished && arePlayerCardsShown,
                 onButtonPressed: { onRevealButtonPressed?() }
             )
         }
