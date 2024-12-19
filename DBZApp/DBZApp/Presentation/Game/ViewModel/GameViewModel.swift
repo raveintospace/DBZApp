@@ -66,7 +66,7 @@ final class GameViewModel: ObservableObject {
         shouldShuffleCards = true
         hasMatchStarted = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.dealCards()
         }
     }
@@ -100,8 +100,11 @@ final class GameViewModel: ObservableObject {
         shouldShuffleCards = true
         shouldRevealRivalCards = false
         shouldRevealPlayerCards = false
-        dealCards()
-        updatePoints()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.dealCards()
+            self.updatePoints()
+        }
     }
     
     func toggleCardSelection(_ card: GameCharacter) {
@@ -148,23 +151,25 @@ final class GameViewModel: ObservableObject {
         shouldShuffleCards = true
         gameCharacters.shuffle()
         
-        // Deal new cards to empty indices
-        for index in discardedIndices {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
-                withAnimation {
-                    if let newCard = self.gameCharacters.first {
-                        newCardsToDeal.append(newCard)
-                        self.playerCards.insert(newCard, at: index)
-                        self.gameCharacters.removeFirst()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            // Deal new cards to empty indices
+            for index in discardedIndices {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
+                    withAnimation {
+                        if let newCard = self.gameCharacters.first {
+                            newCardsToDeal.append(newCard)
+                            self.playerCards.insert(newCard, at: index)
+                            self.gameCharacters.removeFirst()
+                        }
                     }
                 }
             }
-        }
-        
-        let totalDelay = Double(discardedIndices.count) * 0.2
-        DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
-            self.shouldRevealPlayerCards = true
-            self.updatePoints()
+            
+            let totalDelay = Double(discardedIndices.count) * 0.2
+            DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
+                self.shouldRevealPlayerCards = true
+                self.updatePoints()
+            }
         }
     }
     
