@@ -83,20 +83,20 @@ extension GamePileOfCards {
         }
         
         // Assign the random positions & rotations
-        withAnimation(.easeInOut(duration: 0.3)) {
+        withAnimation(.easeInOut(duration: 0.2)) {
             cardPositions = randomPositions
             cardRotations = randomRotations
             
         }
         
         // Pile the cards after being shuffled
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            withAnimation(.easeInOut(duration: 0.6)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 cardPositions = Array(repeating: .zero, count: undealtCards.count)
                 cardRotations = Array(repeating: .zero, count: undealtCards.count)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 shouldShuffleCards = false
                 isShuffling = false
             }
