@@ -137,7 +137,7 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        // Turn down discarted cards
+        // Flip discarted cards
         withAnimation {
             for index in discardedIndices {
                 playerCards[index].isRevealed = false
@@ -145,39 +145,37 @@ final class GameViewModel: ObservableObject {
         }
         
         // Remove discarted cards from player, with animation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            withAnimation {
-                self.playerCards.removeAll { card in
-                    self.cardsToDiscard.contains { $0.id == card.id }
-                }
+        withAnimation {
+            self.playerCards.removeAll { card in
+                self.cardsToDiscard.contains { $0.id == card.id }
             }
-            
-            // Reset isSelected and return discarted cards to deck
-            self.returnDiscardedCardsToDeck()
-            
-            // Animate shuffle cards
-            self.shouldShuffleCards = true
-            self.gameCharacters.shuffle()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                // Deal new cards to empty indices
-                for index in discardedIndices {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
-                        withAnimation {
-                            if let newCard = self.gameCharacters.first {
-                                newCardsToDeal.append(newCard)
-                                self.playerCards.insert(newCard, at: index)
-                                self.gameCharacters.removeFirst()
-                            }
+        }
+        
+        // Reset isSelected and return discarted cards to deck
+        self.returnDiscardedCardsToDeck()
+        
+        // Animate shuffle cards
+        self.shouldShuffleCards = true
+        self.gameCharacters.shuffle()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            // Deal new cards to empty indices
+            for index in discardedIndices {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
+                    withAnimation {
+                        if let newCard = self.gameCharacters.first {
+                            newCardsToDeal.append(newCard)
+                            self.playerCards.insert(newCard, at: index)
+                            self.gameCharacters.removeFirst()
                         }
                     }
                 }
-                
-                let totalDelay = Double(discardedIndices.count) * 0.2
-                DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
-                    self.revealAllPlayerCards()
-                    self.updatePoints()
-                }
+            }
+            
+            let totalDelay = Double(discardedIndices.count) * 0.2
+            DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
+                self.revealAllPlayerCards()
+                self.updatePoints()
             }
         }
     }

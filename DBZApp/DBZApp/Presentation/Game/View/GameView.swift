@@ -238,4 +238,5 @@ extension GameView {
  Animate deal & undeal cards to players
  Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone, probably because of spacers
 isRevealed false & true when discarding cards
+ aconseguir que la retirada de cartes sigui tan rapida com quan s'acaba jugada
  */
