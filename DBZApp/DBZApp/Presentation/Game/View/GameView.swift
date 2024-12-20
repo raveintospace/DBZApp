@@ -135,7 +135,7 @@ extension GameView {
                         name: card.name,
                         imageName: card.image,
                         kiPoints: card.kiToDisplayInGame,
-                        isRevealed: viewModel.shouldRevealPlayerCards,
+                        isRevealed: card.isRevealed,
                         areRivalCardsRevealed: viewModel.shouldRevealRivalCards,
                         areDiscardsAllowed: viewModel.areDiscardsAllowed(),
                         isSelected: Binding(
