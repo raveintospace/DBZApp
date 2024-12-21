@@ -62,7 +62,7 @@ extension LandingView {
     private var headerWithLogo: some View {
         ImageDBZHeaderLogo()
             .frame(width: 300)
-            .frame(maxHeight: .infinity, alignment: .top)
+            .frame(height: 700, alignment: .top)
             .padding(.top, 10)
     }
 }

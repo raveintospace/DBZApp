@@ -255,5 +255,8 @@ extension GameView {
 
 // MARK: - To Do
 /*
-
+Test small & big devices
+Keep position of cards when discarting, using height? or an empty card
+ Check if gamecard can read geometry
+ share button on detailview to share image
  */
