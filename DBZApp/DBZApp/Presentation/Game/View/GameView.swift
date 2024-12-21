@@ -27,21 +27,26 @@ struct GameView: View {
     }
     
     var body: some View {
-        ZStack {
-            gameWallpaper
+        GeometryReader { geometry in
+            let screenHeight = geometry.size.height
+            let cardHeight = max(120, screenHeight * 0.23)
             
-            VStack {
-                header
-                Spacer()
+            ZStack {
+                gameWallpaper
                 
-                if viewModel.gameCharacters.isEmpty {
-                    ProgressColorBarsView()
-                } else {
-                    bodyStack
+                VStack {
+                    header
+                    Spacer()
+                    
+                    if viewModel.gameCharacters.isEmpty {
+                        ProgressColorBarsView()
+                    } else {
+                        bodyStack(cardHeight: cardHeight)
+                    }
+                    
+                    Spacer()
+                    footer
                 }
-                
-                Spacer()
-                footer
             }
         }
         .alert(item: $activeAlert) { alertType in
@@ -94,19 +99,19 @@ extension GameView {
         .padding(.horizontal)
     }
     
-    private var bodyStack: some View {
+    private func bodyStack(cardHeight: CGFloat) -> some View {
         ZStack {
-           centralHStack
+            centralHStack
             
             VStack {
-                rivalHStack
+                rivalHStack(cardHeight: cardHeight)
                 Spacer()
-                playerHStack
+                playerHStack(cardHeight: cardHeight)
             }
         }
     }
     
-    private var rivalHStack: some View {
+    private func rivalHStack(cardHeight: CGFloat) -> some View {
         HStack {
             ForEach(Array(viewModel.rivalCards.enumerated()), id: \.element.id) { index, card in
                 GameCard(
@@ -120,7 +125,7 @@ extension GameView {
                 .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
             }
         }
-        .frame(height: 180)
+        .frame(height: cardHeight)
         .padding(.horizontal)
         .padding(.top)
     }
@@ -168,7 +173,7 @@ extension GameView {
             })
     }
     
-    private var playerHStack: some View {
+    private func playerHStack(cardHeight: CGFloat) -> some View {
         HStack {
             ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
                 GameCard(
@@ -189,7 +194,7 @@ extension GameView {
                 .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
             }
         }
-        .frame(height: 180)
+        .frame(height: cardHeight)
         .padding(.horizontal)
         .padding(.bottom)
     }
