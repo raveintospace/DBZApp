@@ -137,22 +137,15 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        // Flip discarted cards
-        withAnimation {
-            for index in discardedIndices {
-                playerCards[index].isRevealed = false
-            }
-        }
-        
         // Remove discarted cards from player, with animation
         withAnimation {
-            self.playerCards.removeAll { card in
-                self.cardsToDiscard.contains { $0.id == card.id }
+            playerCards.removeAll { card in
+                cardsToDiscard.contains { $0.id == card.id }
             }
         }
         
         // Reset isSelected and return discarted cards to deck
-        self.returnDiscardedCardsToDeck()
+        returnDiscardedCardsToDeck()
         
         // Animate shuffle cards
         self.shouldShuffleCards = true
@@ -258,11 +251,14 @@ final class GameViewModel: ObservableObject {
     }
     
     private func returnDiscardedCardsToDeck() {
-        for var card in cardsToDiscard {
-            card.isSelected = false
-            gameCharacters.append(card)
+        withAnimation {
+            for var card in cardsToDiscard {
+                card.isSelected = false
+                card.isRevealed = false
+                gameCharacters.append(card)
+            }
+            cardsToDiscard.removeAll()
         }
-        cardsToDiscard.removeAll()
     }
     
     private func deselectSelectedCards() {
