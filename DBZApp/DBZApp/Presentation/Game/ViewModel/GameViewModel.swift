@@ -148,13 +148,15 @@ final class GameViewModel: ObservableObject {
         returnDiscardedCardsToDeck()
         
         // Animate shuffle cards
-        self.shouldShuffleCards = true
-        self.gameCharacters.shuffle()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.shouldShuffleCards = true
+            self.gameCharacters.shuffle()
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             // Deal new cards to empty indices
             for index in discardedIndices {
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.3) {
                     withAnimation {
                         if let newCard = self.gameCharacters.first {
                             newCardsToDeal.append(newCard)
@@ -165,7 +167,7 @@ final class GameViewModel: ObservableObject {
                 }
             }
             
-            let totalDelay = Double(discardedIndices.count) * 0.2
+            let totalDelay = Double(discardedIndices.count) * 0.3
             DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
                 self.revealAllPlayerCards()
                 self.updatePoints()
