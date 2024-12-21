@@ -250,7 +250,5 @@ extension GameView {
 
 // MARK: - To Do
 /*
- Animate deal & undeal cards to players
- Fix size of hstack in bodystack when cards are not dealt & message updates, only happens with iphone, probably because of spacers
- Fer que la carta no es mogui del hstack quan es descarten cartes
+
  */

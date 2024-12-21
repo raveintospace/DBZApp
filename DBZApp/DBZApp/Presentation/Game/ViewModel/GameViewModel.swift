@@ -42,7 +42,6 @@ final class GameViewModel: ObservableObject {
     let maxVisibleCards: Int = 3
     @Published var rivalCardPositions: [CGRect] = []
     @Published var playerCardPositions: [CGRect] = []
- //   @Published var deckPosition: CGRect = .zero           // remove if not used in gameview!!
     
     private let databaseViewModel: DatabaseViewModel
     
@@ -147,6 +146,7 @@ final class GameViewModel: ObservableObject {
         
         // Reset isSelected + isRevealed and return discarted cards to deck
         returnDiscardedCardsToDeck()
+        updatePoints()
         
         // Animate shuffle cards
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
