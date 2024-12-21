@@ -39,9 +39,10 @@ final class GameViewModel: ObservableObject {
     @Published var gameTextMessage: GameText = .welcome
     
     // MARK: - Deal Animation properties
+    let maxVisibleCards: Int = 3
     @Published var rivalCardPositions: [CGRect] = []
     @Published var playerCardPositions: [CGRect] = []
-    @Published var deckPosition: CGRect = .zero
+ //   @Published var deckPosition: CGRect = .zero           // remove if not used in gameview!!
     
     private let databaseViewModel: DatabaseViewModel
     
@@ -144,7 +145,7 @@ final class GameViewModel: ObservableObject {
             }
         }
         
-        // Reset isSelected and return discarted cards to deck
+        // Reset isSelected + isRevealed and return discarted cards to deck
         returnDiscardedCardsToDeck()
         
         // Animate shuffle cards

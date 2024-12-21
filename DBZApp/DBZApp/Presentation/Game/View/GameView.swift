@@ -95,63 +95,72 @@ extension GameView {
     }
     
     private var bodyStack: some View {
-        VStack {
-            HStack {
-                ForEach(Array(viewModel.rivalCards.enumerated()), id: \.element.id) { index, card in
-                    GameCard(
-                        name: card.name,
-                        imageName: card.image,
-                        kiPoints: card.kiToDisplayInGame,
-                        isRevealed: viewModel.shouldRevealRivalCards,
-                        isSelected: .constant(false)
-                    )
-                    .modifier(CardPositionModifier(index: index, positions: $rivalCardPositions))
-                    .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
-                }
-            }
-            .padding(.horizontal)
-            .padding(.top)
+        ZStack {
+           centralHStack
             
-            HStack(spacing: 0) {
-                GamePileOfCards(
-                    undealtCards: viewModel.gameCharacters,
-                    shouldShuffleCards: $viewModel.shouldShuffleCards,
-                    namespace: cardAnimationNamespace
-                )
-                    .frame(width: 70, alignment: .leading)
-                GameInfoText(text: $viewModel.gameTextMessage)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                gameTrailingButtons
-                    .frame(width: 70, alignment: .trailing)
-                    .background(.red)
-                
-            }
-            .padding()
-            .background(.brown)
-            
-            HStack {
-                ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
-                    GameCard(
-                        name: card.name,
-                        imageName: card.image,
-                        kiPoints: card.kiToDisplayInGame,
-                        isRevealed: card.isRevealed,
-                        areRivalCardsRevealed: viewModel.shouldRevealRivalCards,
-                        areDiscardsAllowed: viewModel.areDiscardsAllowed(),
-                        isSelected: Binding(
-                            get: { card.isSelected },
-                            set: { newValue in
-                                viewModel.toggleCardSelection(card)
-                            }
+            VStack {
+                HStack {
+                    ForEach(Array(viewModel.rivalCards.enumerated()), id: \.element.id) { index, card in
+                        GameCard(
+                            name: card.name,
+                            imageName: card.image,
+                            kiPoints: card.kiToDisplayInGame,
+                            isRevealed: viewModel.shouldRevealRivalCards,
+                            isSelected: .constant(false)
                         )
-                    )
-                    .modifier(CardPositionModifier(index: index, positions: $playerCardPositions))
-                    .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
+                        .modifier(CardPositionModifier(index: index, positions: $rivalCardPositions))
+                        .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
+                    }
                 }
+                .frame(height: 180)
+                .padding(.horizontal)
+                .padding(.top)
+                
+                Spacer()
+                
+                HStack {
+                    ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
+                        GameCard(
+                            name: card.name,
+                            imageName: card.image,
+                            kiPoints: card.kiToDisplayInGame,
+                            isRevealed: card.isRevealed,
+                            areRivalCardsRevealed: viewModel.shouldRevealRivalCards,
+                            areDiscardsAllowed: viewModel.areDiscardsAllowed(),
+                            isSelected: Binding(
+                                get: { card.isSelected },
+                                set: { newValue in
+                                    viewModel.toggleCardSelection(card)
+                                }
+                            )
+                        )
+                        .modifier(CardPositionModifier(index: index, positions: $playerCardPositions))
+                        .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
+                    }
+                }
+                .frame(height: 180)
+                .padding(.horizontal)
+                .padding(.bottom)
             }
-            .padding(.horizontal)
-            .padding(.bottom)
         }
+    }
+    
+    private var centralHStack: some View {
+        HStack(spacing: 0) {
+            GamePileOfCards(
+                undealtCards: viewModel.gameCharacters,
+                shouldShuffleCards: $viewModel.shouldShuffleCards,
+                namespace: cardAnimationNamespace
+            )
+            .frame(width: 70, alignment: .leading)
+            
+            GameInfoText(text: $viewModel.gameTextMessage)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            gameTrailingButtons
+                .frame(width: 70, alignment: .trailing)
+        }
+        .padding()
     }
     
     private var gameTrailingButtons: some View {
