@@ -168,8 +168,7 @@ final class GameViewModel: ObservableObject {
                 }
             }
             
-            let totalDelay = Double(discardedIndices.count) * 0.3
-            DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.revealNewPlayerCards(newCards: newCardsToDeal)
                 self.updatePoints()
             }
