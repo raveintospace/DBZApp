@@ -56,7 +56,7 @@ struct GameCard: View {
             unrevealedSide
         }
         .aspectRatio(aspectRatio, contentMode: contentMode)
-        .offset(y: isSelected ? -15 : 0)
+        .offset(y: isSelected ? 15 : 0)
         .animation(.spring(duration: 0.2), value: isSelected)
         .sensoryFeedback(.impact, trigger: trigger)
         .withTrigger(trigger: $trigger) {
