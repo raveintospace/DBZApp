@@ -170,7 +170,7 @@ final class GameViewModel: ObservableObject {
             
             let totalDelay = Double(discardedIndices.count) * 0.3
             DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
-                self.revealAllPlayerCards()
+                self.revealNewPlayerCards(newCards: newCardsToDeal)
                 self.updatePoints()
             }
         }
@@ -194,7 +194,7 @@ final class GameViewModel: ObservableObject {
         dealCardsToPlayer()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.revealPlayerCardsAndUpdatePoints()
+            self.revealAllPlayerCardsAndUpdatePoints()
         }
     }
     
@@ -232,9 +232,17 @@ final class GameViewModel: ObservableObject {
         shouldRevealPlayerCards = false
     }
     
-    private func revealPlayerCardsAndUpdatePoints() {
+    private func revealAllPlayerCardsAndUpdatePoints() {
         revealAllPlayerCards()
         updatePoints()
+    }
+    
+    private func revealNewPlayerCards(newCards: [GameCharacter]) {
+        for newCard in newCards {
+            if let index = playerCards.firstIndex(where: { $0.id == newCard.id }) {
+                playerCards[index].isRevealed = true
+            }
+        }
     }
     
     private func returnCardsToDeck() {
