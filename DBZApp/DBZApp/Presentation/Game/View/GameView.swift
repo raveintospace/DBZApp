@@ -99,50 +99,30 @@ extension GameView {
            centralHStack
             
             VStack {
-                HStack {
-                    ForEach(Array(viewModel.rivalCards.enumerated()), id: \.element.id) { index, card in
-                        GameCard(
-                            name: card.name,
-                            imageName: card.image,
-                            kiPoints: card.kiToDisplayInGame,
-                            isRevealed: viewModel.shouldRevealRivalCards,
-                            isSelected: .constant(false)
-                        )
-                        .modifier(CardPositionModifier(index: index, positions: $rivalCardPositions))
-                        .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
-                    }
-                }
-                .frame(height: 180)
-                .padding(.horizontal)
-                .padding(.top)
-                
+                rivalHStack
                 Spacer()
-                
-                HStack {
-                    ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
-                        GameCard(
-                            name: card.name,
-                            imageName: card.image,
-                            kiPoints: card.kiToDisplayInGame,
-                            isRevealed: card.isRevealed,
-                            areRivalCardsRevealed: viewModel.shouldRevealRivalCards,
-                            areDiscardsAllowed: viewModel.areDiscardsAllowed(),
-                            isSelected: Binding(
-                                get: { card.isSelected },
-                                set: { newValue in
-                                    viewModel.toggleCardSelection(card)
-                                }
-                            )
-                        )
-                        .modifier(CardPositionModifier(index: index, positions: $playerCardPositions))
-                        .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
-                    }
-                }
-                .frame(height: 180)
-                .padding(.horizontal)
-                .padding(.bottom)
+                playerHStack
             }
         }
+    }
+    
+    private var rivalHStack: some View {
+        HStack {
+            ForEach(Array(viewModel.rivalCards.enumerated()), id: \.element.id) { index, card in
+                GameCard(
+                    name: card.name,
+                    imageName: card.image,
+                    kiPoints: card.kiToDisplayInGame,
+                    isRevealed: viewModel.shouldRevealRivalCards,
+                    isSelected: .constant(false)
+                )
+                .modifier(CardPositionModifier(index: index, positions: $rivalCardPositions))
+                .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
+            }
+        }
+        .frame(height: 180)
+        .padding(.horizontal)
+        .padding(.top)
     }
     
     private var centralHStack: some View {
@@ -186,6 +166,32 @@ extension GameView {
             onDiscardButtonPressed: {
                 viewModel.discardCardsAndDealNewOnes()
             })
+    }
+    
+    private var playerHStack: some View {
+        HStack {
+            ForEach(Array(viewModel.playerCards.enumerated()), id: \.element.id) { index, card in
+                GameCard(
+                    name: card.name,
+                    imageName: card.image,
+                    kiPoints: card.kiToDisplayInGame,
+                    isRevealed: card.isRevealed,
+                    areRivalCardsRevealed: viewModel.shouldRevealRivalCards,
+                    areDiscardsAllowed: viewModel.areDiscardsAllowed(),
+                    isSelected: Binding(
+                        get: { card.isSelected },
+                        set: { newValue in
+                            viewModel.toggleCardSelection(card)
+                        }
+                    )
+                )
+                .modifier(CardPositionModifier(index: index, positions: $playerCardPositions))
+                .matchedGeometryEffect(id: card.id, in: cardAnimationNamespace)
+            }
+        }
+        .frame(height: 180)
+        .padding(.horizontal)
+        .padding(.bottom)
     }
     
     private var footer: some View {
