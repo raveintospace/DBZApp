@@ -29,7 +29,7 @@ struct GameView: View {
     var body: some View {
         GeometryReader { geometry in
             let screenHeight = geometry.size.height
-            let cardHeight = max(120, screenHeight * 0.23)
+            let cardHeight = max(100, screenHeight * (screenHeight < 700 ? 0.19 : 0.23))
             
             ZStack {
                 gameWallpaper
