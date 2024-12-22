@@ -29,8 +29,8 @@ struct GameView: View {
     var body: some View {
         GeometryReader { geometry in
             let screenHeight = geometry.size.height
-            let cardHeight = max(100, screenHeight * (screenHeight < 700 ? 0.19 : 0.23))
-            let dynamicFontSize = screenHeight < 700 ? 60 : 70
+            let cardHeight = max(100, screenHeight * (isSmallScreen ? 0.19 : 0.23))
+            let dynamicFontSize: CGFloat = isSmallScreen ? 60 : 70
             
             ZStack {
                 gameWallpaper
@@ -42,7 +42,7 @@ struct GameView: View {
                     if viewModel.gameCharacters.isEmpty {
                         ProgressColorBarsView()
                     } else {
-                        bodyStack(cardHeight: cardHeight, gameInfoTextFontSize: CGFloat(dynamicFontSize))
+                        bodyStack(cardHeight: cardHeight, gameInfoTextFontSize: dynamicFontSize)
                     }
                     
                     Spacer()
@@ -250,6 +250,10 @@ extension GameView {
             secondaryButton: .destructive(Text("Yes")) {
                 viewModel.endMatch()
         })
+    }
+    
+    private var isSmallScreen: Bool {
+        UIScreen.main.bounds.height < 700
     }
 }
 
