@@ -30,6 +30,7 @@ struct GameView: View {
         GeometryReader { geometry in
             let screenHeight = geometry.size.height
             let cardHeight = max(100, screenHeight * (screenHeight < 700 ? 0.19 : 0.23))
+            let dynamicFontSize = screenHeight < 700 ? 60 : 70
             
             ZStack {
                 gameWallpaper
@@ -41,7 +42,7 @@ struct GameView: View {
                     if viewModel.gameCharacters.isEmpty {
                         ProgressColorBarsView()
                     } else {
-                        bodyStack(cardHeight: cardHeight)
+                        bodyStack(cardHeight: cardHeight, gameInfoTextFontSize: CGFloat(dynamicFontSize))
                     }
                     
                     Spacer()
@@ -99,9 +100,9 @@ extension GameView {
         .padding(.horizontal)
     }
     
-    private func bodyStack(cardHeight: CGFloat) -> some View {
+    private func bodyStack(cardHeight: CGFloat, gameInfoTextFontSize: CGFloat) -> some View {
         ZStack {
-            centralHStack
+            centralHStack(gameFontSize: gameInfoTextFontSize)
             
             VStack {
                 rivalHStack(cardHeight: cardHeight)
@@ -130,7 +131,7 @@ extension GameView {
         .padding(.top)
     }
     
-    private var centralHStack: some View {
+    private func centralHStack(gameFontSize: CGFloat) -> some View {
         HStack(spacing: 0) {
             GamePileOfCards(
                 undealtCards: viewModel.gameCharacters,
@@ -139,7 +140,7 @@ extension GameView {
             )
             .frame(width: 70, alignment: .leading)
             
-            GameInfoText(text: $viewModel.gameTextMessage)
+            GameInfoText(text: $viewModel.gameTextMessage, fontSize: gameFontSize)
                 .frame(maxWidth: .infinity, alignment: .center)
             
             gameTrailingButtons

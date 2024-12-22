@@ -115,10 +115,8 @@ final class GameViewModel: ObservableObject {
             
             if playerCards[index].isSelected {
                 cardsToDiscard.append(playerCards[index])
-                debugPrint("Card added to discarded")
             } else {
                 cardsToDiscard.removeAll { $0.id == card.id }
-                debugPrint("Card removed from discarded")
             }
         }
     }
@@ -184,7 +182,6 @@ final class GameViewModel: ObservableObject {
     
     private func dealCards() {
         guard gameCharacters.count >= 6 else {
-            debugPrint("Not enough cards to deal")
             return
         }
         
@@ -285,7 +282,6 @@ final class GameViewModel: ObservableObject {
     }
     
     private func handleDraw() {
-        debugPrint("Draw")
         gameTextMessage = .draw
     }
     
@@ -366,7 +362,6 @@ final class GameViewModel: ObservableObject {
         }
         
         if hasMalus {
-            debugPrint("**Malus appeared**")
             totalPoints /= 2
         }
         
