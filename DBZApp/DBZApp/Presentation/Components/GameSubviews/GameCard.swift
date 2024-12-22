@@ -1,7 +1,7 @@
 //
 //  GameCard.swift
 //  DBZApp
-//  https://youtu.be/n1qabtjZ_jg?si=rtl9vzA_eK7kJaI4 - Memoroji
+// 
 //  Created by Uri on 16/11/24.
 //
 
