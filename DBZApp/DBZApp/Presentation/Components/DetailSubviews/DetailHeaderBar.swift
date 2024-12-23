@@ -35,7 +35,7 @@ struct DetailHeaderBar: View {
                 .frame(maxWidth: .infinity)
                 .opacity(showHeaderTitle ? 1 : 0)
             
-            HStack(spacing: 4) {
+            HStack(spacing: 6) {
                 ImageOrangeCircle(
                     imageName: isFavorite ? "star.fill" : "star",
                     frameSize: 45,
