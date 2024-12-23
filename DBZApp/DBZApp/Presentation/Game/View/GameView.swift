@@ -102,7 +102,7 @@ extension GameView {
     
     private func bodyStack(cardHeight: CGFloat, gameInfoTextFontSize: CGFloat) -> some View {
         ZStack {
-            centralHStack(gameFontSize: gameInfoTextFontSize)
+            centralHStack(gameInfoTextFontSize: gameInfoTextFontSize)
             
             VStack {
                 rivalHStack(cardHeight: cardHeight)
@@ -131,7 +131,7 @@ extension GameView {
         .padding(.top)
     }
     
-    private func centralHStack(gameFontSize: CGFloat) -> some View {
+    private func centralHStack(gameInfoTextFontSize: CGFloat) -> some View {
         HStack(spacing: 0) {
             GamePileOfCards(
                 undealtCards: viewModel.gameCharacters,
@@ -140,7 +140,7 @@ extension GameView {
             )
             .frame(width: 70, alignment: .leading)
             
-            GameInfoText(text: $viewModel.gameTextMessage, fontSize: gameFontSize)
+            GameInfoText(text: $viewModel.gameTextMessage, fontSize: gameInfoTextFontSize)
                 .frame(maxWidth: .infinity, alignment: .center)
             
             gameTrailingButtons

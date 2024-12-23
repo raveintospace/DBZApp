@@ -100,6 +100,7 @@ extension DetailView {
     private var header: some View {
         DetailHeaderBar(
             headerTitle: viewModel.character.name,
+            url: viewModel.character.image,
             showHeaderTitle: showHeader,
             isFavorite: databaseViewModel.isFavorited(character: viewModel.character),
             onBackButtonPressed: {

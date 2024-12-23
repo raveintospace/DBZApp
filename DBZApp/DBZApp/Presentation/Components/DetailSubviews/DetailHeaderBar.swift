@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailHeaderBar: View {
     
     var headerTitle: String = ""
+    var url: String = "https://www.apple.com"
     var showHeaderTitle: Bool = false
     var isFavorite: Bool = false
     var onBackButtonPressed: (() -> Void)? = nil
@@ -34,18 +35,21 @@ struct DetailHeaderBar: View {
                 .frame(maxWidth: .infinity)
                 .opacity(showHeaderTitle ? 1 : 0)
             
-            ImageOrangeCircle(
-                imageName: isFavorite ? "star.fill" : "star",
-                frameSize: 40,
-                fontSize: 20
-            )
+            HStack(spacing: 4) {
+                ImageOrangeCircle(
+                    imageName: isFavorite ? "star.fill" : "star",
+                    frameSize: 45,
+                    fontSize: 25
+                )
                 .opacity(isFavorite ? 1 : 0.5)
                 .rotationEffect(Angle(degrees: isFavorite ? -72 : 0))
                 .sensoryFeedback(.impact, trigger: trigger)
                 .withTrigger(trigger: $trigger) {
                     onFavButtonPressed?()
                 }
-                .frame(width: 50, alignment: .trailing)
+                DetailShareButton(url: url)
+            }
+            .frame(alignment: .trailing)
         }
     }
 }
