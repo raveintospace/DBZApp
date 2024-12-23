@@ -56,6 +56,8 @@ struct GameView: View {
                 return finishMatchAlert()
             case .playAgain:
                 return playAgainAlert()
+            case .abandonModule:
+                return abandonModuleAlert()
             }
         }
         .onChange(of: viewModel.showPlayAgainAlert) { _, newValue in
@@ -85,7 +87,7 @@ extension GameView {
     private var header: some View {
         GameHeaderBar(
             onHomeButtonPressed: {
-                router.dismissScreen()
+                viewModel.hasMatchStarted ? activeAlert = .abandonModule : router.dismissScreen()
             },
             onSettingsButtonPressed: {
                 router.showModal(
@@ -234,8 +236,8 @@ extension GameView {
         return Alert(
             title: Text("Finish Match"),
             message: Text("Do you want to finish the current match?"),
-            primaryButton: .default(Text("Cancel")),
-            secondaryButton: .destructive(Text("Finish")) {
+            primaryButton: .default(Text("No")),
+            secondaryButton: .destructive(Text("Yes")) {
                 viewModel.endMatch()
         })
     }
@@ -252,6 +254,16 @@ extension GameView {
         })
     }
     
+    private func abandonModuleAlert() -> Alert {
+        return Alert(
+            title: Text("Match in progress"),
+            message: Text("Do you want to leave the game module?"),
+            primaryButton: .default(Text("No")),
+            secondaryButton: .destructive(Text("Yes")) {
+                router.dismissScreen()
+        })
+    }
+    
     private var isSmallScreen: Bool {
         UIScreen.main.bounds.height < 700
     }
@@ -260,7 +272,4 @@ extension GameView {
 
 // MARK: - To Do
 /*
-Keep position of cards when discarting, using height? or an empty card
- Check if gamecard can read geometry
- share button on detailview to share image
  */

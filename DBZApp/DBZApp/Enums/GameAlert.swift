@@ -10,6 +10,7 @@ import Foundation
 enum GameAlert: Identifiable {
     case finishMatch
     case playAgain
+    case abandonModule
     
     var id: GameAlert {
         return self

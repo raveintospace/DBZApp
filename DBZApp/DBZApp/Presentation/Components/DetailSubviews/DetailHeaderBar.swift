@@ -55,12 +55,6 @@ struct DetailHeaderBar: View {
 }
 
 #Preview {
-    ZStack {
-        Image("kingkaiWallpaper")
-            .resizable()
-            .ignoresSafeArea()
-            .opacity(0.15)
-
-        DetailHeaderBar(headerTitle: "fdsafadsafdsafdaffadfa", showHeaderTitle: true)
-    }
+    DetailHeaderBar(headerTitle: "fdsafadsafdsafdaffadfa", showHeaderTitle: true)
+        .padding()
 }
