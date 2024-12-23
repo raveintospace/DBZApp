@@ -141,6 +141,7 @@ extension GameView {
                 namespace: cardAnimationNamespace
             )
             .frame(width: 70, alignment: .leading)
+            .padding(.trailing, 6)
             
             GameInfoText(text: $viewModel.gameTextMessage, fontSize: gameInfoTextFontSize)
                 .frame(maxWidth: .infinity, alignment: .center)
