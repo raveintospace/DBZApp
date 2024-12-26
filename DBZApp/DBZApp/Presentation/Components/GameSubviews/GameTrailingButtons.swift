@@ -77,8 +77,7 @@ extension GameTrailingButtons {
     
     private var bottomButton: some View {
         GameActionButton(
-            imageName: "tray.and.arrow.down",
-            imageYOffset: -3,
+            imageName: "arrow.2.circlepath",
             isEnabled: hasSelectedCards && areDiscardsAllowed && !areRivalCardsShown,
             onButtonPressed: { onDiscardButtonPressed?() }
         )
