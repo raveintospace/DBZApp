@@ -269,8 +269,3 @@ extension GameView {
         UIScreen.main.bounds.height < 700
     }
 }
-
-
-// MARK: - To Do
-/*
- */
