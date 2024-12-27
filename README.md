@@ -145,3 +145,38 @@ Reusable view modifiers include:  CardFlipModifier, CardPositionModifier, Sensor
 ## KiFormatter
 KiFormatter is a utility class used to handle the different formats and conversions for ki points in the app. It serves multiple purposes
 
+---
+
+## Installation
+To run the app locally, clone the repository and open the project in Xcode. Then, build and run the project in the simulator or on a physical device.
+
+---
+
+## Contributing
+Contributions are welcome! If you want to contribute, please fork the repository, create a new branch, make your changes, and submit a pull request.
+
+---
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Color Reference
+
+| Color      | Hex                                                                |
+| ---------- | ------------------------------------------------------------------ |
+| DBZBlue    | ![#1C4595](https://via.placeholder.com/10/1C4595?text=+) #1C4595   |
+| DBZOrange  | ![#E76A24](https://via.placeholder.com/10/E76A24?text=+) #E76A24   |
+| DBZYellow  | ![#FBBC42](https://via.placeholder.com/10/FBBC42?text=+) #FBBC42   |
+
+---
+
+## Screenshots
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <img src="images/Screenshot 2024-03-05 at 18.43.48.png" alt="Home View" title="Home View" width="200">
+    <img src="images/Screenshot 2024-03-05 at 18.44.25.png" alt="Favorites View" title="Favorites View" width="200">
+     <img src="images/Screenshot 2024-06-17 at 19.03.27.png" alt="Filters View" title="Filters View" width="200">
+  <img src="images/Screenshot 2024-03-05 at 18.48.46.png" alt="Info View" title="Info View " width="200">
+</div>   
+
