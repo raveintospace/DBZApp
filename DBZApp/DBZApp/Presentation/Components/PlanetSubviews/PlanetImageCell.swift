@@ -11,14 +11,24 @@ struct PlanetImageCell: View {
     
     var imageName: String = DetailedCharacter.mock.originPlanet.image
     
-    @State private var scale: CGFloat = 1.0
-    
     var body: some View {
         ImageLoaderView(url: imageName, allowHitTesting: true)
-            .beZoomable()
+            .zoomAndPanModifier()
     }
 }
 
 #Preview {
     PlanetImageCell()
 }
+
+/*
+ @GestureState private var zoom = 1.0
+ 
+ .scaleEffect(zoom)
+ .gesture(
+     MagnifyGesture()
+         .updating($zoom) { value, gestureState, transaction in
+             gestureState = value.magnification
+         }
+ )
+ */
