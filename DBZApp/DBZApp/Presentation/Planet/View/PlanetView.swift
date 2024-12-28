@@ -21,6 +21,9 @@ struct PlanetView: View {
             header
                 .frame(maxHeight: .infinity, alignment: .top)
             
+            zoomInfo
+                .frame(maxHeight: .infinity, alignment: .bottom)
+            
             PlanetImageCell(imageName: detailedCharacter.originPlanet.image)
         }
     }
@@ -71,5 +74,13 @@ extension PlanetView {
         .withBorder(color: .dbzYellow, width: 4, cornerRadius: 20)
         .background(.dbzBlue)
         .cornerRadius(20)
+    }
+    
+    private var zoomInfo: some View {
+        Text("Pinch to zoom and explore the planet!")
+            .foregroundColor(.accent)
+            .font(.caption)
+            .bold()
+            .padding()
     }
 }
