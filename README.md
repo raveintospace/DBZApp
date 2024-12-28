@@ -60,8 +60,9 @@ The app follows a clean and modular architecture to ensure scalability and maint
 
 3. **Data**  
    - **Data Sources**:  
-     - **Local**: Uses Core Data for offline persistence of favorite characters.  
-     - **Network**: Fetches data from the API when online.  
+     - **Local**: Fetches data from the a local JSON.  
+     - **Network**: Fetches data from the API.
+     - **Favorite**: Fetches favorited characers with Core Data.  
 
 4. **Model**  
    - Represents the data structures used in the app, such as `Character`, `DetailedCharacter`, `GameCharacter`, etc.  
@@ -138,7 +139,7 @@ Enums used in the app: FilterOption, SortOption, UseCaseError, GameAlert, GameTe
 
 ## View Modifiers  
 
-Reusable view modifiers include:  CardFlipModifier, CardPositionModifier, SensoryTriggerModifier, ZoomAndPanModifier.  
+Reusable view modifiers include:  CardFlipModifier, CardPositionModifier, SensoryTriggerModifier, ZoomPanModifier.  
 
 ---
 
