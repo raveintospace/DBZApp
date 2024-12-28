@@ -174,9 +174,31 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Screenshots
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="images/Screenshot 2024-03-05 at 18.43.48.png" alt="Home View" title="Home View" width="200">
-    <img src="images/Screenshot 2024-03-05 at 18.44.25.png" alt="Favorites View" title="Favorites View" width="200">
-     <img src="images/Screenshot 2024-06-17 at 19.03.27.png" alt="Filters View" title="Filters View" width="200">
-  <img src="images/Screenshot 2024-03-05 at 18.48.46.png" alt="Info View" title="Info View " width="200">
-</div>   
+    <img src="Screenshots/00-Splash.png" alt="Splash View" title="Splash View" width="200">
+    <img src="Screenshots/01-Landing.png" alt="Landing View" title="Landing View" width="200">
+     <img src="Screenshots/02-Database.png" alt="Database View" title="Database View" width="200">
+  <img src="Screenshots/04-Filters.png" alt="Filters for database" title="Filters for database" width="200">
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <img src="Screenshots/05-Filtered.png" alt="Database View with filters" title="Database View with filters" width="200">
+    <img src="Screenshots/06-Search.png" alt="Database View with search" title="Database View with search" width="200">
+     <img src="Screenshots/07-Favs.png" alt="Database View only favorite characters" title="Database View only favorite characters" width="200">
+  <img src="Screenshots/08-Detail.png" alt="Detail View" title="Detail View" width="200">
+</div>  
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <img src="Screenshots/09-Planet.png" alt="Planet View" title="Planet View" width="200">
+    <img src="Screenshots/10-PlanetDet.png" alt="Planet Info" title="Planet info" width="200">
+     <img src="Screenshots/11-Trans.png" alt="Transformation View" title="Transformation View" width="200">
+  <img src="Screenshots/18-AppInfo.png" alt="App Info" title="App Info" width="200">
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <img src="Screenshots/12-GameWelcome.png" alt="Game View's welcome" title="Game View's welcome" width="200">
+    <img src="Screenshots/13-GameStart.png" alt="Game View with cards dealt" title="Game View with cards dealt" width="200">
+     <img src="Screenshots/14-GamePlayed.png" alt="Game View with hands played" title="Game View with hands played" width="200">
+  <img src="Screenshots/15-GameDiscard.png" alt="Game View with cards selected" title="Game View with cards selected" width="200">
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <img src="Screenshots/16-GameSettings.png" alt="Game View's settings" title="Game View's settings" width="200">
+    <img src="Screenshots/17-GameRules.png" alt="Game Rules View" title="Game Rules View" width="200">
+</div>
 
