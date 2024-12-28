@@ -19,7 +19,7 @@ struct ZoomPanModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .scaleEffect(currentScale * gestureScale)
+            .scaleEffect(max(1.0, currentScale * gestureScale)) // Ensure scale doesn't go below 1
             .offset(x: offset.width + gestureOffset.width, y: offset.height + gestureOffset.height)
             .gesture(
                 SimultaneousGesture(
@@ -29,7 +29,6 @@ struct ZoomPanModifier: ViewModifier {
                         }
                         .onEnded { value in
                             currentScale *= value.magnification
-                            // Ensure the scale doesn't go below 1
                             if currentScale < 1 {
                                 currentScale = 1
                                 offset = .zero
@@ -40,11 +39,23 @@ struct ZoomPanModifier: ViewModifier {
                             state = value.translation
                         }
                         .onEnded { value in
-                            offset.width += value.translation.width
-                            offset.height += value.translation.height
+                            // Allow pan only if zoomed in
+                            if currentScale > 1 {
+                                offset.width += value.translation.width
+                                offset.height += value.translation.height
+                            } else {
+                                offset = .zero
+                            }
                         }
                 )
             )
+            .onTapGesture(count: 2) {
+                // Reset zoom and pan on double tap
+                withAnimation {
+                    currentScale = 1.0
+                    offset = .zero
+                }
+            }
     }
 }
 
