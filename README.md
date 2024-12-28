@@ -190,7 +190,7 @@ Below are some screenshots showcasing key views and features of the app.
   <img src="Screenshots/08-Detail.png" alt="Detail View" title="Detail View" width="200">
 </div>  
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="Screenshots/09-Planet.png" alt="Planet View" title="Planet View" width="200">
+    <img src="Screenshots/09v2-Planet.png" alt="Planet View" title="Planet View" width="200">
     <img src="Screenshots/10-PlanetDet.png" alt="Planet Info" title="Planet info" width="200">
      <img src="Screenshots/11-Trans.png" alt="Transformation View" title="Transformation View" width="200">
   <img src="Screenshots/18-AppInfo.png" alt="App Info" title="App Info" width="200">
