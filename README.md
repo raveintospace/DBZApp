@@ -1,7 +1,7 @@
 # DBZApp
 A custom SwiftUI project featuring a Dragon Ball Z database and card game. Built with MVVM architecture, Async/Await for concurrency, Core Data for persistence, and a focus on reusable components, smooth animations and interactivity.
 
-The user can explore the database with all the characters available or play with them in a card game.
+Users can explore a rich database of Dragon Ball Z characters or engage in an exciting card game.
 
 ##
 <p align="center">
@@ -132,7 +132,7 @@ The app leverages the following frameworks:
 
 ## Enums  
 
-Key enums used in the app: FilterOption, SortOption, UseCaseError, GameAlert, GameText. 
+Enums used in the app: FilterOption, SortOption, UseCaseError, GameAlert, GameText. 
 
 ---
 
@@ -175,6 +175,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## Screenshots
+Below are some screenshots showcasing key views and features of the app.
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
     <img src="Screenshots/00-Splash.png" alt="Splash View" title="Splash View" width="200">
     <img src="Screenshots/01-Landing.png" alt="Landing View" title="Landing View" width="200">
