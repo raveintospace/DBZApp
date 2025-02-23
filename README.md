@@ -150,7 +150,7 @@ KiFormatter is a utility class used to handle the different formats and conversi
 
 ## Installation
 - To run the app locally, clone the repository and open the project in Xcode. Then, build and run the project in the simulator or on a physical device.
-- To test the app, you can do it using Appetize, [click here](https://appetize.io/app/b_onavyvjpgggkwsyrpldzrpkuzm).
+- To test the app, you can do it using Appetize, [click here](https://appetize.io/app/b_onavyvjpgggkwsyrpldzrpkuzm)
 
 ---
 
