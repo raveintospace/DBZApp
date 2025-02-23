@@ -50,7 +50,7 @@ The app follows a clean and modular architecture to ensure scalability and maint
 1. **Presentation**  
    - **Components**: Reusable UI elements used across multiple views.  
    - **Sub-Views**: Smaller UI pieces that compose the main views.  
-   - **Views**: Main screens of the app with their corresponding `ViewModel`.  
+   - **Views**: Main screens of the app with their corresponding ViewModel.  
 
 2. **Domain**  
    - **Repositories**:  
@@ -150,6 +150,7 @@ KiFormatter is a utility class used to handle the different formats and conversi
 
 ## Installation
 To run the app locally, clone the repository and open the project in Xcode. Then, build and run the project in the simulator or on a physical device.
+To test the app, you can do it using Appetize, [click here](https://appetize.io/app/b_onavyvjpgggkwsyrpldzrpkuzm).
 
 ---
 
