@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftfulRouting
+import GoogleMobileAds
+import AppTrackingTransparency
 
 @main
 struct DBZApp: App {
