@@ -60,6 +60,9 @@ struct GameView: View {
                 return abandonModuleAlert()
             }
         }
+        .onAppear {
+            viewModel.loadAd()
+        }
         .onChange(of: viewModel.showPlayAgainAlert) { _, newValue in
             if newValue {
                 activeAlert = .playAgain
@@ -239,6 +242,7 @@ extension GameView {
             message: Text("Do you want to finish the current match?"),
             primaryButton: .default(Text("No")),
             secondaryButton: .destructive(Text("Yes")) {
+                viewModel.showAd()
                 viewModel.endMatch()
         })
     }
@@ -251,6 +255,7 @@ extension GameView {
                 router.dismissScreen()
             },
             secondaryButton: .destructive(Text("Yes")) {
+                viewModel.showAd()
                 viewModel.endMatch()
         })
     }
