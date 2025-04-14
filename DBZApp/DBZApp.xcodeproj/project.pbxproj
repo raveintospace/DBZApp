@@ -238,6 +238,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3410804D2D0DFB6100D7CE9F /* Sound */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sound; sourceTree = "<group>"; };
 		34DFC7C62DAD6E0500D2AB3E /* AdMob */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AdMob; sourceTree = "<group>"; };
+		34DFC7E82DAD72FF00D2AB3E /* Sound */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sound; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +331,7 @@
 			children = (
 				343DC2FF2C89AB1000BCCF39 /* Repository */,
 				343DC2FE2C89AB0800BCCF39 /* UseCases */,
+				34DFC7E82DAD72FF00D2AB3E /* Sound */,
 				343DC2FD2C89AB0100BCCF39 /* Model */,
 			);
 			path = Domain;
@@ -792,6 +794,7 @@
 			fileSystemSynchronizedGroups = (
 				3410804D2D0DFB6100D7CE9F /* Sound */,
 				34DFC7C62DAD6E0500D2AB3E /* AdMob */,
+				34DFC7E82DAD72FF00D2AB3E /* Sound */,
 			);
 			name = DBZApp;
 			packageProductDependencies = (

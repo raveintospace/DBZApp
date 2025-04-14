@@ -45,8 +45,18 @@ final class GameViewModel: ObservableObject {
     
     private let databaseViewModel: DatabaseViewModel
     
-    init(databaseViewModel: DatabaseViewModel) {
+    // MARK: - Use cases
+    private let adLoader: AdLoading
+    private let soundUseCase: SoundUseCase
+    
+    init(
+        adLoader: AdLoading = AdLoader(),
+        databaseViewModel: DatabaseViewModel,
+        soundUseCase: SoundUseCase = SoundUseCase()
+    ) {
+        self.adLoader = adLoader
         self.databaseViewModel = databaseViewModel
+        self.soundUseCase = soundUseCase
         Task {
             await databaseViewModel.loadLocalCharacters()
             loadGameCharacters()
@@ -175,7 +185,7 @@ final class GameViewModel: ObservableObject {
     
     // MARK: - Internal methods for game
     private func loadGameSettings() {
-        isSoundEnabled = getSoundSetting()
+        isSoundEnabled = soundUseCase.isSoundEnabled
         gamesToWin = getNumberOfGamesToWinSetting()
         setsToWin = getNumberOfSetsToWinSetting()
     }
@@ -445,36 +455,13 @@ final class GameViewModel: ObservableObject {
     // MARK: - Sound settings
     @Published var isSoundEnabled: Bool = true {
         didSet {
-            encodeAndSaveSoundSetting()
+            soundUseCase.setSoundActivated(value: isSoundEnabled)
         }
-    }
-    
-    private let soundUserDefaultsKey: String = "soundSetting"
-    let gameWonSound = SoundModel(name: "gameWon")
-    let gameLostSound = SoundModel(name: "gameLost")
-    
-    private func encodeAndSaveSoundSetting() {
-        do {
-            let encoded = try JSONEncoder().encode(isSoundEnabled)
-            UserDefaults.standard.set(encoded, forKey: soundUserDefaultsKey)
-        } catch {
-            debugPrint("Error encoding sound setting: \(error)")
-        }
-    }
-    
-    private func getSoundSetting() -> Bool {
-        if let soundSettingData = UserDefaults.standard.object(forKey: soundUserDefaultsKey) as? Data {
-            do {
-                let soundSetting = try JSONDecoder().decode(Bool.self, from: soundSettingData)
-                return soundSetting
-            } catch {
-                debugPrint("Error decoding sound setting: \(error)")
-            }
-        }
-        return true // default value if decoding fails
     }
     
     private let soundPlayer = SoundPlayer()
+    let gameWonSound = SoundModel(name: "gameWon")
+    let gameLostSound = SoundModel(name: "gameLost")
     
     private func playGameWonSound() {
         guard let url = gameWonSound.getURL() else {
@@ -504,9 +491,16 @@ final class GameViewModel: ObservableObject {
     func areDiscardsAllowed() -> Bool {
         return discardsUsed < discardsAllowed
     }
+    
+    // MARK: - AdMob Methods
+    func loadAd() {
+        Task {
+            await adLoader.loadAd()
+        }
+    }
+    
+    func showAd() {
+        adLoader.showAd()
+    }
 }
 
-// MARK: - To Do
-/*
- 
- */
