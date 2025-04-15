@@ -460,11 +460,11 @@ final class GameViewModel: ObservableObject {
     }
     
     private let soundPlayer = SoundPlayer()
-    let gameWonSound = SoundModel(name: "gameWon")
-    let gameLostSound = SoundModel(name: "gameLost")
+    let matchWonSound = SoundModel(name: "matchWon")
+    let matchLostSound = SoundModel(name: "matchLost")
     
     private func playGameWonSound() {
-        guard let url = gameWonSound.getURL() else {
+        guard let url = matchWonSound.getURL() else {
             debugPrint("Game won sound URL is nil. Sound will not play.")
             return
         }
@@ -472,7 +472,7 @@ final class GameViewModel: ObservableObject {
     }
     
     private func playGameLostSound() {
-        guard let url = gameLostSound.getURL() else {
+        guard let url = matchLostSound.getURL() else {
             debugPrint("Game lost sound URL is nil. Sound will not play.")
             return
         }
