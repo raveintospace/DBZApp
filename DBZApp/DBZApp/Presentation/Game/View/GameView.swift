@@ -252,7 +252,9 @@ extension GameView {
             title: Text("Match Finished"),
             message: Text("Do you want to play again?"),
             primaryButton: .default(Text("No")) {
-                router.dismissScreen()
+                viewModel.showAd {
+                    router.dismissScreen()
+                }
             },
             secondaryButton: .destructive(Text("Yes")) {
                 viewModel.showAd()
@@ -266,7 +268,9 @@ extension GameView {
             message: Text("Do you want to leave the game module?"),
             primaryButton: .default(Text("No")),
             secondaryButton: .destructive(Text("Yes")) {
-                router.dismissScreen()
+                viewModel.showAd {
+                    router.dismissScreen()
+                }
         })
     }
     

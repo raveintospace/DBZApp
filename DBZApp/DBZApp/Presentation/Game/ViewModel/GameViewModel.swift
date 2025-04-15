@@ -499,8 +499,8 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func showAd() {
-        adLoader.showAd()
+    func showAd(completion: @escaping () -> Void = {}) {
+        adLoader.showAd(completion: completion)
     }
 }
 

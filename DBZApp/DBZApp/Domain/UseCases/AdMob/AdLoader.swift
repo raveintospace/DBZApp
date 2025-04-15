@@ -10,11 +10,12 @@ import GoogleMobileAds
 
 protocol AdLoading {
     func loadAd() async
-    func showAd()
+    func showAd(completion: @escaping () -> Void)
 }
 
 class AdLoader: NSObject, AdLoading, FullScreenContentDelegate {
     private var interstitialAd: InterstitialAd?
+    private var adCompletion: (() -> Void)?     // Property to store ad's completion
     
     func loadAd() async {
         do {
@@ -22,47 +23,59 @@ class AdLoader: NSObject, AdLoading, FullScreenContentDelegate {
                 with: "ca-app-pub-3940256099942544/4411468910", request: Request())
             interstitialAd?.fullScreenContentDelegate = self
         } catch {
-            print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+            debugPrint("Failed to load interstitial ad with error: \(error.localizedDescription)")
         }
     }
     
-    func showAd() {
+    func showAd(completion: @escaping () -> Void = {}) {
         guard let interstitialAd = interstitialAd else {
-            return print("Ad wasn't ready.")
+            debugPrint("Ad wasn't ready.")
+            completion()    // calls completion if there's no ad
+            return
         }
         
+        self.adCompletion = completion  // Store completion
         interstitialAd.present(from: nil)
     }
 }
 
 extension AdLoader {
     func adDidRecordImpression(_ ad: FullScreenPresentingAd) {
-        print("\(#function) called")
+        debugPrint("\(#function) called")
     }
     
     func adDidRecordClick(_ ad: FullScreenPresentingAd) {
-        print("\(#function) called")
+        debugPrint("\(#function) called")
     }
     
+    // Ad fails
     func ad(
         _ ad: FullScreenPresentingAd,
         didFailToPresentFullScreenContentWithError error: Error
     ) {
-        print("\(#function) called")
+        debugPrint("\(#function) called")
+        adCompletion?()
+        adCompletion = nil
+        interstitialAd = nil
+        Task {
+            await loadAd()
+        }
     }
     
     func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
-        print("\(#function) called")
+        debugPrint("\(#function) called")
     }
     
     func adWillDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
-        print("\(#function) called")
+        debugPrint("\(#function) called")
     }
     
+    // Ad closes full screen
     func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
-        print("\(#function) called")
-        // Clear the interstitial ad.
-        interstitialAd = nil
+        debugPrint("\(#function) called")
+        adCompletion?()
+        adCompletion = nil      // Clean completion
+        interstitialAd = nil    // Clean interstitialAd
         Task {
             await loadAd()
         }
