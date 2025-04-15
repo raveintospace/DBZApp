@@ -16,6 +16,8 @@ protocol AdLoading {
 class AdLoader: NSObject, AdLoading, FullScreenContentDelegate {
     private var interstitialAd: InterstitialAd?
     private var adCompletion: (() -> Void)?     // Property to store ad's completion
+    private var lastAdShown: Date?
+    private let adInterval: TimeInterval = 60
     
     func loadAd() async {
         do {
@@ -28,6 +30,12 @@ class AdLoader: NSObject, AdLoading, FullScreenContentDelegate {
     }
     
     func showAd(completion: @escaping () -> Void = {}) {
+        if let lastAdShown = lastAdShown, Date().timeIntervalSince(lastAdShown) < adInterval {
+            debugPrint("Ad skipped due to frequency limit.")
+            completion()
+            return
+        }
+        
         guard let interstitialAd = interstitialAd else {
             debugPrint("Ad wasn't ready.")
             completion()    // calls completion if there's no ad
